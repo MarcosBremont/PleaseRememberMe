@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PleaseRememberMe.Pantallas.PaginaPrincipal">
+
+    <StackLayout>
+
+        <Label  Grid.Row="0" Text="Please Remember Me" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+        <Label  Grid.Row="1" Text="Is an app that would help you to remember all the verbs for the english class." FontSize="16" Padding="30,0,30,0"/>
+
+        <Grid HorizontalOptions="Center" Padding="30,0,30,0" Grid.Row="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+
+
+            <Label x:Name="LblVerbInPast" IsVisible="false" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Verb"></Label>
+            <Label x:Name="LblVerbInPastSimple" IsVisible="false" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" Text="Past Simple"></Label>
+            <Label x:Name="LblVerbInPastParticiple" IsVisible="false" Grid.Row="1" Grid.Column="2" FontAttributes="Bold" Text="Past Participle"></Label>
+
+
+            <Entry IsVisible="false" x:Name="txtVerbInPast" Grid.Row="2" Grid.Column="0" IsReadOnly="True" Text="Read" BackgroundColor="Transparent" ></Entry>
+            <Entry IsVisible="false" x:Name="txtVerbInPastSimple" Grid.Row="2" Grid.Column="1"  Text="Read" BackgroundColor="Transparent" ></Entry>
+            <Entry IsVisible="false" x:Name="txtVerbInPastParticiple" Grid.Row="2" Grid.Column="2"  Text="¿?" BackgroundColor="Transparent" ></Entry>
+
+
+        </Grid>
+        <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Let's Go" TextColor="White" FontAttributes="Bold" BackgroundColor="CornflowerBlue"/>
+        <Button x:Name="BtnAnotherOne" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Another One" IsVisible="false" TextColor="White" FontAttributes="Bold" BackgroundColor="Chocolate"/>
+    </StackLayout>
+
+</ContentPage>
