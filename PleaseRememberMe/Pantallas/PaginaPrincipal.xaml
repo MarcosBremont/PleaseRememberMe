@@ -31,9 +31,9 @@
             <Label x:Name="LblVerbInPastParticiple" IsVisible="false" Grid.Row="1" Grid.Column="2" FontAttributes="Bold" TextColor="#333" Text="Past Participle"></Label>
 
 
-            <Entry IsVisible="false" x:Name="txtVerbInPast" Grid.Row="2" PlaceholderColor="#333" Grid.Column="0" IsReadOnly="True" BackgroundColor="Transparent" ></Entry>
-            <Entry IsVisible="false" x:Name="txtVerbInPastSimple" Grid.Row="2" PlaceholderColor="#333"  Grid.Column="1"  Placeholder="¿?"  BackgroundColor="Transparent" ></Entry>
-            <Entry IsVisible="false" x:Name="txtVerbInPastParticiple" Grid.Row="2" PlaceholderColor="#333"  Grid.Column="2"  Placeholder="¿?" BackgroundColor="Transparent" ></Entry>
+            <Entry IsVisible="false" TextTransform="Uppercase" x:Name="txtVerbInPast" Grid.Row="2" TextColor="#333" PlaceholderColor="#333" Grid.Column="0" IsReadOnly="True" BackgroundColor="Transparent" ></Entry>
+            <Entry IsVisible="false" TextTransform="Uppercase" x:Name="txtVerbInPastSimple" Grid.Row="2" TextColor="#333" PlaceholderColor="#333"  Grid.Column="1"  Placeholder="¿?"  BackgroundColor="Transparent" ></Entry>
+            <Entry IsVisible="false" TextTransform="Uppercase" x:Name="txtVerbInPastParticiple" Grid.Row="2" TextColor="#333" PlaceholderColor="#333"  Grid.Column="2"  Placeholder="¿?" BackgroundColor="Transparent" ></Entry>
 
 
 

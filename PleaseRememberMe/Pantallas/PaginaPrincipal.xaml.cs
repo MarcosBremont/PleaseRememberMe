@@ -35,13 +35,13 @@ namespace PleaseRememberMe.Pantallas
             var response = await metodos.GetListadoVerbos();
             var random = new Random().Next(1, response.Count);
             var datos = response[random];
-            txtVerbInPast.Text = datos.VerboFormaBase;
-            VerbInSimplePast = datos.verboSimplePast;
-            VerbInPastParticiple = datos.verboPasParticiple;
-            ExampleInBaseForm = datos.examplesInBaseForm;
-            ExamplePastSimple = datos.verboSimplePast;
-            ExampleInPastParticiple = datos.examplesInPastParticiple;
-            Traduccion = datos.traduccion;
+            txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
+            VerbInSimplePast = datos.verboSimplePast.ToUpper();
+            VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
+            ExampleInBaseForm = datos.examplesInBaseForm.ToUpper();
+            ExamplePastSimple = datos.verboSimplePast.ToUpper();
+            ExampleInPastParticiple = datos.examplesInPastParticiple.ToUpper();
+            Traduccion = datos.traduccion.ToUpper();
             
         }
 
