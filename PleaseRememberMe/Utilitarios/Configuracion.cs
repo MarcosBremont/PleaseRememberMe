@@ -13,7 +13,7 @@ namespace PleaseRememberMe.Utilitarios
         //Conexion de la Api
         //public static string Server = "http://10.0.0.100:7011/";//ApiOfitec Servidor
         //public static string Server = "http://190.6.141.29:7003/";//ApiOfitec Servidor global
-        public static string Server = "http://10.0.0.100:7020/";//Conexion Vacia
+        public static string Server = "http://apibremont.tecnolora.com/";//Conexion Vacia
         //public static string Server = "https://api.conexionwnm.com/";//Conexion Vacia
         //private static string Server = "http://api.oficable.com/"; Plesk
         private static string ApiName = "Api/";

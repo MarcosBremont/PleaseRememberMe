@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PleaseRememberMe.Pantallas.PaginaPrincipal">
 
-    <StackLayout>
+    <StackLayout BackgroundColor="#80FFB6">
 
-        <Label  Grid.Row="0" Text="Please Remember Me" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
-        <Label  Grid.Row="1" Text="Is an app that would help you to remember all the verbs for the english class." FontSize="16" Padding="30,0,30,0"/>
+        <Label Margin="0,0,0,0"  Grid.Row="0" Text="Please Remember Me" FontSize="25" TextColor="#333" FontAttributes="Bold" HorizontalOptions="Center"/>
+        <Image Source="BrainLogo.png" WidthRequest="200"></Image>
+        <Label  Grid.Row="1" Text="Is an app that would help you to remember all the verbs for the english class." TextColor="#333" FontSize="16" Padding="30,0,30,0"/>
 
         <Grid HorizontalOptions="Center" Padding="30,0,30,0" Grid.Row="2">
 
@@ -25,19 +26,30 @@
             </Grid>
 
 
-            <Label x:Name="LblVerbInPast" IsVisible="false" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Verb"></Label>
-            <Label x:Name="LblVerbInPastSimple" IsVisible="false" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" Text="Past Simple"></Label>
-            <Label x:Name="LblVerbInPastParticiple" IsVisible="false" Grid.Row="1" Grid.Column="2" FontAttributes="Bold" Text="Past Participle"></Label>
+            <Label x:Name="LblVerbInPast" IsVisible="false" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Verb" TextColor="#333"></Label>
+            <Label x:Name="LblVerbInPastSimple" IsVisible="false" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" TextColor="#333" Text="Past Simple"></Label>
+            <Label x:Name="LblVerbInPastParticiple" IsVisible="false" Grid.Row="1" Grid.Column="2" FontAttributes="Bold" TextColor="#333" Text="Past Participle"></Label>
 
 
-            <Entry IsVisible="false" x:Name="txtVerbInPast" Grid.Row="2" Grid.Column="0" IsReadOnly="True" Text="Read" BackgroundColor="Transparent" ></Entry>
-            <Entry IsVisible="false" x:Name="txtVerbInPastSimple" Grid.Row="2" Grid.Column="1"  Text="Read" BackgroundColor="Transparent" ></Entry>
-            <Entry IsVisible="false" x:Name="txtVerbInPastParticiple" Grid.Row="2" Grid.Column="2"  Text="¿?" BackgroundColor="Transparent" ></Entry>
+            <Entry IsVisible="false" x:Name="txtVerbInPast" Grid.Row="2" PlaceholderColor="#333" Grid.Column="0" IsReadOnly="True" BackgroundColor="Transparent" ></Entry>
+            <Entry IsVisible="false" x:Name="txtVerbInPastSimple" Grid.Row="2" PlaceholderColor="#333"  Grid.Column="1"  Placeholder="¿?"  BackgroundColor="Transparent" ></Entry>
+            <Entry IsVisible="false" x:Name="txtVerbInPastParticiple" Grid.Row="2" PlaceholderColor="#333"  Grid.Column="2"  Placeholder="¿?" BackgroundColor="Transparent" ></Entry>
 
+
+
+            <Label x:Name="LblVerbInPastCheck" IsVisible="false" Grid.Row="3" Grid.Column="0" TextColor="DarkRed" FontAttributes="Bold"></Label>
+            <Label x:Name="LblVerbInPastSimpleCheck" IsVisible="false" Grid.Row="3" Grid.Column="1" TextColor="DarkRed" FontAttributes="Bold"></Label>
+            <Label x:Name="LblVerbInPastParticipleCheck" IsVisible="false" Grid.Row="3" Grid.Column="2" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
         </Grid>
-        <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Let's Go" TextColor="White" FontAttributes="Bold" BackgroundColor="CornflowerBlue"/>
-        <Button x:Name="BtnAnotherOne" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Another One" IsVisible="false" TextColor="White" FontAttributes="Bold" BackgroundColor="Chocolate"/>
+        <Label x:Name="LblTrad" IsVisible="false" Grid.Row="3" Text="Traduccion:" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333" FontAttributes="Bold"></Label>
+        <Label x:Name="LblTraduction" IsVisible="false" Grid.Row="3" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333"></Label>
+        
+        <Button x:Name="BtnCheck" Clicked="BtnCheck_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Check" IsVisible="false" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
+        <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Let's Go" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
+        <Button x:Name="BtnAnotherOne" Clicked="BtnAnotherOne_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Another One" IsVisible="false" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
+        
+        <Button x:Name="BtnGiveMeSomeExamples" Clicked="BtnGiveMeSomeExamples_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Give Me Some Examples" IsVisible="false" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
     </StackLayout>
 
 </ContentPage>
