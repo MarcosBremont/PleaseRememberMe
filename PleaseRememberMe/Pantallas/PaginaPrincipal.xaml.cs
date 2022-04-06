@@ -19,7 +19,6 @@ namespace PleaseRememberMe.Pantallas
         public PaginaPrincipal()
         {
             InitializeComponent();
-
         }
 
         protected async override void OnAppearing()
@@ -64,6 +63,8 @@ namespace PleaseRememberMe.Pantallas
             BtnAnotherOne.IsVisible = true;
             BtnCheck.IsVisible = true;
             BtnGiveMeSomeExamples.IsVisible = true;
+            lblVersion.IsVisible = true;
+
         }
 
         private void BtnAnotherOne_Clicked(object sender, EventArgs e)
