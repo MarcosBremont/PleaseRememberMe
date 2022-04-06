@@ -128,6 +128,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\splash_screen.imageset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -155,5 +156,8 @@
     <BundleResource Include="Resources\BrainLogo.png" />
     <BundleResource Include="Resources\Logo250.png" />
     <BundleResource Include="Resources\playstore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\splash_screen.imageset\" />
   </ItemGroup>
 </Project>
