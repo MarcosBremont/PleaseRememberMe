@@ -1,4 +1,5 @@
-﻿using PleaseRememberMe.Models;
+﻿using Acr.UserDialogs;
+using PleaseRememberMe.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +30,7 @@ namespace PleaseRememberMe.Pantallas
 
         public async void GetRandomVerb()
         {
+            UserDialogs.Instance.ShowLoading("Buscando Verbos");
             var response = await metodos.GetListadoVerbos();
             var random = new Random().Next(1, response.Count);
             var datos = response[random];
@@ -39,6 +41,8 @@ namespace PleaseRememberMe.Pantallas
             lblExamplePast.Text = datos.examplesInBaseForm;
             lblExamplePastSimple.Text = datos.examplesInSimplePast;
             lblExamplePastParticiple.Text = datos.examplesInPastParticiple;
+            UserDialogs.Instance.HideLoading();
+
         }
 
         private void BtnLetsGo_Clicked(object sender, EventArgs e)
@@ -93,7 +97,7 @@ namespace PleaseRememberMe.Pantallas
             LblVerbInPastSimpleCheck.IsVisible = true;
             LblVerbInPastParticipleCheck.IsVisible = true;
 
-            if (string.IsNullOrEmpty(txtVerbInPastSimple.Text) || string.IsNullOrEmpty(txtVerbInPastParticiple.Text))
+            if (string.IsNullOrEmpty(txtVerbInPastSimple.Text))
             {
                 LblVerbInPastSimpleCheck.Text = "Incorrect";
             }
@@ -113,7 +117,7 @@ namespace PleaseRememberMe.Pantallas
 
             if (string.IsNullOrEmpty(txtVerbInPastParticiple.Text))
             {
-                LblVerbInPastSimpleCheck.Text = "Incorrect";
+                LblVerbInPastParticipleCheck.Text = "Incorrect";
             }
             else
             {
