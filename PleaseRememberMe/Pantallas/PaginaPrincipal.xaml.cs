@@ -13,9 +13,6 @@ namespace PleaseRememberMe.Pantallas
     {
         string VerbInSimplePast = "";
         string VerbInPastParticiple = "";
-        string ExampleInBaseForm = "";
-        string ExamplePastSimple = "";
-        string ExampleInPastParticiple = "";
         string Traduccion = "";
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
@@ -38,11 +35,10 @@ namespace PleaseRememberMe.Pantallas
             txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
             VerbInSimplePast = datos.verboSimplePast.ToUpper();
             VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
-            ExampleInBaseForm = datos.examplesInBaseForm.ToUpper();
-            ExamplePastSimple = datos.verboSimplePast.ToUpper();
-            ExampleInPastParticiple = datos.examplesInPastParticiple.ToUpper();
             Traduccion = datos.traduccion.ToUpper();
-            
+            lblExamplePast.Text = datos.examplesInBaseForm;
+            lblExamplePastSimple.Text = datos.examplesInSimplePast;
+            lblExamplePastParticiple.Text = datos.examplesInPastParticiple;
         }
 
         private void BtnLetsGo_Clicked(object sender, EventArgs e)
@@ -63,6 +59,7 @@ namespace PleaseRememberMe.Pantallas
             BtnLetsGo.IsVisible = false;
             BtnAnotherOne.IsVisible = true;
             BtnCheck.IsVisible = true;
+            BtnGiveMeSomeExamples.IsVisible = true;
         }
 
         private void BtnAnotherOne_Clicked(object sender, EventArgs e)
@@ -79,6 +76,13 @@ namespace PleaseRememberMe.Pantallas
             LblVerbInPastParticipleCheck.IsVisible = false;
             LblTrad.IsVisible = false;
             LblTraduction.IsVisible = false;
+
+            lblexample1.IsVisible = false;
+            lblexample2.IsVisible = false;
+            lblexample3.IsVisible = false;
+            lblExamplePast.IsVisible = false;
+            lblExamplePastSimple.IsVisible = false;
+            lblExamplePastParticiple.IsVisible = false;
         }
 
         private void BtnCheck_Clicked(object sender, EventArgs e)
@@ -89,29 +93,52 @@ namespace PleaseRememberMe.Pantallas
             LblVerbInPastSimpleCheck.IsVisible = true;
             LblVerbInPastParticipleCheck.IsVisible = true;
 
-            if (txtVerbInPastSimple.Text == VerbInSimplePast)
-            {
-                LblVerbInPastSimpleCheck.Text = "Correct";
-            }
-            else
+            if (string.IsNullOrEmpty(txtVerbInPastSimple.Text) || string.IsNullOrEmpty(txtVerbInPastParticiple.Text))
             {
                 LblVerbInPastSimpleCheck.Text = "Incorrect";
             }
-
-            if (txtVerbInPastParticiple.Text == VerbInPastParticiple)
+            else
             {
-                LblVerbInPastParticipleCheck.Text = "Correct";
+                if (txtVerbInPastSimple.Text.ToUpper() == VerbInSimplePast)
+                {
+                    LblVerbInPastSimpleCheck.Text = "Correct";
+                }
+                else
+                {
+                    LblVerbInPastSimpleCheck.Text = "Incorrect";
+                }
+
+            
+            }
+
+            if (string.IsNullOrEmpty(txtVerbInPastParticiple.Text))
+            {
+                LblVerbInPastSimpleCheck.Text = "Incorrect";
             }
             else
             {
-                LblVerbInPastParticipleCheck.Text = "Incorrect";
+                if (txtVerbInPastParticiple.Text.ToUpper() == VerbInPastParticiple)
+                {
+                    LblVerbInPastParticipleCheck.Text = "Correct";
+                }
+                else
+                {
+                    LblVerbInPastParticipleCheck.Text = "Incorrect";
+                }
+
+
             }
 
         }
 
         private void BtnGiveMeSomeExamples_Clicked(object sender, EventArgs e)
         {
-
+            lblexample1.IsVisible = true;
+            lblexample2.IsVisible = true;
+            lblexample3.IsVisible = true;
+            lblExamplePast.IsVisible = true;
+            lblExamplePastSimple.IsVisible = true;
+            lblExamplePastParticiple.IsVisible = true;
         }
     }
 }
