@@ -6,6 +6,11 @@ namespace PleaseRememberMe
 {
     public partial class App : Application
     {
+        public static int SumaTotalDePuntos { get; set; }
+        public static string Torneo { get; set; }
+        public static string nombrePersona { get; set; }
+        public static string direccion { get; set; }
+
         public App()
         {
             InitializeComponent();

@@ -162,4 +162,16 @@
   <ItemGroup>
     <Folder Include="Assets.xcassets\splash_screen.imageset\" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\leftarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\trophy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\winning.png" />
+  </ItemGroup>
 </Project>

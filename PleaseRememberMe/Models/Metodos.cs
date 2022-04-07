@@ -1,4 +1,5 @@
-﻿using PleaseRememberMe.Entidad;
+﻿using Newtonsoft.Json;
+using PleaseRememberMe.Entidad;
 using PleaseRememberMe.Utilitarios;
 using System;
 using System.Collections.Generic;
@@ -22,8 +23,23 @@ namespace PleaseRememberMe.Models
             var listado_verbos = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EVerbos>>(result);
 
             return listado_verbos;
-        } // Fin del método ObtenerMenu
+        } // Fin del método ObtenerVerbos
+
+        public async Task<List<EPosiciones>> GetListadoDePosiciones()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/Posiciones");
+            var listado_Posiciones = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EPosiciones>>(result);
+
+            return listado_Posiciones;
+        } // Fin del método ObtenerTablaDePosiciones
 
 
+
+        public async Task<Result> EnterToTheTournament(string nombrePersona, int numeroVerbosCorrectos, string direccion)
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/EnterToTheTournament/{nombrePersona.ToUpper()}/{numeroVerbosCorrectos}/{direccion.ToUpper()}");
+            var response = Newtonsoft.Json.JsonConvert.DeserializeObject<Result>(result);
+            return response;
+        }
     }
 }
