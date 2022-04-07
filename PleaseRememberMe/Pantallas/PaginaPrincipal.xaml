@@ -10,11 +10,12 @@
 
     <StackLayout BackgroundColor="#80FFB6">
 
+        <!--Stacklayout Principal-->
         <StackLayout x:Name="StacklayoutPrincipal">
 
             <Label Margin="0,10,0,0"  Grid.Row="0" Text="Please Remember Me" FontSize="25" TextColor="#333" FontAttributes="Bold" HorizontalOptions="Center"/>
             <Image Source="BrainLogo.png" WidthRequest="200"></Image>
-            <Label  Grid.Row="1" Text="This is an app that would help you to remember all the verbs for the English class." TextColor="#333" FontSize="16" Padding="25,0,25,0"/>
+            <Label HorizontalTextAlignment="Center" Grid.Row="1" Text="This is an app that would help you to remember all the verbs for the English class." TextColor="#333" FontSize="12" Padding="25,0,25,0"/>
 
             <Grid HorizontalOptions="Center" Padding="30,10,30,0" Grid.Row="2">
 
@@ -44,17 +45,17 @@
 
 
 
-                <Label x:Name="LblVerbInPastCheck" IsVisible="false" Grid.Row="3" Grid.Column="0" TextColor="DarkRed" FontAttributes="Bold"></Label>
-                <Label x:Name="LblVerbInPastSimpleCheck" IsVisible="false" Grid.Row="3" Grid.Column="1" TextColor="DarkRed" FontAttributes="Bold"></Label>
-                <Label x:Name="LblVerbInPastParticipleCheck" IsVisible="false" Grid.Row="3" Grid.Column="2" TextColor="DarkRed" FontAttributes="Bold"></Label>
+                <Label x:Name="LblVerbInPastCheck" IsVisible="false" FontSize="12" Grid.Row="3" Grid.Column="0" TextColor="DarkRed" FontAttributes="Bold"></Label>
+                <Label x:Name="LblVerbInPastSimpleCheck" IsVisible="false" FontSize="12" Grid.Row="3" Grid.Column="1" TextColor="DarkRed" FontAttributes="Bold"></Label>
+                <Label x:Name="LblVerbInPastParticipleCheck" IsVisible="false" FontSize="12" Grid.Row="3" Grid.Column="2" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
             </Grid>
             <ScrollView>
                 <StackLayout>
 
 
-                    <Label x:Name="LblTrad" IsVisible="false" Grid.Row="3" Text="Traduccion:" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333" FontAttributes="Bold"></Label>
-                    <Label x:Name="LblTraduction" IsVisible="false" Grid.Row="3" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333"></Label>
+                    <Label x:Name="LblTrad" IsVisible="false" FontSize="12" Grid.Row="3" Text="Traduccion:" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333" FontAttributes="Bold"></Label>
+                    <Label x:Name="LblTraduction" IsVisible="false" FontSize="12" Grid.Row="3" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333"></Label>
 
                     <Button x:Name="BtnCheck" Clicked="BtnCheck_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Check" IsVisible="false" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                     <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Let's Go" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
@@ -74,7 +75,14 @@
                 </StackLayout>
             </ScrollView>
         </StackLayout>
+        <!--Stacklayout Puntos-->
+        <StackLayout IsVisible="false" x:Name="StackLayoutPuntos">
+            <StackLayout>
+                <ListView>
 
+                </ListView>
+            </StackLayout>
+        </StackLayout>
 
     </StackLayout>
 
