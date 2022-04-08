@@ -1,10 +1,14 @@
 ﻿using Acr.UserDialogs;
+using Android;
+using Android.Media;
 using PleaseRememberMe.Models;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -18,6 +22,7 @@ namespace PleaseRememberMe.Pantallas
         string Traduccion = "";
         private bool _userTapped;
         ModalTournament modalTournament = new ModalTournament();
+        private MediaPlayer _mediaPlayer;
 
 
         Metodos metodos = new Metodos();
@@ -72,6 +77,8 @@ namespace PleaseRememberMe.Pantallas
                 LblTorneo.IsVisible = true;
                 LblTorneoEnCurso.IsVisible = true;
                 BtnTerminarTorneo.IsVisible = true;
+                txtVerbInPastSimple.Text = "";
+                txtVerbInPastParticiple.Text = "";
 
             }
         }
@@ -107,6 +114,10 @@ namespace PleaseRememberMe.Pantallas
             BtnTerminarTorneo.IsVisible = false;
             StackPleaseRememberTextAndImages.IsVisible = false;
             BtnListOfTheVerbs.IsVisible = false;
+            LblVerbInPastSimpleCheck.IsVisible = false;
+            LblVerbInPastParticipleCheck.IsVisible = false;
+            txtVerbInPastSimple.Text = "";
+            txtVerbInPastParticiple.Text = "";
             GetRandomVerb();
             AparecerLabelYTextbox();
 
@@ -169,12 +180,20 @@ namespace PleaseRememberMe.Pantallas
             if (string.IsNullOrEmpty(txtVerbInPastSimple.Text))
             {
                 LblVerbInPastSimpleCheck.Text = "Incorrect";
+                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                player.Load("WrongSound.mp3");
+                player.Play();
+
             }
             else
             {
                 if (txtVerbInPastSimple.Text.ToUpper().Trim().Replace(".", "") == VerbInSimplePast)
                 {
                     LblVerbInPastSimpleCheck.Text = "Correct";
+                    var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                    player.Load("CorrectSoundReady.mp3");
+                    player.Play();
+
 
                 }
                 else
@@ -185,6 +204,10 @@ namespace PleaseRememberMe.Pantallas
                         LimpiarText();
                     }
                     LblVerbInPastSimpleCheck.Text = "Incorrect";
+                    var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                    player.Load("WrongSound.mp3");
+                    player.Play();
+
                 }
 
 
@@ -193,12 +216,19 @@ namespace PleaseRememberMe.Pantallas
             if (string.IsNullOrEmpty(txtVerbInPastParticiple.Text))
             {
                 LblVerbInPastParticipleCheck.Text = "Incorrect";
+                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                player.Load("WrongSound.mp3");
+                player.Play();
+
             }
             else
             {
                 if (txtVerbInPastParticiple.Text.ToUpper().Trim().Replace(".", "") == VerbInPastParticiple)
                 {
                     LblVerbInPastParticipleCheck.Text = "Correct";
+                    var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                    player.Load("CorrectSoundReady.mp3");
+                    player.Play();
                 }
                 else
                 {
@@ -209,6 +239,10 @@ namespace PleaseRememberMe.Pantallas
 
                     }
                     LblVerbInPastParticipleCheck.Text = "Incorrect";
+                    var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                    player.Load("WrongSound.mp3");
+                    player.Play();
+
                 }
 
 
@@ -220,6 +254,9 @@ namespace PleaseRememberMe.Pantallas
                 App.SumaTotalDePuntos = App.SumaTotalDePuntos + 1;
                 BtnAnotherOne_Clicked(new object(), new EventArgs());
                 LblPuntos.Text = App.SumaTotalDePuntos.ToString();
+                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                player.Load("CorrectSoundReady.mp3");
+                player.Play();
             }
 
         }
@@ -256,6 +293,8 @@ namespace PleaseRememberMe.Pantallas
             lblexample3.IsVisible = false;
             lblExamplePast.IsVisible = false;
             lblExamplePastSimple.IsVisible = false;
+            LblTrad.IsVisible = false;
+            LblTraduction.IsVisible = false;
             lblExamplePastParticiple.IsVisible = false;
             BtnListOfTheVerbs.IsVisible = true;
         }
@@ -298,7 +337,18 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnTournament_Clicked(object sender, EventArgs e)
         {
+            if (_userTapped)
+                return;
+
+            _userTapped = true;
+            modalTournament = new ModalTournament();
+            modalTournament.OnLLamarOtraPantalla += ModalTournament_OnLLamarOtraPantalla;
+            modalTournament.Disappearing += ModalTournament_Disappearing;
+
             await PopupNavigation.PushAsync(modalTournament);
+            await Task.Delay(1000);
+            _userTapped = false;
+            Opacity = 1;
         }
 
         private async void BtnTerminarTorneo_Clicked(object sender, EventArgs e)
@@ -308,6 +358,7 @@ namespace PleaseRememberMe.Pantallas
                 UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
                 BtnAtras_Clicked(new object(), new EventArgs());
                 BtnTerminarTorneo.IsVisible = false;
+                App.Torneo = "N";
                 var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
                 UserDialogs.Instance.HideLoading();
             }
