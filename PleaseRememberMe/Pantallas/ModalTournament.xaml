@@ -5,7 +5,7 @@
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="PleaseRememberMe.Pantallas.ModalTournament">
     <ContentPage.Content>
-        <StackLayout x:Name="modalTournament" BackgroundColor="#DCDCDC" Margin="10,70,10,70" >
+        <StackLayout x:Name="modalTournament" BackgroundColor="White" Margin="10,70,10,400" >
 
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
                 <Grid>
@@ -27,7 +27,7 @@
                 </StackLayout>
             </ScrollView>
             <Button Text="ENTER" x:Name="BtnEnter" VerticalOptions="EndAndExpand" Clicked="BtnEnter_Clicked" FontSize="14" FontAttributes="Bold" CornerRadius="4"  BackgroundColor="#225DD5" TextColor="white" Margin="10,0,10,10 "></Button>
-            <Button Text="CANCEL" x:Name="BtnCancell" VerticalOptions="EndAndExpand" Clicked="BtnCancell_Clicked" FontSize="14" CornerRadius="4" FontAttributes="Bold" BackgroundColor="#F58134" TextColor="white" Margin="10,0,10,10 "></Button>
+            <Button Text="CANCEL" x:Name="BtnCancell" Clicked="BtnCancell_Clicked" FontSize="14" CornerRadius="4" FontAttributes="Bold" BackgroundColor="#F58134" TextColor="white" Margin="10,0,0,10 "></Button>
         </StackLayout>
     </ContentPage.Content>
 </popup:PopupPage>

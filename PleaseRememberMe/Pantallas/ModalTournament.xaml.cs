@@ -34,6 +34,8 @@ namespace PleaseRememberMe.Pantallas
             UserDialogs.Instance.HideLoading();
             App.Torneo = "S";
             await PopupNavigation.PopAsync();
+            txtcity.Text = "";
+            txtnickname.Text = "";
 
 
         }
@@ -41,6 +43,9 @@ namespace PleaseRememberMe.Pantallas
         private async void BtnCancell_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.PopAsync();
+            txtcity.Text = "";
+            txtnickname.Text = "";
+
 
         }
     }

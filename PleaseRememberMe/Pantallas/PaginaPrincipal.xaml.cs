@@ -29,6 +29,8 @@ namespace PleaseRememberMe.Pantallas
             LblTorneo.IsVisible = false;
             LblPuntos.IsVisible = false;
             BtnTerminarTorneo.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+
 
             StackTournament.GestureRecognizers.Add(
              new TapGestureRecognizer()
@@ -71,7 +73,6 @@ namespace PleaseRememberMe.Pantallas
                 LblTorneoEnCurso.IsVisible = true;
                 BtnTerminarTorneo.IsVisible = true;
 
-
             }
         }
 
@@ -102,10 +103,13 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnLetsGo_Clicked(object sender, EventArgs e)
         {
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             BtnTerminarTorneo.IsVisible = false;
-
+            StackPleaseRememberTextAndImages.IsVisible = false;
+            BtnListOfTheVerbs.IsVisible = false;
             GetRandomVerb();
             AparecerLabelYTextbox();
+
 
         }
 
@@ -168,7 +172,7 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
-                if (txtVerbInPastSimple.Text.ToUpper() == VerbInSimplePast)
+                if (txtVerbInPastSimple.Text.ToUpper().Trim().Replace(".", "") == VerbInSimplePast)
                 {
                     LblVerbInPastSimpleCheck.Text = "Correct";
 
@@ -192,7 +196,7 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
-                if (txtVerbInPastParticiple.Text.ToUpper() == VerbInPastParticiple)
+                if (txtVerbInPastParticiple.Text.ToUpper().Trim().Replace(".", "") == VerbInPastParticiple)
                 {
                     LblVerbInPastParticipleCheck.Text = "Correct";
                 }
@@ -232,13 +236,13 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnAtras_Clicked(object sender, EventArgs e)
         {
+            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             GridVerbos.IsVisible = false;
             GridVolverAtras.IsVisible = false;
             BtnLetsGo.IsVisible = true;
             BtnCheck.IsVisible = false;
             BtnAnotherOne.IsVisible = false;
             BtnGiveMeSomeExamples.IsVisible = false;
-            lblVersion.IsVisible = false;
             StackLayoutTablaPosiciones.IsVisible = false;
             BtnTablaDePosiciones.IsVisible = true;
             StackTournament.IsVisible = true;
@@ -246,15 +250,24 @@ namespace PleaseRememberMe.Pantallas
             LblTorneo.IsVisible = false;
             LblTorneoEnCurso.IsVisible = false;
             BtnTerminarTorneo.IsVisible = false;
-
+            StackPleaseRememberTextAndImages.IsVisible = true;
+            lblexample1.IsVisible = false;
+            lblexample2.IsVisible = false;
+            lblexample3.IsVisible = false;
+            lblExamplePast.IsVisible = false;
+            lblExamplePastSimple.IsVisible = false;
+            lblExamplePastParticiple.IsVisible = false;
+            BtnListOfTheVerbs.IsVisible = true;
         }
 
         private async void BtnTablaDePosiciones_Clicked(object sender, EventArgs e)
         {
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking coffee ");
             StacklayoutPrincipal.IsVisible = false;
             StackLayoutTablaPosiciones.IsVisible = true;
             GridVolverAtrasPosiciones.IsVisible = true;
+
             var datos = await metodos.GetListadoDePosiciones();
             lsv_TablaPuntuacion.ItemsSource = datos;
             UserDialogs.Instance.HideLoading();
@@ -263,6 +276,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasPosiciones_Clicked(object sender, EventArgs e)
         {
+            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             GridVolverAtrasPosiciones.IsVisible = false;
             StackLayoutTablaPosiciones.IsVisible = false;
             StacklayoutPrincipal.IsVisible = true;
@@ -275,6 +289,10 @@ namespace PleaseRememberMe.Pantallas
             LblTorneo.IsVisible = false;
             LblTorneoEnCurso.IsVisible = false;
             BtnTerminarTorneo.IsVisible = false;
+            StackPleaseRememberTextAndImages.IsVisible = true;
+            StackLayoutVerbList.IsVisible = false;
+
+
 
         }
 
@@ -293,6 +311,32 @@ namespace PleaseRememberMe.Pantallas
                 var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
                 UserDialogs.Instance.HideLoading();
             }
+
+        }
+
+        public async void BtnListOfTheVerbs_Clicked(System.Object sender, System.EventArgs e)
+        {
+            GridVolverAtrasVerbList.IsVisible = true;
+            StackLayoutVerbList.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking coffee ");
+            StacklayoutPrincipal.IsVisible = false;
+            var datos = await metodos.GetListadoVerbos();
+            lsv_ListaDeVerbos.ItemsSource = datos;
+            UserDialogs.Instance.HideLoading();
+
+        }
+
+        public void BtnAtrasVerbList_Clicked(System.Object sender, System.EventArgs e)
+        {
+            GridVolverAtrasVerbList.IsVisible = false;
+            StacklayoutPrincipal.IsVisible = true;
+            StackLayoutVerbList.IsVisible = false;
+            BtnLetsGo.IsVisible = true;
+            BtnTablaDePosiciones.IsVisible = true;
+            StackTournament.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            StackPleaseRememberTextAndImages.IsVisible = true;
 
         }
     }
