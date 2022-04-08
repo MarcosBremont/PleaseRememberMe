@@ -24,7 +24,7 @@ namespace PleaseRememberMe.Models
 
             return listado_verbos;
         } // Fin del método ObtenerVerbos
-
+         
         public async Task<List<EPosiciones>> GetListadoDePosiciones()
         {
             var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/Posiciones");
