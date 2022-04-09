@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using PleaseRememberMe.Entidad;
 
 namespace PleaseRememberMe.Utilitarios
 {
@@ -96,6 +98,23 @@ namespace PleaseRememberMe.Utilitarios
         public Configuracion()
         {
         }
+
+        public static void GrabarDatosSesion(EVerbos eVerbos)
+        {
+            //try
+            //{
+            //    EVerbos verbos = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "eVerbos");
+
+            //    File.WriteAllText(verbos, eVerbos);
+            //}
+            //catch (Exception)
+            //{
+
+            //}
+
+
+        }
+
 
         //public async static void ReiniciarDatosDeUsuario()
         //{

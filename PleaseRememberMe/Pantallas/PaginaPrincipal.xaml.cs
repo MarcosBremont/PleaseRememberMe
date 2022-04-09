@@ -1,6 +1,4 @@
 ﻿using Acr.UserDialogs;
-using Android;
-using Android.Media;
 using PleaseRememberMe.Models;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -22,13 +20,14 @@ namespace PleaseRememberMe.Pantallas
         string Traduccion = "";
         private bool _userTapped;
         ModalTournament modalTournament = new ModalTournament();
-        private MediaPlayer _mediaPlayer;
+        ModalAboutMe modalAboutMe = new ModalAboutMe();
 
 
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
         {
             InitializeComponent();
+
             GridVolverAtras.IsVisible = false;
             LblTorneoEnCurso.IsVisible = false;
             LblTorneo.IsVisible = false;
@@ -60,7 +59,38 @@ namespace PleaseRememberMe.Pantallas
              }
            );
 
+            StackLayoutAboutMe.GestureRecognizers.Add(
+             new TapGestureRecognizer()
+             {
+                 Command = new Command(async () =>
+                 {
+                     if (_userTapped)
+                         return;
 
+                     _userTapped = true;
+                     modalAboutMe = new ModalAboutMe();
+                     modalAboutMe.OnLLamarOtraPantalla += ModalAboutMe_OnLLamarOtraPantalla;
+                     modalAboutMe.Disappearing += ModalAboutMe_Disappearing;
+
+                     await PopupNavigation.PushAsync(modalAboutMe);
+                     await Task.Delay(1000);
+                     _userTapped = false;
+                     Opacity = 1;
+                 }),
+                 NumberOfTapsRequired = 1
+
+             }
+           );
+
+
+        }
+
+        private void ModalAboutMe_OnLLamarOtraPantalla(object sender, EventArgs e)
+        {
+        }
+
+        private void ModalAboutMe_Disappearing(object sender, EventArgs e)
+        {
         }
 
         private void ModalTournament_OnLLamarOtraPantalla(object sender, EventArgs e)
@@ -118,6 +148,7 @@ namespace PleaseRememberMe.Pantallas
             LblVerbInPastParticipleCheck.IsVisible = false;
             txtVerbInPastSimple.Text = "";
             txtVerbInPastParticiple.Text = "";
+            btnAjustes.IsVisible = false;
             GetRandomVerb();
             AparecerLabelYTextbox();
 
@@ -176,13 +207,12 @@ namespace PleaseRememberMe.Pantallas
             LblTraduction.Text = Traduccion;
             LblVerbInPastSimpleCheck.IsVisible = true;
             LblVerbInPastParticipleCheck.IsVisible = true;
+            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
 
             if (string.IsNullOrEmpty(txtVerbInPastSimple.Text))
             {
                 LblVerbInPastSimpleCheck.Text = "Incorrect";
-                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
                 player.Load("WrongSound.mp3");
-                player.Play();
 
             }
             else
@@ -190,9 +220,7 @@ namespace PleaseRememberMe.Pantallas
                 if (txtVerbInPastSimple.Text.ToUpper().Trim().Replace(".", "") == VerbInSimplePast)
                 {
                     LblVerbInPastSimpleCheck.Text = "Correct";
-                    var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
                     player.Load("CorrectSoundReady.mp3");
-                    player.Play();
 
 
                 }
@@ -204,11 +232,11 @@ namespace PleaseRememberMe.Pantallas
                         LimpiarText();
                     }
                     LblVerbInPastSimpleCheck.Text = "Incorrect";
-                    var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
                     player.Load("WrongSound.mp3");
-                    player.Play();
 
                 }
+
+
 
 
             }
@@ -216,9 +244,7 @@ namespace PleaseRememberMe.Pantallas
             if (string.IsNullOrEmpty(txtVerbInPastParticiple.Text))
             {
                 LblVerbInPastParticipleCheck.Text = "Incorrect";
-                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
                 player.Load("WrongSound.mp3");
-                player.Play();
 
             }
             else
@@ -226,9 +252,7 @@ namespace PleaseRememberMe.Pantallas
                 if (txtVerbInPastParticiple.Text.ToUpper().Trim().Replace(".", "") == VerbInPastParticiple)
                 {
                     LblVerbInPastParticipleCheck.Text = "Correct";
-                    var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
                     player.Load("CorrectSoundReady.mp3");
-                    player.Play();
                 }
                 else
                 {
@@ -239,9 +263,7 @@ namespace PleaseRememberMe.Pantallas
 
                     }
                     LblVerbInPastParticipleCheck.Text = "Incorrect";
-                    var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
                     player.Load("WrongSound.mp3");
-                    player.Play();
 
                 }
 
@@ -254,10 +276,18 @@ namespace PleaseRememberMe.Pantallas
                 App.SumaTotalDePuntos = App.SumaTotalDePuntos + 1;
                 BtnAnotherOne_Clicked(new object(), new EventArgs());
                 LblPuntos.Text = App.SumaTotalDePuntos.ToString();
-                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
                 player.Load("CorrectSoundReady.mp3");
-                player.Play();
             }
+
+
+
+            if (LblVerbInPastSimpleCheck.Text == "Incorrect" || LblVerbInPastParticipleCheck.Text == "Incorrect")
+            {
+                player.Load("WrongSound.mp3");
+            }
+
+
+            player.Play();
 
         }
 
@@ -304,6 +334,7 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking coffee ");
             StacklayoutPrincipal.IsVisible = false;
+            btnAjustes.IsVisible = false;
             StackLayoutTablaPosiciones.IsVisible = true;
             GridVolverAtrasPosiciones.IsVisible = true;
 
@@ -369,6 +400,7 @@ namespace PleaseRememberMe.Pantallas
         {
             GridVolverAtrasVerbList.IsVisible = true;
             StackLayoutVerbList.IsVisible = true;
+            btnAjustes.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking coffee ");
             StacklayoutPrincipal.IsVisible = false;
@@ -388,6 +420,46 @@ namespace PleaseRememberMe.Pantallas
             StackTournament.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             StackPleaseRememberTextAndImages.IsVisible = true;
+
+        }
+
+        public void btnAjustes_Clicked(System.Object sender, System.EventArgs e)
+        {
+            GridVolverAtrasSettings.IsVisible = true;
+            StackLayoutSettings.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            StacklayoutPrincipal.IsVisible = false;
+
+        }
+
+        void BtnAtrasSettings_Clicked(System.Object sender, System.EventArgs e)
+        {
+            GridVolverAtrasSettings.IsVisible = false;
+            StacklayoutPrincipal.IsVisible = true;
+            StackLayoutSettings.IsVisible = false;
+            BtnLetsGo.IsVisible = true;
+            BtnTablaDePosiciones.IsVisible = true;
+            StackTournament.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            StackPleaseRememberTextAndImages.IsVisible = true;
+        }
+
+        async void BtnSaveChanges_Clicked(System.Object sender, System.EventArgs e)
+        {
+            UserDialogs.Instance.ShowLoading("Saving Email, give me a few seconds");
+            var apiResult = await metodos.SendEmails(txtEmail.Text);
+            if (apiResult.Respuesta == "OK")
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Email Saved, you are going to receive all the news in your email");
+                txtEmail.Text = "";
+            }
+            else
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Error, check your internet connection");
+
+            }
+            UserDialogs.Instance.HideLoading();
+
 
         }
     }

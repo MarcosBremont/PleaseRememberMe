@@ -45,6 +45,7 @@
             <Label x:Name="LblTorneoEnCurso" HorizontalTextAlignment="Center" Grid.Row="1" Text="Torneo en curso." TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
             <Label x:Name="LblTorneo" HorizontalTextAlignment="Center" Grid.Row="1" Text="Try to put all the verbs in the correct form and get points fot that." TextColor="#333" FontSize="16" Padding="25,0,25,0"/>
 
+            <ImageButton Clicked="btnAjustes_Clicked" x:Name="btnAjustes" WidthRequest="25" HorizontalOptions="End" Margin="0,0,20,0" Source="settingOrange"></ImageButton>
             <StackLayout x:Name="StackPleaseRememberTextAndImages">
 
                 <Label Margin="0,10,0,0"  Grid.Row="0" Text="Please Remember Me" FontSize="25" TextColor="#333" FontAttributes="Bold" HorizontalOptions="Center"/>
@@ -169,45 +170,45 @@
 
                 </Grid>
 
-                    <Grid >
-                        <ListView Margin="0,0,0,80" x:Name="lsv_TablaPuntuacion" VerticalOptions="FillAndExpand" SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
-                            <ListView.ItemTemplate>
+                <Grid >
+                    <ListView Margin="0,0,0,80" x:Name="lsv_TablaPuntuacion" VerticalOptions="FillAndExpand" SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
+                        <ListView.ItemTemplate>
 
-                                <DataTemplate >
+                            <DataTemplate >
 
-                                    <ViewCell>
-
-
-                                        <Grid  BackgroundColor="White">
-
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="100"></ColumnDefinition>
-                                                <ColumnDefinition Width="100"></ColumnDefinition>
-                                                <ColumnDefinition Width="100"></ColumnDefinition>
-                                                <ColumnDefinition></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
+                                <ViewCell>
 
 
-                                            <Label LineBreakMode="TailTruncation" TextColor="#333" Margin="10,0,0,0"  Grid.Column="0" FontSize="12" HorizontalOptions="Start" Text="{Binding nombrePersona}"/>
-                                            <Label TextColor="#333" Grid.Column="1" FontSize="12" HorizontalOptions="Start" Text="{Binding numeroVerbosCorrectos}"/>
-                                            <Label TextColor="#333" LineBreakMode='TailTruncation' Grid.Column="2" FontSize="12" HorizontalOptions="Start" Text="{Binding direccion}"/>
-                                        </Grid>
+                                    <Grid  BackgroundColor="White">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
 
 
-                                        <!--ITEM-->
-                                    </ViewCell>
-                                </DataTemplate>
+                                        <Label LineBreakMode="TailTruncation" TextColor="#333" Margin="10,0,0,0"  Grid.Column="0" FontSize="12" HorizontalOptions="Start" Text="{Binding nombrePersona}"/>
+                                        <Label TextColor="#333" Grid.Column="1" FontSize="12" HorizontalOptions="Start" Text="{Binding numeroVerbosCorrectos}"/>
+                                        <Label TextColor="#333" LineBreakMode='TailTruncation' Grid.Column="2" FontSize="12" HorizontalOptions="Start" Text="{Binding direccion}"/>
+                                    </Grid>
 
 
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
+                                    <!--ITEM-->
+                                </ViewCell>
+                            </DataTemplate>
+
+
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
 
 
             </StackLayout>
         </StackLayout>
 
-          <!--Stacklayout Verb List-->
+        <!--Stacklayout Verb List-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutVerbList">
 
             <Grid x:Name="GridVolverAtrasVerbList">
@@ -255,40 +256,115 @@
 
                 </Grid>
 
-                    <Grid >
-                        <ListView Margin="0,0,0,80"  x:Name="lsv_ListaDeVerbos"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
-                            <ListView.ItemTemplate> 
+                <Grid >
+                    <ListView Margin="0,0,0,80"  x:Name="lsv_ListaDeVerbos"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
+                        <ListView.ItemTemplate>
 
-                                <DataTemplate >
+                            <DataTemplate >
 
-                                    <ViewCell >
-
-
-                                        <Grid  BackgroundColor="White">
-
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="100"></ColumnDefinition>
-                                                <ColumnDefinition Width="100"></ColumnDefinition>
-                                                <ColumnDefinition Width="100"></ColumnDefinition>
-                                                <ColumnDefinition></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
+                                <ViewCell >
 
 
-                                            <Label TextColor="#333" Margin="10,0,0,0"  Grid.Column="0" FontSize="12" HorizontalOptions="Start" Text="{Binding VerboFormaBase}"/>
-                                            <Label TextColor="#333" Grid.Column="1" FontSize="12" HorizontalOptions="Start" Text="{Binding verboSimplePast}"/>
-                                            <Label TextColor="#333" Grid.Column="2" FontSize="12" HorizontalOptions="Start" Text="{Binding verboPasParticiple}"/>
-                                        </Grid>
+                                    <Grid  BackgroundColor="White">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
 
 
-                                        <!--ITEM-->
-                                    </ViewCell>
-                                </DataTemplate>
+                                        <Label TextColor="#333" Margin="10,0,0,0"  Grid.Column="0" FontSize="12" HorizontalOptions="Start" Text="{Binding VerboFormaBase}"/>
+                                        <Label TextColor="#333" Grid.Column="1" FontSize="12" HorizontalOptions="Start" Text="{Binding verboSimplePast}"/>
+                                        <Label TextColor="#333" Grid.Column="2" FontSize="12" HorizontalOptions="Start" Text="{Binding verboPasParticiple}"/>
+                                    </Grid>
 
 
-                            </ListView.ItemTemplate>
-                        </ListView>
+                                    <!--ITEM-->
+                                </ViewCell>
+                            </DataTemplate>
+
+
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+
+
+            </StackLayout>
+        </StackLayout>
+
+        <!--Stacklayout Settings-->
+        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutSettings">
+
+            <Grid x:Name="GridVolverAtrasSettings">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNavSettings">
+                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasSettings_Clicked" x:Name="BtnAtrasSettings" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="VOLVER ATRAS"
+                               FontSize="18"
+                               x:Name="lblvolveratrasSettings"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
                     </Grid>
+                </StackLayout>
 
+            </Grid>
+
+            <StackLayout Margin="10,0,10,40" x:Name="LayoutSettings">
+                <Label HorizontalOptions="Center" FontSize="18" Text="Settings" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                <Label VerticalOptions="Center" TextColor="#333" Text="Recibir las novedades de la app" Margin="0,10,0,0"></Label>
+                <Entry IsVisible="true" Keyboard="Email" Placeholder="Email" PlaceholderColor="#333" FontSize="12"  TextTransform="Uppercase" x:Name="txtEmail" TextColor="#333" Grid.Column="0" IsReadOnly="False" BackgroundColor="WhiteSmoke" ></Entry>
+                <Button x:Name="BtnSaveChanges" Clicked="BtnSaveChanges_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Save" IsVisible="true" TextColor="White" FontAttributes="Bold" BackgroundColor="#3185FF"/>
+            </StackLayout>
+
+            <StackLayout x:Name="StackLayoutAboutMe" VerticalOptions="End" HorizontalOptions="Center" Margin="30,0,30,0">
+                <Label TextColor="#2196F3" Text="About Me"></Label>
+            </StackLayout>
+        </StackLayout>
+
+        <!--Stacklayout Acerca de-->
+        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackAboutMe">
+
+            <Grid x:Name="GridVolverAboutMe">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNavAboutMe">
+                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasSettings_Clicked" x:Name="BtnAtrasAboutMe" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="VOLVER ATRAS"
+                               FontSize="18"
+                               x:Name="lblvolveratrasAboutMe"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout Margin="10,0,10,40" x:Name="LayoutAboutMe">
 
             </StackLayout>
         </StackLayout>

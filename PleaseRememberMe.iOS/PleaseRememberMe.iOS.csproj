@@ -128,9 +128,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\splash_screen.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -149,11 +146,14 @@
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.2.0.562</Version>
     </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.8.116</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\PleaseRememberMe\PleaseRememberMe.csproj">
-      <Project>{86D6FC8D-8E74-4C6F-AAB8-200E895AD239}</Project>
+      <Project>{6B9B07A5-BCEC-48B0-B0EC-32852596975B}</Project>
       <Name>PleaseRememberMe</Name>
     </ProjectReference>
   </ItemGroup>
@@ -161,6 +161,13 @@
     <BundleResource Include="Resources\BrainLogo.png" />
     <BundleResource Include="Resources\Logo250.png" />
     <BundleResource Include="Resources\playstore.png" />
+    <BundleResource Include="Resources\CorrectSoundReady.mp3" />
+    <BundleResource Include="Resources\WrongSound.mp3" />
+    <BundleResource Include="Resources\settingOrange.png" />
+    <BundleResource Include="Resources\setting.png" />
+    <BundleResource Include="Resources\CircularPhoto.png" />
+    <BundleResource Include="Resources\whatsapp.png" />
+    <BundleResource Include="Resources\instagram.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\splash_screen.imageset\" />
@@ -176,11 +183,5 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\winning.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\BundleResource\WrongSound.mp3" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\BundleResource\CorrectSoundReady.mp3" />
   </ItemGroup>
 </Project>

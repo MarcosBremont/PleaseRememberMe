@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<popup:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    x:Class="PleaseRememberMe.Pantallas.ModalAboutMe">
+    <ContentPage.Content>
+        <Frame CornerRadius="4" Margin="15,50,15,30">
+
+            <StackLayout  BackgroundColor="White">
+                <Label HorizontalOptions="CenterAndExpand" Margin="0,20,0,10" Text="Hi, I'm Marcos Bremont"></Label>
+
+                <Image WidthRequest="150" Source="CircularPhoto"></Image>
+
+                <Label Margin="0,10,0,0" Text="I created this app so that everyone can study the different topics taught in the English classes, any recommendation about the app please write me to analyze it and add it"></Label>
+
+                <Label FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,20,0,10" Text="Social medias"></Label>
+
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                    <ImageButton Clicked="BtnInstagram_Clicked" x:Name="BtnInstagram" WidthRequest="35" Source="instagram" ></ImageButton>
+                    <ImageButton Clicked="BtnWhatsapp_Clicked" x:Name="BtnWhatsapp" WidthRequest="35" Source="whatsapp"></ImageButton>
+                </StackLayout>
+
+                <Button x:Name="BtnGoBack" Clicked="BtnGoBack_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Text="Go Back" IsVisible="true" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
+
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</popup:PopupPage >

@@ -41,5 +41,12 @@ namespace PleaseRememberMe.Models
             var response = Newtonsoft.Json.JsonConvert.DeserializeObject<Result>(result);
             return response;
         }
+
+        public async Task<Result> SendEmails(string email)
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/SaveEmailNews/{email.ToUpper()}");
+            var response = Newtonsoft.Json.JsonConvert.DeserializeObject<Result>(result);
+            return response;
+        }
     }
 }
