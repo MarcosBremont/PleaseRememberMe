@@ -3,6 +3,7 @@ using PleaseRememberMe.Models;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -21,13 +22,13 @@ namespace PleaseRememberMe.Pantallas
         private bool _userTapped;
         ModalTournament modalTournament = new ModalTournament();
         ModalAboutMe modalAboutMe = new ModalAboutMe();
-
+        List<Entidad.EVerbos> listadodelosverbos = new List<Entidad.EVerbos>();
+        List<Entidad.EVerbos> listverbos = new List<Entidad.EVerbos>();
 
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
         {
             InitializeComponent();
-
             GridVolverAtras.IsVisible = false;
             LblTorneoEnCurso.IsVisible = false;
             LblTorneo.IsVisible = false;
@@ -109,6 +110,8 @@ namespace PleaseRememberMe.Pantallas
                 BtnTerminarTorneo.IsVisible = true;
                 txtVerbInPastSimple.Text = "";
                 txtVerbInPastParticiple.Text = "";
+                LblPuntos.Text = "0";
+                LblPuntos.IsVisible = true;
 
             }
         }
@@ -116,17 +119,79 @@ namespace PleaseRememberMe.Pantallas
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
+            var lista = listverbos;
+            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+            listverbos = await metodos.GetListadoVerbos();
+            UserDialogs.Instance.HideLoading();
 
         }
 
+        public async void GetRandomVerbForTheTournament()
+        {
+            if (listverbos.Count == 1 && App.YaPasoPorAqui == "Yes")
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("¡You finish!, your result will be send to the leaderboard");
+                LblNumerosDeVerbosRestantes.Text = "0";
+                UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
+                var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
+                UserDialogs.Instance.HideLoading();
+            }
+            else
+            {
+
+
+                if (App.YaPasoPorAqui == "Yes")
+                {
+                    var random = new Random().Next(1, listverbos.Count);
+                    var datos = listverbos[random];
+                    listverbos.Remove(datos);
+                    VerbInSimplePast = datos.verboSimplePast.ToUpper();
+                    VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
+                    LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
+                    LblNumerosDeVerbosRestantes.IsVisible = true;
+                    txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
+                }
+                else
+                {
+                    var random = new Random().Next(1, listverbos.Count);
+                    var datos = listverbos[random];
+                    txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
+                    VerbInSimplePast = datos.verboSimplePast.ToUpper();
+                    VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
+                    LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
+                    LblNumerosDeVerbosRestantes.IsVisible = true;
+                    App.YaPasoPorAqui = "Yes";
+
+                }
+
+            }
+
+        }
 
         public async void GetRandomVerb()
         {
-            UserDialogs.Instance.ShowLoading("looking for verbs");
-            var response = await metodos.GetListadoVerbos();
-            var random = new Random().Next(1, response.Count);
-            var datos = response[random];
+            var lista = listverbos;
+
+            if (App.YaPasastePorGetRandomVerb == "Yes")
+            {
+              
+            }
+            else
+            {
+                if (App.Torneo == "N")
+                {
+                    listverbos = await metodos.GetListadoVerbos();
+                    App.YaPasastePorGetRandomVerb = "Yes";
+
+                }
+                else
+                {
+
+                }
+            }
+
+            var random = new Random().Next(1, listverbos.Count);
+            var datos = listverbos[random];
             txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
             VerbInSimplePast = datos.verboSimplePast.ToUpper();
             VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
@@ -134,7 +199,7 @@ namespace PleaseRememberMe.Pantallas
             lblExamplePast.Text = datos.examplesInBaseForm;
             lblExamplePastSimple.Text = datos.examplesInSimplePast;
             lblExamplePastParticiple.Text = datos.examplesInPastParticiple;
-            UserDialogs.Instance.HideLoading();
+
 
         }
 
@@ -179,7 +244,15 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAnotherOne_Clicked(object sender, EventArgs e)
         {
-            GetRandomVerb();
+            if (App.Torneo == "S")
+            {
+                GetRandomVerbForTheTournament();
+            }
+            else
+            {
+                GetRandomVerb();
+
+            }
             LimpiarText();
         }
 
@@ -202,11 +275,15 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnCheck_Clicked(object sender, EventArgs e)
         {
-            LblTrad.IsVisible = true;
-            LblTraduction.IsVisible = true;
-            LblTraduction.Text = Traduccion;
-            LblVerbInPastSimpleCheck.IsVisible = true;
-            LblVerbInPastParticipleCheck.IsVisible = true;
+            if (App.Torneo != "S")
+            {
+                LblTrad.IsVisible = true;
+                LblTraduction.IsVisible = true;
+                LblTraduction.Text = Traduccion;
+                LblVerbInPastSimpleCheck.IsVisible = true;
+                LblVerbInPastParticipleCheck.IsVisible = true;
+            }
+            
             var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
 
             if (string.IsNullOrEmpty(txtVerbInPastSimple.Text))
@@ -219,6 +296,7 @@ namespace PleaseRememberMe.Pantallas
             {
                 if (txtVerbInPastSimple.Text.ToUpper().Trim().Replace(".", "") == VerbInSimplePast)
                 {
+                   
                     LblVerbInPastSimpleCheck.Text = "Correct";
                     player.Load("CorrectSoundReady.mp3");
 
@@ -226,11 +304,7 @@ namespace PleaseRememberMe.Pantallas
                 }
                 else
                 {
-                    if (App.Torneo == "S")
-                    {
-                        GetRandomVerb();
-                        LimpiarText();
-                    }
+                   
                     LblVerbInPastSimpleCheck.Text = "Incorrect";
                     player.Load("WrongSound.mp3");
 
@@ -256,14 +330,12 @@ namespace PleaseRememberMe.Pantallas
                 }
                 else
                 {
-                    if (App.Torneo == "S")
+                    if (player.CanSeek == false)
                     {
-                        GetRandomVerb();
-                        LimpiarText();
-
+                        player.Load("WrongSound.xmp3");
                     }
+
                     LblVerbInPastParticipleCheck.Text = "Incorrect";
-                    player.Load("WrongSound.mp3");
 
                 }
 
@@ -274,7 +346,6 @@ namespace PleaseRememberMe.Pantallas
             {
                 LblPuntos.IsVisible = true;
                 App.SumaTotalDePuntos = App.SumaTotalDePuntos + 1;
-                BtnAnotherOne_Clicked(new object(), new EventArgs());
                 LblPuntos.Text = App.SumaTotalDePuntos.ToString();
                 player.Load("CorrectSoundReady.mp3");
             }
@@ -286,6 +357,12 @@ namespace PleaseRememberMe.Pantallas
                 player.Load("WrongSound.mp3");
             }
 
+            if (App.Torneo == "S")
+            {
+                GetRandomVerbForTheTournament();
+                LimpiarText();
+
+            }
 
             player.Play();
 
@@ -326,13 +403,18 @@ namespace PleaseRememberMe.Pantallas
             LblTrad.IsVisible = false;
             LblTraduction.IsVisible = false;
             lblExamplePastParticiple.IsVisible = false;
+            LblNumerosDeVerbosRestantes.IsVisible = false;
             BtnListOfTheVerbs.IsVisible = true;
+            LblPuntos.Text = "0";
+            btnAjustes.IsVisible = true;
+            App.SumaTotalDePuntos = 0;
+            App.Torneo = "N";
         }
 
         private async void BtnTablaDePosiciones_Clicked(object sender, EventArgs e)
         {
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking coffee ");
+            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
             StacklayoutPrincipal.IsVisible = false;
             btnAjustes.IsVisible = false;
             StackLayoutTablaPosiciones.IsVisible = true;
@@ -361,6 +443,7 @@ namespace PleaseRememberMe.Pantallas
             BtnTerminarTorneo.IsVisible = false;
             StackPleaseRememberTextAndImages.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
+            btnAjustes.IsVisible = true;
 
 
 
@@ -402,7 +485,7 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutVerbList.IsVisible = true;
             btnAjustes.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking coffee ");
+            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
             StacklayoutPrincipal.IsVisible = false;
             var datos = await metodos.GetListadoVerbos();
             lsv_ListaDeVerbos.ItemsSource = datos;
@@ -420,6 +503,8 @@ namespace PleaseRememberMe.Pantallas
             StackTournament.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             StackPleaseRememberTextAndImages.IsVisible = true;
+            btnAjustes.IsVisible = true;
+
 
         }
 
@@ -442,6 +527,8 @@ namespace PleaseRememberMe.Pantallas
             StackTournament.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             StackPleaseRememberTextAndImages.IsVisible = true;
+            btnAjustes.IsVisible = true;
+
         }
 
         async void BtnSaveChanges_Clicked(System.Object sender, System.EventArgs e)

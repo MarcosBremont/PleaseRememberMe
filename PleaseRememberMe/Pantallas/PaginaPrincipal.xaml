@@ -43,6 +43,7 @@
 
             <Label x:Name="LblPuntos" HorizontalTextAlignment="Center" Grid.Row="1" Text="0" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
             <Label x:Name="LblTorneoEnCurso" HorizontalTextAlignment="Center" Grid.Row="1" Text="Torneo en curso." TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
+            <Label x:Name="LblNumerosDeVerbosRestantes" HorizontalTextAlignment="Center" Grid.Row="1" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
             <Label x:Name="LblTorneo" HorizontalTextAlignment="Center" Grid.Row="1" Text="Try to put all the verbs in the correct form and get points fot that." TextColor="#333" FontSize="16" Padding="25,0,25,0"/>
 
             <ImageButton Clicked="btnAjustes_Clicked" x:Name="btnAjustes" WidthRequest="25" HorizontalOptions="End" Margin="0,0,20,0" Source="settingOrange"></ImageButton>
