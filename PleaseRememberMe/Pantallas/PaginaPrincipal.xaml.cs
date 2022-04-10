@@ -132,6 +132,7 @@ namespace PleaseRememberMe.Pantallas
             {
                 Acr.UserDialogs.UserDialogs.Instance.Toast("¡You finish!, your result will be send to the leaderboard");
                 LblNumerosDeVerbosRestantes.Text = "0";
+                App.SumaTotalDePuntos = 0;
                 UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
                 var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
                 UserDialogs.Instance.HideLoading();
@@ -407,7 +408,6 @@ namespace PleaseRememberMe.Pantallas
             BtnListOfTheVerbs.IsVisible = true;
             LblPuntos.Text = "0";
             btnAjustes.IsVisible = true;
-            App.SumaTotalDePuntos = 0;
             App.Torneo = "N";
         }
 
@@ -474,6 +474,7 @@ namespace PleaseRememberMe.Pantallas
                 BtnTerminarTorneo.IsVisible = false;
                 App.Torneo = "N";
                 var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
+                App.SumaTotalDePuntos = 0;
                 UserDialogs.Instance.HideLoading();
             }
 
