@@ -16,12 +16,11 @@ namespace PleaseRememberMe.Droid
         {
             Rg.Plugins.Popup.Popup.Init(this);
             base.OnCreate(savedInstanceState);
-
-            //Sample AdMob App ID: ca - app - pub - 3940256099942544~3347511713
-            MobileAds.Initialize(ApplicationContext);
             UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            MobileAds.Initialize(ApplicationContext);
+
 
             LoadApplication(new App());
         }
