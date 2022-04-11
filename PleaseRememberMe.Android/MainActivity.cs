@@ -5,10 +5,11 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Acr.UserDialogs;
+using Android.Gms.Ads;
 
 namespace PleaseRememberMe.Droid
 {
-    [Activity(Label = "PleaseRememberMe", Icon = "@mipmap/PleaseRememberMe", Theme = "@style/MainTheme", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [Activity(Label = "PleaseRememberMe", Icon = "@mipmap/PleaseRememberMe", Theme = "@style/MainTheme", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -16,6 +17,8 @@ namespace PleaseRememberMe.Droid
             Rg.Plugins.Popup.Popup.Init(this);
             base.OnCreate(savedInstanceState);
 
+            //Sample AdMob App ID: ca - app - pub - 3940256099942544~3347511713
+            MobileAds.Initialize(ApplicationContext);
             UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

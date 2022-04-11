@@ -11,7 +11,13 @@
 
     <StackLayout BackgroundColor="#80FFB6" Margin="0,0,0,-90">
 
-
+        <controls:MTAdView 
+            BackgroundColor="White"
+                Grid.Row="1"
+                IsVisible="true"
+                HeightRequest="60"
+                IsEnabled="True"
+                AdsId="ca-app-pub-5203771291617755/7518751960"/>
 
         <!--Stacklayout Principal-->
         <StackLayout x:Name="StacklayoutPrincipal">
@@ -370,9 +376,7 @@
 
             </StackLayout>
         </StackLayout>
-         <controls:MTAdView 
-                Grid.Row="1"
-                AdsId="ca-app-pub-5203771291617755/8870280516"/>
+         
 
     </StackLayout>
 
