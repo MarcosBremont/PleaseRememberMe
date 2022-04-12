@@ -11,16 +11,14 @@
 
     <StackLayout BackgroundColor="#80FFB6" Margin="0,0,0,-90">
 
-
-
         <!--Stacklayout Principal-->
-        <StackLayout x:Name="StacklayoutPrincipal">
+        <StackLayout x:Name="StacklayoutPrincipal" >
 
             <Grid x:Name="GridVolverAtras">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition ></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0">
@@ -42,13 +40,7 @@
 
             </Grid>
 
-            <Label x:Name="LblPuntos" HorizontalTextAlignment="Center" Grid.Row="1" Text="0" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
-            <Label x:Name="LblTorneoEnCurso" HorizontalTextAlignment="Center" Grid.Row="1" Text="Torneo en curso." TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
-            <Label x:Name="LblNumerosDeVerbosRestantes" HorizontalTextAlignment="Center" Grid.Row="1" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
-            <Label x:Name="LblTorneo" HorizontalTextAlignment="Center" Grid.Row="1" Text="Try to put all the verbs in the correct form and get points fot that." TextColor="#333" FontSize="16" Padding="25,0,25,0"/>
-
-            <ImageButton Clicked="btnAjustes_Clicked" x:Name="btnAjustes" WidthRequest="25" HorizontalOptions="End" Margin="0,0,20,0" Source="settingOrange"></ImageButton>
-
+            <ImageButton Clicked="btnAjustes_Clicked" x:Name="btnAjustes" WidthRequest="25" HorizontalOptions="End" Margin="0,10,20,0" Source="settingOrange"></ImageButton>
 
             <StackLayout x:Name="StackPleaseRememberTextAndImages">
 
@@ -57,6 +49,12 @@
                 <Label HorizontalTextAlignment="Center" Grid.Row="1" Text="This is an app that would help you to remember all the verbs for the English class." TextColor="#333" FontSize="12" Padding="25,0,25,0"/>
 
             </StackLayout>
+
+            <!--Labels LetsGo-->
+            <Label x:Name="LblPuntos" HorizontalTextAlignment="Center" Grid.Row="1" Text="0" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
+            <Label x:Name="LblTorneoEnCurso" HorizontalTextAlignment="Center" Grid.Row="1" Text="Torneo en curso." TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
+            <Label x:Name="LblNumerosDeVerbosRestantes" HorizontalTextAlignment="Center" Grid.Row="1" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
+            <Label x:Name="LblTorneo" HorizontalTextAlignment="Center" Grid.Row="1" Text="Try to put all the verbs in the correct form and get points fot that." TextColor="#333" FontSize="16" Padding="25,0,25,0"/>
 
             <Grid x:Name="GridVerbos" HorizontalOptions="Center" Padding="30,10,30,0" Grid.Row="2">
 
@@ -94,25 +92,27 @@
             <ScrollView>
                 <StackLayout x:Name="StackBtns">
 
-
+                    <!--LayoutPrincipal-->
                     <Label x:Name="LblTrad" IsVisible="false" FontSize="12" Grid.Row="3" Text="Traduccion:" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333" FontAttributes="Bold"></Label>
                     <Label x:Name="LblTraduction" IsVisible="false" FontSize="12" Grid.Row="3" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333"></Label>
 
                     <Button x:Name="BtnCheck" Clicked="BtnCheck_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Check" IsVisible="false" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                     <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Let's Go" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
+                    <!--LayoutPrincipal-->
                     <Button x:Name="BtnListOfTheVerbs" Clicked="BtnListOfTheVerbs_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verb List" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
+                    <!--LayoutTorneo-->
                     <Button x:Name="BtnTerminarTorneo" Clicked="BtnTerminarTorneo_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="FINISH TOURNAMENT" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
-
+                    <!--LayoutPrincipal-->
                     <Button x:Name="BtnTablaDePosiciones" Clicked="BtnTablaDePosiciones_Clicked"  WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Leaderboard" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
-                   
+                    <!--LayoutPrincipal-->
                     <StackLayout x:Name="StackTournament">
                         <ImageButton x:Name="BtnTournament" Clicked="BtnTournament_Clicked" Source="winning.png" BackgroundColor="Transparent" WidthRequest="50" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3"/>
                         <Label x:Name="lbltouchhere" FontSize="12" IsVisible="true" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Touch here for enter to a tournament" TextColor="#333"></Label>
                     </StackLayout>
-                    
+                    <!--LayoutPrincipal-->
                     <Button x:Name="BtnAnotherOne" Clicked="BtnAnotherOne_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Another One" IsVisible="false" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
 
-
+                    <!--LayoutLetsGo-->
                     <Label x:Name="lblexample1" FontSize="12" IsVisible="false" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Example in Base Form" TextColor="#333"></Label>
                     <Label x:Name="lblExamplePast" FontSize="12" IsVisible="false" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0"   TextColor="#333"></Label>
                     <Label x:Name="lblexample2" FontSize="12" IsVisible="false" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Example in Past Simple" TextColor="#333"></Label>
@@ -120,16 +120,16 @@
                     <Label x:Name="lblexample3" FontSize="12"  IsVisible="false" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Example in Past Simple" TextColor="#333"></Label>
                     <Label x:Name="lblExamplePastParticiple" FontSize="12" IsVisible="false" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
 
-
+                    <!--LayoutPrincipal-->
                     <Button x:Name="BtnGiveMeSomeExamples" Clicked="BtnGiveMeSomeExamples_Clicked" WidthRequest="250" Margin="0,30,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Give Me Some Examples" IsVisible="false" TextColor="White" FontAttributes="Bold" BackgroundColor="#3185FF"/>
-                   
-                    <Label x:Name="lblVersion" VerticalOptions="EndAndExpand" IsVisible="true" Text="Versión 1.0" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
-                    
-                    <StackLayout VerticalOptions="EndAndExpand">
-                        <controls:MTAdView VerticalOptions="EndAndExpand" BackgroundColor="White" HeightRequest="60"  x:Name="myAds" AdsId="{OnPlatform Android='ca-app-pub-3940256099942544/6300978111', 
+
+
+                        <Label x:Name="lblVersion" Margin="0,10,0,0" VerticalOptions="EndAndExpand" IsVisible="true" Text="Versión 2.0" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
+                    <StackLayout VerticalOptions="End" Margin="0,10,0,0">
+                        <controls:MTAdView VerticalOptions="End" BackgroundColor="White" HeightRequest="60"  x:Name="myAds" AdsId="{OnPlatform Android='ca-app-pub-5203771291617755/7518751960', 
                                    iOS='ca-app-pub-3940256099942544/2934735716'}"/>
                     </StackLayout>
-                    
+
                 </StackLayout>
             </ScrollView>
         </StackLayout>
@@ -380,7 +380,6 @@
 
             </StackLayout>
         </StackLayout>
-
 
     </StackLayout>
 
