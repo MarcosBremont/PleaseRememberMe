@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PleaseRememberMe.Android", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PleaseRememberMe.iOS", "PleaseRememberMe.iOS\PleaseRememberMe.iOS.csproj", "{0F9B9964-371F-4CBA-8FAD-2980272F560A}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "PleaseRememberMe", "PleaseRememberMe\PleaseRememberMe.csproj", "{6B9B07A5-BCEC-48B0-B0EC-32852596975B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PleaseRememberMe", "PleaseRememberMe\PleaseRememberMe.csproj", "{6B9B07A5-BCEC-48B0-B0EC-32852596975B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

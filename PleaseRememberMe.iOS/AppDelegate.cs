@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
-using Google.MobileAds;
+//using Google.MobileAds;
 using UIKit;
 
 namespace PleaseRememberMe.iOS
@@ -26,11 +26,11 @@ namespace PleaseRememberMe.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             Rg.Plugins.Popup.Popup.Init();
-            MobileAds.SharedInstance.Start(CompletionHandler);
+            //MobileAds.SharedInstance.Start(CompletionHandler);
 
             return base.FinishedLaunching(app, options);
         }
 
-        private void CompletionHandler(InitializationStatus status) { }
+        //private void CompletionHandler(InitializationStatus status) { }
     }
 }

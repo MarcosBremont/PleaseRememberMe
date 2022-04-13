@@ -125,10 +125,10 @@
 
 
                         <Label x:Name="lblVersion" Margin="0,10,0,0" VerticalOptions="EndAndExpand" IsVisible="true" Text="Versión 2.0" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
-                    <StackLayout VerticalOptions="End" Margin="0,10,0,0">
+                    <!--<StackLayout VerticalOptions="End" Margin="0,10,0,0">
                         <controls:MTAdView VerticalOptions="End" BackgroundColor="White" HeightRequest="60"  x:Name="myAds" AdsId="{OnPlatform Android='ca-app-pub-5203771291617755/7518751960', 
-                                   iOS='ca-app-pub-3940256099942544/2934735716'}"/>
-                    </StackLayout>
+                                   iOS='ca-app-pub-5203771291617755/8870280516'}"/>
+                    </StackLayout>-->
 
                 </StackLayout>
             </ScrollView>
