@@ -98,10 +98,12 @@ namespace PleaseRememberMe.Pantallas
         {
         }
 
-        private void ModalTournament_Disappearing(object sender, EventArgs e)
+        private async void ModalTournament_Disappearing(object sender, EventArgs e)
         {
             if (App.Torneo == "S")
             {
+                App.SumaTotalDePuntos = 0;
+                listverbos = await metodos.GetListadoVerbos();
                 BtnLetsGo_Clicked(new object(), new EventArgs());
                 BtnGiveMeSomeExamples.IsVisible = false;
                 BtnAnotherOne.IsVisible = false;
@@ -112,6 +114,7 @@ namespace PleaseRememberMe.Pantallas
                 txtVerbInPastParticiple.Text = "";
                 LblPuntos.Text = "0";
                 LblPuntos.IsVisible = true;
+
 
             }
         }
@@ -132,7 +135,7 @@ namespace PleaseRememberMe.Pantallas
             {
                 Acr.UserDialogs.UserDialogs.Instance.Toast("¡You finish!, your result will be send to the leaderboard");
                 LblNumerosDeVerbosRestantes.Text = "0";
-                App.SumaTotalDePuntos = 0;
+                //App.SumaTotalDePuntos = 0;
                 UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
                 var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
                 UserDialogs.Instance.HideLoading();
@@ -175,7 +178,7 @@ namespace PleaseRememberMe.Pantallas
 
             if (App.YaPasastePorGetRandomVerb == "Yes")
             {
-              
+
             }
             else
             {
@@ -284,7 +287,7 @@ namespace PleaseRememberMe.Pantallas
                 LblVerbInPastSimpleCheck.IsVisible = true;
                 LblVerbInPastParticipleCheck.IsVisible = true;
             }
-            
+
             var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
 
             if (string.IsNullOrEmpty(txtVerbInPastSimple.Text))
@@ -297,7 +300,7 @@ namespace PleaseRememberMe.Pantallas
             {
                 if (txtVerbInPastSimple.Text.ToUpper().Trim().Replace(".", "") == VerbInSimplePast)
                 {
-                   
+
                     LblVerbInPastSimpleCheck.Text = "Correct";
                     player.Load("CorrectSoundReady.mp3");
 
@@ -305,7 +308,7 @@ namespace PleaseRememberMe.Pantallas
                 }
                 else
                 {
-                   
+
                     LblVerbInPastSimpleCheck.Text = "Incorrect";
                     player.Load("WrongSound.mp3");
 

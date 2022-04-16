@@ -40,7 +40,7 @@
 
             </Grid>
 
-            <ImageButton Clicked="btnAjustes_Clicked" x:Name="btnAjustes" WidthRequest="25" HorizontalOptions="End" Margin="0,10,20,0" Source="settingOrange"></ImageButton>
+            <ImageButton Clicked="btnAjustes_Clicked" x:Name="btnAjustes" BackgroundColor="Transparent" WidthRequest="25" HorizontalOptions="End" Margin="0,10,20,0" Source="settingOrange"></ImageButton>
 
             <StackLayout x:Name="StackPleaseRememberTextAndImages">
 
