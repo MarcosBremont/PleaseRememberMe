@@ -44,7 +44,7 @@ namespace PleaseRememberMe.Models
 
         public async Task<Result> SendEmails(string email)
         {
-            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/SaveEmailNews/{email.ToUpper()}");
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/SendEmails/{email.ToUpper()}");
             var response = Newtonsoft.Json.JsonConvert.DeserializeObject<Result>(result);
             return response;
         }

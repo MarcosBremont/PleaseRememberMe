@@ -150,12 +150,6 @@
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.2.0.562</Version>
     </PackageReference>
-    <PackageReference Include="sqlite-net-pcl">
-      <Version>1.8.116</Version>
-    </PackageReference>
-    <PackageReference Include="MarcTron.Admob">
-      <Version>1.6.9</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

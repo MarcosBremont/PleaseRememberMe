@@ -6,7 +6,6 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
              NavigationPage.HasNavigationBar="False"
-             xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
              BackgroundColor="#2196F3" x:Name="ContenPage">
 
     <StackLayout BackgroundColor="#80FFB6" Margin="0,0,0,-90">
