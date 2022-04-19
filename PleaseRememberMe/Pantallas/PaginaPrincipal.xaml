@@ -358,7 +358,7 @@
                  Grid.Row="0"
                  Grid.Column="0"
                  x:Name="btnWasWereDid"
-                 Text="Was/Were/Did"
+                 Text="Was - Were"
                  TextColor="White"
                  HeightRequest="80"
                  BackgroundColor="#939393"
@@ -495,11 +495,11 @@
             </Grid>
 
             <StackLayout Margin="10,0,10,40">
-                <Label HorizontalOptions="Center" Text="Complete with Was - Were" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
                 <Grid RowSpacing="0">
 
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
                         <RowDefinition Height="100"/>
                         <RowDefinition Height="100"/>
 
@@ -508,17 +508,23 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
+                    
+                    
+                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Complete with Was - Were" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
-                    <Label  Margin="0,20,0,0" HorizontalOptions="Center" x:Name="lblWasWereDid" TextColor="#333"></Label>
+
+                    <Label  Margin="0,40,0,0" HorizontalOptions="Center" x:Name="lblWasWereDid" TextColor="#333"></Label>
 
                     <StackLayout Grid.Row="1" Margin="0,0,0,0">
                         <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
                             <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtxCorrectAnswer" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
-                            <!--<Entry HorizontalOptions="FillAndExpand" Placeholder="Second Answer"  FontSize="12" TextTransform="Uppercase" x:Name="TxtxCorrectAnswer" TextColor="#333" PlaceholderColor="#333"  BackgroundColor="Transparent" ></Entry>-->
                         <Label x:Name="LblCorrectAnswer" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
+                    </StackLayout>
+                    
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswer" Clicked="BtnCheckMyAnswer_Clicked" BackgroundColor="#F58134" TextColor="White"/>
-                        <Button Text="One More" x:Name="BtnOneMore" Clicked="" BackgroundColor="#3185FF" TextColor="White"/>
+                        <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMore" Clicked="BtnOneMore_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
                 </Grid>
 

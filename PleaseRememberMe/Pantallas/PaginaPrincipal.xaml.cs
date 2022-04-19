@@ -25,6 +25,7 @@ namespace PleaseRememberMe.Pantallas
         ModalAboutMe modalAboutMe = new ModalAboutMe();
         List<Entidad.EVerbos> listadodelosverbos = new List<Entidad.EVerbos>();
         List<Entidad.EVerbos> listverbos = new List<Entidad.EVerbos>();
+        List<Entidad.EWasWereDid> listSentences = new List<Entidad.EWasWereDid>();
 
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
@@ -570,7 +571,7 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
             StacklayoutPrincipal.IsVisible = false;
-           
+
             UserDialogs.Instance.HideLoading();
         }
 
@@ -598,10 +599,13 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
             var datos = await metodos.GetWasWereSentences();
-            lblWasWereDid.Text = datos[0].WasWereSentence.ToString();
-            CorrectAnswer = datos[0].correctanswer.ToString(); 
+            listSentences = datos;
+            var random = new Random().Next(1, listSentences.Count);
+            var elegido = listSentences[random];
+            lblWasWereDid.Text = listSentences[0].WasWereSentence;
+            CorrectAnswer = listSentences[0].correctanswer;
+            listSentences.Remove(elegido);
             UserDialogs.Instance.HideLoading();
-
         }
 
         private void BtnAtrasWasWereDid_Clicked(object sender, EventArgs e)
@@ -609,15 +613,9 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutWasWereDid.IsVisible = false;
 
             GridVolverAtrasVerbList.IsVisible = false;
-            StacklayoutPrincipal.IsVisible = true;
+            StackLayoutOtherTopics.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
-            BtnLetsGo.IsVisible = true;
-            BtnOtherTopics.IsVisible = true;
-            BtnTablaDePosiciones.IsVisible = true;
-            StackTournament.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            StackPleaseRememberTextAndImages.IsVisible = true;
-            btnAjustes.IsVisible = true;
         }
 
         private void BtnCheckMyAnswer_Clicked(object sender, EventArgs e)
@@ -629,8 +627,27 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
+                LblCorrectAnswer.IsVisible = true;
                 LblCorrectAnswer.Text = "Incorrect";
 
+            }
+        }
+
+        private void BtnOneMore_Clicked(object sender, EventArgs e)
+        {
+            if (listSentences.Count == 1)
+            {
+                UserDialogs.Instance.Toast("There's not more sentences.");
+            }
+            else
+            {
+                var random = new Random().Next(1, listSentences.Count);
+                var elegido = listSentences[random];
+                lblWasWereDid.Text = elegido.WasWereSentence;
+                CorrectAnswer = elegido.correctanswer;
+                listSentences.Remove(elegido);
+                TxtxCorrectAnswer.Text = "";
+                LblCorrectAnswer.IsVisible = false;
             }
         }
     }
