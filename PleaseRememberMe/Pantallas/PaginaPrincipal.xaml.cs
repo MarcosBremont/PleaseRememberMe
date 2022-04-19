@@ -19,6 +19,7 @@ namespace PleaseRememberMe.Pantallas
         string VerbInSimplePast = "";
         string VerbInPastParticiple = "";
         string Traduccion = "";
+        string CorrectAnswer = "";
         private bool _userTapped;
         ModalTournament modalTournament = new ModalTournament();
         ModalAboutMe modalAboutMe = new ModalAboutMe();
@@ -234,6 +235,7 @@ namespace PleaseRememberMe.Pantallas
             txtVerbInPastSimple.IsVisible = true;
             txtVerbInPastParticiple.IsVisible = true;
             BtnLetsGo.IsVisible = false;
+            BtnOtherTopics.IsVisible = false;
             BtnAnotherOne.IsVisible = true;
             BtnCheck.IsVisible = true;
             BtnGiveMeSomeExamples.IsVisible = true;
@@ -388,6 +390,8 @@ namespace PleaseRememberMe.Pantallas
             GridVerbos.IsVisible = false;
             GridVolverAtras.IsVisible = false;
             BtnLetsGo.IsVisible = true;
+            BtnOtherTopics.IsVisible = true;
+
             BtnCheck.IsVisible = false;
             BtnAnotherOne.IsVisible = false;
             BtnGiveMeSomeExamples.IsVisible = false;
@@ -438,6 +442,8 @@ namespace PleaseRememberMe.Pantallas
             GridVolverAtras.IsVisible = false;
             GridVerbos.IsVisible = false;
             BtnLetsGo.IsVisible = true;
+            BtnOtherTopics.IsVisible = true;
+
             BtnTablaDePosiciones.IsVisible = true;
             StackTournament.IsVisible = true;
             LblPuntos.IsVisible = false;
@@ -503,6 +509,7 @@ namespace PleaseRememberMe.Pantallas
             StacklayoutPrincipal.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
             BtnLetsGo.IsVisible = true;
+            BtnOtherTopics.IsVisible = true;
             BtnTablaDePosiciones.IsVisible = true;
             StackTournament.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
@@ -527,6 +534,7 @@ namespace PleaseRememberMe.Pantallas
             StacklayoutPrincipal.IsVisible = true;
             StackLayoutSettings.IsVisible = false;
             BtnLetsGo.IsVisible = true;
+            BtnOtherTopics.IsVisible = true;
             BtnTablaDePosiciones.IsVisible = true;
             StackTournament.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
@@ -552,6 +560,78 @@ namespace PleaseRememberMe.Pantallas
             UserDialogs.Instance.HideLoading();
 
 
+        }
+
+        private void BtnOtherTopics_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutVerbList.IsVisible = false;
+            btnAjustes.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+            StacklayoutPrincipal.IsVisible = false;
+           
+            UserDialogs.Instance.HideLoading();
+        }
+
+        private void BtnAtrasOtherTopics_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutOtherTopics.IsVisible = false;
+
+            GridVolverAtrasVerbList.IsVisible = false;
+            StacklayoutPrincipal.IsVisible = true;
+            StackLayoutVerbList.IsVisible = false;
+            BtnLetsGo.IsVisible = true;
+            BtnOtherTopics.IsVisible = true;
+            BtnTablaDePosiciones.IsVisible = true;
+            StackTournament.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            StackPleaseRememberTextAndImages.IsVisible = true;
+            btnAjustes.IsVisible = true;
+
+        }
+
+        private async void btnWasWereDid_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutOtherTopics.IsVisible = false;
+            StackLayoutWasWereDid.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+            var datos = await metodos.GetWasWereSentences();
+            lblWasWereDid.Text = datos[0].WasWereSentence.ToString();
+            CorrectAnswer = datos[0].correctanswer.ToString(); 
+            UserDialogs.Instance.HideLoading();
+
+        }
+
+        private void BtnAtrasWasWereDid_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutWasWereDid.IsVisible = false;
+
+            GridVolverAtrasVerbList.IsVisible = false;
+            StacklayoutPrincipal.IsVisible = true;
+            StackLayoutVerbList.IsVisible = false;
+            BtnLetsGo.IsVisible = true;
+            BtnOtherTopics.IsVisible = true;
+            BtnTablaDePosiciones.IsVisible = true;
+            StackTournament.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            StackPleaseRememberTextAndImages.IsVisible = true;
+            btnAjustes.IsVisible = true;
+        }
+
+        private void BtnCheckMyAnswer_Clicked(object sender, EventArgs e)
+        {
+            if (CorrectAnswer == TxtxCorrectAnswer.Text.ToUpper())
+            {
+                LblCorrectAnswer.IsVisible = true;
+                LblCorrectAnswer.Text = "Correct";
+            }
+            else
+            {
+                LblCorrectAnswer.Text = "Incorrect";
+
+            }
         }
     }
 }

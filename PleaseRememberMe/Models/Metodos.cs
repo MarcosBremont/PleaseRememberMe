@@ -48,5 +48,14 @@ namespace PleaseRememberMe.Models
             var response = Newtonsoft.Json.JsonConvert.DeserializeObject<Result>(result);
             return response;
         }
+
+        public async Task<List<EWasWereDid>> GetWasWereSentences()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/WasWereSentencesprm");
+            var listado_sentenceswasweredid = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EWasWereDid>>(result);
+
+            return listado_sentenceswasweredid;
+        } // Fin del método ObtenerVerbos
+
     }
 }
