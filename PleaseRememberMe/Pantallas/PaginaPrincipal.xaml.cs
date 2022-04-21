@@ -661,82 +661,6 @@ namespace PleaseRememberMe.Pantallas
             var datos = await metodos.GetMatchSentences();
             listMatch = datos;
             lsv_Math.ItemsSource = datos;
-
-
-            //#region reguero de labels
-
-            //string respuesta1 = datos[0].CorrectAnswer;
-            //string respuesta2 = datos[1].CorrectAnswer;
-            //string respuesta3 = datos[2].CorrectAnswer;
-            //string respuesta4 = datos[3].CorrectAnswer;
-            //string respuesta5 = datos[4].CorrectAnswer;
-            //string respuesta6 = datos[5].CorrectAnswer;
-            //string respuesta7 = datos[6].CorrectAnswer;
-            //string respuesta8 = datos[7].CorrectAnswer;
-            //string respuesta9 = datos[8].CorrectAnswer;
-            //string respuesta10 = datos[9].CorrectAnswer;
-            //string respuesta11 = datos[10].CorrectAnswer;
-            //string respuesta12 = datos[11].CorrectAnswer;
-            //string respuesta13 = datos[12].CorrectAnswer;
-            //string respuesta14 = datos[13].CorrectAnswer;
-            //string respuesta15 = datos[14].CorrectAnswer;
-            //string respuesta16 = datos[15].CorrectAnswer;
-            //string respuesta17 = datos[16].CorrectAnswer;
-            //string respuesta18 = datos[17].CorrectAnswer;
-            //string respuesta19 = datos[18].CorrectAnswer;
-            //string respuesta20 = datos[19].CorrectAnswer;
-            //string respuesta21 = datos[20].CorrectAnswer;
-            //string respuesta22 = datos[21].CorrectAnswer;
-            //string respuesta23 = datos[22].CorrectAnswer;
-
-
-            //LblAsnwer1.Text = datos[0].profession;
-            //LblAsnwer2.Text = datos[1].profession;
-            //LblAsnwer3.Text = datos[2].profession;
-            //LblAsnwer4.Text = datos[3].profession;
-            //LblAsnwer5.Text = datos[4].profession;
-            //LblAsnwer6.Text = datos[5].profession;
-            //LblAsnwer7.Text = datos[6].profession;
-            //LblAsnwer8.Text = datos[7].profession;
-            //LblAsnwer9.Text = datos[8].profession;
-            //LblAsnwer10.Text = datos[9].profession;
-            //LblAsnwer11.Text = datos[10].profession;
-            //LblAsnwer12.Text = datos[11].profession;
-            //LblAsnwer13.Text = datos[12].profession;
-            //LblAsnwer14.Text = datos[13].profession;
-            //LblAsnwer15.Text = datos[14].profession;
-            //LblAsnwer16.Text = datos[15].profession;
-            //LblAsnwer17.Text = datos[16].profession;
-            //LblAsnwer18.Text = datos[17].profession;
-            //LblAsnwer19.Text = datos[18].profession;
-            //LblAsnwer20.Text = datos[19].profession;
-            //LblAsnwer21.Text = datos[20].profession;
-            //LblAsnwer22.Text = datos[21].profession;
-            //LblAsnwer23.Text = datos[22].profession;
-            //LblMatch1.Text = datos[0].Sentences;
-            //LblMatch2.Text = datos[1].Sentences;
-            //LblMatch3.Text = datos[2].Sentences;
-            //LblMatch4.Text = datos[3].Sentences;
-            //LblMatch5.Text = datos[4].Sentences;
-            //LblMatch6.Text = datos[5].Sentences;
-            //LblMatch7.Text = datos[6].Sentences;
-            //LblMatch8.Text = datos[7].Sentences;
-            //LblMatch9.Text = datos[8].Sentences;
-            //LblMatch10.Text = datos[9].Sentences;
-            //LblMatch11.Text = datos[10].Sentences;
-            //LblMatch12.Text = datos[11].Sentences;
-            //LblMatch13.Text = datos[12].Sentences;
-            //LblMatch14.Text = datos[13].Sentences;
-            //LblMatch15.Text = datos[14].Sentences;
-            //LblMatch16.Text = datos[15].Sentences;
-            //LblMatch17.Text = datos[16].Sentences;
-            //LblMatch18.Text = datos[17].Sentences;
-            //LblMatch19.Text = datos[18].Sentences;
-            //LblMatch20.Text = datos[19].Sentences;
-            //LblMatch21.Text = datos[20].Sentences;
-            //LblMatch22.Text = datos[21].Sentences;
-            //LblMatch23.Text = datos[22].Sentences;
-            //#endregion reguero de labels
             UserDialogs.Instance.HideLoading();
         }
 
@@ -750,14 +674,33 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
         }
 
-        private void BtnCheckMatchAnswer_Clicked(object sender, EventArgs e)
-        {
-           
 
-            //foreach (var eMatchSentences in listMatch)
-            //{
-            //    eMatchSentences. 
-            //}
+        private void Btncorrects_Clicked(object sender, EventArgs e)
+        {
+
+            foreach (var item in listMatch)
+            {
+                if (string.IsNullOrEmpty(item.textbox))
+                {
+                    item.Imagenes = "remove.png";
+                }
+                else
+                {
+                    if (item.textbox.ToUpper() == item.CorrectAnswer)
+                    {
+                        item.Imagenes = "correct.png";
+                    }
+                    else
+                    {
+                        item.Imagenes = "remove.png";
+                    }
+                }
+                
+            }
+            lsv_Math.ItemsSource = null;
+            lsv_Math.ItemsSource = listMatch;
+
         }
+
     }
 }

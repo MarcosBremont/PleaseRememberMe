@@ -9,6 +9,8 @@ namespace PleaseRememberMe.Entidad
         public string Sentences { get; set; }
         public string CorrectAnswer { get; set; }
         public string profession { get; set; }
+        public string textbox { get; set; }
+        public string Imagenes { get; set; }
 
     }
 
