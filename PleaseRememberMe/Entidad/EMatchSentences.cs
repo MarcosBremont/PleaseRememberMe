@@ -11,6 +11,7 @@ namespace PleaseRememberMe.Entidad
         public string profession { get; set; }
         public string textbox { get; set; }
         public string Imagenes { get; set; }
+        public string respuestafalsa { get; set; }
 
     }
 

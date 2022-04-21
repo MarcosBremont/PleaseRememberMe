@@ -27,6 +27,7 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.EVerbos> listverbos = new List<Entidad.EVerbos>();
         List<Entidad.EWasWereDid> listSentences = new List<Entidad.EWasWereDid>();
         List<Entidad.EMatchSentences> listMatch = new List<Entidad.EMatchSentences>();
+        List<Entidad.EMatchSentences> PreguntaConRespuesta = new List<Entidad.EMatchSentences>();
 
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
@@ -673,6 +674,7 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
         }
+
 
 
         private void Btncorrects_Clicked(object sender, EventArgs e)

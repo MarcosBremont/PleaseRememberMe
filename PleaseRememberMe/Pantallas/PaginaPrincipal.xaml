@@ -594,7 +594,7 @@
                                     <Image x:Name="ImgCheckOrRemove" WidthRequest="20" IsVisible="true" Source="{Binding Imagenes}"></Image>
                                 </StackLayout>
                                 <StackLayout Margin="5,20,0,0"  Grid.Column="1">
-                                    <Label Text="{Binding Sentences}" Grid.Column="1" VerticalOptions="Center"  TextColor="#333"></Label>
+                                    <Label Text="{Binding respuestafalsa}" Grid.Column="1" VerticalOptions="Center"  TextColor="#333"></Label>
                                 </StackLayout>
 
                             </Grid>
