@@ -57,5 +57,13 @@ namespace PleaseRememberMe.Models
             return listado_sentenceswasweredid;
         } // Fin del método ObtenerVerbos
 
+        public async Task<List<EMatchSentences>> GetMatchSentences()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/MatchSentencesPRM");
+            var listado_matchSentences = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EMatchSentences>>(result);
+
+            return listado_matchSentences;
+        } // Fin del método ObtenerVerbos
+
     }
 }
