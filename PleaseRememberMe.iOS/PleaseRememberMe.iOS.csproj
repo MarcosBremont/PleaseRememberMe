@@ -169,6 +169,8 @@
     <BundleResource Include="Resources\CircularPhoto.png" />
     <BundleResource Include="Resources\whatsapp.png" />
     <BundleResource Include="Resources\instagram.png" />
+    <BundleResource Include="Resources\correct.png" />
+    <BundleResource Include="Resources\remove.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\splash_screen.imageset\" />

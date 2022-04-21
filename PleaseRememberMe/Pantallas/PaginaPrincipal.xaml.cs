@@ -617,7 +617,7 @@ namespace PleaseRememberMe.Pantallas
             GridVolverAtrasVerbList.IsVisible = false;
             StackLayoutOtherTopics.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
-            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnCheckMyAnswer_Clicked(object sender, EventArgs e)
@@ -672,7 +672,7 @@ namespace PleaseRememberMe.Pantallas
             GridVolverAtrasVerbList.IsVisible = false;
             StackLayoutOtherTopics.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
-            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
 

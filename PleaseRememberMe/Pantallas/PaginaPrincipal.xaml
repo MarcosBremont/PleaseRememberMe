@@ -570,7 +570,7 @@
 
             <Label HorizontalOptions="CenterAndExpand" TextColor="#333" FontAttributes="Bold" Text="Write the letter of the description next to the correct profession"></Label>
 
-            <ListView HorizontalOptions="Center"  Margin="0,0,0,120" SelectionMode="None"  Grid.Row="1" x:Name="lsv_Math"  SeparatorVisibility="Default" SeparatorColor="Transparent" HasUnevenRows="True" >
+            <ListView BackgroundColor="Transparent"  HorizontalOptions="Center"  Margin="0,0,0,120" SelectionMode="None"  Grid.Row="1" x:Name="lsv_Math"  SeparatorVisibility="Default" SeparatorColor="Transparent" HasUnevenRows="True" >
 
                 <ListView.ItemTemplate>
 
