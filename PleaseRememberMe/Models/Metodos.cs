@@ -65,5 +65,14 @@ namespace PleaseRememberMe.Models
             return listado_matchSentences;
         } // Fin del método ObtenerVerbos
 
+
+        public async Task<List<ECompleteSentences>> GetCompleteSentences()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/CompleteSentencesPRM");
+            var listado_completeSentences = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ECompleteSentences>>(result);
+
+            return listado_completeSentences;
+        } // Fin del método ObtenerVerbos
+
     }
 }

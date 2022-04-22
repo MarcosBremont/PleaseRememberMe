@@ -27,7 +27,7 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.EVerbos> listverbos = new List<Entidad.EVerbos>();
         List<Entidad.EWasWereDid> listSentences = new List<Entidad.EWasWereDid>();
         List<Entidad.EMatchSentences> listMatch = new List<Entidad.EMatchSentences>();
-        List<Entidad.EMatchSentences> PreguntaConRespuesta = new List<Entidad.EMatchSentences>();
+        List<Entidad.ECompleteSentences> listComplete = new List<Entidad.ECompleteSentences>();
 
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
@@ -697,12 +697,58 @@ namespace PleaseRememberMe.Pantallas
                         item.Imagenes = "remove.png";
                     }
                 }
-                
+
             }
             lsv_Math.ItemsSource = null;
             lsv_Math.ItemsSource = listMatch;
 
         }
 
+        private async void btnComplete_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutOtherTopics.IsVisible = false;
+            StackLayoutComplete.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+            var datos = await metodos.GetCompleteSentences();
+            lsv_complete.ItemsSource = datos;
+            listComplete = datos;
+            UserDialogs.Instance.HideLoading();
+        }
+
+        private void BtnAtrasComplete_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutWasWereDid.IsVisible = false;
+            StackLayoutComplete.IsVisible = false;
+            GridVolverAtrasVerbList.IsVisible = false;
+            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutVerbList.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void Btncorrectadjective_Clicked(object sender, EventArgs e)
+        {
+            foreach (var item in listComplete)
+            {
+                if (string.IsNullOrEmpty(item.txtcomplete))
+                {
+                    item.imagen = "remove.png";
+                }
+                else
+                {
+                    if (item.txtcomplete.ToUpper() == item.CorrectAnswer)
+                    {
+                        item.imagen = "correct.png";
+                    }
+                    else
+                    {
+                        item.imagen = "remove.png";
+                    }
+                }
+
+            }
+            lsv_complete.ItemsSource = null;
+            lsv_complete.ItemsSource = listComplete;
+        }
     }
 }

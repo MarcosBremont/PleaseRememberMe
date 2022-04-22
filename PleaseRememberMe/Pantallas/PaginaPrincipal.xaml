@@ -10,7 +10,7 @@
 
     <StackLayout BackgroundColor="#80FFB6" Margin="0,0,0,-90">
 
-        <!--Stacklayout Principal-->
+        <!--Stacklayout Principal - Page 1-->
         <StackLayout x:Name="StacklayoutPrincipal" >
 
             <Grid x:Name="GridVolverAtras">
@@ -139,7 +139,7 @@
             </ScrollView>
         </StackLayout>
 
-        <!--Stacklayout Tabla Posiciones-->
+        <!--Stacklayout Tabla Posiciones - Page 2-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutTablaPosiciones">
 
             <Grid x:Name="GridVolverAtrasPosiciones">
@@ -225,7 +225,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Verb List-->
+        <!--Stacklayout Verb List - Page 3-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutVerbList">
 
             <Grid x:Name="GridVolverAtrasVerbList">
@@ -311,7 +311,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout OtherTopics-->
+        <!--Stacklayout OtherTopics - Page 4-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutOtherTopics">
 
             <Grid x:Name="GridVolverAtrasOtherTopics">
@@ -387,20 +387,21 @@
                  >
                     </Button>
 
-                    <!--<Button 
+                    <Button 
                  Margin="5,5,5,5"
                  Grid.Row="1"
                  Grid.Column="0"
-                 x:Name="btnSentences"
-                 Text="Sentences"
+                 x:Name="btnComplete"
+                 Text="Complete"
                  TextColor="White"
                  HeightRequest="80"
                  BackgroundColor="#D09625"
                  CornerRadius="8"
+                 Clicked="btnComplete_Clicked"
                  >
                     </Button>
 
-                    <Button 
+                    <!--<Button 
                  Margin="5,5,5,5"
                  Grid.Row="1"
                  Grid.Column="1"
@@ -472,7 +473,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout WasWereDid-->
+        <!--Stacklayout WasWereDid - Page 5-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutWasWereDid">
 
             <Grid >
@@ -538,7 +539,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Match-->
+        <!--Stacklayout Match - Page 6-->
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Center" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutMatch">
 
             <Grid >
@@ -612,7 +613,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout Settings-->
+        <!--Stacklayout Settings - Page 7-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutSettings">
 
             <Grid x:Name="GridVolverAtrasSettings">
@@ -653,7 +654,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Acerca de-->
+        <!--Stacklayout Acerca de - Page 8-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackAboutMe">
 
             <Grid x:Name="GridVolverAboutMe">
@@ -683,6 +684,134 @@
             </Grid>
 
             <StackLayout Margin="10,0,10,40" x:Name="LayoutAboutMe">
+
+            </StackLayout>
+        </StackLayout>
+
+        <!--Stacklayout Complete - Page 9-->
+        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutComplete">
+
+            <Grid >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasComplete_Clicked"  x:Name="BtnAtrasComplete" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="VOLVER ATRAS"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                            <ImageButton Source="correct.png" Margin="0,0,10,0"  x:Name="Btncorrectadjective" Clicked="Btncorrectadjective_Clicked" BackgroundColor="Transparent" HeightRequest="25" ></ImageButton>
+
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout Margin="10,0,10,40">
+
+                <Grid RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Complete with the Adjective" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+                    <Frame Grid.Row="1" BackgroundColor="White" CornerRadius="4">
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal"  Margin="0,0,0,0">
+                            <StackLayout>
+                                <Label FontSize="12" Text="Shorter"></Label>
+                                <Label FontSize="12" Text="Better"></Label>
+                                <Label FontSize="12" Text="Worse"></Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label FontSize="12" Text="Angrier"></Label>
+                                <Label FontSize="12" Text="Busier"></Label>
+                                <Label FontSize="12" Text="Happier"></Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label FontSize="12" Text="Uglier"></Label>
+                                <Label FontSize="12" Text="Funnier"></Label>
+                                <Label FontSize="12" Text="Friendlier"></Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label FontSize="12" Text="Gentler "></Label>
+                                <Label FontSize="12" Text="Littler"></Label>
+                                <Label FontSize="12" Text="Narrower"></Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label FontSize="12" Text="Handsomer"></Label>
+                                <Label FontSize="12" Text="Cleverer"></Label>
+                                <Label FontSize="12" Text="Shorter"></Label>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                    </Frame>
+
+                    <ListView BackgroundColor="Transparent"  HorizontalOptions="Center"  Margin="0,0,0,120" SelectionMode="None"  Grid.Row="2" x:Name="lsv_complete"  SeparatorVisibility="Default" SeparatorColor="Transparent" HasUnevenRows="True" >
+
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate >
+
+                                <ViewCell>
+
+
+                                    <Grid BackgroundColor="Transparent">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+
+
+                                        <StackLayout HorizontalOptions="StartAndExpand" Margin="0,20,0,0">
+                                            <Label Text="{Binding Sentencecomplete}"/>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Entry Text="{Binding txtcomplete}" Placeholder="Answer" VerticalOptions="CenterAndExpand" Margin="15,0,0,0" HorizontalOptions="FillAndExpand"  FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="White" ></Entry>
+                                                <Image WidthRequest="20" IsVisible="true" Source="{Binding imagen}"></Image>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                    </Grid>
+
+
+                                    <!--ITEM-->
+                                </ViewCell>
+                            </DataTemplate>
+
+
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+
+
+
+                </Grid>
+
 
             </StackLayout>
         </StackLayout>
