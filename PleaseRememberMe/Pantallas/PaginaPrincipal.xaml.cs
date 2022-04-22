@@ -28,7 +28,6 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.EWasWereDid> listSentences = new List<Entidad.EWasWereDid>();
         List<Entidad.EMatchSentences> listMatch = new List<Entidad.EMatchSentences>();
         List<Entidad.ECompleteSentences> listComplete = new List<Entidad.ECompleteSentences>();
-
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
         {
@@ -711,7 +710,9 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
             var datos = await metodos.GetCompleteSentences();
+            var response = await metodos.GetAdjectives();
             lsv_complete.ItemsSource = datos;
+            CollectionViewAdjective.ItemsSource = response;
             listComplete = datos;
             UserDialogs.Instance.HideLoading();
         }

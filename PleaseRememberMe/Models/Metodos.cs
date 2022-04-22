@@ -74,5 +74,14 @@ namespace PleaseRememberMe.Models
             return listado_completeSentences;
         } // Fin del método ObtenerVerbos
 
+        public async Task<List<EAdjectives>> GetAdjectives()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/AdjectivesPRM");
+            var listado_adjectives = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EAdjectives>>(result);
+
+            return listado_adjectives;
+        } // Fin del método ObtenerVerbos
+
+
     }
 }

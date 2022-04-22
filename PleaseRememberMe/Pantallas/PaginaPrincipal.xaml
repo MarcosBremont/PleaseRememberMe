@@ -99,9 +99,9 @@
                             <Label x:Name="LblTraduction" IsVisible="false" FontSize="12" Grid.Row="3" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333"></Label>
 
                             <Button x:Name="BtnCheck" Clicked="BtnCheck_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Check" IsVisible="false" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
-                            <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Let's Go" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
+                            <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,0,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Let's Go" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                             <!--LayoutPrincipal-->
-                            <Button x:Name="BtnListOfTheVerbs" Clicked="BtnListOfTheVerbs_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verb List" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
+                            <Button x:Name="BtnListOfTheVerbs" Clicked="BtnListOfTheVerbs_Clicked" WidthRequest="250" Margin="0,0,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verb List" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
                             <!--LayoutTorneo-->
                             <Button x:Name="BtnTerminarTorneo" Clicked="BtnTerminarTorneo_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="FINISH TOURNAMENT" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
                             <!--LayoutPrincipal-->
@@ -127,7 +127,7 @@
                             <Button x:Name="BtnGiveMeSomeExamples" Clicked="BtnGiveMeSomeExamples_Clicked" WidthRequest="250" Margin="0,30,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Give Me Some Examples" IsVisible="false" TextColor="White" FontAttributes="Bold" BackgroundColor="#3185FF"/>
 
 
-                            <Label x:Name="lblVersion" Margin="0,10,0,0" VerticalOptions="EndAndExpand" IsVisible="true" Text="Versión 2.2" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
+                            <Label x:Name="lblVersion" Margin="0,10,0,0" VerticalOptions="EndAndExpand" IsVisible="true" Text="Versión 2.3" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
                             <!--<StackLayout VerticalOptions="End" Margin="0,10,0,0">
                         <controls:MTAdView VerticalOptions="End" BackgroundColor="White" HeightRequest="60"  x:Name="myAds" AdsId="{OnPlatform Android='ca-app-pub-5203771291617755/7518751960', 
                                    iOS='ca-app-pub-5203771291617755/8870280516'}"/>
@@ -718,57 +718,45 @@
 
             </Grid>
 
-            <StackLayout Margin="10,0,10,40">
+            <StackLayout Margin="10,0,10,0">
 
                 <Grid RowSpacing="0">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="100"/>
                         <RowDefinition Height="*"/>
 
                     </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
 
                     <Label Grid.Row="0" HorizontalOptions="Center" Text="Complete with the Adjective" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
+
+
                     <Frame Grid.Row="1" BackgroundColor="White" CornerRadius="4">
                         <StackLayout HorizontalOptions="Center" Orientation="Horizontal"  Margin="0,0,0,0">
-                            <StackLayout>
-                                <Label FontSize="12" Text="Shorter"></Label>
-                                <Label FontSize="12" Text="Better"></Label>
-                                <Label FontSize="12" Text="Worse"></Label>
-                            </StackLayout>
-                            <StackLayout>
-                                <Label FontSize="12" Text="Angrier"></Label>
-                                <Label FontSize="12" Text="Busier"></Label>
-                                <Label FontSize="12" Text="Happier"></Label>
-                            </StackLayout>
-                            <StackLayout>
-                                <Label FontSize="12" Text="Uglier"></Label>
-                                <Label FontSize="12" Text="Funnier"></Label>
-                                <Label FontSize="12" Text="Friendlier"></Label>
-                            </StackLayout>
-                            <StackLayout>
-                                <Label FontSize="12" Text="Gentler "></Label>
-                                <Label FontSize="12" Text="Littler"></Label>
-                                <Label FontSize="12" Text="Narrower"></Label>
-                            </StackLayout>
-                            <StackLayout>
-                                <Label FontSize="12" Text="Handsomer"></Label>
-                                <Label FontSize="12" Text="Cleverer"></Label>
-                                <Label FontSize="12" Text="Shorter"></Label>
-                            </StackLayout>
+                            <CollectionView x:Name="CollectionViewAdjective">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" Span="3" />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout HorizontalOptions="StartAndExpand" Margin="0,0,0,0">
+                                            <Label TextColor="#333" Text="{Binding Adjective}"/>
 
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <StackLayout  VerticalOptions="Center">
+                                <Image x:Name="ImageArrowDown" HeightRequest="16" IsVisible="true" Source="arrowdown"></Image>
+                            </StackLayout>
                         </StackLayout>
 
                     </Frame>
 
-                    <ListView BackgroundColor="Transparent"  HorizontalOptions="Center"  Margin="0,0,0,120" SelectionMode="None"  Grid.Row="2" x:Name="lsv_complete"  SeparatorVisibility="Default" SeparatorColor="Transparent" HasUnevenRows="True" >
+                    <ListView BackgroundColor="Transparent"  Margin="0,10,0,20" SelectionMode="None"  Grid.Row="2" x:Name="lsv_complete"  SeparatorVisibility="Default" SeparatorColor="Transparent" HasUnevenRows="True" >
 
                         <ListView.ItemTemplate>
 
@@ -778,23 +766,19 @@
 
 
                                     <Grid BackgroundColor="Transparent">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="50"/>
+                                            <RowDefinition Height="*"/>
 
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition ></ColumnDefinition>
-                                            <ColumnDefinition ></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
+                                        </Grid.RowDefinitions>
 
 
-
-                                        <StackLayout HorizontalOptions="StartAndExpand" Margin="0,20,0,0">
-                                            <Label Text="{Binding Sentencecomplete}"/>
-                                            <StackLayout Orientation="Horizontal">
+                                        <Label Grid.Row="0" HorizontalOptions="Fill" Text="{Binding Sentencecomplete}"/>
+                                        <StackLayout Grid.Row="1" Margin="0,0,0,0" Orientation="Horizontal">
                                                 <Entry Text="{Binding txtcomplete}" Placeholder="Answer" VerticalOptions="CenterAndExpand" Margin="15,0,0,0" HorizontalOptions="FillAndExpand"  FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="White" ></Entry>
                                                 <Image WidthRequest="20" IsVisible="true" Source="{Binding imagen}"></Image>
                                             </StackLayout>
-
-                                        </StackLayout>
-
                                     </Grid>
 
 
