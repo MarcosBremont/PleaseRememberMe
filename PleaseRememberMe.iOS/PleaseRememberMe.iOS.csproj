@@ -171,6 +171,7 @@
     <BundleResource Include="Resources\instagram.png" />
     <BundleResource Include="Resources\correct.png" />
     <BundleResource Include="Resources\remove.png" />
+    <BundleResource Include="Resources\arrowdown.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\splash_screen.imageset\" />

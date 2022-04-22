@@ -621,17 +621,26 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnCheckMyAnswer_Clicked(object sender, EventArgs e)
         {
-            if (CorrectAnswer == TxtxCorrectAnswer.Text.ToUpper())
-            {
-                LblCorrectAnswer.IsVisible = true;
-                LblCorrectAnswer.Text = "Correct";
-            }
-            else
+            if (string.IsNullOrEmpty(TxtxCorrectAnswer.Text))
             {
                 LblCorrectAnswer.IsVisible = true;
                 LblCorrectAnswer.Text = "Incorrect";
-
             }
+            else
+            {
+                if (CorrectAnswer == TxtxCorrectAnswer.Text.ToUpper())
+                {
+                    LblCorrectAnswer.IsVisible = true;
+                    LblCorrectAnswer.Text = "Correct";
+                }
+                else
+                {
+                    LblCorrectAnswer.IsVisible = true;
+                    LblCorrectAnswer.Text = "Incorrect";
+
+                }
+            }
+            
         }
 
         private void BtnOneMore_Clicked(object sender, EventArgs e)
