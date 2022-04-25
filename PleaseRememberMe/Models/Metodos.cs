@@ -83,5 +83,13 @@ namespace PleaseRememberMe.Models
         } // Fin del método ObtenerVerbos
 
 
+        public async Task<List<EClothes>> GetClothes()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/ClothesPRM");
+            var listado_Clothes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EClothes>>(result);
+
+            return listado_Clothes;
+        } 
+
     }
 }

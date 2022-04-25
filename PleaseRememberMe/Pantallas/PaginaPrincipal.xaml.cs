@@ -28,6 +28,7 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.EWasWereDid> listSentences = new List<Entidad.EWasWereDid>();
         List<Entidad.EMatchSentences> listMatch = new List<Entidad.EMatchSentences>();
         List<Entidad.ECompleteSentences> listComplete = new List<Entidad.ECompleteSentences>();
+        List<Entidad.EClothes> listclothes = new List<Entidad.EClothes>();
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
         {
@@ -875,21 +876,50 @@ namespace PleaseRememberMe.Pantallas
         async void btnSClothes_Clicked(System.Object sender, System.EventArgs e)
         {
             StackLayoutOtherTopics.IsVisible = false;
-            StackLayoutMatch.IsVisible = true;
+            StackLayoutClothes.IsVisible = true;
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
-            var datos = await metodos.GetMatchSentences();
-            listMatch = datos;
-            lsv_Math.ItemsSource = datos;
+            var datos = await metodos.GetClothes();
+            listclothes = datos;
+            lsv_clothes.ItemsSource = datos;
             UserDialogs.Instance.HideLoading();
         }
 
         void BtnAtrasClothes_Clicked(System.Object sender, System.EventArgs e)
         {
+            StackLayoutClothes.IsVisible = false;
+            StackLayoutWasWereDid.IsVisible = false;
+            StackLayoutComplete.IsVisible = false;
+            GridVolverAtrasVerbList.IsVisible = false;
+            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutVerbList.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         void Btncorrectclothes_Clicked(System.Object sender, System.EventArgs e)
         {
+            foreach (var item in listclothes)
+            {
+                if (string.IsNullOrEmpty(item.txtclothes))
+                {
+                    item.imagen = "remove.png";
+                }
+                else
+                {
+                    if (item.txtclothes.ToUpper() == item.CorrectAnswer)
+                    {
+                        item.imagen = "correct.png";
+                    }
+                    else
+                    {
+                        item.imagen = "remove.png";
+                    }
+                }
+
+            }
+            lsv_clothes.ItemsSource = null;
+            lsv_clothes.ItemsSource = listclothes;
         }
     }
 }
