@@ -32,6 +32,8 @@ namespace PleaseRememberMe.Pantallas
         public PaginaPrincipal()
         {
             InitializeComponent();
+
+
             GridVolverAtras.IsVisible = false;
             LblTorneoEnCurso.IsVisible = false;
             LblTorneo.IsVisible = false;
@@ -89,6 +91,15 @@ namespace PleaseRememberMe.Pantallas
 
         }
 
+
+        public void VerificarConexion()
+        {
+            //if ()
+            //{
+
+            //}
+        }
+
         private void ModalAboutMe_OnLLamarOtraPantalla(object sender, EventArgs e)
         {
         }
@@ -125,51 +136,68 @@ namespace PleaseRememberMe.Pantallas
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            var lista = listverbos;
-            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
-            listverbos = await metodos.GetListadoVerbos();
-            UserDialogs.Instance.HideLoading();
+            try
+            {
+                var lista = listverbos;
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                listverbos = await metodos.GetListadoVerbos();
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+            }
+
 
         }
 
         public async void GetRandomVerbForTheTournament()
         {
-            if (listverbos.Count == 1 && App.YaPasoPorAqui == "Yes")
+            try
             {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("¡You finish!, your result will be send to the leaderboard");
-                LblNumerosDeVerbosRestantes.Text = "0";
-                //App.SumaTotalDePuntos = 0;
-                UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
-                var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
-                UserDialogs.Instance.HideLoading();
-            }
-            else
-            {
-
-
-                if (App.YaPasoPorAqui == "Yes")
+                if (listverbos.Count == 1 && App.YaPasoPorAqui == "Yes")
                 {
-                    var random = new Random().Next(1, listverbos.Count);
-                    var datos = listverbos[random];
-                    listverbos.Remove(datos);
-                    VerbInSimplePast = datos.verboSimplePast.ToUpper();
-                    VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
-                    LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
-                    LblNumerosDeVerbosRestantes.IsVisible = true;
-                    txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
+                    Acr.UserDialogs.UserDialogs.Instance.Toast("¡You finish!, your result will be send to the leaderboard");
+                    LblNumerosDeVerbosRestantes.Text = "0";
+                    //App.SumaTotalDePuntos = 0;
+                    UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
+                    var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
+                    UserDialogs.Instance.HideLoading();
                 }
                 else
                 {
-                    var random = new Random().Next(1, listverbos.Count);
-                    var datos = listverbos[random];
-                    txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
-                    VerbInSimplePast = datos.verboSimplePast.ToUpper();
-                    VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
-                    LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
-                    LblNumerosDeVerbosRestantes.IsVisible = true;
-                    App.YaPasoPorAqui = "Yes";
+
+
+                    if (App.YaPasoPorAqui == "Yes")
+                    {
+                        var random = new Random().Next(1, listverbos.Count);
+                        var datos = listverbos[random];
+                        listverbos.Remove(datos);
+                        VerbInSimplePast = datos.verboSimplePast.ToUpper();
+                        VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
+                        LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
+                        LblNumerosDeVerbosRestantes.IsVisible = true;
+                        txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
+                    }
+                    else
+                    {
+                        var random = new Random().Next(1, listverbos.Count);
+                        var datos = listverbos[random];
+                        txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
+                        VerbInSimplePast = datos.verboSimplePast.ToUpper();
+                        VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
+                        LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
+                        LblNumerosDeVerbosRestantes.IsVisible = true;
+                        App.YaPasoPorAqui = "Yes";
+
+                    }
 
                 }
+
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
 
             }
 
@@ -177,41 +205,51 @@ namespace PleaseRememberMe.Pantallas
 
         public async void GetRandomVerb()
         {
-            var lista = listverbos;
-
-            if (App.YaPasastePorGetRandomVerb == "Yes")
+            try
             {
+                var lista = listverbos;
 
-            }
-            else
-            {
-                if (App.Torneo == "N")
+                if (App.YaPasastePorGetRandomVerb == "Yes")
                 {
-                    listverbos = await metodos.GetListadoVerbos();
-                    App.YaPasastePorGetRandomVerb = "Yes";
 
                 }
                 else
                 {
+                    if (App.Torneo == "N")
+                    {
+                        listverbos = await metodos.GetListadoVerbos();
+                        App.YaPasastePorGetRandomVerb = "Yes";
 
+                    }
+                    else
+                    {
+
+                    }
                 }
+
+                var random = new Random().Next(1, listverbos.Count);
+                var datos = listverbos[random];
+                txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
+                VerbInSimplePast = datos.verboSimplePast.ToUpper();
+                VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
+                Traduccion = datos.traduccion.ToUpper();
+                lblExamplePast.Text = datos.examplesInBaseForm;
+                lblExamplePastSimple.Text = datos.examplesInSimplePast;
+                lblExamplePastParticiple.Text = datos.examplesInPastParticiple;
+
+
             }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
 
-            var random = new Random().Next(1, listverbos.Count);
-            var datos = listverbos[random];
-            txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
-            VerbInSimplePast = datos.verboSimplePast.ToUpper();
-            VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
-            Traduccion = datos.traduccion.ToUpper();
-            lblExamplePast.Text = datos.examplesInBaseForm;
-            lblExamplePastSimple.Text = datos.examplesInSimplePast;
-            lblExamplePastParticiple.Text = datos.examplesInPastParticiple;
-
+            }
 
         }
 
         private void BtnLetsGo_Clicked(object sender, EventArgs e)
         {
+
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             BtnTerminarTorneo.IsVisible = false;
             StackPleaseRememberTextAndImages.IsVisible = false;
@@ -283,96 +321,105 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnCheck_Clicked(object sender, EventArgs e)
         {
-            if (App.Torneo != "S")
+            try
             {
-                LblTrad.IsVisible = true;
-                LblTraduction.IsVisible = true;
-                LblTraduction.Text = Traduccion;
-                LblVerbInPastSimpleCheck.IsVisible = true;
-                LblVerbInPastParticipleCheck.IsVisible = true;
-            }
-
-            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-
-            if (string.IsNullOrEmpty(txtVerbInPastSimple.Text))
-            {
-                LblVerbInPastSimpleCheck.Text = "Incorrect";
-                player.Load("WrongSound.mp3");
-
-            }
-            else
-            {
-                if (txtVerbInPastSimple.Text.ToUpper().Trim().Replace(".", "") == VerbInSimplePast)
+                if (App.Torneo != "S")
                 {
-
-                    LblVerbInPastSimpleCheck.Text = "Correct";
-                    player.Load("CorrectSoundReady.mp3");
-
-
+                    LblTrad.IsVisible = true;
+                    LblTraduction.IsVisible = true;
+                    LblTraduction.Text = Traduccion;
+                    LblVerbInPastSimpleCheck.IsVisible = true;
+                    LblVerbInPastParticipleCheck.IsVisible = true;
                 }
-                else
-                {
 
+                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+
+                if (string.IsNullOrEmpty(txtVerbInPastSimple.Text))
+                {
                     LblVerbInPastSimpleCheck.Text = "Incorrect";
                     player.Load("WrongSound.mp3");
 
                 }
-
-
-
-
-            }
-
-            if (string.IsNullOrEmpty(txtVerbInPastParticiple.Text))
-            {
-                LblVerbInPastParticipleCheck.Text = "Incorrect";
-                player.Load("WrongSound.mp3");
-
-            }
-            else
-            {
-                if (txtVerbInPastParticiple.Text.ToUpper().Trim().Replace(".", "") == VerbInPastParticiple)
+                else
                 {
-                    LblVerbInPastParticipleCheck.Text = "Correct";
-                    player.Load("CorrectSoundReady.mp3");
+                    if (txtVerbInPastSimple.Text.ToUpper().Trim().Replace(".", "") == VerbInSimplePast)
+                    {
+
+                        LblVerbInPastSimpleCheck.Text = "Correct";
+                        player.Load("CorrectSoundReady.mp3");
+
+
+                    }
+                    else
+                    {
+
+                        LblVerbInPastSimpleCheck.Text = "Incorrect";
+                        player.Load("WrongSound.mp3");
+
+                    }
+
+
+
+
+                }
+
+                if (string.IsNullOrEmpty(txtVerbInPastParticiple.Text))
+                {
+                    LblVerbInPastParticipleCheck.Text = "Incorrect";
+                    player.Load("WrongSound.mp3");
+
                 }
                 else
                 {
-                    if (player.CanSeek == false)
+                    if (txtVerbInPastParticiple.Text.ToUpper().Trim().Replace(".", "") == VerbInPastParticiple)
                     {
-                        player.Load("WrongSound.xmp3");
+                        LblVerbInPastParticipleCheck.Text = "Correct";
+                        player.Load("CorrectSoundReady.mp3");
+                    }
+                    else
+                    {
+                        if (player.CanSeek == false)
+                        {
+                            player.Load("WrongSound.xmp3");
+                        }
+
+                        LblVerbInPastParticipleCheck.Text = "Incorrect";
+
                     }
 
-                    LblVerbInPastParticipleCheck.Text = "Incorrect";
 
                 }
 
+                if (LblVerbInPastSimpleCheck.Text == "Correct" && LblVerbInPastParticipleCheck.Text == "Correct" && App.Torneo == "S")
+                {
+                    LblPuntos.IsVisible = true;
+                    App.SumaTotalDePuntos = App.SumaTotalDePuntos + 1;
+                    LblPuntos.Text = App.SumaTotalDePuntos.ToString();
+                    player.Load("CorrectSoundReady.mp3");
+                }
+
+
+
+                if (LblVerbInPastSimpleCheck.Text == "Incorrect" || LblVerbInPastParticipleCheck.Text == "Incorrect")
+                {
+                    player.Load("WrongSound.mp3");
+                }
+
+                if (App.Torneo == "S")
+                {
+                    GetRandomVerbForTheTournament();
+                    LimpiarText();
+
+                }
+
+                player.Play();
 
             }
-
-            if (LblVerbInPastSimpleCheck.Text == "Correct" && LblVerbInPastParticipleCheck.Text == "Correct" && App.Torneo == "S")
+            catch (Exception ex)
             {
-                LblPuntos.IsVisible = true;
-                App.SumaTotalDePuntos = App.SumaTotalDePuntos + 1;
-                LblPuntos.Text = App.SumaTotalDePuntos.ToString();
-                player.Load("CorrectSoundReady.mp3");
-            }
-
-
-
-            if (LblVerbInPastSimpleCheck.Text == "Incorrect" || LblVerbInPastParticipleCheck.Text == "Incorrect")
-            {
-                player.Load("WrongSound.mp3");
-            }
-
-            if (App.Torneo == "S")
-            {
-                GetRandomVerbForTheTournament();
-                LimpiarText();
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
 
             }
-
-            player.Play();
 
         }
 
@@ -386,7 +433,7 @@ namespace PleaseRememberMe.Pantallas
             lblExamplePastParticiple.IsVisible = true;
         }
 
-        private async void BtnAtras_Clicked(object sender, EventArgs e)
+        private void BtnAtras_Clicked(object sender, EventArgs e)
         {
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             GridVerbos.IsVisible = false;
@@ -422,16 +469,25 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnTablaDePosiciones_Clicked(object sender, EventArgs e)
         {
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
-            StacklayoutPrincipal.IsVisible = false;
-            btnAjustes.IsVisible = false;
-            StackLayoutTablaPosiciones.IsVisible = true;
-            GridVolverAtrasPosiciones.IsVisible = true;
+            try
+            {
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                StacklayoutPrincipal.IsVisible = false;
+                btnAjustes.IsVisible = false;
+                StackLayoutTablaPosiciones.IsVisible = true;
+                GridVolverAtrasPosiciones.IsVisible = true;
 
-            var datos = await metodos.GetListadoDePosiciones();
-            lsv_TablaPuntuacion.ItemsSource = datos;
-            UserDialogs.Instance.HideLoading();
+                var datos = await metodos.GetListadoDePosiciones();
+                lsv_TablaPuntuacion.ItemsSource = datos;
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+
 
         }
 
@@ -478,30 +534,49 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnTerminarTorneo_Clicked(object sender, EventArgs e)
         {
-            if (await DisplayAlert("Information", "¿Do you want to finish the tournament?", "Of course", "Noo"))
+            try
             {
-                UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
-                BtnAtras_Clicked(new object(), new EventArgs());
-                BtnTerminarTorneo.IsVisible = false;
-                App.Torneo = "N";
-                var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
-                App.SumaTotalDePuntos = 0;
-                UserDialogs.Instance.HideLoading();
+                if (await DisplayAlert("Information", "¿Do you want to finish the tournament?", "Of course", "Noo"))
+                {
+                    UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
+                    BtnAtras_Clicked(new object(), new EventArgs());
+                    BtnTerminarTorneo.IsVisible = false;
+                    App.Torneo = "N";
+                    var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
+                    App.SumaTotalDePuntos = 0;
+                    UserDialogs.Instance.HideLoading();
+                }
             }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+
 
         }
 
         public async void BtnListOfTheVerbs_Clicked(System.Object sender, System.EventArgs e)
         {
-            GridVolverAtrasVerbList.IsVisible = true;
-            StackLayoutVerbList.IsVisible = true;
-            btnAjustes.IsVisible = false;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
-            StacklayoutPrincipal.IsVisible = false;
-            var datos = await metodos.GetListadoVerbos();
-            lsv_ListaDeVerbos.ItemsSource = datos;
-            UserDialogs.Instance.HideLoading();
+            try
+            {
+                GridVolverAtrasVerbList.IsVisible = true;
+                StackLayoutVerbList.IsVisible = true;
+                btnAjustes.IsVisible = false;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                StacklayoutPrincipal.IsVisible = false;
+                var datos = await metodos.GetListadoVerbos();
+                lsv_ListaDeVerbos.ItemsSource = datos;
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+
+
 
         }
 
@@ -547,19 +622,28 @@ namespace PleaseRememberMe.Pantallas
 
         async void BtnSaveChanges_Clicked(System.Object sender, System.EventArgs e)
         {
-            UserDialogs.Instance.ShowLoading("Saving Email, give me a few seconds");
-            var apiResult = await metodos.SendEmails(txtEmail.Text);
-            if (apiResult.Respuesta == "OK")
+            try
             {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Email Saved, you are going to receive all the news in your email");
-                txtEmail.Text = "";
+                UserDialogs.Instance.ShowLoading("Saving Email, give me a few seconds");
+                var apiResult = await metodos.SendEmails(txtEmail.Text);
+                if (apiResult.Respuesta == "OK")
+                {
+                    Acr.UserDialogs.UserDialogs.Instance.Toast("Email Saved, you are going to receive all the news in your email");
+                    txtEmail.Text = "";
+                }
+                else
+                {
+                    Acr.UserDialogs.UserDialogs.Instance.Toast("Error, check your internet connection");
+
+                }
+                UserDialogs.Instance.HideLoading();
             }
-            else
+            catch (Exception ex)
             {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Error, check your internet connection");
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
 
             }
-            UserDialogs.Instance.HideLoading();
+
 
 
         }
@@ -595,18 +679,27 @@ namespace PleaseRememberMe.Pantallas
 
         private async void btnWasWereDid_Clicked(object sender, EventArgs e)
         {
-            StackLayoutOtherTopics.IsVisible = false;
-            StackLayoutWasWereDid.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
-            var datos = await metodos.GetWasWereSentences();
-            listSentences = datos;
-            var random = new Random().Next(1, listSentences.Count);
-            var elegido = listSentences[random];
-            lblWasWereDid.Text = listSentences[0].WasWereSentence;
-            CorrectAnswer = listSentences[0].correctanswer;
-            listSentences.Remove(elegido);
-            UserDialogs.Instance.HideLoading();
+            try
+            {
+                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutWasWereDid.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                var datos = await metodos.GetWasWereSentences();
+                listSentences = datos;
+                var random = new Random().Next(1, listSentences.Count);
+                var elegido = listSentences[random];
+                lblWasWereDid.Text = listSentences[0].WasWereSentence;
+                CorrectAnswer = listSentences[0].correctanswer;
+                listSentences.Remove(elegido);
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+
         }
 
         private void BtnAtrasWasWereDid_Clicked(object sender, EventArgs e)
@@ -640,7 +733,7 @@ namespace PleaseRememberMe.Pantallas
 
                 }
             }
-            
+
         }
 
         private void BtnOneMore_Clicked(object sender, EventArgs e)
@@ -663,14 +756,23 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnMatch_Clicked(object sender, EventArgs e)
         {
-            StackLayoutOtherTopics.IsVisible = false;
-            StackLayoutMatch.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
-            var datos = await metodos.GetMatchSentences();
-            listMatch = datos;
-            lsv_Math.ItemsSource = datos;
-            UserDialogs.Instance.HideLoading();
+            try
+            {
+                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutMatch.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                var datos = await metodos.GetMatchSentences();
+                listMatch = datos;
+                lsv_Math.ItemsSource = datos;
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+
         }
 
         private void BtnAtrasMatch_Clicked(object sender, EventArgs e)
@@ -714,16 +816,25 @@ namespace PleaseRememberMe.Pantallas
 
         private async void btnComplete_Clicked(object sender, EventArgs e)
         {
-            StackLayoutOtherTopics.IsVisible = false;
-            StackLayoutComplete.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
-            var datos = await metodos.GetCompleteSentences();
-            var response = await metodos.GetAdjectives();
-            lsv_complete.ItemsSource = datos;
-            CollectionViewAdjective.ItemsSource = response;
-            listComplete = datos;
-            UserDialogs.Instance.HideLoading();
+            try
+            {
+                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutComplete.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                var datos = await metodos.GetCompleteSentences();
+                var response = await metodos.GetAdjectives();
+                lsv_complete.ItemsSource = datos;
+                CollectionViewAdjective.ItemsSource = response;
+                listComplete = datos;
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+
         }
 
         private void BtnAtrasComplete_Clicked(object sender, EventArgs e)
@@ -759,6 +870,26 @@ namespace PleaseRememberMe.Pantallas
             }
             lsv_complete.ItemsSource = null;
             lsv_complete.ItemsSource = listComplete;
+        }
+
+        async void btnSClothes_Clicked(System.Object sender, System.EventArgs e)
+        {
+            StackLayoutOtherTopics.IsVisible = false;
+            StackLayoutMatch.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+            var datos = await metodos.GetMatchSentences();
+            listMatch = datos;
+            lsv_Math.ItemsSource = datos;
+            UserDialogs.Instance.HideLoading();
+        }
+
+        void BtnAtrasClothes_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
+
+        void Btncorrectclothes_Clicked(System.Object sender, System.EventArgs e)
+        {
         }
     }
 }

@@ -401,21 +401,22 @@
                  >
                     </Button>
 
-                    <!--<Button 
+                    <Button 
                  Margin="5,5,5,5"
                  Grid.Row="1"
                  Grid.Column="1"
-                 x:Name="btnSomeAny"
-                 Text="Some/Any"
+                 x:Name="btnSClothes"
+                 Text="Clothes"
                  TextColor="White"
                  HeightRequest="80"
                  BackgroundColor="#7cc151"
                  CornerRadius="8"
+                        Clicked="btnSClothes_Clicked"
                  >
                     </Button>
 
 
-                    <Button 
+                    <!--<Button 
                  Grid.Row="2"
                  Grid.Column="0"
                  x:Name="btnOther1"
@@ -757,6 +758,118 @@
                     </Frame>
 
                     <ListView BackgroundColor="Transparent"  Margin="0,10,0,30" SelectionMode="None"  Grid.Row="2" x:Name="lsv_complete"  SeparatorVisibility="Default" SeparatorColor="Transparent" HasUnevenRows="True" >
+
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate >
+
+                                <ViewCell>
+
+
+                                    <Grid BackgroundColor="Transparent">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="50"/>
+                                            <RowDefinition Height="*"/>
+
+                                        </Grid.RowDefinitions>
+
+
+                                        <Label Grid.Row="0" HorizontalOptions="Fill" Text="{Binding Sentencecomplete}"/>
+                                        <StackLayout Grid.Row="1" Margin="0,0,0,0" Orientation="Horizontal">
+                                                <Entry Text="{Binding txtcomplete}" Placeholder="Answer" VerticalOptions="CenterAndExpand" Margin="15,0,0,0" HorizontalOptions="FillAndExpand"  FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="White" ></Entry>
+                                                <Image WidthRequest="20" IsVisible="true" Source="{Binding imagen}"></Image>
+                                            </StackLayout>
+                                    </Grid>
+
+
+                                    <!--ITEM-->
+                                </ViewCell>
+                            </DataTemplate>
+
+
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+
+
+
+                </Grid>
+
+
+            </StackLayout>
+        </StackLayout>
+
+         <!--Stacklayout Clothes - Page 10-->
+        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutClothes">
+
+            <Grid >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasClothes_Clicked"  x:Name="BtnAtrasClothes" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="VOLVER ATRAS"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                            <ImageButton Source="correct.png" Margin="0,0,10,0"  x:Name="Btncorrectclothes" Clicked="Btncorrectclothes_Clicked" BackgroundColor="Transparent" HeightRequest="25" ></ImageButton>
+
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout Margin="10,0,10,0">
+
+                <Grid RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+
+
+                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Complete with the Adjective" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+
+
+                    <Frame Grid.Row="1" HasShadow="False" BackgroundColor="White" CornerRadius="4">
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal"  Margin="0,0,0,0">
+                            <CollectionView x:Name="CollectionViewAdjective">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" Span="3" />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout HorizontalOptions="StartAndExpand" Margin="0,0,0,0">
+                                            <Label FontSize="12" TextColor="#333" Text="{Binding Adjective}"/>
+
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <StackLayout  VerticalOptions="Center">
+                                <Image x:Name="ImageArrowDown" HeightRequest="16" IsVisible="true" Source="arrowdown"></Image>
+                            </StackLayout>
+                        </StackLayout>
+
+                    </Frame>
+
+                    <ListView BackgroundColor="Transparent"  Margin="0,10,0,30" SelectionMode="None"  Grid.Row="2" x:Name="lsv_clothes"  SeparatorVisibility="Default" SeparatorColor="Transparent" HasUnevenRows="True" >
 
                         <ListView.ItemTemplate>
 
