@@ -99,5 +99,13 @@ namespace PleaseRememberMe.Models
             return listado_pronouns;
         }
 
+        public async Task<List<ESimplePresent>> GetSimplePresent()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/SimplePresentPRM");
+            var listado_SimplePresent = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ESimplePresent>>(result);
+
+            return listado_SimplePresent;
+        }
+
     }
 }

@@ -21,6 +21,7 @@ namespace PleaseRememberMe.Pantallas
         string Traduccion = "";
         string CorrectAnswer = "";
         string CorrectAnswerPronoun = "";
+        string CorrectAnswerVerb = "";
         private bool _userTapped;
         ModalTournament modalTournament = new ModalTournament();
         ModalAboutMe modalAboutMe = new ModalAboutMe();
@@ -31,6 +32,7 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.ECompleteSentences> listComplete = new List<Entidad.ECompleteSentences>();
         List<Entidad.EClothes> listclothes = new List<Entidad.EClothes>();
         List<Entidad.EPronouns> listpronouns = new List<Entidad.EPronouns>();
+        List<Entidad.ESimplePresent> listsimplepresent = new List<Entidad.ESimplePresent>();
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
         {
@@ -988,6 +990,82 @@ namespace PleaseRememberMe.Pantallas
                 listpronouns.Remove(elegido);
                 TxtCorrectAnswerPronouns.Text = "";
                 LblCorrectAnswerPronouns.IsVisible = false;
+            }
+        }
+
+        private async void btnSimplePresent_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutSimplePresent.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                var datos = await metodos.GetSimplePresent();
+                listsimplepresent = datos;
+                var random = new Random().Next(1, listsimplepresent.Count);
+                var elegido = listsimplepresent[random];
+                lblSimplePresent.Text = listsimplepresent[0].SimplePresentExercises;
+                CorrectAnswerVerb = listsimplepresent[0].CorrectAnswer;
+                listsimplepresent.Remove(elegido);
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
+
+        private void BtnAtrasSimplePresent_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutSimplePresent.IsVisible = false;
+            StackLayoutWasWereDid.IsVisible = false;
+            StackLayoutComplete.IsVisible = false;
+            GridVolverAtrasVerbList.IsVisible = false;
+            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutVerbList.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnCheckMyAnswerSimplePresent_Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtVerbInCorrecForm.Text))
+            {
+                LblCorrectAnswerVerb.IsVisible = true;
+                LblCorrectAnswerVerb.Text = "Incorrect";
+            }
+            else
+            {
+                if (CorrectAnswerVerb == TxtVerbInCorrecForm.Text.ToUpper())
+                {
+                    LblCorrectAnswerVerb.IsVisible = true;
+                    LblCorrectAnswerVerb.Text = "Correct";
+                }
+                else
+                {
+                    LblCorrectAnswerVerb.IsVisible = true;
+                    LblCorrectAnswerVerb.Text = "Incorrect";
+
+                }
+            }
+        }
+
+        private void BtnOneMoreSimplePresent_Clicked(object sender, EventArgs e)
+        {
+            if (listsimplepresent.Count == 1)
+            {
+                UserDialogs.Instance.Toast("There's not more sentences.");
+            }
+            else
+            {
+                var random = new Random().Next(1, listsimplepresent.Count);
+                var elegido = listsimplepresent[random];
+                lblSimplePresent.Text = elegido.SimplePresentExercises;
+                CorrectAnswerVerb = elegido.CorrectAnswer;
+                listsimplepresent.Remove(elegido);
+                TxtVerbInCorrecForm.Text = "";
+                LblCorrectAnswerVerb.IsVisible = false;
             }
         }
     }
