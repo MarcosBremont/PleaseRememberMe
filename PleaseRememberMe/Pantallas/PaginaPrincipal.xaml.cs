@@ -20,6 +20,7 @@ namespace PleaseRememberMe.Pantallas
         string VerbInPastParticiple = "";
         string Traduccion = "";
         string CorrectAnswer = "";
+        string CorrectAnswerPronoun = "";
         private bool _userTapped;
         ModalTournament modalTournament = new ModalTournament();
         ModalAboutMe modalAboutMe = new ModalAboutMe();
@@ -29,6 +30,7 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.EMatchSentences> listMatch = new List<Entidad.EMatchSentences>();
         List<Entidad.ECompleteSentences> listComplete = new List<Entidad.ECompleteSentences>();
         List<Entidad.EClothes> listclothes = new List<Entidad.EClothes>();
+        List<Entidad.EPronouns> listpronouns = new List<Entidad.EPronouns>();
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
         {
@@ -90,15 +92,6 @@ namespace PleaseRememberMe.Pantallas
            );
 
 
-        }
-
-
-        public void VerificarConexion()
-        {
-            //if ()
-            //{
-
-            //}
         }
 
         private void ModalAboutMe_OnLLamarOtraPantalla(object sender, EventArgs e)
@@ -920,6 +913,82 @@ namespace PleaseRememberMe.Pantallas
             }
             lsv_clothes.ItemsSource = null;
             lsv_clothes.ItemsSource = listclothes;
+        }
+
+        private async void btnPronouns_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutPronouns.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                var datos = await metodos.GetPronouns();
+                listpronouns = datos;
+                var random = new Random().Next(1, listpronouns.Count);
+                var elegido = listpronouns[random];
+                lblPronouns.Text = listpronouns[0].PronounsSentences;
+                CorrectAnswerPronoun = listpronouns[0].CorrectAnswer;
+                listpronouns.Remove(elegido);
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
+
+        private void BtnAtrasPronouns_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutPronouns.IsVisible = false;
+            StackLayoutWasWereDid.IsVisible = false;
+            StackLayoutComplete.IsVisible = false;
+            GridVolverAtrasVerbList.IsVisible = false;
+            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutVerbList.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnCheckMyAnswerPronouns_Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtCorrectAnswerPronouns.Text))
+            {
+                LblCorrectAnswerPronouns.IsVisible = true;
+                LblCorrectAnswerPronouns.Text = "Incorrect";
+            }
+            else
+            {
+                if (CorrectAnswerPronoun == TxtCorrectAnswerPronouns.Text.ToUpper())
+                {
+                    LblCorrectAnswerPronouns.IsVisible = true;
+                    LblCorrectAnswerPronouns.Text = "Correct";
+                }
+                else
+                {
+                    LblCorrectAnswerPronouns.IsVisible = true;
+                    LblCorrectAnswerPronouns.Text = "Incorrect";
+
+                }
+            }
+        }
+
+        private void BtnOneMorePronoun_Clicked(object sender, EventArgs e)
+        {
+            if (listpronouns.Count == 1)
+            {
+                UserDialogs.Instance.Toast("There's not more sentences.");
+            }
+            else
+            {
+                var random = new Random().Next(1, listpronouns.Count);
+                var elegido = listpronouns[random];
+                lblPronouns.Text = elegido.PronounsSentences;
+                CorrectAnswerPronoun = elegido.CorrectAnswer;
+                listpronouns.Remove(elegido);
+                TxtCorrectAnswerPronouns.Text = "";
+                LblCorrectAnswerPronouns.IsVisible = false;
+            }
         }
     }
 }

@@ -89,7 +89,15 @@ namespace PleaseRememberMe.Models
             var listado_Clothes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EClothes>>(result);
 
             return listado_Clothes;
-        } 
+        }
+
+        public async Task<List<EPronouns>> GetPronouns()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/PronounsPRM");
+            var listado_pronouns = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EPronouns>>(result);
+
+            return listado_pronouns;
+        }
 
     }
 }
