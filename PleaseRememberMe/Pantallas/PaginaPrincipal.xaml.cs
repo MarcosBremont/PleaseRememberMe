@@ -24,6 +24,7 @@ namespace PleaseRememberMe.Pantallas
         string CorrectAnswerVerb = "";
         string CorrectAnswerPrepositionsOfTime = "";
         string CorrectAnswerFamily = "";
+        string CorrectAnswerAnySome = "";
         private bool _userTapped;
         ModalTournament modalTournament = new ModalTournament();
         ModalAboutMe modalAboutMe = new ModalAboutMe();
@@ -37,6 +38,7 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.ESimplePresent> listsimplepresent = new List<Entidad.ESimplePresent>();
         List<Entidad.EPrepositionsOfTime> listprepositionsOfTime = new List<Entidad.EPrepositionsOfTime>();
         List<Entidad.EFamily> listFamily = new List<Entidad.EFamily>();
+        List<Entidad.EAnySome> listAnySome = new List<Entidad.EAnySome>();
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
         {
@@ -1220,5 +1222,76 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
+        private async void btnAnySome_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutAnySome.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a coffee");
+                var datos = await metodos.GetAnySome();
+                listAnySome = datos;
+                var random = new Random().Next(1, listAnySome.Count);
+                var elegido = listAnySome[random];
+                LblAnySome.Text = listAnySome[0].AnySomeSentences;
+                CorrectAnswerAnySome = listAnySome[0].CorrectAnswer;
+                listAnySome.Remove(elegido);
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
+
+        private async void BtnAtrasAnySome_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutAnySome.IsVisible = false;
+            StackLayoutOtherTopics.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnCheckMyAnswerAnySome_Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtAnySome.Text))
+            {
+                LblCorrectAnswerAnySome.IsVisible = true;
+                LblCorrectAnswerAnySome.Text = "Incorrect";
+            }
+            else
+            {
+                if (CorrectAnswerAnySome == TxtAnySome.Text.ToUpper())
+                {
+                    LblCorrectAnswerAnySome.IsVisible = true;
+                    LblCorrectAnswerAnySome.Text = "Correct";
+                }
+                else
+                {
+                    LblCorrectAnswerAnySome.IsVisible = true;
+                    LblCorrectAnswerAnySome.Text = "Incorrect";
+
+                }
+            }
+        }
+
+        private void BtnOneMoreAnySome_Clicked(object sender, EventArgs e)
+        {
+            if (listAnySome.Count == 1)
+            {
+                UserDialogs.Instance.Toast("There's not more sentences.");
+            }
+            else
+            {
+                var random = new Random().Next(1, listAnySome.Count);
+                var elegido = listAnySome[random];
+                LblAnySome.Text = elegido.AnySomeSentences;
+                CorrectAnswerAnySome = elegido.CorrectAnswer;
+                listAnySome.Remove(elegido);
+                TxtAnySome.Text = "";
+                LblCorrectAnswerAnySome.IsVisible = false;
+            }
+        }
     }
 }

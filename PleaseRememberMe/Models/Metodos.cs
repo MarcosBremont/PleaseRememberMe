@@ -123,5 +123,13 @@ namespace PleaseRememberMe.Models
             return listado_Family;
         } // Fin del método ObtenerVerbos
 
+        public async Task<List<EAnySome>> GetAnySome()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/AnySomePRM");
+            var listado_AnySome = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EAnySome>>(result);
+
+            return listado_AnySome;
+        } // Fin del método ObtenerVerbos
+
     }
 }
