@@ -25,7 +25,8 @@ namespace PleaseRememberMe.Pantallas
         string CorrectAnswerPrepositionsOfTime = "";
         string CorrectAnswerFamily = "";
         string CorrectAnswerAnySome = "";
-        string CorrectAnswerVerbToBe = "";
+        string CorrectAnswerVerbToBe1 = "";
+        string CorrectAnswerVerbToBe2 = "";
         private bool _userTapped;
         ModalTournament modalTournament = new ModalTournament();
         ModalAboutMe modalAboutMe = new ModalAboutMe();
@@ -1309,7 +1310,8 @@ namespace PleaseRememberMe.Pantallas
                 var random = new Random().Next(1, listVerbToBe.Count);
                 var elegido = listVerbToBe[random];
                 LblVerbToBeExercise.Text = listVerbToBe[0].verbtobeSentence;
-                CorrectAnswerVerbToBe = listVerbToBe[0].CorrectAnswer;
+                CorrectAnswerVerbToBe1 = listVerbToBe[0].CorrectAnswer1;
+                CorrectAnswerVerbToBe2 = listVerbToBe[0].CorrectAnswer2;
                 listVerbToBe.Remove(elegido);
                 UserDialogs.Instance.HideLoading();
             }
@@ -1322,14 +1324,14 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnCheckMyAnswerVerbToBe_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(TxtVerbToBe.Text))
+            if (string.IsNullOrEmpty(TxtVerbToBe.Text) || string.IsNullOrEmpty(TxtVerbToBe2.Text))
             {
                 LblCorrectAnswerVerbToBe.IsVisible = true;
                 LblCorrectAnswerVerbToBe.Text = "Incorrect";
             }
             else
             {
-                if (CorrectAnswerVerbToBe == TxtVerbToBe.Text.ToUpper())
+                if (CorrectAnswerVerbToBe1 == TxtVerbToBe.Text.ToUpper() && CorrectAnswerVerbToBe2 == TxtVerbToBe2.Text.ToUpper())
                 {
                     LblCorrectAnswerVerbToBe.IsVisible = true;
                     LblCorrectAnswerVerbToBe.Text = "Correct";
@@ -1354,9 +1356,11 @@ namespace PleaseRememberMe.Pantallas
                 var random = new Random().Next(1, listVerbToBe.Count);
                 var elegido = listVerbToBe[random];
                 LblVerbToBeExercise.Text = elegido.verbtobeSentence;
-                CorrectAnswerVerbToBe = elegido.CorrectAnswer;
+                CorrectAnswerVerbToBe1 = elegido.CorrectAnswer1;
+                CorrectAnswerVerbToBe2 = elegido.CorrectAnswer2;
                 listVerbToBe.Remove(elegido);
                 TxtVerbToBe.Text = "";
+                TxtVerbToBe2.Text = "";
                 LblCorrectAnswerVerbToBe.IsVisible = false;
             }
         }

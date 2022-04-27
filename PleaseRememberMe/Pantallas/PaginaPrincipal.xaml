@@ -1258,7 +1258,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Verb To Be - Page 15-->
+        <!--Stacklayout Verb To Be - Page 16-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutVerbToBe">
 
             <Grid >
@@ -1310,11 +1310,12 @@
                     <StackLayout Grid.Row="1" Margin="0,0,0,0">
                         <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
                         <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtVerbToBe" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
-                        <Label x:Name="LblCorrectAnswerVerbToBe" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
+                        <Entry  HorizontalOptions="FillAndExpand" Placeholder="Second Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtVerbToBe2" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
 
                     </StackLayout>
 
                     <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                        <Label x:Name="LblCorrectAnswerVerbToBe" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerVerbToBe" Clicked="BtnCheckMyAnswerVerbToBe_Clicked" BackgroundColor="#F58134" TextColor="White"/>
                         <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreVerbToBe" Clicked="BtnOneMoreVerbToBe_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
