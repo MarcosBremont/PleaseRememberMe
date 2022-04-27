@@ -486,19 +486,19 @@
                  >
                     </Button>
 
-                    <!--<Button 
+                    <Button 
                  Margin="5,5,5,5"
                  Grid.Row="4"
                  Grid.Column="1"
-                 x:Name="btnFamilyVocabulary"
-                 Text="Family - vocabulary"
+                 x:Name="btnVerbToBe"
+                 Text="Verb To Be"
                  TextColor="White"
                  HeightRequest="80"
                  BackgroundColor="#7cc151"
                  CornerRadius="8"
-                        Clicked="btnFamilyVocabulary_Clicked"
+                        Clicked="btnVerbToBe_Clicked"
                  >
-                    </Button>-->
+                    </Button>
 
                 </Grid>
 
@@ -924,7 +924,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout WasWereDid - Page 11-->
+        <!--Stacklayout Pronouns - Page 11-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutPronouns">
 
             <Grid >
@@ -991,7 +991,7 @@
         </StackLayout>
 
 
-        <!--Stacklayout WasWereDid - Page 12-->
+        <!--Stacklayout SimplePresent - Page 12-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutSimplePresent">
 
             <Grid >
@@ -1125,7 +1125,7 @@
 
 
 
-        <!--Stacklayout Family - Page 13-->
+        <!--Stacklayout Family - Page 14-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutFamily">
 
             <Grid >
@@ -1192,7 +1192,7 @@
         </StackLayout>
 
 
-        <!--Stacklayout Family - Page 13-->
+        <!--Stacklayout Verb To Be - Page 15-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutAnySome">
 
             <Grid >
@@ -1258,6 +1258,71 @@
             </StackLayout>
         </StackLayout>
 
+        <!--Stacklayout Verb To Be - Page 15-->
+        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutVerbToBe">
+
+            <Grid >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png"  x:Name="BtnAtrasVerbToBe" Clicked="BtnAtrasVerbToBe_Clicked" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="VOLVER ATRAS"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout Margin="10,0,10,40">
+
+                <Grid RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Finish the answers using the correct forms of to be (am, are, is)." FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+
+                    <Label  Margin="0,60,0,0" HorizontalOptions="Center" x:Name="LblVerbToBeExercise" TextColor="#333"></Label>
+
+                    <StackLayout Grid.Row="1" Margin="0,0,0,0">
+                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
+                        <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtVerbToBe" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
+                        <Label x:Name="LblCorrectAnswerVerbToBe" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                        <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerVerbToBe" Clicked="BtnCheckMyAnswerVerbToBe_Clicked" BackgroundColor="#F58134" TextColor="White"/>
+                        <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreVerbToBe" Clicked="BtnOneMoreVerbToBe_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
+                    </StackLayout>
+                </Grid>
+
+
+            </StackLayout>
+        </StackLayout>
 
 
     </StackLayout>
