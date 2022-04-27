@@ -378,7 +378,7 @@
                  Grid.Row="0"
                  Grid.Column="1"
                  x:Name="BtnMatch"
-                 Text="Match"
+                 Text="Professions"
                  TextColor="White"
                  HeightRequest="80"
                  BackgroundColor="#3F79AC"
@@ -392,7 +392,7 @@
                  Grid.Row="1"
                  Grid.Column="0"
                  x:Name="btnComplete"
-                 Text="Complete"
+                 Text="Comparisons"
                  TextColor="White"
                  HeightRequest="80"
                  BackgroundColor="#D09625"
@@ -420,7 +420,7 @@
                  Grid.Row="2"
                  Grid.Column="0"
                  x:Name="btnPronouns"
-                 Text="Pronouns"
+                 Text="Demonstrative Pronouns"
                  TextColor="White"
                  HeightRequest="80"
                  BackgroundColor="#939393"
@@ -443,16 +443,17 @@
                  Clicked="btnSimplePresent_Clicked">
                     </Button>
 
-                    <!--<Button 
+                    <Button 
                  Margin="5,5,5,5"
                  Grid.Row="3"
                  Grid.Column="0"
-                 x:Name="btnOther3"
-                 Text="Other"
+                 x:Name="btnPrepositionsoftime"
+                 Text="Prepositions of time"
                  TextColor="White"
                  HeightRequest="80"
                  BackgroundColor="#D09625"
                  CornerRadius="8"
+                        Clicked="btnPrepositionsoftime_Clicked"
                  >
                     </Button>
 
@@ -460,14 +461,15 @@
                  Margin="5,5,5,5"
                  Grid.Row="3"
                  Grid.Column="1"
-                 x:Name="btnOther4"
-                 Text="Other"
+                 x:Name="btnFamilyVocabulary"
+                 Text="Family - vocabulary"
                  TextColor="White"
                  HeightRequest="80"
                  BackgroundColor="#7cc151"
                  CornerRadius="8"
+                        Clicked="btnFamilyVocabulary_Clicked"
                  >
-                    </Button>-->
+                    </Button>
 
                 </Grid>
 
@@ -1007,7 +1009,7 @@
                     <Label Grid.Row="0" HorizontalOptions="Center" Text="Change the verb into the correct form, then press Check My Answer to check your answers." FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
 
-                    <Label  Margin="0,50,0,0" HorizontalOptions="Center" x:Name="lblSimplePresent" TextColor="#333"></Label>
+                    <Label  Margin="0,60,0,0" HorizontalOptions="Center" x:Name="lblSimplePresent" TextColor="#333"></Label>
 
                     <StackLayout Grid.Row="1" Margin="0,0,0,0">
                         <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
@@ -1019,6 +1021,140 @@
                     <StackLayout Grid.Row="2" Margin="0,0,0,0">
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerSimplePresent" Clicked="BtnCheckMyAnswerSimplePresent_Clicked" BackgroundColor="#F58134" TextColor="White"/>
                         <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreSimplePresent" Clicked="BtnOneMoreSimplePresent_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
+                    </StackLayout>
+                </Grid>
+
+
+            </StackLayout>
+        </StackLayout>
+
+        <!--Stacklayout Prepositions of time - Page 13-->
+        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutPreposisionsOfTime">
+
+            <Grid >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png"  x:Name="BtnAtrasPreposisionsOfTime" Clicked="BtnAtrasPreposisionsOfTime_Clicked" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="VOLVER ATRAS"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout Margin="10,0,10,40">
+
+                <Grid RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Exercises: in / on / at" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+
+                    <Label  Margin="0,60,0,0" HorizontalOptions="Center" x:Name="lblPrepositionsOfTime" TextColor="#333"></Label>
+
+                    <StackLayout Grid.Row="1" Margin="0,0,0,0">
+                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
+                        <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtPrepositionsOfTime" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
+                        <Label x:Name="LblCorrectAnswerPrepositionsOfTime" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                        <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerPrepositionsOfTime" Clicked="BtnCheckMyAnswerPrepositionsOfTime_Clicked" BackgroundColor="#F58134" TextColor="White"/>
+                        <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMorePrepositionsOfTime" Clicked="BtnOneMorePrepositionsOfTime_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
+                    </StackLayout>
+                </Grid>
+
+
+            </StackLayout>
+        </StackLayout>
+
+
+
+        <!--Stacklayout Family - Page 13-->
+        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutFamily">
+
+            <Grid >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png"  x:Name="BtnAtrasFamily" Clicked="BtnAtrasFamily_Clicked" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="VOLVER ATRAS"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout Margin="10,0,10,40">
+
+                <Grid RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Exercises: my family tree" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+
+                    <Label  Margin="0,60,0,0" HorizontalOptions="Center" x:Name="LblFamilySentences" TextColor="#333"></Label>
+
+                    <StackLayout Grid.Row="1" Margin="0,0,0,0">
+                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
+                        <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtFamilyMember" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
+                        <Label x:Name="LblCorrectAnswerFamily" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                        <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerFamily" Clicked="BtnCheckMyAnswerFamily_Clicked" BackgroundColor="#F58134" TextColor="White"/>
+                        <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreFamily" Clicked="BtnOneMoreFamily_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
                 </Grid>
 

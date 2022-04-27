@@ -107,5 +107,21 @@ namespace PleaseRememberMe.Models
             return listado_SimplePresent;
         }
 
+        public async Task<List<EPrepositionsOfTime>> GetPrepositionsOfTimeSentences()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/PrepositionsOfTimePRM");
+            var listado_PrepositionsOfTime = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EPrepositionsOfTime>>(result);
+
+            return listado_PrepositionsOfTime;
+        } // Fin del método ObtenerVerbos
+
+        public async Task<List<EFamily>> GetFamily()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/FamilyvocabularyPRM");
+            var listado_Family = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EFamily>>(result);
+
+            return listado_Family;
+        } // Fin del método ObtenerVerbos
+
     }
 }
