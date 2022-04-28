@@ -321,7 +321,10 @@
         </StackLayout>
 
         <!--Stacklayout OtherTopics - Page 5-->
-        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutOtherTopics">
+        <StackLayout IsVisible="false"   x:Name="StackLayoutOtherTopics">
+
+
+
 
             <Grid x:Name="GridVolverAtrasOtherTopics">
 
@@ -348,10 +351,9 @@
                 </StackLayout>
 
             </Grid>
-
             <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" HorizontalOptions="FillAndExpand">
+                <StackLayout Margin="10,0,10,40" VerticalOptions="FillAndExpand"  x:Name="LayoutOtherTopics">
 
-                <StackLayout Margin="10,0,10,40" VerticalOptions="FillAndExpand" x:Name="LayoutOtherTopics">
                     <Label HorizontalOptions="Center" Text="Other Topics" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
                     <Grid RowSpacing="0">
@@ -1401,13 +1403,13 @@
 
                         <StackLayout VerticalOptions="Center" Orientation="Horizontal">
                             <RadioButton GroupName="RadiosQuantifiers" x:Name="RadioButtonOption1" CheckedChanged="RadioButtonOption1_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
-                            <Label VerticalOptions="Center" x:Name="LblFirstOption"/>
+                            <Label TextColor="#333" VerticalOptions="Center" x:Name="LblFirstOption"/>
 
                         </StackLayout>
 
                         <StackLayout VerticalOptions="Center" Orientation="Horizontal">
                             <RadioButton GroupName="RadiosQuantifiers" x:Name="RadioButtonOption2" CheckedChanged="RadioButtonOption2_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
-                            <Label VerticalOptions="Center" x:Name="LblSecondOption" />
+                            <Label TextColor="#333" VerticalOptions="Center" x:Name="LblSecondOption" />
 
                         </StackLayout>
 
