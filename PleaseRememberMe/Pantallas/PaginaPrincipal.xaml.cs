@@ -257,7 +257,8 @@ namespace PleaseRememberMe.Pantallas
 
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             BtnTerminarTorneo.IsVisible = false;
-            StackPleaseRememberTextAndImages.IsVisible = false;
+            StackPrincipal.IsVisible = false;
+            StacklayoutLetsGo.IsVisible = true;
             BtnListOfTheVerbs.IsVisible = false;
             LblVerbInPastSimpleCheck.IsVisible = false;
             LblVerbInPastParticipleCheck.IsVisible = false;
@@ -456,7 +457,7 @@ namespace PleaseRememberMe.Pantallas
             LblTorneo.IsVisible = false;
             LblTorneoEnCurso.IsVisible = false;
             BtnTerminarTorneo.IsVisible = false;
-            StackPleaseRememberTextAndImages.IsVisible = true;
+            
             lblexample1.IsVisible = false;
             lblexample2.IsVisible = false;
             lblexample3.IsVisible = false;
@@ -513,7 +514,7 @@ namespace PleaseRememberMe.Pantallas
             LblTorneo.IsVisible = false;
             LblTorneoEnCurso.IsVisible = false;
             BtnTerminarTorneo.IsVisible = false;
-            StackPleaseRememberTextAndImages.IsVisible = true;
+            
             StackLayoutVerbList.IsVisible = false;
             btnAjustes.IsVisible = true;
 
@@ -595,7 +596,7 @@ namespace PleaseRememberMe.Pantallas
             BtnTablaDePosiciones.IsVisible = true;
             StackTournament.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            StackPleaseRememberTextAndImages.IsVisible = true;
+            
             btnAjustes.IsVisible = true;
 
 
@@ -620,7 +621,7 @@ namespace PleaseRememberMe.Pantallas
             BtnTablaDePosiciones.IsVisible = true;
             StackTournament.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            StackPleaseRememberTextAndImages.IsVisible = true;
+            
             btnAjustes.IsVisible = true;
 
         }
@@ -677,7 +678,7 @@ namespace PleaseRememberMe.Pantallas
             BtnTablaDePosiciones.IsVisible = true;
             StackTournament.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            StackPleaseRememberTextAndImages.IsVisible = true;
+            
             btnAjustes.IsVisible = true;
 
         }
