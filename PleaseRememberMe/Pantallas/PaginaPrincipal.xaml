@@ -511,6 +511,20 @@
                  >
                         </Button>
 
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            x:Name="btnQuantifiers"
+                            Text="Quantifiers"
+                            TextColor="White"
+                            HeightRequest="80"
+                            BackgroundColor="#7cc151"
+                            CornerRadius="8"
+                            Clicked="btnQuantifiers_Clicked"
+                            >
+                        </Button>
+
                     </Grid>
 
 
@@ -1201,7 +1215,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Verb To Be - Page 17-->
+        <!--Stacklayout Any Some - Page 17-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutAnySome">
 
             <Grid >
@@ -1327,6 +1341,82 @@
                         <Label x:Name="LblCorrectAnswerVerbToBe" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerVerbToBe" Clicked="BtnCheckMyAnswerVerbToBe_Clicked" BackgroundColor="#F58134" TextColor="White"/>
                         <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreVerbToBe" Clicked="BtnOneMoreVerbToBe_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
+                    </StackLayout>
+                </Grid>
+
+
+            </StackLayout>
+        </StackLayout>
+
+        <!--Stacklayout Quantifiers - Page 18-->
+        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutQuantifiers">
+
+            <Grid >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png"  x:Name="BtnAtrasQuantifiers" Clicked="BtnAtrasQuantifiers_Clicked" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="VOLVER ATRAS"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout Margin="10,0,10,40">
+
+                <Grid RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="100"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Choose the correct answer." FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                    <Label Grid.Row="1" Margin="0,0,0,0" HorizontalOptions="Center" x:Name="LblQuantifiers" TextColor="#333"></Label>
+
+
+
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+
+                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                            <RadioButton GroupName="RadiosQuantifiers" x:Name="RadioButtonOption1" CheckedChanged="RadioButtonOption1_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
+                            <Label VerticalOptions="Center" x:Name="LblFirstOption"/>
+
+                        </StackLayout>
+
+                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                            <RadioButton GroupName="RadiosQuantifiers" x:Name="RadioButtonOption2" CheckedChanged="RadioButtonOption2_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
+                            <Label VerticalOptions="Center" x:Name="LblSecondOption" />
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3" Margin="0,0,0,0">
+                        <Label x:Name="LblCorrectAnswerQuantifiers" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
+                        <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerChoose" Clicked="BtnCheckMyAnswerChoose_Clicked" BackgroundColor="#F58134" TextColor="White"/>
+                        <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreChoose" Clicked="BtnOneMoreChoose_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
                 </Grid>
 

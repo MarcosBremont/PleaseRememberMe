@@ -27,6 +27,9 @@ namespace PleaseRememberMe.Pantallas
         string CorrectAnswerAnySome = "";
         string CorrectAnswerVerbToBe1 = "";
         string CorrectAnswerVerbToBe2 = "";
+        string CorrectAnswerQuantifiers = "";
+        string AnswerRadioButton1 = "";
+        string AnswerRadioButton2 = "";
         private bool _userTapped;
         ModalTournament modalTournament = new ModalTournament();
         ModalAboutMe modalAboutMe = new ModalAboutMe();
@@ -42,13 +45,14 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.EFamily> listFamily = new List<Entidad.EFamily>();
         List<Entidad.EAnySome> listAnySome = new List<Entidad.EAnySome>();
         List<Entidad.EVerbToBe> listVerbToBe = new List<Entidad.EVerbToBe>();
+        List<Entidad.EQuantifiers> listQuantifiers = new List<Entidad.EQuantifiers>();
         Metodos metodos = new Metodos();
         public PaginaPrincipal()
         {
             InitializeComponent();
 
 
-            
+
             LblTorneoEnCurso.IsVisible = false;
             LblTorneo.IsVisible = false;
             LblPuntos.IsVisible = false;
@@ -268,7 +272,7 @@ namespace PleaseRememberMe.Pantallas
         }
 
 
-      
+
 
         private void BtnAnotherOne_Clicked(object sender, EventArgs e)
         {
@@ -445,17 +449,17 @@ namespace PleaseRememberMe.Pantallas
             GridVolverAtrasPosiciones.IsVisible = false;
             StackLayoutTablaPosiciones.IsVisible = false;
             StacklayoutPrincipal.IsVisible = true;
-            
+
             GridVerbos.IsVisible = false;
             BtnLetsGo.IsVisible = true;
-            
 
-            
+
+
             LblPuntos.IsVisible = false;
             LblTorneo.IsVisible = false;
             LblTorneoEnCurso.IsVisible = false;
             BtnTerminarTorneo.IsVisible = false;
-            
+
             StackLayoutVerbList.IsVisible = false;
             btnAjustes.IsVisible = true;
 
@@ -533,10 +537,10 @@ namespace PleaseRememberMe.Pantallas
             StacklayoutPrincipal.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
             BtnLetsGo.IsVisible = true;
-            
-            
+
+
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            
+
             btnAjustes.IsVisible = true;
 
 
@@ -557,10 +561,10 @@ namespace PleaseRememberMe.Pantallas
             StacklayoutPrincipal.IsVisible = true;
             StackLayoutSettings.IsVisible = false;
             BtnLetsGo.IsVisible = true;
-            
-            
+
+
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            
+
             btnAjustes.IsVisible = true;
 
         }
@@ -613,10 +617,10 @@ namespace PleaseRememberMe.Pantallas
             StacklayoutPrincipal.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
             BtnLetsGo.IsVisible = true;
-            
-            
+
+
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            
+
             btnAjustes.IsVisible = true;
 
         }
@@ -820,7 +824,7 @@ namespace PleaseRememberMe.Pantallas
         {
             StackLayoutOtherTopics.IsVisible = false;
             StackLayoutClothes.IsVisible = true;
-            
+
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
             var datos = await metodos.GetClothes();
@@ -1302,6 +1306,93 @@ namespace PleaseRememberMe.Pantallas
                 TxtVerbToBe2.Text = "";
                 LblCorrectAnswerVerbToBe.IsVisible = false;
             }
+        }
+
+        private void BtnCheckMyAnswerChoose_Clicked(object sender, EventArgs e)
+        {
+
+            if (AnswerRadioButton1 == CorrectAnswerQuantifiers || AnswerRadioButton2 == CorrectAnswerQuantifiers)
+            {
+                LblCorrectAnswerQuantifiers.IsVisible = true;
+                LblCorrectAnswerQuantifiers.Text = "Correct";
+            }
+            else
+            {
+                LblCorrectAnswerQuantifiers.IsVisible = true;
+                LblCorrectAnswerQuantifiers.Text = "Incorrect";
+
+            }
+
+        }
+
+        private void BtnOneMoreChoose_Clicked(object sender, EventArgs e)
+        {
+            if (listQuantifiers.Count == 1)
+            {
+                UserDialogs.Instance.Toast("There's not more sentences.");
+            }
+            else
+            {
+                var random = new Random().Next(1, listQuantifiers.Count);
+                var elegido = listQuantifiers[random];
+                LblQuantifiers.Text = elegido.QuantifiersSentence;
+                LblFirstOption.Text = elegido.FirstOption;
+                LblSecondOption.Text = elegido.SecondOption;
+                CorrectAnswerQuantifiers = elegido.CorrectAnswer;
+                listQuantifiers.Remove(elegido);
+                RadioButtonOption1.IsChecked = false;
+                RadioButtonOption2.IsChecked = false;
+                LblCorrectAnswerQuantifiers.IsVisible = false;
+            }
+        }
+
+        private async void btnQuantifiers_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutQuantifiers.IsVisible = true;
+                LblCorrectAnswerQuantifiers.IsVisible = false;
+                RadioButtonOption1.IsChecked = false;
+                RadioButtonOption2.IsChecked = false;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a coffee");
+                var datos = await metodos.GetQuantifiers();
+                listQuantifiers = datos;
+                var random = new Random().Next(1, listQuantifiers.Count);
+                var elegido = listQuantifiers[random];
+                LblQuantifiers.Text = listQuantifiers[0].QuantifiersSentence;
+                LblFirstOption.Text = listQuantifiers[0].FirstOption;
+                LblSecondOption.Text = listQuantifiers[0].SecondOption;
+                CorrectAnswerQuantifiers = listQuantifiers[0].CorrectAnswer;
+                listQuantifiers.Remove(elegido);
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
+
+        private void BtnAtrasQuantifiers_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutQuantifiers.IsVisible = false;
+            StackLayoutOtherTopics.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void RadioButtonOption1_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            AnswerRadioButton1 = LblFirstOption.Text;
+            AnswerRadioButton2 = "";
+        }
+
+        private void RadioButtonOption2_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            AnswerRadioButton2 = LblSecondOption.Text;
+            AnswerRadioButton1 = "";
+
         }
 
         private void BtnAtrasVerbToBe_Clicked(object sender, EventArgs e)
