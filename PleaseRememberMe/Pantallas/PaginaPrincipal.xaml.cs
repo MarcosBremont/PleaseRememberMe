@@ -16,8 +16,8 @@ namespace PleaseRememberMe.Pantallas
 {
     public partial class PaginaPrincipal : ContentPage
     {
-        string VerbInSimplePast = "";
-        string VerbInPastParticiple = "";
+
+        string VerbInSimplePast = "", VerbInPastParticiple = "";
         string Traduccion = "";
         string CorrectAnswer = "";
         string CorrectAnswerPronoun = "";
@@ -48,7 +48,7 @@ namespace PleaseRememberMe.Pantallas
             InitializeComponent();
 
 
-            GridVolverAtras.IsVisible = false;
+            
             LblTorneoEnCurso.IsVisible = false;
             LblTorneo.IsVisible = false;
             LblPuntos.IsVisible = false;
@@ -256,43 +256,19 @@ namespace PleaseRememberMe.Pantallas
         {
 
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            BtnTerminarTorneo.IsVisible = false;
-            StackPrincipal.IsVisible = false;
+            StacklayoutPrincipal.IsVisible = false;
+            StackExamples.IsVisible = false;
+            StackTraducciones.IsVisible = false;
             StacklayoutLetsGo.IsVisible = true;
-            BtnListOfTheVerbs.IsVisible = false;
-            LblVerbInPastSimpleCheck.IsVisible = false;
-            LblVerbInPastParticipleCheck.IsVisible = false;
             txtVerbInPastSimple.Text = "";
             txtVerbInPastParticiple.Text = "";
-            btnAjustes.IsVisible = false;
             GetRandomVerb();
-            AparecerLabelYTextbox();
 
 
         }
 
 
-        public void AparecerLabelYTextbox()
-        {
-            LblVerbInPast.IsVisible = true;
-            LblVerbInPastSimple.IsVisible = true;
-            LblVerbInPastParticiple.IsVisible = true;
-            txtVerbInPast.IsVisible = true;
-            txtVerbInPastSimple.IsVisible = true;
-            txtVerbInPastParticiple.IsVisible = true;
-            BtnLetsGo.IsVisible = false;
-            BtnOtherTopics.IsVisible = false;
-            BtnAnotherOne.IsVisible = true;
-            BtnCheck.IsVisible = true;
-            BtnGiveMeSomeExamples.IsVisible = true;
-            lblVersion.IsVisible = true;
-            GridVolverAtras.IsVisible = true;
-            GridVerbos.IsVisible = true;
-            BtnTablaDePosiciones.IsVisible = false;
-            StackTournament.IsVisible = false;
-
-
-        }
+      
 
         private void BtnAnotherOne_Clicked(object sender, EventArgs e)
         {
@@ -314,25 +290,21 @@ namespace PleaseRememberMe.Pantallas
             txtVerbInPastParticiple.Text = "";
             LblVerbInPastSimpleCheck.IsVisible = false;
             LblVerbInPastParticipleCheck.IsVisible = false;
-            LblTrad.IsVisible = false;
-            LblTraduction.IsVisible = false;
+            StackTraducciones.IsVisible = false;
 
-            lblexample1.IsVisible = false;
-            lblexample2.IsVisible = false;
-            lblexample3.IsVisible = false;
-            lblExamplePast.IsVisible = false;
-            lblExamplePastSimple.IsVisible = false;
-            lblExamplePastParticiple.IsVisible = false;
+
+            StackExamples.IsVisible = false;
         }
 
         private void BtnCheck_Clicked(object sender, EventArgs e)
         {
             try
             {
+                StackTraducciones.IsVisible = false;
+
                 if (App.Torneo != "S")
                 {
-                    LblTrad.IsVisible = true;
-                    LblTraduction.IsVisible = true;
+                    StackTraducciones.IsVisible = true;
                     LblTraduction.Text = Traduccion;
                     LblVerbInPastSimpleCheck.IsVisible = true;
                     LblVerbInPastParticipleCheck.IsVisible = true;
@@ -431,45 +403,15 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnGiveMeSomeExamples_Clicked(object sender, EventArgs e)
         {
-            lblexample1.IsVisible = true;
-            lblexample2.IsVisible = true;
-            lblexample3.IsVisible = true;
-            lblExamplePast.IsVisible = true;
-            lblExamplePastSimple.IsVisible = true;
-            lblExamplePastParticiple.IsVisible = true;
+            StackExamples.IsVisible = true;
         }
 
         private void BtnAtras_Clicked(object sender, EventArgs e)
         {
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            GridVerbos.IsVisible = false;
-            GridVolverAtras.IsVisible = false;
-            BtnLetsGo.IsVisible = true;
-            BtnOtherTopics.IsVisible = true;
-
-            BtnCheck.IsVisible = false;
-            BtnAnotherOne.IsVisible = false;
-            BtnGiveMeSomeExamples.IsVisible = false;
-            StackLayoutTablaPosiciones.IsVisible = false;
-            BtnTablaDePosiciones.IsVisible = true;
-            StackTournament.IsVisible = true;
-            LblPuntos.IsVisible = false;
-            LblTorneo.IsVisible = false;
-            LblTorneoEnCurso.IsVisible = false;
-            BtnTerminarTorneo.IsVisible = false;
-            
-            lblexample1.IsVisible = false;
-            lblexample2.IsVisible = false;
-            lblexample3.IsVisible = false;
-            lblExamplePast.IsVisible = false;
-            lblExamplePastSimple.IsVisible = false;
-            LblTrad.IsVisible = false;
-            LblTraduction.IsVisible = false;
-            lblExamplePastParticiple.IsVisible = false;
-            LblNumerosDeVerbosRestantes.IsVisible = false;
-            BtnListOfTheVerbs.IsVisible = true;
+            StacklayoutLetsGo.IsVisible = false;
+            StacklayoutPrincipal.IsVisible = true;
             LblPuntos.Text = "0";
-            btnAjustes.IsVisible = true;
             App.Torneo = "N";
         }
 
@@ -503,13 +445,12 @@ namespace PleaseRememberMe.Pantallas
             GridVolverAtrasPosiciones.IsVisible = false;
             StackLayoutTablaPosiciones.IsVisible = false;
             StacklayoutPrincipal.IsVisible = true;
-            GridVolverAtras.IsVisible = false;
+            
             GridVerbos.IsVisible = false;
             BtnLetsGo.IsVisible = true;
-            BtnOtherTopics.IsVisible = true;
+            
 
-            BtnTablaDePosiciones.IsVisible = true;
-            StackTournament.IsVisible = true;
+            
             LblPuntos.IsVisible = false;
             LblTorneo.IsVisible = false;
             LblTorneoEnCurso.IsVisible = false;
@@ -592,9 +533,8 @@ namespace PleaseRememberMe.Pantallas
             StacklayoutPrincipal.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
             BtnLetsGo.IsVisible = true;
-            BtnOtherTopics.IsVisible = true;
-            BtnTablaDePosiciones.IsVisible = true;
-            StackTournament.IsVisible = true;
+            
+            
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             
             btnAjustes.IsVisible = true;
@@ -617,9 +557,8 @@ namespace PleaseRememberMe.Pantallas
             StacklayoutPrincipal.IsVisible = true;
             StackLayoutSettings.IsVisible = false;
             BtnLetsGo.IsVisible = true;
-            BtnOtherTopics.IsVisible = true;
-            BtnTablaDePosiciones.IsVisible = true;
-            StackTournament.IsVisible = true;
+            
+            
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             
             btnAjustes.IsVisible = true;
@@ -674,9 +613,8 @@ namespace PleaseRememberMe.Pantallas
             StacklayoutPrincipal.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
             BtnLetsGo.IsVisible = true;
-            BtnOtherTopics.IsVisible = true;
-            BtnTablaDePosiciones.IsVisible = true;
-            StackTournament.IsVisible = true;
+            
+            
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             
             btnAjustes.IsVisible = true;
