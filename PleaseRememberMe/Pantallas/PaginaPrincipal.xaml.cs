@@ -148,7 +148,7 @@ namespace PleaseRememberMe.Pantallas
             try
             {
                 var lista = listverbos;
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking water");
                 listverbos = await metodos.GetListadoVerbos();
                 UserDialogs.Instance.HideLoading();
             }
@@ -515,7 +515,7 @@ namespace PleaseRememberMe.Pantallas
                 StackLayoutVerbList.IsVisible = true;
                 btnAjustes.IsVisible = false;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
                 StacklayoutPrincipal.IsVisible = false;
                 var datos = await metodos.GetListadoVerbos();
                 lsv_ListaDeVerbos.ItemsSource = datos;
@@ -603,7 +603,7 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutVerbList.IsVisible = false;
             btnAjustes.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+            UserDialogs.Instance.ShowLoading("Wait, Do you want coffee?");
             StacklayoutPrincipal.IsVisible = false;
 
             UserDialogs.Instance.HideLoading();
@@ -632,7 +632,7 @@ namespace PleaseRememberMe.Pantallas
                 StackLayoutOtherTopics.IsVisible = false;
                 StackLayoutWasWereDid.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                UserDialogs.Instance.ShowLoading("Decide, black coffee or coffee with milk");
                 var datos = await metodos.GetWasWereSentences();
                 listSentences = datos;
                 var random = new Random().Next(1, listSentences.Count);
@@ -709,7 +709,7 @@ namespace PleaseRememberMe.Pantallas
                 StackLayoutOtherTopics.IsVisible = false;
                 StackLayoutMatch.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm looking the blue sky");
                 var datos = await metodos.GetMatchSentences();
                 listMatch = datos;
                 lsv_Math.ItemsSource = datos;
@@ -769,7 +769,7 @@ namespace PleaseRememberMe.Pantallas
                 StackLayoutOtherTopics.IsVisible = false;
                 StackLayoutComplete.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                UserDialogs.Instance.ShowLoading("Wait a minute, Do you want some cookies?");
                 var datos = await metodos.GetCompleteSentences();
                 var response = await metodos.GetAdjectives();
                 lsv_complete.ItemsSource = datos;
@@ -826,7 +826,7 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutClothes.IsVisible = true;
 
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+            UserDialogs.Instance.ShowLoading("Are you happy? I hope so");
             var datos = await metodos.GetClothes();
             listclothes = datos;
             lsv_clothes.ItemsSource = datos;
@@ -876,7 +876,7 @@ namespace PleaseRememberMe.Pantallas
                 StackLayoutOtherTopics.IsVisible = false;
                 StackLayoutPronouns.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                UserDialogs.Instance.ShowLoading("Did you drink water today?");
                 var datos = await metodos.GetPronouns();
                 listpronouns = datos;
                 var random = new Random().Next(1, listpronouns.Count);
@@ -952,7 +952,7 @@ namespace PleaseRememberMe.Pantallas
                 StackLayoutOtherTopics.IsVisible = false;
                 StackLayoutSimplePresent.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                UserDialogs.Instance.ShowLoading("Remember to drink water");
                 var datos = await metodos.GetSimplePresent();
                 listsimplepresent = datos;
                 var random = new Random().Next(1, listsimplepresent.Count);
@@ -1028,7 +1028,7 @@ namespace PleaseRememberMe.Pantallas
                 StackLayoutOtherTopics.IsVisible = false;
                 StackLayoutPreposisionsOfTime.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a coffee");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
                 var datos = await metodos.GetPrepositionsOfTimeSentences();
                 listprepositionsOfTime = datos;
                 var random = new Random().Next(1, listprepositionsOfTime.Count);
@@ -1103,7 +1103,7 @@ namespace PleaseRememberMe.Pantallas
                 StackLayoutOtherTopics.IsVisible = false;
                 StackLayoutFamily.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a coffee");
+                UserDialogs.Instance.ShowLoading("Remember, study for your quiz");
                 var datos = await metodos.GetFamily();
                 listFamily = datos;
                 var random = new Random().Next(1, listFamily.Count);
@@ -1175,7 +1175,7 @@ namespace PleaseRememberMe.Pantallas
                 StackLayoutOtherTopics.IsVisible = false;
                 StackLayoutAnySome.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a coffee");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating pizza");
                 var datos = await metodos.GetAnySome();
                 listAnySome = datos;
                 var random = new Random().Next(1, listAnySome.Count);
@@ -1247,7 +1247,7 @@ namespace PleaseRememberMe.Pantallas
                 StackLayoutOtherTopics.IsVisible = false;
                 StackLayoutVerbToBe.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a coffee");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a burrito");
                 var datos = await metodos.GetVerbToBe();
                 listVerbToBe = datos;
                 var random = new Random().Next(1, listVerbToBe.Count);
@@ -1356,7 +1356,7 @@ namespace PleaseRememberMe.Pantallas
                 RadioButtonOption1.IsChecked = false;
                 RadioButtonOption2.IsChecked = false;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a coffee");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a tea");
                 var datos = await metodos.GetQuantifiers();
                 listQuantifiers = datos;
                 var random = new Random().Next(1, listQuantifiers.Count);
