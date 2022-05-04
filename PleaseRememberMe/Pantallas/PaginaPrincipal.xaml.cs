@@ -669,7 +669,7 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
-                if (CorrectAnswer == TxtxCorrectAnswer.Text.ToUpper())
+                if (CorrectAnswer == TxtxCorrectAnswer.Text.ToUpper().Trim().Replace(".", ""))
                 {
                     LblCorrectAnswer.IsVisible = true;
                     LblCorrectAnswer.Text = "Correct";
@@ -913,7 +913,7 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
-                if (CorrectAnswerPronoun == TxtCorrectAnswerPronouns.Text.ToUpper())
+                if (CorrectAnswerPronoun == TxtCorrectAnswerPronouns.Text.ToUpper().Trim().Replace(".", ""))
                 {
                     LblCorrectAnswerPronouns.IsVisible = true;
                     LblCorrectAnswerPronouns.Text = "Correct";
@@ -989,7 +989,7 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
-                if (CorrectAnswerVerb == TxtVerbInCorrecForm.Text.ToUpper())
+                if (CorrectAnswerVerb == TxtVerbInCorrecForm.Text.ToUpper().Trim().Replace(".", ""))
                 {
                     LblCorrectAnswerVerb.IsVisible = true;
                     LblCorrectAnswerVerb.Text = "Correct";
@@ -1129,7 +1129,7 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
-                if (CorrectAnswerFamily == TxtFamilyMember.Text.ToUpper())
+                if (CorrectAnswerFamily == TxtFamilyMember.Text.ToUpper().Trim().Replace(".", ""))
                 {
                     LblCorrectAnswerFamily.IsVisible = true;
                     LblCorrectAnswerFamily.Text = "Correct";
@@ -1208,7 +1208,7 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
-                if (CorrectAnswerAnySome == TxtAnySome.Text.ToUpper())
+                if (CorrectAnswerAnySome == TxtAnySome.Text.ToUpper().Trim().Replace(".", ""))
                 {
                     LblCorrectAnswerAnySome.IsVisible = true;
                     LblCorrectAnswerAnySome.Text = "Correct";
@@ -1274,7 +1274,7 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
-                if (CorrectAnswerVerbToBe1 == TxtVerbToBe.Text.ToUpper() && CorrectAnswerVerbToBe2 == TxtVerbToBe2.Text.ToUpper())
+                if (CorrectAnswerVerbToBe1 == TxtVerbToBe.Text.ToUpper().Trim().Replace(".", "") && CorrectAnswerVerbToBe2 == TxtVerbToBe2.Text.ToUpper().Trim().Replace(".", ""))
                 {
                     LblCorrectAnswerVerbToBe.IsVisible = true;
                     LblCorrectAnswerVerbToBe.Text = "Correct";
