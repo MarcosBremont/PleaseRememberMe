@@ -18,20 +18,20 @@
 
                     <ImageButton Clicked="btnAjustes_Clicked" x:Name="btnAjustes" BackgroundColor="Transparent" WidthRequest="25" HorizontalOptions="End" Margin="0,10,20,0" Source="settingOrange"></ImageButton>
 
-                    <Label Margin="0,5,0,0"  Grid.Row="0" Text="Please Remember Me" FontSize="25" TextColor="#333" FontAttributes="Bold" HorizontalOptions="Center"/>
-                    <Image Source="BrainLogo.png" WidthRequest="200"></Image>
-                    <Label HorizontalTextAlignment="Center" Grid.Row="1" Text="This is an app that would help you to remember all the verbs for the English class." TextColor="#333" FontSize="10" Padding="25,0,25,0"/>
+                    <Label Margin="0,5,0,10"  Grid.Row="0" Text="Remember Me" FontSize="25" TextColor="#333" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Image Source="BrainLogo.png" WidthRequest="150"></Image>
+                    <Label HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="1" Text="¿Are you ready for learn?" TextColor="#333" FontSize="14" Margin="0,10,0,0" Padding="25,0,25,0"/>
 
-                    <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,0,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Let's Go" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
+                    <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Let's Go" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                     <!--LayoutPrincipal-->
-                    <Button x:Name="BtnListOfTheVerbs" Clicked="BtnListOfTheVerbs_Clicked" WidthRequest="250" Margin="0,0,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verb List" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
-                    <Button x:Name="BtnTablaDePosiciones" Clicked="BtnTablaDePosiciones_Clicked"  WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Leaderboard" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
+                    <Button x:Name="BtnListOfTheVerbs" Clicked="BtnListOfTheVerbs_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verb List" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
+                    <Button x:Name="BtnTablaDePosiciones" IsVisible="false" Clicked="BtnTablaDePosiciones_Clicked"  WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Leaderboard" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                     <!--LayoutPrincipal-->
                     <Button x:Name="BtnOtherTopics" Clicked="BtnOtherTopics_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Other Topics" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
-                    <StackLayout x:Name="StackTournament">
+                    <!--<StackLayout x:Name="StackTournament" IsVisible="false">
                         <ImageButton x:Name="BtnTournament" Clicked="BtnTournament_Clicked" Source="winning.png" BackgroundColor="Transparent" WidthRequest="50" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3"/>
                         <Label x:Name="lbltouchhere" FontSize="12"  HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Touch here for enter to a tournament" TextColor="#333"></Label>
-                    </StackLayout>
+                    </StackLayout>-->
 
                     <Label x:Name="lblVersion" Margin="0,10,0,0" VerticalOptions="EndAndExpand"  Text="Versión 2.7" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
 
@@ -92,10 +92,10 @@
 
 
                 <!--Labels LetsGo-->
-                <Label x:Name="LblPuntos" HorizontalTextAlignment="Center" Grid.Row="1" Text="0" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
+                <!--<Label x:Name="LblPuntos" HorizontalTextAlignment="Center" Grid.Row="1" Text="0" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
                 <Label x:Name="LblTorneoEnCurso" HorizontalTextAlignment="Center" Grid.Row="1" Text="Torneo en curso." TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
                 <Label x:Name="LblNumerosDeVerbosRestantes" HorizontalTextAlignment="Center" Grid.Row="1" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
-                <Label x:Name="LblTorneo" HorizontalTextAlignment="Center" Grid.Row="1" Text="Try to put all the verbs in the correct form and get points fot that." TextColor="#333" FontSize="16" Padding="25,0,25,0"/>
+                <Label x:Name="LblTorneo" HorizontalTextAlignment="Center" Grid.Row="1" Text="Try to put all the verbs in the correct form and get points fot that." TextColor="#333" FontSize="16" Padding="25,0,25,0"/>-->
 
 
                 <Label FontSize="11" x:Name="LblVerbInPast"  Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="Verb" TextColor="#333"></Label>
@@ -124,7 +124,7 @@
                     </StackLayout>
 
                     <!--LayoutTorneo-->
-                    <Button x:Name="BtnTerminarTorneo" Clicked="BtnTerminarTorneo_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="FINISH TOURNAMENT" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
+                    <!--<Button x:Name="BtnTerminarTorneo" Clicked="BtnTerminarTorneo_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="FINISH TOURNAMENT" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>-->
                     <!--LayoutPrincipal-->
                     <Button x:Name="BtnCheck" Clicked="BtnCheck_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Check" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
 
@@ -323,9 +323,6 @@
         <!--Stacklayout OtherTopics - Page 5-->
         <StackLayout IsVisible="false"   x:Name="StackLayoutOtherTopics">
 
-
-
-
             <Grid x:Name="GridVolverAtrasOtherTopics">
 
                 <Grid.RowDefinitions>
@@ -351,14 +348,16 @@
                 </StackLayout>
 
             </Grid>
-            <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" HorizontalOptions="FillAndExpand">
-                <StackLayout Margin="10,0,10,40" VerticalOptions="FillAndExpand"  x:Name="LayoutOtherTopics">
+            <ScrollView  Margin="10,0,10,90" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand"  x:Name="LayoutOtherTopics">
 
                     <Label HorizontalOptions="Center" Text="Other Topics" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
                     <Grid RowSpacing="0">
 
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
                             <RowDefinition Height="100"/>
                             <RowDefinition Height="100"/>
                             <RowDefinition Height="100"/>
@@ -378,7 +377,7 @@
                  x:Name="btnWasWereDid"
                  Text="Was - Were"
                  TextColor="White"
-                 HeightRequest="80"
+                 HeightRequest="60"
                  BackgroundColor="#939393"
                  Margin="5,5,5,5"
                  CornerRadius="8"
@@ -393,7 +392,7 @@
                  x:Name="BtnMatch"
                  Text="Professions"
                  TextColor="White"
-                 HeightRequest="80"
+                 HeightRequest="60"
                  BackgroundColor="#3F79AC"
                  CornerRadius="8"
                         Clicked="BtnMatch_Clicked"
@@ -407,7 +406,7 @@
                  x:Name="btnComplete"
                  Text="Comparisons"
                  TextColor="White"
-                 HeightRequest="80"
+                 HeightRequest="60"
                  BackgroundColor="#D09625"
                  CornerRadius="8"
                  Clicked="btnComplete_Clicked"
@@ -421,7 +420,7 @@
                  x:Name="btnSClothes"
                  Text="Clothes"
                  TextColor="White"
-                 HeightRequest="80"
+                 HeightRequest="60"
                  BackgroundColor="#7cc151"
                  CornerRadius="8"
                         Clicked="btnSClothes_Clicked"
@@ -435,7 +434,7 @@
                  x:Name="btnPronouns"
                  Text="Demonstrative Pronouns"
                  TextColor="White"
-                 HeightRequest="80"
+                 HeightRequest="60"
                  BackgroundColor="#939393"
                  Margin="5,5,5,5"
                  CornerRadius="8"
@@ -450,7 +449,7 @@
                  x:Name="btnSimplePresent"
                  Text="Simple Present"
                  TextColor="White"
-                 HeightRequest="80"
+                 HeightRequest="60"
                  BackgroundColor="#3F79AC"
                  CornerRadius="8"
                  Clicked="btnSimplePresent_Clicked">
@@ -463,7 +462,7 @@
                  x:Name="btnPrepositionsoftime"
                  Text="Prepositions of time"
                  TextColor="White"
-                 HeightRequest="80"
+                 HeightRequest="60"
                  BackgroundColor="#D09625"
                  CornerRadius="8"
                         Clicked="btnPrepositionsoftime_Clicked"
@@ -477,7 +476,7 @@
                  x:Name="btnFamilyVocabulary"
                  Text="Family - vocabulary"
                  TextColor="White"
-                 HeightRequest="80"
+                 HeightRequest="60"
                  BackgroundColor="#7cc151"
                  CornerRadius="8"
                         Clicked="btnFamilyVocabulary_Clicked"
@@ -492,7 +491,7 @@
                  x:Name="btnAnySome"
                  Text="Any - Some"
                  TextColor="White"
-                 HeightRequest="80"
+                 HeightRequest="60"
                  BackgroundColor="#D09625"
                  CornerRadius="8"
                         Clicked="btnAnySome_Clicked"
@@ -506,7 +505,7 @@
                  x:Name="btnVerbToBe"
                  Text="Verb To Be"
                  TextColor="White"
-                 HeightRequest="80"
+                 HeightRequest="60"
                  BackgroundColor="#7cc151"
                  CornerRadius="8"
                         Clicked="btnVerbToBe_Clicked"
@@ -520,7 +519,7 @@
                             x:Name="btnQuantifiers"
                             Text="Quantifiers"
                             TextColor="White"
-                            HeightRequest="80"
+                            HeightRequest="60"
                             BackgroundColor="#7cc151"
                             CornerRadius="8"
                             Clicked="btnQuantifiers_Clicked"
@@ -757,7 +756,6 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0">
@@ -782,11 +780,12 @@
 
             <StackLayout Margin="10,0,10,0">
 
-                <Grid RowSpacing="0">
+                <Grid VerticalOptions="FillAndExpand" RowSpacing="0">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
 
                     </Grid.RowDefinitions>
@@ -806,7 +805,6 @@
                                     <DataTemplate>
                                         <StackLayout HorizontalOptions="StartAndExpand" Margin="0,0,0,0">
                                             <Label FontSize="12" TextColor="#333" Text="{Binding Adjective}"/>
-
                                         </StackLayout>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
@@ -818,7 +816,7 @@
 
                     </Frame>
 
-                    <ListView BackgroundColor="Transparent"  Margin="0,10,0,30" SelectionMode="None"  Grid.Row="2" x:Name="lsv_complete"  SeparatorVisibility="Default" SeparatorColor="Transparent" HasUnevenRows="True" >
+                    <ListView VerticalOptions="StartAndExpand" BackgroundColor="Transparent"  Margin="0,10,0,-200" SelectionMode="None"  Grid.Row="2" x:Name="lsv_complete"  SeparatorVisibility="Default" SeparatorColor="Transparent" HasUnevenRows="True" >
 
                         <ListView.ItemTemplate>
 
@@ -827,7 +825,7 @@
                                 <ViewCell>
 
 
-                                    <Grid BackgroundColor="Transparent">
+                                    <Grid  BackgroundColor="Transparent">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="20"/>
                                             <RowDefinition Height="50"/>
@@ -863,14 +861,15 @@
         </StackLayout>
 
         <!--Stacklayout Clothes - Page 12-->
-        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutClothes">
+        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,10"  x:Name="StackLayoutClothes">
 
             <Grid >
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
+
 
                 <StackLayout Grid.Row="0">
                     <Grid VerticalOptions="FillAndExpand">
@@ -892,65 +891,52 @@
 
             </Grid>
 
-            <StackLayout Margin="10,0,10,0">
-
-                <Grid RowSpacing="0">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="10"/>
-                        <RowDefinition Height="*"/>
-
-                    </Grid.RowDefinitions>
-
-
-                    <Label Grid.Row="0" HorizontalOptions="Center" Text="What clothe is this?" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-
-                    <ListView BackgroundColor="Transparent"  Margin="0,0,0,100" SelectionMode="None"  Grid.Row="2" x:Name="lsv_clothes"  SeparatorVisibility="Default" SeparatorColor="Transparent" HasUnevenRows="True" >
-
-                        <ListView.ItemTemplate>
-
-                            <DataTemplate >
-
-                                <ViewCell>
-
-
-                                    <Grid BackgroundColor="Transparent">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="100"/>
-                                            <RowDefinition Height="50"/>
-                                            <RowDefinition Height="*"/>
-
-                                        </Grid.RowDefinitions>
-
-                                        <StackLayout Grid.Row="0" Margin="0,0,0,0" Orientation="Vertical">
-                                            <Image WidthRequest="100" IsVisible="true" Source="{Binding imgclothe}"></Image>
-
-
-                                        </StackLayout>
-                                        <StackLayout Grid.Row="1" Margin="0,0,0,0" Orientation="Horizontal">
-                                            <Entry Placeholder="Answer" Text="{Binding txtclothes}" VerticalOptions="CenterAndExpand" Margin="0,0,0,0" HorizontalOptions="FillAndExpand"  FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="White" ></Entry>
-                                            <Image WidthRequest="20" IsVisible="true" Source="{Binding imagen}"></Image>
-                                        </StackLayout>
-                                    </Grid>
-
-
-                                    <!--ITEM-->
-                                </ViewCell>
-                            </DataTemplate>
-
-
-                        </ListView.ItemTemplate>
-
-                    </ListView>
 
 
 
-
-                </Grid>
-
-
+            <StackLayout Grid.Row="0">
+                <Label Grid.Row="0" HorizontalOptions="Center" Text="What clothe is this?" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
             </StackLayout>
+
+
+
+            <ListView VerticalOptions="FillAndExpand" BackgroundColor="Transparent"  Margin="0,0,0,100" SelectionMode="None"  Grid.Row="1" x:Name="lsv_clothes"  SeparatorVisibility="Default" SeparatorColor="Transparent" HasUnevenRows="True" >
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate >
+
+                        <ViewCell>
+                            <Grid BackgroundColor="Transparent" Margin="10,0,10,0" VerticalOptions="FillAndExpand">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <StackLayout Grid.Row="0" Margin="0,0,0,0" Orientation="Vertical">
+                                    <Image WidthRequest="80" IsVisible="true" Source="{Binding imgclothe}"></Image>
+                                </StackLayout>
+
+                                <StackLayout Grid.Row="1" HorizontalOptions="CenterAndExpand"  Margin="0,0,0,0" Orientation="Horizontal">
+                                    <Entry Placeholder="Answer" WidthRequest="250" Text="{Binding txtclothes}"  Margin="0,0,0,0"  FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="White" ></Entry>
+                                    <Image WidthRequest="15" IsVisible="true" Source="{Binding imagen}"></Image>
+                                </StackLayout>
+
+                            </Grid>
+
+
+                            <!--ITEM-->
+                        </ViewCell>
+                    </DataTemplate>
+
+
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+
         </StackLayout>
 
         <!--Stacklayout Pronouns - Page 13-->
@@ -986,8 +972,9 @@
                 <Grid RowSpacing="0">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="80"/>
                         <RowDefinition Height="100"/>
 
                     </Grid.RowDefinitions>
@@ -997,19 +984,22 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Complete with This - That- These - Those" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                    <StackLayout Grid.Row="0">
+                        <Label Grid.Row="0" HorizontalOptions="Center" Text="Demostratives Pronouns" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                        <Label Grid.Row="0" HorizontalOptions="Center" Text="Complete with This - That- These - Those" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                    </StackLayout>
 
 
-                    <Label  Margin="0,40,0,0" HorizontalOptions="Center" x:Name="lblPronouns" TextColor="#333"></Label>
+                    <Label Grid.Row="1" HorizontalOptions="Center" x:Name="lblPronouns" TextColor="#333"></Label>
 
-                    <StackLayout Grid.Row="1" Margin="0,0,0,0">
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
                         <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
                         <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtCorrectAnswerPronouns" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
                         <Label x:Name="LblCorrectAnswerPronouns" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
                     </StackLayout>
 
-                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                    <StackLayout Grid.Row="3" Margin="0,0,0,0">
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerPronouns" Clicked="BtnCheckMyAnswerPronouns_Clicked" BackgroundColor="#F58134" TextColor="White"/>
                         <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMorePronoun" Clicked="BtnOneMorePronoun_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
@@ -1053,7 +1043,8 @@
                 <Grid RowSpacing="0">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="50"/>
                         <RowDefinition Height="100"/>
                         <RowDefinition Height="100"/>
 
@@ -1066,15 +1057,16 @@
 
                     <Label Grid.Row="0" HorizontalOptions="Center" Text="Change the verb into the correct form, then press Check My Answer to check your answers." FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
-                    <Label  Margin="0,60,0,0" HorizontalOptions="Center" x:Name="lblSimplePresent" TextColor="#333"></Label>
-                    <StackLayout Grid.Row="1" Margin="0,0,0,0">
+                    <Label  Grid.Row="1" HorizontalOptions="Center" x:Name="lblSimplePresent" TextColor="#333"></Label>
+
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
                         <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
                         <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtVerbInCorrecForm" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
                         <Label x:Name="LblCorrectAnswerVerb" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
                     </StackLayout>
 
-                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                    <StackLayout Grid.Row="3" Margin="0,0,0,0">
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerSimplePresent" Clicked="BtnCheckMyAnswerSimplePresent_Clicked" BackgroundColor="#F58134" TextColor="White"/>
                         <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreSimplePresent" Clicked="BtnOneMoreSimplePresent_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
@@ -1118,8 +1110,9 @@
                 <Grid RowSpacing="0">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="80"/>
                         <RowDefinition Height="100"/>
 
                     </Grid.RowDefinitions>
@@ -1128,20 +1121,22 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
+                    <StackLayout Grid.Row="0">
+                        <Label HorizontalOptions="Center" Text="Prepositions of time" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                        <Label HorizontalOptions="Center" Text="Complete with in / on / at" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                    </StackLayout>
 
-                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Exercises: in / on / at" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
+                    <Label Grid.Row="1" HorizontalOptions="Center" x:Name="lblPrepositionsOfTime" TextColor="#333"></Label>
 
-                    <Label  Margin="0,60,0,0" HorizontalOptions="Center" x:Name="lblPrepositionsOfTime" TextColor="#333"></Label>
-
-                    <StackLayout Grid.Row="1" Margin="0,0,0,0">
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
                         <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
                         <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtPrepositionsOfTime" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
                         <Label x:Name="LblCorrectAnswerPrepositionsOfTime" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
                     </StackLayout>
 
-                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                    <StackLayout Grid.Row="3" Margin="0,0,0,0">
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerPrepositionsOfTime" Clicked="BtnCheckMyAnswerPrepositionsOfTime_Clicked" BackgroundColor="#F58134" TextColor="White"/>
                         <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMorePrepositionsOfTime" Clicked="BtnOneMorePrepositionsOfTime_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
@@ -1184,7 +1179,8 @@
                 <Grid RowSpacing="0">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="60"/>
                         <RowDefinition Height="100"/>
                         <RowDefinition Height="100"/>
 
@@ -1194,20 +1190,21 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
+                    <StackLayout Grid.Row="0">
+                        <Label Grid.Row="0" HorizontalOptions="Center" Text="Exercises: my family tree" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                        <Label Grid.Row="0" HorizontalOptions="Center" Text="Complete with the family members" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                    </StackLayout>
 
-                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Exercises: my family tree" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                    <Label  Grid.Row="1" HorizontalOptions="Center" x:Name="LblFamilySentences" TextColor="#333"></Label>
 
-
-                    <Label  Margin="0,60,0,0" HorizontalOptions="Center" x:Name="LblFamilySentences" TextColor="#333"></Label>
-
-                    <StackLayout Grid.Row="1" Margin="0,0,0,0">
-                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer?" TextColor="#333"></Label>
                         <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtFamilyMember" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
                         <Label x:Name="LblCorrectAnswerFamily" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
                     </StackLayout>
 
-                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                    <StackLayout Grid.Row="3" Margin="0,0,0,0">
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerFamily" Clicked="BtnCheckMyAnswerFamily_Clicked" BackgroundColor="#F58134" TextColor="White"/>
                         <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreFamily" Clicked="BtnOneMoreFamily_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
@@ -1250,8 +1247,9 @@
                 <Grid RowSpacing="0">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="70"/>
                         <RowDefinition Height="100"/>
 
                     </Grid.RowDefinitions>
@@ -1260,20 +1258,22 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
+                    <StackLayout Grid.Row="0">
+                        <Label Grid.Row="0" HorizontalOptions="Center" Text="Complete with some or any" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                        <Label Grid.Row="0" HorizontalOptions="Center" Text="Exercise 1: indefinite" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                    </StackLayout>
 
-                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Exercise 1: indefinite" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
+                    <Label Grid.Row="1" HorizontalOptions="Center" x:Name="LblAnySome" TextColor="#333"></Label>
 
-                    <Label  Margin="0,60,0,0" HorizontalOptions="Center" x:Name="LblAnySome" TextColor="#333"></Label>
-
-                    <StackLayout Grid.Row="1" Margin="0,0,0,0">
-                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer?" TextColor="#333"></Label>
                         <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtAnySome" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
                         <Label x:Name="LblCorrectAnswerAnySome" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
                     </StackLayout>
 
-                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                    <StackLayout Grid.Row="3" Margin="0,20,0,0">
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerAnySome" Clicked="BtnCheckMyAnswerAnySome_Clicked" BackgroundColor="#F58134" TextColor="White"/>
                         <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreAnySome" Clicked="BtnOneMoreAnySome_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
@@ -1317,6 +1317,7 @@
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
                         <RowDefinition Height="100"/>
                         <RowDefinition Height="100"/>
 
@@ -1326,20 +1327,22 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
+                    <StackLayout Grid.Row="0" Orientation="Vertical">
+                        <Label Grid.Row="0" HorizontalOptions="Center" Text="Verb To Be" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                        <Label Grid.Row="0" HorizontalOptions="Center" FontAttributes="Bold" Text="Finish the answers using the correct forms of to be (am, are, is)." Margin="0,0,0,0" TextColor="#333"></Label>
+                    </StackLayout>
 
-                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Finish the answers using the correct forms of to be (am, are, is)." FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
+                    <Label Grid.Row="1" HorizontalOptions="Center"  x:Name="LblVerbToBeExercise" TextColor="#333"></Label>
 
-                    <Label  Margin="0,60,0,0" HorizontalOptions="Center" x:Name="LblVerbToBeExercise" TextColor="#333"></Label>
-
-                    <StackLayout Grid.Row="1" Margin="0,0,0,0">
-                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer?" TextColor="#333"></Label>
                         <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtVerbToBe" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
                         <Entry  HorizontalOptions="FillAndExpand" Placeholder="Second Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtVerbToBe2" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
 
                     </StackLayout>
 
-                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                    <StackLayout Grid.Row="3" Margin="0,20,0,0">
                         <Label x:Name="LblCorrectAnswerVerbToBe" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerVerbToBe" Clicked="BtnCheckMyAnswerVerbToBe_Clicked" BackgroundColor="#F58134" TextColor="White"/>
                         <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreVerbToBe" Clicked="BtnOneMoreVerbToBe_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
@@ -1394,7 +1397,7 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Choose the correct answer." FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Quantifiers - Choose the correct answer." FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
                     <Label Grid.Row="1" Margin="0,0,0,0" HorizontalOptions="Center" x:Name="LblQuantifiers" TextColor="#333"></Label>
 
 
@@ -1402,13 +1405,13 @@
                     <StackLayout Grid.Row="2" Margin="0,0,0,0">
 
                         <StackLayout VerticalOptions="Center" Orientation="Horizontal">
-                            <RadioButton GroupName="RadiosQuantifiers" x:Name="RadioButtonOption1" CheckedChanged="RadioButtonOption1_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
+                            <RadioButton BackgroundColor="Transparent" GroupName="RadiosQuantifiers" x:Name="RadioButtonOption1" CheckedChanged="RadioButtonOption1_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
                             <Label TextColor="#333" VerticalOptions="Center" x:Name="LblFirstOption"/>
 
                         </StackLayout>
 
                         <StackLayout VerticalOptions="Center" Orientation="Horizontal">
-                            <RadioButton GroupName="RadiosQuantifiers" x:Name="RadioButtonOption2" CheckedChanged="RadioButtonOption2_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
+                            <RadioButton BackgroundColor="Transparent" GroupName="RadiosQuantifiers" x:Name="RadioButtonOption2" CheckedChanged="RadioButtonOption2_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
                             <Label TextColor="#333" VerticalOptions="Center" x:Name="LblSecondOption" />
 
                         </StackLayout>
