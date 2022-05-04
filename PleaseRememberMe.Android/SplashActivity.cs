@@ -12,7 +12,7 @@ using System.Text;
 
 namespace PleaseRememberMe.Droid
 {
-    [Activity(Label = "Please Remember Me", Theme = "@style/SplashTheme", MainLauncher = true, NoHistory = true, ConfigurationChanges = ConfigChanges.ScreenSize)]
+    [Activity(Label = "Remember Me", Theme = "@style/SplashTheme", MainLauncher = true, NoHistory = true, ConfigurationChanges = ConfigChanges.ScreenSize)]
 
     public class SplashActivity : Activity
     {

@@ -4,7 +4,7 @@
     <color android:color="@color/splash_background"/>
   </item>
   <item>
-    <bitmap android:src="@drawable/logo250"
+    <bitmap android:src="@drawable/RememberMe250"
             android:tileMode="disabled"
             android:gravity="center"/>
   </item>

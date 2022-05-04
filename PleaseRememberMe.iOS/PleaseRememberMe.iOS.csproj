@@ -37,8 +37,8 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
   </PropertyGroup>
-    <PropertyGroup>
-      <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
+  <PropertyGroup>
+    <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -188,5 +188,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\winning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\NuevoLogoRememberMeCuadrado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\NuevoLogoRememberMe.png" />
   </ItemGroup>
 </Project>

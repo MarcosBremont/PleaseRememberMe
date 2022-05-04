@@ -8,7 +8,7 @@
         <Frame CornerRadius="4" Margin="15,50,15,30">
 
             <StackLayout  BackgroundColor="White">
-                <Label TextColor="#333" HorizontalOptions="CenterAndExpand" Margin="0,20,0,10" Text="Hi, I'm Marcos Bremont"></Label>
+                <Label TextColor="#333" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,20,0,10" Text="Hi, I'm Marcos Bremont"></Label>
 
                 <Image WidthRequest="150" Source="CircularPhoto"></Image>
 
