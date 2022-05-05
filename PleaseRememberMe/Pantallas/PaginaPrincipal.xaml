@@ -320,6 +320,100 @@
             </StackLayout>
         </StackLayout>
 
+        <!--Stacklayout Category - Page 6-->
+        <StackLayout IsVisible="false" x:Name="StackLayoutCategory">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png" x:Name="BtnAtrasCategory" Clicked="BtnAtrasCategory_Clicked" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="GO BACK"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+            <ScrollView  Margin="10,0,10,90" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand" >
+
+                    <Label HorizontalOptions="Center" Text="Category" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+                    <Grid RowSpacing="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Button 
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            x:Name="BtnSimplePresentCategory"
+                            Text="Simple Present"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#F58134"
+                            Margin="5,5,5,5"
+                            CornerRadius="8"
+                            Clicked="BtnSimplePresentCategory_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="Grammar"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#225DD5"
+                            CornerRadius="8" 
+                            x:Name="BtnGrammarCategory"
+                            Clicked="BtnGrammarCategory_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="Vocabulary"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#5E8138"
+                            CornerRadius="8"
+                            x:Name="BtnVocabularyCategory"
+                            Clicked="BtnVocabularyCategory_Clicked"/>
+
+                    </Grid>
+
+
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+
         <!--Stacklayout OtherTopics - Page 5-->
         <StackLayout IsVisible="false"   x:Name="StackLayoutOtherTopics">
 
@@ -371,6 +465,69 @@
                         </Grid.ColumnDefinitions>
 
 
+                      
+
+                       
+
+                       
+                    </Grid>
+
+
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+
+        <!--Stacklayout SimplePastCategory - Page 5-->
+        <StackLayout IsVisible="false" x:Name="StackLayoutsimplePastCategory">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasSimplePastCategory_Clicked"  BackgroundColor="Transparent" x:Name="BtnAtrasSimplePastCategory" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="GO BACK"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+            <ScrollView  Margin="10,0,10,90" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
+
+                    <Label HorizontalOptions="Center" Text="Simple Past Category" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+                    <Grid RowSpacing="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
                         <Button 
                             Grid.Row="0"
                             Grid.Column="0"
@@ -382,18 +539,6 @@
                             Margin="5,5,5,5"
                             CornerRadius="8"
                             Clicked="btnWasWereDid_Clicked"/>
-
-                        <Button 
-                            Margin="5,5,5,5"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            x:Name="BtnMatch"
-                            Text="Professions"
-                            TextColor="White"
-                            HeightRequest="60"
-                            BackgroundColor="#225DD5"
-                            CornerRadius="8"
-                            Clicked="BtnMatch_Clicked"/>
 
                         <Button 
                             Margin="5,5,5,5"
@@ -517,6 +662,135 @@
                             CornerRadius="8"
                             Clicked="btnQuestionsHow_Clicked"/>
 
+
+                    </Grid>
+
+
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+
+        <!--Stacklayout GrammarCategory - Page 5-->
+        <StackLayout IsVisible="false" x:Name="StackLayoutGramarCategory">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png" Clicked="BtnVolverAtrasGrammarCategory_Clicked" x:Name="BtnVolverAtrasGrammarCategory" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="GO BACK"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+            <ScrollView  Margin="10,0,10,90" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
+
+                    <Label HorizontalOptions="Center" Text="Grammar Category" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+                    <Grid RowSpacing="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            x:Name="BtnMatch"
+                            Text="Professions"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#225DD5"
+                            CornerRadius="8"
+                            Clicked="BtnMatch_Clicked"/>
+                    </Grid>
+
+
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+
+        <!--Stacklayout VocabularyCategory - Page 5-->
+        <StackLayout IsVisible="false" x:Name="StackLayoutVocabularyCategory">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png"  BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="GO BACK"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+            <ScrollView  Margin="10,0,10,90" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
+
+                    <Label HorizontalOptions="Center" Text="Grammar Category" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+                    <Grid RowSpacing="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+                       
                     </Grid>
 
 

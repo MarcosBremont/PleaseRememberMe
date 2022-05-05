@@ -595,13 +595,12 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnOtherTopics_Clicked(object sender, EventArgs e)
         {
-            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutCategory.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
             btnAjustes.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait, Do you want coffee?");
             StacklayoutPrincipal.IsVisible = false;
-
             UserDialogs.Instance.HideLoading();
         }
 
@@ -625,7 +624,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutsimplePastCategory.IsVisible = false;
                 StackLayoutWasWereDid.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Decide, black coffee or coffee with milk");
@@ -654,7 +653,7 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutWasWereDid.IsVisible = false;
 
             GridVolverAtrasVerbList.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutsimplePastCategory.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -687,7 +686,7 @@ namespace PleaseRememberMe.Pantallas
         {
             if (listSentences.Count == 1)
             {
-                UserDialogs.Instance.Toast("There's not more sentences.");
+                UserDialogs.Instance.Toast("There aren’t any more sentences");
             }
             else
             {
@@ -705,7 +704,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutGramarCategory.IsVisible = false;
                 StackLayoutMatch.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm looking the blue sky");
@@ -727,7 +726,7 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutWasWereDid.IsVisible = false;
             StackLayoutMatch.IsVisible = false;
             GridVolverAtrasVerbList.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutGramarCategory.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -763,7 +762,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutsimplePastCategory.IsVisible = false;
                 StackLayoutComplete.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, Do you want some cookies?");
@@ -787,7 +786,7 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutWasWereDid.IsVisible = false;
             StackLayoutComplete.IsVisible = false;
             GridVolverAtrasVerbList.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutsimplePastCategory.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -819,7 +818,7 @@ namespace PleaseRememberMe.Pantallas
 
         async void btnSClothes_Clicked(System.Object sender, System.EventArgs e)
         {
-            StackLayoutOtherTopics.IsVisible = false;
+            StackLayoutCategory.IsVisible = false;
             StackLayoutClothes.IsVisible = true;
 
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
@@ -930,7 +929,7 @@ namespace PleaseRememberMe.Pantallas
         {
             if (listpronouns.Count == 1)
             {
-                UserDialogs.Instance.Toast("There's not more sentences.");
+                UserDialogs.Instance.Toast("There aren’t any more sentences");
             }
             else
             {
@@ -1009,7 +1008,7 @@ namespace PleaseRememberMe.Pantallas
         {
             if (listsimplepresent.Count == 1)
             {
-                UserDialogs.Instance.Toast("There's not more sentences.");
+                UserDialogs.Instance.Toast("There aren’t any more sentences");
             }
             else
             {
@@ -1077,7 +1076,7 @@ namespace PleaseRememberMe.Pantallas
         {
             if (listprepositionsOfTime.Count == 1)
             {
-                UserDialogs.Instance.Toast("There's not more sentences.");
+                UserDialogs.Instance.Toast("There aren’t any more sentences");
             }
             else
             {
@@ -1154,7 +1153,7 @@ namespace PleaseRememberMe.Pantallas
         {
             if (listFamily.Count == 1)
             {
-                UserDialogs.Instance.Toast("There's not more sentences.");
+                UserDialogs.Instance.Toast("There aren’t any more sentences");
             }
             else
             {
@@ -1235,7 +1234,7 @@ namespace PleaseRememberMe.Pantallas
         {
             if (listAnySome.Count == 1)
             {
-                UserDialogs.Instance.Toast("There's not more sentences.");
+                UserDialogs.Instance.Toast("There aren’t any more sentences");
             }
             else
             {
@@ -1247,6 +1246,46 @@ namespace PleaseRememberMe.Pantallas
                 TxtAnySome.Text = "";
                 LblCorrectAnswerAnySome.IsVisible = false;
             }
+        }
+
+        private void BtnSimplePresentCategory_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutCategory.IsVisible = false;
+            StackLayoutsimplePastCategory.IsVisible = true;
+
+        }
+
+        private void BtnGrammarCategory_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutCategory.IsVisible = false;
+            StackLayoutGramarCategory.IsVisible = true;
+        }
+
+        private void BtnVocabularyCategory_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutVocabularyCategory.IsVisible = false;
+            StackLayoutGramarCategory.IsVisible = true;
+        }
+
+        private void BtnAtrasSimplePastCategory_Clicked(object sender, EventArgs e)
+        {
+            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            StackLayoutsimplePastCategory.IsVisible = false;
+            StackLayoutCategory.IsVisible = true;
+        }
+
+        private void BtnAtrasCategory_Clicked(object sender, EventArgs e)
+        {
+            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            StackLayoutCategory.IsVisible = false;
+            StacklayoutPrincipal.IsVisible = true;
+        }
+
+        private void BtnVolverAtrasGrammarCategory_Clicked(object sender, EventArgs e)
+        {
+            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            StackLayoutGramarCategory.IsVisible = false;
+            StackLayoutCategory.IsVisible = true;
         }
 
         private async void btnVerbToBe_Clicked(object sender, EventArgs e)
@@ -1304,7 +1343,7 @@ namespace PleaseRememberMe.Pantallas
         {
             if (listVerbToBe.Count == 1)
             {
-                UserDialogs.Instance.Toast("There's not more sentences.");
+                UserDialogs.Instance.Toast("There aren’t any more sentences");
             }
             else
             {
@@ -1348,7 +1387,7 @@ namespace PleaseRememberMe.Pantallas
         {
             if (listQuantifiers.Count == 1)
             {
-                UserDialogs.Instance.Toast("There's not more sentences.");
+                UserDialogs.Instance.Toast("There aren’t any more sentences");
             }
             else
             {
@@ -1450,7 +1489,7 @@ namespace PleaseRememberMe.Pantallas
             {
                 if (listQuestionsWithHow.Count == 0)
                 {
-                    UserDialogs.Instance.Toast("There's not more sentences.");
+                    UserDialogs.Instance.Toast("There aren’t any more sentences");
                 }
                 else
                 {
