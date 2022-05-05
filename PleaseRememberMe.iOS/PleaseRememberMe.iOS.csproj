@@ -173,6 +173,7 @@
     <BundleResource Include="Resources\correct.png" />
     <BundleResource Include="Resources\remove.png" />
     <BundleResource Include="Resources\arrowdown.png" />
+    <BundleResource Include="Resources\RememberMe250.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\splash_screen.imageset\" />
