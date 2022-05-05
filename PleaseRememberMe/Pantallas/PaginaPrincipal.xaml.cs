@@ -16,26 +16,18 @@ namespace PleaseRememberMe.Pantallas
 {
     public partial class PaginaPrincipal : ContentPage
     {
-
-        string VerbInSimplePast = "", VerbInPastParticiple = "";
-        string Traduccion = "";
-        string CorrectAnswer = "";
-        string CorrectAnswerPronoun = "";
-        string CorrectAnswerVerb = "";
-        string CorrectAnswerPrepositionsOfTime = "";
-        string CorrectAnswerFamily = "";
-        string CorrectAnswerAnySome = "";
-        string CorrectAnswerVerbToBe1 = "";
-        string CorrectAnswerVerbToBe2 = "";
-        string CorrectAnswerQuantifiers = "";
-        string AnswerRadioButton1 = "";
-        string AnswerRadioButton2 = "";
-        private bool _userTapped;
-        ModalTournament modalTournament = new ModalTournament();
-        ModalAboutMe modalAboutMe = new ModalAboutMe();
+        #region Variables String
+        string VerbInSimplePast = "", VerbInPastParticiple = "", Traduccion = "", CorrectAnswer = "",
+            CorrectAnswerPronoun = "", CorrectAnswerVerb = "", CorrectAnswerQuestionWithHow = "", CorrectAnswerPrepositionsOfTime = "",
+            CorrectAnswerFamily = "", CorrectAnswerAnySome = "", CorrectAnswerVerbToBe1 = "",
+            CorrectAnswerVerbToBe2 = "", CorrectAnswerQuantifiers = "", AnswerRadioButton1 = "",
+            AnswerRadioButton2 = "";
+        #endregion
+        #region Listas
         List<Entidad.EVerbos> listadodelosverbos = new List<Entidad.EVerbos>();
         List<Entidad.EVerbos> listverbos = new List<Entidad.EVerbos>();
         List<Entidad.EWasWereDid> listSentences = new List<Entidad.EWasWereDid>();
+        List<Entidad.EQuestionsWithHow> listQuestionsWithHow = new List<Entidad.EQuestionsWithHow>();
         List<Entidad.EMatchSentences> listMatch = new List<Entidad.EMatchSentences>();
         List<Entidad.ECompleteSentences> listComplete = new List<Entidad.ECompleteSentences>();
         List<Entidad.EClothes> listclothes = new List<Entidad.EClothes>();
@@ -46,7 +38,14 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.EAnySome> listAnySome = new List<Entidad.EAnySome>();
         List<Entidad.EVerbToBe> listVerbToBe = new List<Entidad.EVerbToBe>();
         List<Entidad.EQuantifiers> listQuantifiers = new List<Entidad.EQuantifiers>();
+        #endregion
+        #region Declaraciones
+        ModalTournament modalTournament = new ModalTournament();
+        ModalAboutMe modalAboutMe = new ModalAboutMe();
         Metodos metodos = new Metodos();
+        #endregion
+        private bool _userTapped;
+
         public PaginaPrincipal()
         {
             InitializeComponent();
@@ -60,28 +59,28 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
 
 
-           // StackTournament.GestureRecognizers.Add(
-           //  new TapGestureRecognizer()
-           //  {
-           //      Command = new Command(async () =>
-           //      {
-           //          if (_userTapped)
-           //              return;
+            // StackTournament.GestureRecognizers.Add(
+            //  new TapGestureRecognizer()
+            //  {
+            //      Command = new Command(async () =>
+            //      {
+            //          if (_userTapped)
+            //              return;
 
-           //          _userTapped = true;
-           //          modalTournament = new ModalTournament();
-           //          modalTournament.OnLLamarOtraPantalla += ModalTournament_OnLLamarOtraPantalla;
-           //          modalTournament.Disappearing += ModalTournament_Disappearing;
+            //          _userTapped = true;
+            //          modalTournament = new ModalTournament();
+            //          modalTournament.OnLLamarOtraPantalla += ModalTournament_OnLLamarOtraPantalla;
+            //          modalTournament.Disappearing += ModalTournament_Disappearing;
 
-           //          await PopupNavigation.PushAsync(modalTournament);
-           //          await Task.Delay(1000);
-           //          _userTapped = false;
-           //          Opacity = 1;
-           //      }),
-           //      NumberOfTapsRequired = 1
+            //          await PopupNavigation.PushAsync(modalTournament);
+            //          await Task.Delay(1000);
+            //          _userTapped = false;
+            //          Opacity = 1;
+            //      }),
+            //      NumberOfTapsRequired = 1
 
-           //  }
-           //);
+            //  }
+            //);
 
             StackLayoutAboutMe.GestureRecognizers.Add(
              new TapGestureRecognizer()
@@ -270,9 +269,6 @@ namespace PleaseRememberMe.Pantallas
 
 
         }
-
-
-
 
         private void BtnAnotherOne_Clicked(object sender, EventArgs e)
         {
@@ -639,7 +635,10 @@ namespace PleaseRememberMe.Pantallas
                 var elegido = listSentences[random];
                 lblWasWereDid.Text = listSentences[0].WasWereSentence;
                 CorrectAnswer = listSentences[0].correctanswer;
-                listSentences.Remove(elegido);
+                //listSentences.Remove(elegido);
+                TxtxCorrectAnswer.Text = "";
+                LblCorrectAnswer.IsVisible = false;
+
                 UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
@@ -732,8 +731,6 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
-
-
 
         private void Btncorrects_Clicked(object sender, EventArgs e)
         {
@@ -883,7 +880,9 @@ namespace PleaseRememberMe.Pantallas
                 var elegido = listpronouns[random];
                 lblPronouns.Text = listpronouns[0].PronounsSentences;
                 CorrectAnswerPronoun = listpronouns[0].CorrectAnswer;
-                listpronouns.Remove(elegido);
+                TxtCorrectAnswerPronouns.Text = "";
+                LblCorrectAnswerPronouns.IsVisible = false;
+                //listpronouns.Remove(elegido);
                 UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
@@ -959,7 +958,10 @@ namespace PleaseRememberMe.Pantallas
                 var elegido = listsimplepresent[random];
                 lblSimplePresent.Text = listsimplepresent[0].SimplePresentExercises;
                 CorrectAnswerVerb = listsimplepresent[0].CorrectAnswer;
-                listsimplepresent.Remove(elegido);
+                //listsimplepresent.Remove(elegido);
+                TxtVerbInCorrecForm.Text = "";
+                LblCorrectAnswerVerb.IsVisible = false;
+
                 UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
@@ -1035,7 +1037,10 @@ namespace PleaseRememberMe.Pantallas
                 var elegido = listprepositionsOfTime[random];
                 lblPrepositionsOfTime.Text = listprepositionsOfTime[0].PrepositionsOfTimeSentence;
                 CorrectAnswerPrepositionsOfTime = listprepositionsOfTime[0].CorrectAnswer;
-                listprepositionsOfTime.Remove(elegido);
+                //listprepositionsOfTime.Remove(elegido);
+                TxtPrepositionsOfTime.Text = "";
+                LblCorrectAnswerPrepositionsOfTime.IsVisible = false;
+
                 UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
@@ -1110,7 +1115,9 @@ namespace PleaseRememberMe.Pantallas
                 var elegido = listFamily[random];
                 LblFamilySentences.Text = listFamily[0].FamilySentences;
                 CorrectAnswerFamily = listFamily[0].CorrectAnswer;
-                listFamily.Remove(elegido);
+                //listFamily.Remove(elegido);
+                TxtFamilyMember.Text = "";
+                LblCorrectAnswerFamily.IsVisible = false;
                 UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
@@ -1182,7 +1189,9 @@ namespace PleaseRememberMe.Pantallas
                 var elegido = listAnySome[random];
                 LblAnySome.Text = listAnySome[0].AnySomeSentences;
                 CorrectAnswerAnySome = listAnySome[0].CorrectAnswer;
-                listAnySome.Remove(elegido);
+                //listAnySome.Remove(elegido);
+                TxtAnySome.Text = "";
+                LblCorrectAnswerAnySome.IsVisible = false;
                 UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
@@ -1255,7 +1264,10 @@ namespace PleaseRememberMe.Pantallas
                 LblVerbToBeExercise.Text = listVerbToBe[0].verbtobeSentence;
                 CorrectAnswerVerbToBe1 = listVerbToBe[0].CorrectAnswer1;
                 CorrectAnswerVerbToBe2 = listVerbToBe[0].CorrectAnswer2;
-                listVerbToBe.Remove(elegido);
+                //listVerbToBe.Remove(elegido);
+                TxtVerbToBe.Text = "";
+                TxtVerbToBe2.Text = "";
+                LblCorrectAnswerVerbToBe.IsVisible = false;
                 UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
@@ -1306,6 +1318,13 @@ namespace PleaseRememberMe.Pantallas
                 TxtVerbToBe2.Text = "";
                 LblCorrectAnswerVerbToBe.IsVisible = false;
             }
+        }
+
+        private void BtnAtrasVerbToBe_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutVerbToBe.IsVisible = false;
+            StackLayoutOtherTopics.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnCheckMyAnswerChoose_Clicked(object sender, EventArgs e)
@@ -1395,11 +1414,88 @@ namespace PleaseRememberMe.Pantallas
 
         }
 
-        private void BtnAtrasVerbToBe_Clicked(object sender, EventArgs e)
+        private void BtnAtrasQuestionsWithHow_Clicked(object sender, EventArgs e)
         {
-            StackLayoutVerbToBe.IsVisible = false;
+            StackLayoutQuestionsWithHow.IsVisible = false;
             StackLayoutOtherTopics.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
+
+        private void BtnCheckMyAnswerQuestionWithHow_Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtxCorrectAnswerQuestionWithHow.Text))
+            {
+                LblCorrectAnswerQuestionWithHow.IsVisible = true;
+                LblCorrectAnswerQuestionWithHow.Text = "Incorrect";
+            }
+            else
+            {
+                if (CorrectAnswerQuestionWithHow == TxtxCorrectAnswerQuestionWithHow.Text.ToUpper().Trim().Replace(".", ""))
+                {
+                    LblCorrectAnswerQuestionWithHow.IsVisible = true;
+                    LblCorrectAnswerQuestionWithHow.Text = "Correct";
+                }
+                else
+                {
+                    LblCorrectAnswerQuestionWithHow.IsVisible = true;
+                    LblCorrectAnswerQuestionWithHow.Text = "Incorrect";
+
+                }
+            }
+        }
+
+        private void BtnOneMoreQuestionWithHow_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listQuestionsWithHow.Count == 0)
+                {
+                    UserDialogs.Instance.Toast("There's not more sentences.");
+                }
+                else
+                {
+                    var random = new Random().Next(1, listQuestionsWithHow.Count);
+                    var elegido = listQuestionsWithHow[random];
+                    lblQuestionWithHow.Text = elegido.Questionswithhow_sentences;
+                    CorrectAnswerQuestionWithHow = elegido.CorrectAnswer;
+                    listQuestionsWithHow.Remove(elegido);
+                    TxtxCorrectAnswerQuestionWithHow.Text = "";
+                    LblCorrectAnswerQuestionWithHow.IsVisible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
+
+        private async void btnQuestionsHow_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutQuestionsWithHow.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Hey, do you like tomatoes?");
+                var datos = await metodos.GetQuestionsWithHow();
+                listQuestionsWithHow = datos;
+                var random = new Random().Next(1, listQuestionsWithHow.Count);
+                var elegido = listQuestionsWithHow[random];
+                lblQuestionWithHow.Text = listQuestionsWithHow[0].Questionswithhow_sentences;
+                CorrectAnswerQuestionWithHow = listQuestionsWithHow[0].CorrectAnswer;
+                //listQuestionsWithHow.Remove(elegido);
+                TxtxCorrectAnswerQuestionWithHow.Text = "";
+                LblCorrectAnswerQuestionWithHow.IsVisible = false;
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
+
+
     }
 }

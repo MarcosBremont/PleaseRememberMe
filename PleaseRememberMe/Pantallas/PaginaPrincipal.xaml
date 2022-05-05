@@ -20,7 +20,7 @@
 
                     <Label Margin="0,5,0,10"  Grid.Row="0" Text="Remember Me" FontSize="25" TextColor="#333" FontAttributes="Bold" HorizontalOptions="Center"/>
                     <Image Source="NuevoLogoRememberMe.png" WidthRequest="150"></Image>
-                    <Label HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="1" Text="¿Are you ready to learn?" TextColor="#333" FontSize="16" Margin="0,10,0,0" Padding="25,0,25,0"/>
+                    <Label HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="1" Text="Are you ready to learn?" TextColor="#333" FontSize="16" Margin="0,10,0,0" Padding="25,0,25,0"/>
 
                     <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Let's Go" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                     <!--LayoutPrincipal-->
@@ -33,7 +33,7 @@
                         <Label x:Name="lbltouchhere" FontSize="12"  HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Touch here for enter to a tournament" TextColor="#333"></Label>
                     </StackLayout>-->
 
-                    <Label x:Name="lblVersion" Margin="0,10,0,0" VerticalOptions="EndAndExpand"  Text="Versión 3.0" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
+                    <Label x:Name="lblVersion" Margin="0,10,0,0" VerticalOptions="EndAndExpand"  Text="Versión 3.1" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
 
                 </StackLayout>
 
@@ -372,145 +372,126 @@
 
 
                         <Button 
-                 Grid.Row="0"
-                 Grid.Column="0"
-                 x:Name="btnWasWereDid"
-                 Text="Was - Were"
-                 TextColor="White"
-                 HeightRequest="60"
-                 BackgroundColor="#939393"
-                 Margin="5,5,5,5"
-                 CornerRadius="8"
-                        Clicked="btnWasWereDid_Clicked"
-                 >
-                        </Button>
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            x:Name="btnWasWereDid"
+                            Text="Was - Were"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#F58134"
+                            Margin="5,5,5,5"
+                            CornerRadius="8"
+                            Clicked="btnWasWereDid_Clicked"/>
 
                         <Button 
-                 Margin="5,5,5,5"
-                 Grid.Row="0"
-                 Grid.Column="1"
-                 x:Name="BtnMatch"
-                 Text="Professions"
-                 TextColor="White"
-                 HeightRequest="60"
-                 BackgroundColor="#3F79AC"
-                 CornerRadius="8"
-                        Clicked="BtnMatch_Clicked"
-                 >
-                        </Button>
+                            Margin="5,5,5,5"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            x:Name="BtnMatch"
+                            Text="Professions"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#225DD5"
+                            CornerRadius="8"
+                            Clicked="BtnMatch_Clicked"/>
 
                         <Button 
-                 Margin="5,5,5,5"
-                 Grid.Row="1"
-                 Grid.Column="0"
-                 x:Name="btnComplete"
-                 Text="Comparisons"
-                 TextColor="White"
-                 HeightRequest="60"
-                 BackgroundColor="#D09625"
-                 CornerRadius="8"
-                 Clicked="btnComplete_Clicked"
-                 >
-                        </Button>
+                            Margin="5,5,5,5"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            x:Name="btnComplete"
+                            Text="Comparisons"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#5E8138"
+                            CornerRadius="8"
+                            Clicked="btnComplete_Clicked"/>
 
                         <Button 
-                 Margin="5,5,5,5"
-                 Grid.Row="1"
-                 Grid.Column="1"
-                 x:Name="btnSClothes"
-                 Text="Clothes"
-                 TextColor="White"
-                 HeightRequest="60"
-                 BackgroundColor="#7cc151"
-                 CornerRadius="8"
-                        Clicked="btnSClothes_Clicked"
-                 >
-                        </Button>
-
+                            Margin="5,5,5,5"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            x:Name="btnSClothes"
+                            Text="Clothes"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#F58134"
+                            CornerRadius="8"
+                            Clicked="btnSClothes_Clicked"/>
 
                         <Button 
-                 Grid.Row="2"
-                 Grid.Column="0"
-                 x:Name="btnPronouns"
-                 Text="Demonstrative Pronouns"
-                 TextColor="White"
-                 HeightRequest="60"
-                 BackgroundColor="#939393"
-                 Margin="5,5,5,5"
-                 CornerRadius="8"
-                        Clicked="btnPronouns_Clicked"
-                 >
-                        </Button>
-
-                        <Button 
-                 Margin="5,5,5,5"
-                 Grid.Row="2"
-                 Grid.Column="1"
-                 x:Name="btnSimplePresent"
-                 Text="Simple Present"
-                 TextColor="White"
-                 HeightRequest="60"
-                 BackgroundColor="#3F79AC"
-                 CornerRadius="8"
-                 Clicked="btnSimplePresent_Clicked">
-                        </Button>
-
-                        <Button 
-                 Margin="5,5,5,5"
-                 Grid.Row="3"
-                 Grid.Column="0"
-                 x:Name="btnPrepositionsoftime"
-                 Text="Prepositions of time"
-                 TextColor="White"
-                 HeightRequest="60"
-                 BackgroundColor="#D09625"
-                 CornerRadius="8"
-                        Clicked="btnPrepositionsoftime_Clicked"
-                 >
-                        </Button>
-
-                        <Button 
-                 Margin="5,5,5,5"
-                 Grid.Row="3"
-                 Grid.Column="1"
-                 x:Name="btnFamilyVocabulary"
-                 Text="Family - vocabulary"
-                 TextColor="White"
-                 HeightRequest="60"
-                 BackgroundColor="#7cc151"
-                 CornerRadius="8"
-                        Clicked="btnFamilyVocabulary_Clicked"
-                 >
-                        </Button>
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            x:Name="btnPronouns"
+                            Text="Demonstrative Pronouns"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#225DD5"
+                            Margin="5,5,5,5"
+                            CornerRadius="8"
+                            Clicked="btnPronouns_Clicked"/>
 
 
                         <Button 
-                 Margin="5,5,5,5"
-                 Grid.Row="4"
-                 Grid.Column="0"
-                 x:Name="btnAnySome"
-                 Text="Any - Some"
-                 TextColor="White"
-                 HeightRequest="60"
-                 BackgroundColor="#D09625"
-                 CornerRadius="8"
-                        Clicked="btnAnySome_Clicked"
-                 >
-                        </Button>
+                            Margin="5,5,5,5"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            x:Name="btnSimplePresent"
+                            Text="Simple Present"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#5E8138"
+                            CornerRadius="8"
+                            Clicked="btnSimplePresent_Clicked"/>
 
                         <Button 
-                 Margin="5,5,5,5"
-                 Grid.Row="4"
-                 Grid.Column="1"
-                 x:Name="btnVerbToBe"
-                 Text="Verb To Be"
-                 TextColor="White"
-                 HeightRequest="60"
-                 BackgroundColor="#7cc151"
-                 CornerRadius="8"
-                        Clicked="btnVerbToBe_Clicked"
-                 >
-                        </Button>
+                            Margin="5,5,5,5"
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            x:Name="btnPrepositionsoftime"
+                            Text="Prepositions of time"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#F58134"
+                            CornerRadius="8"
+                            Clicked="btnPrepositionsoftime_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            x:Name="btnFamilyVocabulary"
+                            Text="Family - vocabulary"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#225DD5"
+                            CornerRadius="8"
+                            Clicked="btnFamilyVocabulary_Clicked"/>
+
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            x:Name="btnAnySome"
+                            Text="Any - Some"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#5E8138"
+                            CornerRadius="8"
+                            Clicked="btnAnySome_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            x:Name="btnVerbToBe"
+                            Text="Verb To Be"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#F58134"
+                            CornerRadius="8"
+                            Clicked="btnVerbToBe_Clicked"/>
 
                         <Button 
                             Margin="5,5,5,5"
@@ -520,11 +501,21 @@
                             Text="Quantifiers"
                             TextColor="White"
                             HeightRequest="60"
-                            BackgroundColor="#7cc151"
+                            BackgroundColor="#225DD5"
                             CornerRadius="8"
-                            Clicked="btnQuantifiers_Clicked"
-                            >
-                        </Button>
+                            Clicked="btnQuantifiers_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            x:Name="btnQuestionsHow"
+                            Text="Questions With How"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#5E8138"
+                            CornerRadius="8"
+                            Clicked="btnQuestionsHow_Clicked"/>
 
                     </Grid>
 
@@ -974,7 +965,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="70"/>
-                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="90"/>
                         <RowDefinition Height="100"/>
 
                     </Grid.RowDefinitions>
@@ -1112,7 +1103,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="70"/>
-                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="90"/>
                         <RowDefinition Height="100"/>
 
                     </Grid.RowDefinitions>
@@ -1132,7 +1123,7 @@
                     <StackLayout Grid.Row="2" Margin="0,0,0,0">
                         <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer" TextColor="#333"></Label>
                         <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtPrepositionsOfTime" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
-                        <Label x:Name="LblCorrectAnswerPrepositionsOfTime" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
+                        <Label x:Name="LblCorrectAnswerPrepositionsOfTime" Margin="0,0,0,0" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
                     </StackLayout>
 
@@ -1345,7 +1336,7 @@
                     <StackLayout Grid.Row="3" Margin="0,20,0,0">
                         <Label x:Name="LblCorrectAnswerVerbToBe" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerVerbToBe" Clicked="BtnCheckMyAnswerVerbToBe_Clicked" BackgroundColor="#F58134" TextColor="White"/>
-                        <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreVerbToBe" Clicked="BtnOneMoreVerbToBe_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
+                        <Button Text="One More" Margin="0,10,0,0" x:Name="BtnOneMoreVerbToBe" Clicked="BtnOneMoreVerbToBe_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
                 </Grid>
 
@@ -1353,7 +1344,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Quantifiers - Page 18-->
+        <!--Stacklayout Quantifiers - Page 19-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutQuantifiers">
 
             <Grid >
@@ -1422,6 +1413,73 @@
                         <Label x:Name="LblCorrectAnswerQuantifiers" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerChoose" Clicked="BtnCheckMyAnswerChoose_Clicked" BackgroundColor="#F58134" TextColor="White"/>
                         <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreChoose" Clicked="BtnOneMoreChoose_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
+                    </StackLayout>
+                </Grid>
+
+
+            </StackLayout>
+        </StackLayout>
+
+        <!--Stacklayout QuestionsWithHow - Page 20-->
+        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutQuestionsWithHow">
+
+            <Grid >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png"  x:Name="BtnAtrasQuestionsWithHow" Clicked="BtnAtrasQuestionsWithHow_Clicked" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="GO BACK"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout Margin="10,0,10,40">
+
+                <Grid RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Complete with How Often, How Far, How Long, How Many, How Much How good or How Well." FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+
+                    <Label Grid.Row="1" HorizontalOptions="Center" x:Name="lblQuestionWithHow" TextColor="#333"></Label>
+
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer?" TextColor="#333"></Label>
+                        <Entry  HorizontalOptions="FillAndExpand" Placeholder="Answer" FontSize="12" TextTransform="Uppercase" x:Name="TxtxCorrectAnswerQuestionWithHow" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
+                        <Label x:Name="LblCorrectAnswerQuestionWithHow" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3" Margin="0,0,0,0">
+                        <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerQuestionWithHow" Clicked="BtnCheckMyAnswerQuestionWithHow_Clicked" BackgroundColor="#F58134" TextColor="White"/>
+                        <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreQuestionWithHow" Clicked="BtnOneMoreQuestionWithHow_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
                 </Grid>
 

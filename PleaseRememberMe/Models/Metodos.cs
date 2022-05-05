@@ -147,6 +147,14 @@ namespace PleaseRememberMe.Models
             return listado_quantifiers;
         } // Fin del método ObtenerVerbos
 
+        public async Task<List<EQuestionsWithHow>> GetQuestionsWithHow()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/QuestionsWithHowPRM");
+            var listado_questionswithhow = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EQuestionsWithHow>>(result);
+
+            return listado_questionswithhow;
+        } // Fin del método ObtenerVerbos
+
 
     }
 }

@@ -8,6 +8,7 @@ namespace PleaseRememberMe.Entidad
     {
         public string Adjective { get; set; }
 
+
     }
 
 }
