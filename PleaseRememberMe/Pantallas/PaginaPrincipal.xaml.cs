@@ -1246,7 +1246,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasSimplePastCategory_Clicked(object sender, EventArgs e)
         {
-            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             StackLayoutsimplePastCategory.IsVisible = false;
             StackLayoutGramarCategory.IsVisible = true;
         }
@@ -1260,7 +1260,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnVolverAtrasGrammarCategory_Clicked(object sender, EventArgs e)
         {
-            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             StackLayoutGramarCategory.IsVisible = false;
             StackLayoutCategory.IsVisible = true;
         }
@@ -1295,12 +1295,16 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasSimplePresentCategory_Clicked(object sender, EventArgs e)
         {
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+
             StackLayoutsimplePresentCategory.IsVisible = false;
             StackLayoutGramarCategory.IsVisible = true;
         }
 
         private void BtnAtrasVocabulary_Clicked(object sender, EventArgs e)
         {
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+
             StackLayoutCategory.IsVisible = true;
             StackLayoutVocabularyCategory.IsVisible = false;
         }
@@ -1526,6 +1530,8 @@ namespace PleaseRememberMe.Pantallas
 
         void BtnSimplePast_Clicked(System.Object sender, System.EventArgs e)
         {
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+
             StackLayoutGramarCategory.IsVisible = false;
             StackLayoutsimplePastCategory.IsVisible = true;
         }
