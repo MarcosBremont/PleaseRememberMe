@@ -263,6 +263,8 @@ namespace PleaseRememberMe.Pantallas
             StackExamples.IsVisible = false;
             StackTraducciones.IsVisible = false;
             StacklayoutLetsGo.IsVisible = true;
+            LblVerbInPastSimpleCheck.IsVisible = false;
+            LblVerbInPastParticipleCheck.IsVisible = false;
             txtVerbInPastSimple.Text = "";
             txtVerbInPastParticiple.Text = "";
             GetRandomVerb();
@@ -422,7 +424,6 @@ namespace PleaseRememberMe.Pantallas
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
                 StacklayoutPrincipal.IsVisible = false;
-                btnAjustes.IsVisible = false;
                 StackLayoutTablaPosiciones.IsVisible = true;
                 GridVolverAtrasPosiciones.IsVisible = true;
 
@@ -457,7 +458,6 @@ namespace PleaseRememberMe.Pantallas
             //BtnTerminarTorneo.IsVisible = false;
 
             StackLayoutVerbList.IsVisible = false;
-            btnAjustes.IsVisible = true;
 
 
 
@@ -509,7 +509,6 @@ namespace PleaseRememberMe.Pantallas
             {
                 GridVolverAtrasVerbList.IsVisible = true;
                 StackLayoutVerbList.IsVisible = true;
-                btnAjustes.IsVisible = false;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
                 StacklayoutPrincipal.IsVisible = false;
@@ -537,7 +536,6 @@ namespace PleaseRememberMe.Pantallas
 
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
 
-            btnAjustes.IsVisible = true;
 
 
         }
@@ -561,7 +559,6 @@ namespace PleaseRememberMe.Pantallas
 
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
 
-            btnAjustes.IsVisible = true;
 
         }
 
@@ -597,7 +594,6 @@ namespace PleaseRememberMe.Pantallas
         {
             StackLayoutCategory.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
-            btnAjustes.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait, Do you want coffee?");
             StacklayoutPrincipal.IsVisible = false;
@@ -616,7 +612,6 @@ namespace PleaseRememberMe.Pantallas
 
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
 
-            btnAjustes.IsVisible = true;
 
         }
 
@@ -704,7 +699,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutGramarCategory.IsVisible = false;
+                StackLayoutVocabularyCategory.IsVisible = false;
                 StackLayoutMatch.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm looking the blue sky");
@@ -723,11 +718,8 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasMatch_Clicked(object sender, EventArgs e)
         {
-            StackLayoutWasWereDid.IsVisible = false;
             StackLayoutMatch.IsVisible = false;
-            GridVolverAtrasVerbList.IsVisible = false;
-            StackLayoutGramarCategory.IsVisible = true;
-            StackLayoutVerbList.IsVisible = false;
+            StackLayoutVocabularyCategory.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -762,7 +754,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutsimplePastCategory.IsVisible = false;
+                StackLayoutGramarCategory.IsVisible = false;
                 StackLayoutComplete.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, Do you want some cookies?");
@@ -783,11 +775,8 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasComplete_Clicked(object sender, EventArgs e)
         {
-            StackLayoutWasWereDid.IsVisible = false;
             StackLayoutComplete.IsVisible = false;
-            GridVolverAtrasVerbList.IsVisible = false;
-            StackLayoutsimplePastCategory.IsVisible = true;
-            StackLayoutVerbList.IsVisible = false;
+            StackLayoutGramarCategory.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -818,7 +807,7 @@ namespace PleaseRememberMe.Pantallas
 
         async void btnSClothes_Clicked(System.Object sender, System.EventArgs e)
         {
-            StackLayoutCategory.IsVisible = false;
+            StackLayoutVocabularyCategory.IsVisible = false;
             StackLayoutClothes.IsVisible = true;
 
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
@@ -831,12 +820,8 @@ namespace PleaseRememberMe.Pantallas
 
         void BtnAtrasClothes_Clicked(System.Object sender, System.EventArgs e)
         {
+            StackLayoutVocabularyCategory.IsVisible = true;
             StackLayoutClothes.IsVisible = false;
-            StackLayoutWasWereDid.IsVisible = false;
-            StackLayoutComplete.IsVisible = false;
-            GridVolverAtrasVerbList.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
-            StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -869,7 +854,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutGramarCategory.IsVisible = false;
                 StackLayoutPronouns.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Did you drink water today?");
@@ -894,11 +879,7 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasPronouns_Clicked(object sender, EventArgs e)
         {
             StackLayoutPronouns.IsVisible = false;
-            StackLayoutWasWereDid.IsVisible = false;
-            StackLayoutComplete.IsVisible = false;
-            GridVolverAtrasVerbList.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
-            StackLayoutVerbList.IsVisible = false;
+            StackLayoutGramarCategory.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -947,7 +928,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutsimplePresentCategory.IsVisible = false;
                 StackLayoutSimplePresent.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Remember to drink water");
@@ -976,7 +957,7 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutWasWereDid.IsVisible = false;
             StackLayoutComplete.IsVisible = false;
             GridVolverAtrasVerbList.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutsimplePresentCategory.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -1026,7 +1007,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutVocabularyCategory.IsVisible = false;
                 StackLayoutPreposisionsOfTime.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
@@ -1092,19 +1073,15 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasPreposisionsOfTime_Clicked(object sender, EventArgs e)
         {
+            StackLayoutVocabularyCategory.IsVisible = true;
             StackLayoutPreposisionsOfTime.IsVisible = false;
-            StackLayoutWasWereDid.IsVisible = false;
-            StackLayoutComplete.IsVisible = false;
-            GridVolverAtrasVerbList.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
-            StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
         private async void btnFamilyVocabulary_Clicked(object sender, EventArgs e)
         {
             try
             {
-                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutVocabularyCategory.IsVisible = false;
                 StackLayoutFamily.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Remember, study for your quiz");
@@ -1169,8 +1146,8 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasFamily_Clicked(object sender, EventArgs e)
         {
+            StackLayoutVocabularyCategory.IsVisible = true;
             StackLayoutFamily.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1178,7 +1155,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutGramarCategory.IsVisible = false;
                 StackLayoutAnySome.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating pizza");
@@ -1202,8 +1179,8 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnAtrasAnySome_Clicked(object sender, EventArgs e)
         {
+            StackLayoutGramarCategory.IsVisible = true;
             StackLayoutAnySome.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1250,8 +1227,8 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnSimplePresentCategory_Clicked(object sender, EventArgs e)
         {
-            StackLayoutCategory.IsVisible = false;
-            StackLayoutsimplePastCategory.IsVisible = true;
+            StackLayoutGramarCategory.IsVisible = false;
+            StackLayoutsimplePresentCategory.IsVisible = true;
 
         }
 
@@ -1263,15 +1240,15 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnVocabularyCategory_Clicked(object sender, EventArgs e)
         {
-            StackLayoutVocabularyCategory.IsVisible = false;
-            StackLayoutGramarCategory.IsVisible = true;
+            StackLayoutCategory.IsVisible = false;
+            StackLayoutVocabularyCategory.IsVisible = true;
         }
 
         private void BtnAtrasSimplePastCategory_Clicked(object sender, EventArgs e)
         {
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             StackLayoutsimplePastCategory.IsVisible = false;
-            StackLayoutCategory.IsVisible = true;
+            StackLayoutGramarCategory.IsVisible = true;
         }
 
         private void BtnAtrasCategory_Clicked(object sender, EventArgs e)
@@ -1292,7 +1269,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutsimplePresentCategory.IsVisible = false;
                 StackLayoutVerbToBe.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a burrito");
@@ -1314,6 +1291,18 @@ namespace PleaseRememberMe.Pantallas
                 Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
 
             }
+        }
+
+        private void BtnAtrasSimplePresentCategory_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutsimplePresentCategory.IsVisible = false;
+            StackLayoutGramarCategory.IsVisible = true;
+        }
+
+        private void BtnAtrasVocabulary_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutCategory.IsVisible = true;
+            StackLayoutVocabularyCategory.IsVisible = false;
         }
 
         private void BtnCheckMyAnswerVerbToBe_Clicked(object sender, EventArgs e)
@@ -1362,7 +1351,7 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasVerbToBe_Clicked(object sender, EventArgs e)
         {
             StackLayoutVerbToBe.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutsimplePresentCategory.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1408,7 +1397,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutGramarCategory.IsVisible = false;
                 StackLayoutQuantifiers.IsVisible = true;
                 LblCorrectAnswerQuantifiers.IsVisible = false;
                 RadioButtonOption1.IsChecked = false;
@@ -1436,7 +1425,7 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasQuantifiers_Clicked(object sender, EventArgs e)
         {
             StackLayoutQuantifiers.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutGramarCategory.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1456,7 +1445,7 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasQuestionsWithHow_Clicked(object sender, EventArgs e)
         {
             StackLayoutQuestionsWithHow.IsVisible = false;
-            StackLayoutOtherTopics.IsVisible = true;
+            StackLayoutGramarCategory.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1513,7 +1502,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutOtherTopics.IsVisible = false;
+                StackLayoutGramarCategory.IsVisible = false;
                 StackLayoutQuestionsWithHow.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Hey, do you like tomatoes?");
@@ -1537,7 +1526,7 @@ namespace PleaseRememberMe.Pantallas
 
         void BtnSimplePast_Clicked(System.Object sender, System.EventArgs e)
         {
-            StackLayoutVocabularyCategory.IsVisible = false;
+            StackLayoutGramarCategory.IsVisible = false;
             StackLayoutsimplePastCategory.IsVisible = true;
         }
 
