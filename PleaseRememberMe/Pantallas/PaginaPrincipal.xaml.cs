@@ -1535,6 +1535,11 @@ namespace PleaseRememberMe.Pantallas
             }
         }
 
+        void BtnSimplePast_Clicked(System.Object sender, System.EventArgs e)
+        {
+            StackLayoutVocabularyCategory.IsVisible = false;
+            StackLayoutsimplePastCategory.IsVisible = true;
+        }
 
     }
 }
