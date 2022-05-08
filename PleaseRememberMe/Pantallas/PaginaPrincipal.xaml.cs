@@ -257,7 +257,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnLetsGo_Clicked(object sender, EventArgs e)
         {
-
+            Anuncio.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             StacklayoutPrincipal.IsVisible = false;
             StackExamples.IsVisible = false;
@@ -410,6 +410,8 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtras_Clicked(object sender, EventArgs e)
         {
+            Anuncio.IsVisible = true;
+
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             StacklayoutLetsGo.IsVisible = false;
             StacklayoutPrincipal.IsVisible = true;
@@ -421,6 +423,8 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
+                Anuncio.IsVisible = false;
+
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
                 StacklayoutPrincipal.IsVisible = false;
@@ -442,6 +446,8 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasPosiciones_Clicked(object sender, EventArgs e)
         {
+            Anuncio.IsVisible = true;
+
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             GridVolverAtrasPosiciones.IsVisible = false;
             StackLayoutTablaPosiciones.IsVisible = false;
@@ -507,6 +513,8 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
+                Anuncio.IsVisible = false;
+
                 GridVolverAtrasVerbList.IsVisible = true;
                 StackLayoutVerbList.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
@@ -528,6 +536,8 @@ namespace PleaseRememberMe.Pantallas
 
         public void BtnAtrasVerbList_Clicked(System.Object sender, System.EventArgs e)
         {
+            Anuncio.IsVisible = true;
+
             GridVolverAtrasVerbList.IsVisible = false;
             StacklayoutPrincipal.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
@@ -542,6 +552,8 @@ namespace PleaseRememberMe.Pantallas
 
         public void btnAjustes_Clicked(System.Object sender, System.EventArgs e)
         {
+            Anuncio.IsVisible = false;
+
             GridVolverAtrasSettings.IsVisible = true;
             StackLayoutSettings.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
@@ -551,6 +563,8 @@ namespace PleaseRememberMe.Pantallas
 
         void BtnAtrasSettings_Clicked(System.Object sender, System.EventArgs e)
         {
+            Anuncio.IsVisible = true;
+
             GridVolverAtrasSettings.IsVisible = false;
             StacklayoutPrincipal.IsVisible = true;
             StackLayoutSettings.IsVisible = false;
@@ -592,6 +606,9 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnOtherTopics_Clicked(object sender, EventArgs e)
         {
+            AnuncioParaCategories.IsVisible = true;
+            Anuncio.IsVisible = false;
+
             StackLayoutCategory.IsVisible = true;
             StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
@@ -602,6 +619,9 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasOtherTopics_Clicked(object sender, EventArgs e)
         {
+            AnuncioParaCategories.IsVisible = false;
+            Anuncio.IsVisible = true;
+
             StackLayoutOtherTopics.IsVisible = false;
 
             GridVolverAtrasVerbList.IsVisible = false;
@@ -1253,6 +1273,8 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasCategory_Clicked(object sender, EventArgs e)
         {
+            Anuncio.IsVisible = true;
+
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             StackLayoutCategory.IsVisible = false;
             StacklayoutPrincipal.IsVisible = true;
