@@ -16,6 +16,8 @@ namespace PleaseRememberMe.Droid
         {
             Rg.Plugins.Popup.Popup.Init(this);
             base.OnCreate(savedInstanceState);
+            MobileAds.Initialize(this);
+
             UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
