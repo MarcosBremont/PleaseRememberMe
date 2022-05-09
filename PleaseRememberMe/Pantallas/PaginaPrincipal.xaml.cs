@@ -50,14 +50,14 @@ namespace PleaseRememberMe.Pantallas
         {
             InitializeComponent();
 
-
-
             //LblTorneoEnCurso.IsVisible = false;
             //LblTorneo.IsVisible = false;
             //LblPuntos.IsVisible = false;
             //BtnTerminarTorneo.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-
+            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            player.Load("Prueba.mp3");
+            player.Play();
 
             // StackTournament.GestureRecognizers.Add(
             //  new TapGestureRecognizer()
@@ -143,7 +143,12 @@ namespace PleaseRememberMe.Pantallas
 
         protected async override void OnAppearing()
         {
+
             base.OnAppearing();
+            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            player.Load("Prueba.mp3");
+            player.Play();
+
             try
             {
                 var lista = listverbos;
@@ -257,6 +262,10 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnLetsGo_Clicked(object sender, EventArgs e)
         {
+            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            player.Load("Prueba.mp3");
+            player.Play();
+
             Anuncio.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             StacklayoutPrincipal.IsVisible = false;
@@ -313,7 +322,6 @@ namespace PleaseRememberMe.Pantallas
                 }
 
                 var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-
                 if (string.IsNullOrEmpty(txtVerbInPastSimple.Text))
                 {
                     LblVerbInPastSimpleCheck.Text = "Incorrect";
