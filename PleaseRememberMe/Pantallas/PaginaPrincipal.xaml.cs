@@ -603,26 +603,11 @@ namespace PleaseRememberMe.Pantallas
 
 
         }
-
-        private void BtnOtherTopics_Clicked(object sender, EventArgs e)
-        {
-            AnuncioParaCategories.IsVisible = true;
-            Anuncio.IsVisible = false;
-
-            StackLayoutCategory.IsVisible = true;
-            StackLayoutVerbList.IsVisible = false;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Wait, Do you want coffee?");
-            StacklayoutPrincipal.IsVisible = false;
-            UserDialogs.Instance.HideLoading();
-        }
-
         private void BtnAtrasOtherTopics_Clicked(object sender, EventArgs e)
         {
             AnuncioParaCategories.IsVisible = false;
             Anuncio.IsVisible = true;
 
-            StackLayoutOtherTopics.IsVisible = false;
 
             GridVolverAtrasVerbList.IsVisible = false;
             StacklayoutPrincipal.IsVisible = true;
@@ -1329,6 +1314,19 @@ namespace PleaseRememberMe.Pantallas
 
             StackLayoutCategory.IsVisible = true;
             StackLayoutVocabularyCategory.IsVisible = false;
+        }
+
+        private async void BtnCategories_Clicked(object sender, EventArgs e)
+        {
+            AnuncioParaCategories.IsVisible = true;
+            Anuncio.IsVisible = false;
+            StackLayoutCategory.IsVisible = true;
+            Lsv_Categories.ItemsSource = await metodos.GetCategories();
+            StackLayoutVerbList.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.ShowLoading("Wait, Do you want coffee?");
+            StacklayoutPrincipal.IsVisible = false;
+            UserDialogs.Instance.HideLoading();
         }
 
         private void BtnCheckMyAnswerVerbToBe_Clicked(object sender, EventArgs e)

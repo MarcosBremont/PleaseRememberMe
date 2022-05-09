@@ -155,6 +155,14 @@ namespace PleaseRememberMe.Models
             return listado_questionswithhow;
         } // Fin del método ObtenerVerbos
 
+        public async Task<List<ECategories>> GetCategories()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/Categories");
+            var listado_categories = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ECategories>>(result);
+
+            return listado_categories;
+        } // Fin del método ObtenerVerbos
+
 
     }
 }

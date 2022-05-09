@@ -27,7 +27,7 @@
                     <Button x:Name="BtnListOfTheVerbs" Clicked="BtnListOfTheVerbs_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verb List" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
                     <Button x:Name="BtnTablaDePosiciones" IsVisible="false" Clicked="BtnTablaDePosiciones_Clicked"  WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Leaderboard" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                     <!--LayoutPrincipal-->
-                    <Button x:Name="BtnOtherTopics" Clicked="BtnOtherTopics_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Categories" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
+                    <Button x:Name="BtnCategories" Clicked="BtnCategories_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Categories" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                     <!--<StackLayout x:Name="StackTournament" IsVisible="false">
                         <ImageButton x:Name="BtnTournament" Clicked="BtnTournament_Clicked" Source="winning.png" BackgroundColor="Transparent" WidthRequest="50" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3"/>
                         <Label x:Name="lbltouchhere" FontSize="12"  HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Touch here for enter to a tournament" TextColor="#333"></Label>
@@ -42,12 +42,12 @@
             </ScrollView>
 
         </StackLayout>
+        <!--Stacklayout Anuncio-->
+
         <StackLayout x:Name="Anuncio" VerticalOptions="EndAndExpand" Margin="0,0,0,90">
             <controls:MTAdView BackgroundColor="Transparent" HeightRequest="60"  x:Name="myAds" AdsId="{OnPlatform Android='ca-app-pub-5203771291617755/7518751960', 
                                    iOS='ca-app-pub-5203771291617755/8870280516'}"/>
         </StackLayout>
-
-
 
         <!--Stacklayout Let's Go - Page 2-->
         <StackLayout x:Name="StacklayoutLetsGo" IsVisible="false" >
@@ -351,29 +351,9 @@
                 </StackLayout>
 
             </Grid>
-            <ScrollView  Margin="10,0,10,90" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" HorizontalOptions="FillAndExpand">
-                <StackLayout VerticalOptions="FillAndExpand" >
-
-                    <Label HorizontalOptions="Center" Text="Categories" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-
-                    <Grid RowSpacing="0">
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="100"/>
-
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-
+            <ListView BackgroundColor="Transparent" x:Name="Lsv_Categories">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
                         <Button 
                             Margin="5,5,5,5"
                             Grid.Row="0"
@@ -383,107 +363,14 @@
                             HeightRequest="60"
                             BackgroundColor="#225DD5"
                             CornerRadius="8" 
-                            x:Name="BtnGrammarCategory"
-                            Clicked="BtnGrammarCategory_Clicked"/>
-
-                        <Button 
-                            Margin="5,5,5,5"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Text="Vocabulary"
-                            TextColor="White"
-                            HeightRequest="60"
-                            BackgroundColor="#5E8138"
-                            CornerRadius="8"
-                            x:Name="BtnVocabularyCategory"
-                            Clicked="BtnVocabularyCategory_Clicked"/>
-
-                        <!--<Button 
-                            Margin="5,5,5,5"
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Text="Other Topics"
-                            TextColor="White"
-                            HeightRequest="60"
-                            BackgroundColor="#5E8138"
-                            CornerRadius="8"
-                            x:Name="BtnOtherTopicsCategory"
-                            Clicked="BtnOtherTopics_Clicked"/>-->
-
-                    </Grid>
-
-
-                </StackLayout>
-            </ScrollView>
-
+                            x:Name="BtnGrammarCategory"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <StackLayout x:Name="AnuncioParaCategories" VerticalOptions="EndAndExpand" Margin="0,0,0,90">
                 <controls:MTAdView BackgroundColor="Transparent" HeightRequest="60"  x:Name="myAdsCategories" AdsId="{OnPlatform Android='ca-app-pub-5203771291617755/7518751960', 
                                    iOS='ca-app-pub-5203771291617755/8870280516'}"/>
             </StackLayout>
-
-        </StackLayout>
-
-        <!--Stacklayout OtherTopics - Page 5-->
-        <StackLayout IsVisible="false"   x:Name="StackLayoutOtherTopics">
-
-            <Grid x:Name="GridVolverAtrasOtherTopics">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
-                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasOtherTopics_Clicked" x:Name="BtnAtrasOtherTopics" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
-                            <Label TextColor="White"
-                               Text="GO BACK"
-                               FontSize="18"
-                               x:Name="lblvolveratrasOtherTopics"
-                               FontAttributes="Bold"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand"
-                               Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-
-            </Grid>
-            <ScrollView  Margin="10,0,10,90" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" HorizontalOptions="FillAndExpand">
-                <StackLayout VerticalOptions="FillAndExpand"  x:Name="LayoutOtherTopics">
-
-                    <Label HorizontalOptions="Center" Text="Categories" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-
-                    <Grid RowSpacing="0">
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="100"/>
-
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-
-
-
-
-
-
-                    </Grid>
-
-
-                </StackLayout>
-            </ScrollView>
 
         </StackLayout>
 
