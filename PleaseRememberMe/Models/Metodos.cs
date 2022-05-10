@@ -164,5 +164,14 @@ namespace PleaseRememberMe.Models
         } // Fin del método ObtenerVerbos
 
 
+        public async Task<List<EVocabulary>> GetVocabulary()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/VocabularyPRM");
+            var listado_vocabulary = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EVocabulary>>(result);
+
+            return listado_vocabulary;
+        } // Fin del método Obtener Vocabularios
+
+
     }
 }

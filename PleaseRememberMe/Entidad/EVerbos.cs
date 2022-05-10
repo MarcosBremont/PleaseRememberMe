@@ -13,6 +13,7 @@ namespace PleaseRememberMe.Entidad
         public string examplesInSimplePast { get; set; }
         public string examplesInPastParticiple { get; set; }
         public string traduccion { get; set; }
+        public string audio { get; set; }
 
     }
 

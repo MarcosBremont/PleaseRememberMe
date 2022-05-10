@@ -1,7 +1,9 @@
 ﻿using Acr.UserDialogs;
 using PleaseRememberMe.Models;
+using Plugin.TextToSpeech;
 using Rg.Plugins.Popup.Services;
 using System;
+using Xamarin.Essentials;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -21,7 +23,7 @@ namespace PleaseRememberMe.Pantallas
             CorrectAnswerPronoun = "", CorrectAnswerVerb = "", CorrectAnswerQuestionWithHow = "", CorrectAnswerPrepositionsOfTime = "",
             CorrectAnswerFamily = "", CorrectAnswerAnySome = "", CorrectAnswerVerbToBe1 = "",
             CorrectAnswerVerbToBe2 = "", CorrectAnswerQuantifiers = "", AnswerRadioButton1 = "",
-            AnswerRadioButton2 = "";
+            AnswerRadioButton2 = "", audio = "";
         #endregion
         #region Listas
         List<Entidad.EVerbos> listadodelosverbos = new List<Entidad.EVerbos>();
@@ -55,9 +57,6 @@ namespace PleaseRememberMe.Pantallas
             //LblPuntos.IsVisible = false;
             //BtnTerminarTorneo.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-            player.Load("Prueba.mp3");
-            player.Play();
 
             // StackTournament.GestureRecognizers.Add(
             //  new TapGestureRecognizer()
@@ -108,6 +107,23 @@ namespace PleaseRememberMe.Pantallas
 
         }
 
+
+        public async Task SpeakNowDefaultSettings()
+        {
+            await TextToSpeech.SpeakAsync("hola pablo");
+
+            // This method will block until utterance finishes.
+        }
+
+        public void SpeakNowDefaultSettings2()
+        {
+            TextToSpeech.SpeakAsync("Hello World").ContinueWith((t) =>
+            {
+                // Logic that will run after utterance finishes.
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
         private void ModalAboutMe_OnLLamarOtraPantalla(object sender, EventArgs e)
         {
         }
@@ -145,9 +161,6 @@ namespace PleaseRememberMe.Pantallas
         {
 
             base.OnAppearing();
-            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-            player.Load("Prueba.mp3");
-            player.Play();
 
             try
             {
@@ -246,6 +259,7 @@ namespace PleaseRememberMe.Pantallas
                 VerbInSimplePast = datos.verboSimplePast.ToUpper();
                 VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
                 Traduccion = datos.traduccion.ToUpper();
+                audio = datos.audio.ToString();
                 lblExamplePast.Text = datos.examplesInBaseForm;
                 lblExamplePastSimple.Text = datos.examplesInSimplePast;
                 lblExamplePastParticiple.Text = datos.examplesInPastParticiple;
@@ -262,15 +276,13 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnLetsGo_Clicked(object sender, EventArgs e)
         {
-            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-            player.Load("Prueba.mp3");
-            player.Play();
+         
 
             Anuncio.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             StacklayoutPrincipal.IsVisible = false;
             StackExamples.IsVisible = false;
-            StackTraducciones.IsVisible = false;
+            //StackTraducciones.IsVisible = false;
             StacklayoutLetsGo.IsVisible = true;
             LblVerbInPastSimpleCheck.IsVisible = false;
             LblVerbInPastParticipleCheck.IsVisible = false;
@@ -301,7 +313,7 @@ namespace PleaseRememberMe.Pantallas
             txtVerbInPastParticiple.Text = "";
             LblVerbInPastSimpleCheck.IsVisible = false;
             LblVerbInPastParticipleCheck.IsVisible = false;
-            StackTraducciones.IsVisible = false;
+            //StackTraducciones.IsVisible = false;
 
 
             StackExamples.IsVisible = false;
@@ -311,12 +323,12 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackTraducciones.IsVisible = false;
+                //StackTraducciones.IsVisible = false;
 
                 if (App.Torneo != "S")
                 {
-                    StackTraducciones.IsVisible = true;
-                    LblTraduction.Text = Traduccion;
+                   // StackTraducciones.IsVisible = true;
+                   //LblTraduction.Text = Traduccion;
                     LblVerbInPastSimpleCheck.IsVisible = true;
                     LblVerbInPastParticipleCheck.IsVisible = true;
                 }
@@ -613,7 +625,7 @@ namespace PleaseRememberMe.Pantallas
         }
         private void BtnAtrasOtherTopics_Clicked(object sender, EventArgs e)
         {
-            AnuncioParaCategories.IsVisible = false;
+            //AnuncioParaCategories.IsVisible = false;
             Anuncio.IsVisible = true;
 
 
@@ -1326,15 +1338,55 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnCategories_Clicked(object sender, EventArgs e)
         {
-            AnuncioParaCategories.IsVisible = true;
+            //AnuncioParaCategories.IsVisible = true;
             Anuncio.IsVisible = false;
             StackLayoutCategory.IsVisible = true;
-            Lsv_Categories.ItemsSource = await metodos.GetCategories();
+            //Lsv_Categories.ItemsSource = await metodos.GetCategories();
             StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait, Do you want coffee?");
             StacklayoutPrincipal.IsVisible = false;
             UserDialogs.Instance.HideLoading();
+        }
+
+        private async void BtnVocabularyExercise_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Anuncio.IsVisible = false;
+
+                StackLayoutVocabularyCategory.IsVisible = false;
+                StacklayoutVocabularyWords.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
+                var datos = await metodos.GetVocabulary();
+                lsv_VocabularyWords.ItemsSource = datos;
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
+
+        private void BtnOrganizeConversation_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnAtrasVocabularyWords_Clicked(object sender, EventArgs e)
+        {
+            StacklayoutVocabularyWords.IsVisible = false;
+            StackLayoutVocabularyCategory.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private async void BtnVerbInPast_Clicked(object sender, EventArgs e)
+        {
+
+            SpeakNowDefaultSettings();
+
         }
 
         private void BtnCheckMyAnswerVerbToBe_Clicked(object sender, EventArgs e)

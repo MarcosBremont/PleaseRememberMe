@@ -30,7 +30,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                Chat.Open("+1 809-907-3244", "Hii");
+                Chat.Open("+18099073244", "Hii");
             }
             catch (Exception ex)
             {
