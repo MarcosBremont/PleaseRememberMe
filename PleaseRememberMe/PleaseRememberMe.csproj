@@ -24,11 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Pantallas\PaginaPrincipal.xaml.cs">
-      <DependentUpon>PaginaPrincipal.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Acr.UserDialogs" />
     <None Remove="Mono.Android" />
     <None Remove="Xamarin.Forms.OpenWhatsApp" />
