@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.OS;
 using Acr.UserDialogs;
 using Android.Gms.Ads;
+using AndroidX.AppCompat.App;
 
 namespace PleaseRememberMe.Droid
 {
@@ -15,6 +16,7 @@ namespace PleaseRememberMe.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Rg.Plugins.Popup.Popup.Init(this);
+            AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo; ///1st LINE DUDE TO WORK !
             base.OnCreate(savedInstanceState);
             MobileAds.Initialize(this);
 

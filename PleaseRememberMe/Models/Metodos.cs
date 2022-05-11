@@ -172,6 +172,22 @@ namespace PleaseRememberMe.Models
             return listado_vocabulary;
         } // Fin del método Obtener Vocabularios
 
+        public async Task<List<EVocabularyClothes>> GetVocabularyClothes()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/VocabularyClothesPRM");
+            var listado_vocabulary_Clothes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EVocabularyClothes>>(result);
+
+            return listado_vocabulary_Clothes;
+        } //
+
+        public async Task<List<EVocabularyFamily>> GetVocabularyFamily()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/VocabularyFamilyPRM");
+            var listado_vocabulary_Family = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EVocabularyFamily>>(result);
+
+            return listado_vocabulary_Family;
+        } //
+
 
     }
 }

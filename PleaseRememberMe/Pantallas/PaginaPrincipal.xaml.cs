@@ -23,7 +23,7 @@ namespace PleaseRememberMe.Pantallas
             CorrectAnswerPronoun = "", CorrectAnswerVerb = "", CorrectAnswerQuestionWithHow = "", CorrectAnswerPrepositionsOfTime = "",
             CorrectAnswerFamily = "", CorrectAnswerAnySome = "", CorrectAnswerVerbToBe1 = "",
             CorrectAnswerVerbToBe2 = "", CorrectAnswerQuantifiers = "", AnswerRadioButton1 = "",
-            AnswerRadioButton2 = "", audio = "";
+            AnswerRadioButton2 = "", audioVerboFormaBase = "", audioverboSimplePast = "", audioverboPasParticiple = "";
         #endregion
         #region Listas
         List<Entidad.EVerbos> listadodelosverbos = new List<Entidad.EVerbos>();
@@ -108,20 +108,10 @@ namespace PleaseRememberMe.Pantallas
         }
 
 
-        public async Task SpeakNowDefaultSettings()
+        public async Task SpeakNowDefaultSettings(string audio)
         {
-            await TextToSpeech.SpeakAsync("hola pablo");
-
+            await TextToSpeech.SpeakAsync(audio);
             // This method will block until utterance finishes.
-        }
-
-        public void SpeakNowDefaultSettings2()
-        {
-            TextToSpeech.SpeakAsync("Hello World").ContinueWith((t) =>
-            {
-                // Logic that will run after utterance finishes.
-
-            }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         private void ModalAboutMe_OnLLamarOtraPantalla(object sender, EventArgs e)
@@ -259,7 +249,9 @@ namespace PleaseRememberMe.Pantallas
                 VerbInSimplePast = datos.verboSimplePast.ToUpper();
                 VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
                 Traduccion = datos.traduccion.ToUpper();
-                audio = datos.audio.ToString();
+                audioVerboFormaBase = datos.VerboFormaBase.ToString();
+                audioverboSimplePast = datos.verboSimplePast.ToString();
+                audioverboPasParticiple = datos.verboPasParticiple.ToString();
                 lblExamplePast.Text = datos.examplesInBaseForm;
                 lblExamplePastSimple.Text = datos.examplesInSimplePast;
                 lblExamplePastParticiple.Text = datos.examplesInPastParticiple;
@@ -295,6 +287,8 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAnotherOne_Clicked(object sender, EventArgs e)
         {
+            BtnVerbInPastS.IsVisible = false;
+            BtnVerbInPastPart.IsVisible = false;
             if (App.Torneo == "S")
             {
                 GetRandomVerbForTheTournament();
@@ -347,6 +341,7 @@ namespace PleaseRememberMe.Pantallas
 
                         LblVerbInPastSimpleCheck.Text = "Correct";
                         player.Load("CorrectSoundReady.mp3");
+                        BtnVerbInPastS.IsVisible = true;
 
 
                     }
@@ -375,6 +370,8 @@ namespace PleaseRememberMe.Pantallas
                     {
                         LblVerbInPastParticipleCheck.Text = "Correct";
                         player.Load("CorrectSoundReady.mp3");
+                        BtnVerbInPastPart.IsVisible = true;
+
                     }
                     else
                     {
@@ -395,6 +392,8 @@ namespace PleaseRememberMe.Pantallas
                     //LblPuntos.IsVisible = true;
                     App.SumaTotalDePuntos = App.SumaTotalDePuntos + 1;
                     //LblPuntos.Text = App.SumaTotalDePuntos.ToString();
+                    BtnVerbInPast.IsVisible = true;
+                    BtnVerbInPastPart.IsVisible = true;
                     player.Load("CorrectSoundReady.mp3");
                 }
 
@@ -722,29 +721,15 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnMatch_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-                StackLayoutVocabularyCategory.IsVisible = false;
-                StackLayoutMatch.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm looking the blue sky");
-                var datos = await metodos.GetMatchSentences();
-                listMatch = datos;
-                lsv_Math.ItemsSource = datos;
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-
+            StackLayoutVocabularyCategory.IsVisible = false;
+            StackLayoutProfessionsPage.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnAtrasMatch_Clicked(object sender, EventArgs e)
         {
             StackLayoutMatch.IsVisible = false;
-            StackLayoutVocabularyCategory.IsVisible = true;
+            StackLayoutProfessionsActivities.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -759,7 +744,7 @@ namespace PleaseRememberMe.Pantallas
                 }
                 else
                 {
-                    if (item.textbox.ToUpper() == item.CorrectAnswer)
+                    if (item.textbox.ToUpper().Trim().Replace(".", "") == item.CorrectAnswer)
                     {
                         item.Imagenes = "correct.png";
                     }
@@ -833,20 +818,14 @@ namespace PleaseRememberMe.Pantallas
         async void btnSClothes_Clicked(System.Object sender, System.EventArgs e)
         {
             StackLayoutVocabularyCategory.IsVisible = false;
-            StackLayoutClothes.IsVisible = true;
-
+            StackLayoutClothesPage.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Are you happy? I hope so");
-            var datos = await metodos.GetClothes();
-            listclothes = datos;
-            lsv_clothes.ItemsSource = datos;
-            UserDialogs.Instance.HideLoading();
         }
 
         void BtnAtrasClothes_Clicked(System.Object sender, System.EventArgs e)
         {
-            StackLayoutVocabularyCategory.IsVisible = true;
             StackLayoutClothes.IsVisible = false;
+            StackLayoutClothesActivities.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -860,7 +839,7 @@ namespace PleaseRememberMe.Pantallas
                 }
                 else
                 {
-                    if (item.txtclothes.ToUpper() == item.CorrectAnswer)
+                    if (item.txtclothes.ToUpper().Trim().Replace(".", "") == item.CorrectAnswer)
                     {
                         item.imagen = "correct.png";
                     }
@@ -1032,7 +1011,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutVocabularyCategory.IsVisible = false;
+                StackLayoutGramarCategory.IsVisible = false;
                 StackLayoutPreposisionsOfTime.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
@@ -1098,34 +1077,15 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasPreposisionsOfTime_Clicked(object sender, EventArgs e)
         {
-            StackLayoutVocabularyCategory.IsVisible = true;
+            StackLayoutGramarCategory.IsVisible = true;
             StackLayoutPreposisionsOfTime.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
         private async void btnFamilyVocabulary_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-                StackLayoutVocabularyCategory.IsVisible = false;
-                StackLayoutFamily.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Remember, study for your quiz");
-                var datos = await metodos.GetFamily();
-                listFamily = datos;
-                var random = new Random().Next(1, listFamily.Count);
-                var elegido = listFamily[random];
-                LblFamilySentences.Text = listFamily[0].FamilySentences;
-                CorrectAnswerFamily = listFamily[0].CorrectAnswer;
-                //listFamily.Remove(elegido);
-                TxtFamilyMember.Text = "";
-                LblCorrectAnswerFamily.IsVisible = false;
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
+            StackLayoutVocabularyCategory.IsVisible = false;
+            StackLayoutFamilyPage.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnCheckMyAnswerFamily_Clicked(object sender, EventArgs e)
@@ -1171,7 +1131,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasFamily_Clicked(object sender, EventArgs e)
         {
-            StackLayoutVocabularyCategory.IsVisible = true;
+            StackLayoutFamilyActivities.IsVisible = true;
             StackLayoutFamily.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -1202,7 +1162,7 @@ namespace PleaseRememberMe.Pantallas
             }
         }
 
-        private async void BtnAtrasAnySome_Clicked(object sender, EventArgs e)
+        private void BtnAtrasAnySome_Clicked(object sender, EventArgs e)
         {
             StackLayoutGramarCategory.IsVisible = true;
             StackLayoutAnySome.IsVisible = false;
@@ -1336,7 +1296,7 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutVocabularyCategory.IsVisible = false;
         }
 
-        private async void BtnCategories_Clicked(object sender, EventArgs e)
+        private void BtnCategories_Clicked(object sender, EventArgs e)
         {
             //AnuncioParaCategories.IsVisible = true;
             Anuncio.IsVisible = false;
@@ -1349,8 +1309,50 @@ namespace PleaseRememberMe.Pantallas
             UserDialogs.Instance.HideLoading();
         }
 
-        private async void BtnVocabularyExercise_Clicked(object sender, EventArgs e)
+       
+        private void BtnVerbInPastS_Clicked(object sender, EventArgs e)
         {
+            _ = SpeakNowDefaultSettings(audioverboSimplePast);
+        }
+
+        private void BtnVerbInPastPart_Clicked(object sender, EventArgs e)
+        {
+            _ = SpeakNowDefaultSettings(audioverboPasParticiple);
+        }
+
+        private void BtnActivitiesProfessions_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutProfessionsPage.IsVisible = false;
+            StackLayoutProfessionsActivities.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private async void BtnProfessionsMatch_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                StackLayoutProfessionsActivities.IsVisible = false;
+                StackLayoutMatch.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm looking the blue sky");
+                var datos = await metodos.GetMatchSentences();
+                listMatch = datos;
+                lsv_Math.ItemsSource = datos;
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
+
+        private async void BtnVocabularyProfessions_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutProfessionsPage.IsVisible = false;
+            StacklayoutVocabularyWords.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+
             try
             {
                 Anuncio.IsVisible = false;
@@ -1370,6 +1372,157 @@ namespace PleaseRememberMe.Pantallas
             }
         }
 
+        private void BtnAtrasProfessionsActivities_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutProfessionsActivities.IsVisible = false;
+            StackLayoutProfessionsPage.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnAtrasProfessionsPage_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutProfessionsPage.IsVisible = false;
+            StackLayoutVocabularyCategory.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnAtrasClothesPage_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutVocabularyCategory.IsVisible = true;
+            StackLayoutClothesPage.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnActivitiesClothes_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutClothesPage.IsVisible = false;
+            StackLayoutClothesActivities.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private async void BtnVocabularyClothes_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Anuncio.IsVisible = false;
+
+                StackLayoutClothesPage.IsVisible = false;
+                StacklayoutVocabularyClothes.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
+                var datos = await metodos.GetVocabularyClothes();
+                lsv_VocabularyClothesWords.ItemsSource = datos;
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
+
+        private void BtnAtrasClothessActivities_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutClothesActivities.IsVisible = false;
+            StackLayoutClothesPage.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private async void BtnClothesExercises_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutClothesActivities.IsVisible = false;
+            StackLayoutClothes.IsVisible = true;
+
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.ShowLoading("Are you happy? I hope so");
+            var datos = await metodos.GetClothes();
+            listclothes = datos;
+            lsv_clothes.ItemsSource = datos;
+            UserDialogs.Instance.HideLoading();
+        }
+
+        private void BtnAtrasVocabularyClothesWords_Clicked(object sender, EventArgs e)
+        {
+            StacklayoutVocabularyClothes.IsVisible = false;
+            StackLayoutClothesPage.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnAtrasFamilyPage_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutVocabularyCategory.IsVisible = true;
+            StackLayoutFamilyPage.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private async void BtnVocabularyFamily_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Anuncio.IsVisible = false;
+
+                StackLayoutFamilyPage.IsVisible = false;
+                StacklayoutVocabularyFamily.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
+                var datos = await metodos.GetVocabularyFamily();
+                lsv_VocabularyFamilyWords.ItemsSource = datos;
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
+
+        private void BtnActivitiesFamily_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutFamilyPage.IsVisible = false;
+            StackLayoutFamilyActivities.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnAtrasVocabularyFamilyWords_Clicked(object sender, EventArgs e)
+        {
+            StacklayoutVocabularyFamily.IsVisible = false;
+            StackLayoutFamilyPage.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private async void BtnFamilyExercises_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                StackLayoutFamilyActivities.IsVisible = false;
+                StackLayoutFamily.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Remember, study for your quiz");
+                var datos = await metodos.GetFamily();
+                listFamily = datos;
+                var random = new Random().Next(1, listFamily.Count);
+                var elegido = listFamily[random];
+                LblFamilySentences.Text = listFamily[0].FamilySentences;
+                CorrectAnswerFamily = listFamily[0].CorrectAnswer;
+                //listFamily.Remove(elegido);
+                TxtFamilyMember.Text = "";
+                LblCorrectAnswerFamily.IsVisible = false;
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
+
+        private void BtnAtrasFamilysActivities_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutFamilyActivities.IsVisible = false;
+            StackLayoutFamilyPage.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
         private void BtnOrganizeConversation_Clicked(object sender, EventArgs e)
         {
 
@@ -1378,15 +1531,13 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasVocabularyWords_Clicked(object sender, EventArgs e)
         {
             StacklayoutVocabularyWords.IsVisible = false;
-            StackLayoutVocabularyCategory.IsVisible = true;
+            StackLayoutProfessionsPage.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
-        private async void BtnVerbInPast_Clicked(object sender, EventArgs e)
+        private  void BtnVerbInPast_Clicked(object sender, EventArgs e)
         {
-
-            SpeakNowDefaultSettings();
-
+            _ = SpeakNowDefaultSettings(audioVerboFormaBase);
         }
 
         private void BtnCheckMyAnswerVerbToBe_Clicked(object sender, EventArgs e)
