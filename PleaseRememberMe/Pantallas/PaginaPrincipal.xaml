@@ -114,7 +114,7 @@
                 <Entry  FontSize="12"  Keyboard="Text" TextTransform="Uppercase" x:Name="txtVerbInPastSimple" Grid.Row="2" TextColor="#333" PlaceholderColor="#333"  Grid.Column="1"  Placeholder="?"  BackgroundColor="Transparent" ></Entry>
                 <Entry  FontSize="12"  Keyboard="Text" TextTransform="Uppercase" x:Name="txtVerbInPastParticiple" Grid.Row="2" TextColor="#333" PlaceholderColor="#333"  Grid.Column="2"  Placeholder="?" BackgroundColor="Transparent" ></Entry>
 
-
+           
 
                 <Label x:Name="LblVerbInPastCheck"  FontSize="12" Grid.Row="3" Grid.Column="0" TextColor="DarkRed" FontAttributes="Bold"></Label>
                 <Label x:Name="LblVerbInPastSimpleCheck"  FontSize="12" Grid.Row="3" Grid.Column="1" TextColor="DarkRed" FontAttributes="Bold"></Label>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,11 +19,24 @@ namespace PleaseRememberMe
         {
             InitializeComponent();
 
+            // Formatting numbers, dates, etc.
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+
+            // UI strings that we have localized.
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
+
+            CultureInfo englishUSCulture = new CultureInfo("en-US");
+            CultureInfo.DefaultThreadCurrentCulture = englishUSCulture;
             MainPage = new Pantallas.PaginaPrincipal();
         }
 
         protected override void OnStart()
         {
+            // Formatting numbers, dates, etc.
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+
+            // UI strings that we have localized.
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
         }
 
         protected override void OnSleep()
@@ -31,6 +45,11 @@ namespace PleaseRememberMe
 
         protected override void OnResume()
         {
+            // Formatting numbers, dates, etc.
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+
+            // UI strings that we have localized.
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
         }
     }
 }

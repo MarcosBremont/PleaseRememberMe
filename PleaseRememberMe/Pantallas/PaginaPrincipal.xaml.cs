@@ -13,6 +13,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Plugin.TextToSpeech.Abstractions;
+using System.Globalization;
 
 namespace PleaseRememberMe.Pantallas
 {
@@ -45,13 +47,14 @@ namespace PleaseRememberMe.Pantallas
         ModalTournament modalTournament = new ModalTournament();
         ModalAboutMe modalAboutMe = new ModalAboutMe();
         Metodos metodos = new Metodos();
+        IEnumerable<Locale> locales;
+        static CrossLocale? localeee = null;
         #endregion
         private bool _userTapped;
 
         public PaginaPrincipal()
         {
             InitializeComponent();
-
             //LblTorneoEnCurso.IsVisible = false;
             //LblTorneo.IsVisible = false;
             //LblPuntos.IsVisible = false;
@@ -104,16 +107,26 @@ namespace PleaseRememberMe.Pantallas
              }
            );
 
+            CargarIdioma();
 
         }
 
 
-        public async Task SpeakNowDefaultSettings(string audio)
+        public async void CargarIdioma()
         {
-            await TextToSpeech.SpeakAsync(audio);
-            // This method will block until utterance finishes.
-        }
+            var lenguaje = await CrossTextToSpeech.Current.GetInstalledLanguages();
+            var items = lenguaje.Select(a => a.ToString()).ToArray();
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+
+                localeee = lenguaje.FirstOrDefault(l => l.ToString() == "en-US");
+            }
+            else
+            {
+                localeee = new CrossLocale { Language = "en-US" };
+            }
+        }
         private void ModalAboutMe_OnLLamarOtraPantalla(object sender, EventArgs e)
         {
         }
@@ -157,6 +170,9 @@ namespace PleaseRememberMe.Pantallas
                 var lista = listverbos;
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking water");
                 listverbos = await metodos.GetListadoVerbos();
+
+                locales = await TextToSpeech.GetLocalesAsync();
+
                 UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
@@ -268,8 +284,9 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnLetsGo_Clicked(object sender, EventArgs e)
         {
-         
 
+            BtnVerbInPastS.IsVisible = false;
+            BtnVerbInPastPart.IsVisible = false;
             Anuncio.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             StacklayoutPrincipal.IsVisible = false;
@@ -321,8 +338,8 @@ namespace PleaseRememberMe.Pantallas
 
                 if (App.Torneo != "S")
                 {
-                   // StackTraducciones.IsVisible = true;
-                   //LblTraduction.Text = Traduccion;
+                    // StackTraducciones.IsVisible = true;
+                    //LblTraduction.Text = Traduccion;
                     LblVerbInPastSimpleCheck.IsVisible = true;
                     LblVerbInPastParticipleCheck.IsVisible = true;
                 }
@@ -1309,15 +1326,16 @@ namespace PleaseRememberMe.Pantallas
             UserDialogs.Instance.HideLoading();
         }
 
-       
-        private void BtnVerbInPastS_Clicked(object sender, EventArgs e)
+
+        private async void BtnVerbInPastS_Clicked(object sender, EventArgs e)
         {
-            _ = SpeakNowDefaultSettings(audioverboSimplePast);
+            await CrossTextToSpeech.Current.Speak(audioverboSimplePast, crossLocale: localeee);
         }
 
-        private void BtnVerbInPastPart_Clicked(object sender, EventArgs e)
+        private async void BtnVerbInPastPart_Clicked(object sender, EventArgs e)
         {
-            _ = SpeakNowDefaultSettings(audioverboPasParticiple);
+            await CrossTextToSpeech.Current.Speak(audioverboPasParticiple, crossLocale: localeee);
+
         }
 
         private void BtnActivitiesProfessions_Clicked(object sender, EventArgs e)
@@ -1523,6 +1541,7 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
+
         private void BtnOrganizeConversation_Clicked(object sender, EventArgs e)
         {
 
@@ -1535,9 +1554,9 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
-        private  void BtnVerbInPast_Clicked(object sender, EventArgs e)
+        private async void BtnVerbInPast_Clicked(object sender, EventArgs e)
         {
-            _ = SpeakNowDefaultSettings(audioVerboFormaBase);
+            await CrossTextToSpeech.Current.Speak(audioVerboFormaBase, crossLocale: localeee);
         }
 
         private void BtnCheckMyAnswerVerbToBe_Clicked(object sender, EventArgs e)
