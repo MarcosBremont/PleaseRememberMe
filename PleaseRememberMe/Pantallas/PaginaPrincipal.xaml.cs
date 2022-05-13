@@ -55,34 +55,36 @@ namespace PleaseRememberMe.Pantallas
         public PaginaPrincipal()
         {
             InitializeComponent();
-            //LblTorneoEnCurso.IsVisible = false;
-            //LblTorneo.IsVisible = false;
-            //LblPuntos.IsVisible = false;
-            //BtnTerminarTorneo.IsVisible = false;
+            LblTorneoEnCurso.IsVisible = false;
+            LblTorneo.IsVisible = false;
+            LblPuntos.IsVisible = false;
+            BtnTerminarTorneo.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
 
-            // StackTournament.GestureRecognizers.Add(
-            //  new TapGestureRecognizer()
-            //  {
-            //      Command = new Command(async () =>
-            //      {
-            //          if (_userTapped)
-            //              return;
+            StackTournament.GestureRecognizers.Add(
+             new TapGestureRecognizer()
+             {
+                 Command = new Command(async () =>
+                 {
+                     if (_userTapped)
+                         return;
 
-            //          _userTapped = true;
-            //          modalTournament = new ModalTournament();
-            //          modalTournament.OnLLamarOtraPantalla += ModalTournament_OnLLamarOtraPantalla;
-            //          modalTournament.Disappearing += ModalTournament_Disappearing;
+                     _userTapped = true;
+                     modalTournament = new ModalTournament();
+                     modalTournament.OnLLamarOtraPantalla += ModalTournament_OnLLamarOtraPantalla;
+                     modalTournament.Disappearing += ModalTournament_Disappearing;
 
-            //          await PopupNavigation.PushAsync(modalTournament);
-            //          await Task.Delay(1000);
-            //          _userTapped = false;
-            //          Opacity = 1;
-            //      }),
-            //      NumberOfTapsRequired = 1
+                     await PopupNavigation.PushAsync(modalTournament);
+                     await Task.Delay(1000);
+                     _userTapped = false;
+                     Opacity = 1;
+                 }),
+                 NumberOfTapsRequired = 1
 
-            //  }
-            //);
+             }
+           );
+
+
 
             StackLayoutAboutMe.GestureRecognizers.Add(
              new TapGestureRecognizer()
@@ -143,18 +145,19 @@ namespace PleaseRememberMe.Pantallas
         {
             if (App.Torneo == "S")
             {
+                StackTorneo.IsVisible = false;
                 App.SumaTotalDePuntos = 0;
                 listverbos = await metodos.GetListadoVerbos();
                 BtnLetsGo_Clicked(new object(), new EventArgs());
                 BtnGiveMeSomeExamples.IsVisible = false;
                 BtnAnotherOne.IsVisible = false;
-                //LblTorneo.IsVisible = true;
-                //LblTorneoEnCurso.IsVisible = true;
-                //BtnTerminarTorneo.IsVisible = true;
+                LblTorneo.IsVisible = true;
+                LblTorneoEnCurso.IsVisible = true;
+                BtnTerminarTorneo.IsVisible = true;
                 txtVerbInPastSimple.Text = "";
                 txtVerbInPastParticiple.Text = "";
-                //LblPuntos.Text = "0";
-                //LblPuntos.IsVisible = true;
+                LblPuntos.Text = "0";
+                LblPuntos.IsVisible = true;
 
 
             }
@@ -190,8 +193,8 @@ namespace PleaseRememberMe.Pantallas
                 if (listverbos.Count == 1 && App.YaPasoPorAqui == "Yes")
                 {
                     Acr.UserDialogs.UserDialogs.Instance.Toast("¡You finish!, your result will be send to the leaderboard");
-                    //LblNumerosDeVerbosRestantes.Text = "0";
-                    //App.SumaTotalDePuntos = 0;
+                    LblNumerosDeVerbosRestantes.Text = "0";
+                    App.SumaTotalDePuntos = 0;
                     UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
                     var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
                     UserDialogs.Instance.HideLoading();
@@ -207,8 +210,8 @@ namespace PleaseRememberMe.Pantallas
                         listverbos.Remove(datos);
                         VerbInSimplePast = datos.verboSimplePast.ToUpper();
                         VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
-                        //LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
-                        //LblNumerosDeVerbosRestantes.IsVisible = true;
+                        LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
+                        LblNumerosDeVerbosRestantes.IsVisible = true;
                         txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
                     }
                     else
@@ -218,8 +221,8 @@ namespace PleaseRememberMe.Pantallas
                         txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
                         VerbInSimplePast = datos.verboSimplePast.ToUpper();
                         VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
-                        //LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
-                        //LblNumerosDeVerbosRestantes.IsVisible = true;
+                        LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
+                        LblNumerosDeVerbosRestantes.IsVisible = true;
                         App.YaPasoPorAqui = "Yes";
 
                     }
@@ -284,7 +287,8 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnLetsGo_Clicked(object sender, EventArgs e)
         {
-
+            //DependencyService.Get<IAppSettingsHelper>().OpenAppSettings();
+            BtnTerminarTorneo.IsVisible = false;
             BtnVerbInPastS.IsVisible = false;
             BtnVerbInPastPart.IsVisible = false;
             Anuncio.IsVisible = false;
@@ -298,8 +302,6 @@ namespace PleaseRememberMe.Pantallas
             txtVerbInPastSimple.Text = "";
             txtVerbInPastParticiple.Text = "";
             GetRandomVerb();
-
-
         }
 
         private void BtnAnotherOne_Clicked(object sender, EventArgs e)
@@ -406,9 +408,9 @@ namespace PleaseRememberMe.Pantallas
 
                 if (LblVerbInPastSimpleCheck.Text == "Correct" && LblVerbInPastParticipleCheck.Text == "Correct" && App.Torneo == "S")
                 {
-                    //LblPuntos.IsVisible = true;
+                    LblPuntos.IsVisible = true;
                     App.SumaTotalDePuntos = App.SumaTotalDePuntos + 1;
-                    //LblPuntos.Text = App.SumaTotalDePuntos.ToString();
+                    LblPuntos.Text = App.SumaTotalDePuntos.ToString();
                     BtnVerbInPast.IsVisible = true;
                     BtnVerbInPastPart.IsVisible = true;
                     player.Load("CorrectSoundReady.mp3");
@@ -451,7 +453,7 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             StacklayoutLetsGo.IsVisible = false;
             StacklayoutPrincipal.IsVisible = true;
-            //LblPuntos.Text = "0";
+            LblPuntos.Text = "0";
             App.Torneo = "N";
         }
 
@@ -494,10 +496,10 @@ namespace PleaseRememberMe.Pantallas
 
 
 
-            //LblPuntos.IsVisible = false;
-            //LblTorneo.IsVisible = false;
-            //LblTorneoEnCurso.IsVisible = false;
-            //BtnTerminarTorneo.IsVisible = false;
+            LblPuntos.IsVisible = false;
+            LblTorneo.IsVisible = false;
+            LblTorneoEnCurso.IsVisible = false;
+            BtnTerminarTorneo.IsVisible = false;
 
             StackLayoutVerbList.IsVisible = false;
 
@@ -529,7 +531,7 @@ namespace PleaseRememberMe.Pantallas
                 {
                     UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
                     BtnAtras_Clicked(new object(), new EventArgs());
-                    //BtnTerminarTorneo.IsVisible = false;
+                    BtnTerminarTorneo.IsVisible = false;
                     App.Torneo = "N";
                     var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
                     App.SumaTotalDePuntos = 0;

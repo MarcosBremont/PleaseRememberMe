@@ -28,10 +28,10 @@
                     <Button x:Name="BtnTablaDePosiciones" IsVisible="false" Clicked="BtnTablaDePosiciones_Clicked"  WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Leaderboard" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                     <!--LayoutPrincipal-->
                     <Button x:Name="BtnCategories" Clicked="BtnCategories_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Categories" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
-                    <!--<StackLayout x:Name="StackTournament" IsVisible="false">
+                    <StackLayout x:Name="StackTournament" IsVisible="true">
                         <ImageButton x:Name="BtnTournament" Clicked="BtnTournament_Clicked" Source="winning.png" BackgroundColor="Transparent" WidthRequest="50" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3"/>
                         <Label x:Name="lbltouchhere" FontSize="12"  HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Touch here for enter to a tournament" TextColor="#333"></Label>
-                    </StackLayout>-->
+                    </StackLayout>
 
                     <Label x:Name="lblVersion" Margin="0,10,0,0" VerticalOptions="EndAndExpand"  Text="Versión 3.2" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
 
@@ -78,6 +78,19 @@
 
             </Grid>
 
+            <StackLayout HorizontalOptions="CenterAndExpand" x:Name="StackTorneo" IsVisible="false">
+                <Label HorizontalOptions="CenterAndExpand" x:Name="LblTorneoEnCurso" IsVisible="true"  HorizontalTextAlignment="Center" Grid.Row="1" Text="Torneo en curso." TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label HorizontalOptions="CenterAndExpand" x:Name="LblPuntosObtenidos" IsVisible="true"  HorizontalTextAlignment="Center" Grid.Row="1" Text="Puntos Obtenidos:" TextColor="#333" FontAttributes="Bold" FontSize="16" />
+                    <Label HorizontalOptions="CenterAndExpand" x:Name="LblPuntos" IsVisible="true"  HorizontalTextAlignment="Center" Grid.Row="1" Text="0" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label HorizontalOptions="CenterAndExpand" x:Name="LblVerbosRestantes" IsVisible="true" Text="Verbos Restantes:"  HorizontalTextAlignment="Center" Grid.Row="1" TextColor="#333" FontAttributes="Bold" FontSize="16" />
+                    <Label HorizontalOptions="CenterAndExpand" x:Name="LblNumerosDeVerbosRestantes" IsVisible="true" Text="0"  HorizontalTextAlignment="Center" Grid.Row="1" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" />
+                </StackLayout>
+                <Label HorizontalOptions="CenterAndExpand" x:Name="LblTorneo" IsVisible="true" HorizontalTextAlignment="Center" Grid.Row="1" Text="Try to put all the verbs in the correct form and get points for that." TextColor="#333" FontSize="16" />
+            </StackLayout>
+
             <Grid x:Name="GridVerbos" HorizontalOptions="Center" Padding="30,10,30,0" Grid.Row="1">
 
                 <Grid.RowDefinitions>
@@ -95,11 +108,8 @@
                 </Grid>
 
 
-                <!--Labels LetsGo-->
-                <!--<Label x:Name="LblPuntos" HorizontalTextAlignment="Center" Grid.Row="1" Text="0" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
-                <Label x:Name="LblTorneoEnCurso" HorizontalTextAlignment="Center" Grid.Row="1" Text="Torneo en curso." TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
-                <Label x:Name="LblNumerosDeVerbosRestantes" HorizontalTextAlignment="Center" Grid.Row="1" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" Padding="25,0,25,0"/>
-                <Label x:Name="LblTorneo" HorizontalTextAlignment="Center" Grid.Row="1" Text="Try to put all the verbs in the correct form and get points fot that." TextColor="#333" FontSize="16" Padding="25,0,25,0"/>-->
+
+
 
 
                 <ImageButton x:Name="BtnVerbInPast" Clicked="BtnVerbInPast_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Source="volume" HeightRequest="15"></ImageButton>
@@ -114,7 +124,7 @@
                 <Entry  FontSize="12"  Keyboard="Text" TextTransform="Uppercase" x:Name="txtVerbInPastSimple" Grid.Row="2" TextColor="#333" PlaceholderColor="#333"  Grid.Column="1"  Placeholder="?"  BackgroundColor="Transparent" ></Entry>
                 <Entry  FontSize="12"  Keyboard="Text" TextTransform="Uppercase" x:Name="txtVerbInPastParticiple" Grid.Row="2" TextColor="#333" PlaceholderColor="#333"  Grid.Column="2"  Placeholder="?" BackgroundColor="Transparent" ></Entry>
 
-           
+
 
                 <Label x:Name="LblVerbInPastCheck"  FontSize="12" Grid.Row="3" Grid.Column="0" TextColor="DarkRed" FontAttributes="Bold"></Label>
                 <Label x:Name="LblVerbInPastSimpleCheck"  FontSize="12" Grid.Row="3" Grid.Column="1" TextColor="DarkRed" FontAttributes="Bold"></Label>
@@ -130,9 +140,7 @@
                         <Label x:Name="LblTraduction"  FontSize="12" Grid.Row="3" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333"></Label>
                     </StackLayout>-->
 
-                    <!--LayoutTorneo-->
-                    <!--<Button x:Name="BtnTerminarTorneo" Clicked="BtnTerminarTorneo_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="FINISH TOURNAMENT" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>-->
-                    <!--LayoutPrincipal-->
+                    <Button x:Name="BtnTerminarTorneo" Clicked="BtnTerminarTorneo_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="FINISH TOURNAMENT" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
                     <Button x:Name="BtnCheck" Clicked="BtnCheck_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Check" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
 
                     <!--LayoutPrincipal-->
@@ -2239,7 +2247,7 @@
             </ScrollView>
 
         </StackLayout>
-        
+
         <!--Stacklayout Vocabulary Clohes - Page 26-->
         <StackLayout x:Name="StacklayoutVocabularyClothes" IsVisible="false" >
 
@@ -2316,10 +2324,10 @@
             </StackLayout>
         </StackLayout>
 
-        
-        
-        
-        
+
+
+
+
         <!--Stacklayout FamilyPage - Page 23-->
         <StackLayout IsVisible="false" x:Name="StackLayoutFamilyPage">
 
@@ -2430,7 +2438,7 @@
             </Grid>
 
             <StackLayout Margin="10,0,10,40">
-                
+
                 <Label HorizontalOptions="Center" Text="Family Vocabulary" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
                 <Grid Grid.Row="1" Margin="0" HeightRequest="25" BackgroundColor="#333" Padding="6">

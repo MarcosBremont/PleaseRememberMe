@@ -7,19 +7,21 @@ using Android.OS;
 using Acr.UserDialogs;
 using Android.Gms.Ads;
 using AndroidX.AppCompat.App;
+using Android.Speech.Tts;
 
 namespace PleaseRememberMe.Droid
 {
     [Activity(Label = "RememberMe", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        TextToSpeech textToSpeech;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Rg.Plugins.Popup.Popup.Init(this);
             AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo; ///1st LINE DUDE TO WORK !
             base.OnCreate(savedInstanceState);
             MobileAds.Initialize(this);
-
             UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
