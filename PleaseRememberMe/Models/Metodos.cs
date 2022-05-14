@@ -188,6 +188,12 @@ namespace PleaseRememberMe.Models
             return listado_vocabulary_Family;
         } //
 
+        public async Task<Result> SendReport(string report)
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/SendReport/{report.ToUpper()}");
+            var response = Newtonsoft.Json.JsonConvert.DeserializeObject<Result>(result);
+            return response;
+        }
 
     }
 }

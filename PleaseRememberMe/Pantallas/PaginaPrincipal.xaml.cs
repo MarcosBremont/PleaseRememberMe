@@ -25,7 +25,7 @@ namespace PleaseRememberMe.Pantallas
             CorrectAnswerPronoun = "", CorrectAnswerVerb = "", CorrectAnswerQuestionWithHow = "", CorrectAnswerPrepositionsOfTime = "",
             CorrectAnswerFamily = "", CorrectAnswerAnySome = "", CorrectAnswerVerbToBe1 = "",
             CorrectAnswerVerbToBe2 = "", CorrectAnswerQuantifiers = "", AnswerRadioButton1 = "",
-            AnswerRadioButton2 = "", audioVerboFormaBase = "", audioverboSimplePast = "", audioverboPasParticiple = "";
+            AnswerRadioButton2 = "", audioVerboFormaBase = "", audioverboSimplePast = "", audioverboPasParticiple = "", ExamplePastSimple = "", ExamplePastParticiple = "";
         #endregion
         #region Listas
         List<Entidad.EVerbos> listadodelosverbos = new List<Entidad.EVerbos>();
@@ -247,6 +247,8 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
+                LblVerbInPastSimpleCheck.Text = "";
+                LblVerbInPastParticipleCheck.Text = "";
                 var lista = listverbos;
 
                 if (App.YaPasastePorGetRandomVerb == "Yes")
@@ -283,9 +285,31 @@ namespace PleaseRememberMe.Pantallas
                 audioverboPasParticiple = datos.verboPasParticiple.ToString();
                 lblExamplePast.Text = datos.examplesInBaseForm;
                 lblExamplePastSimple.Text = datos.examplesInSimplePast;
+                ExamplePastSimple = datos.examplesInSimplePast;
+                ExamplePastParticiple = datos.examplesInPastParticiple;
                 lblExamplePastParticiple.Text = datos.examplesInPastParticiple;
                 listverbos.Remove(datos);
                 LblNumerosDeVerbosRestantes.Text = listverbos.Count().ToString();
+
+                if (LblVerbInPastSimpleCheck.Text != "Correct")
+                {
+                    lblExamplePastSimple.Text = "...";
+                }
+                else
+                {
+                    lblExamplePastSimple.Text = ExamplePastSimple;
+
+                }
+
+                if (LblVerbInPastParticipleCheck.Text != "Correct")
+                {
+                    lblExamplePastParticiple.Text = "...";
+                }
+                else
+                {
+                    lblExamplePastParticiple.Text = ExamplePastParticiple;
+
+                }
 
             }
             catch (Exception ex)
@@ -339,6 +363,7 @@ namespace PleaseRememberMe.Pantallas
 
             }
             LimpiarText();
+            StackExamples.HorizontalOptions = LayoutOptions.CenterAndExpand;
         }
 
         public void LimpiarText()
@@ -470,6 +495,27 @@ namespace PleaseRememberMe.Pantallas
 
                 }
 
+                if (LblVerbInPastSimpleCheck.Text != "Correct")
+                {
+                    lblExamplePastSimple.Text = "...";
+                }
+                else
+                {
+                    lblExamplePastSimple.Text = ExamplePastSimple;
+
+                }
+
+
+                if (LblVerbInPastParticipleCheck.Text != "Correct")
+                {
+                    lblExamplePastParticiple.Text = "...";
+                }
+                else
+                {
+                    lblExamplePastParticiple.Text = ExamplePastParticiple;
+
+                }
+
                 player.Play();
 
             }
@@ -484,6 +530,26 @@ namespace PleaseRememberMe.Pantallas
         private void BtnGiveMeSomeExamples_Clicked(object sender, EventArgs e)
         {
             StackExamples.IsVisible = true;
+            if (LblVerbInPastSimpleCheck.Text != "Correct")
+            {
+                lblExamplePastSimple.Text = "...";
+            }
+            else
+            {
+                lblExamplePastSimple.Text = ExamplePastSimple;
+
+            }
+
+            if (LblVerbInPastParticipleCheck.Text != "Correct")
+            {
+                lblExamplePastParticiple.Text = "...";
+            }
+            else
+            {
+                lblExamplePastParticiple.Text = ExamplePastParticiple;
+
+            }
+            StackExamples.HorizontalOptions = LayoutOptions.Fill;
         }
 
         private void BtnAtras_Clicked(object sender, EventArgs e)
@@ -1834,5 +1900,30 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutsimplePastCategory.IsVisible = true;
         }
 
+
+        private async void BtnReport_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Sending report, give me a few seconds");
+                var apiResult = await metodos.SendReport(txtReport.Text);
+                if (apiResult.Respuesta == "OK")
+                {
+                    Acr.UserDialogs.UserDialogs.Instance.Toast("Report Sent, thanks for report a problem");
+                    txtReport.Text = "";
+                }
+                else
+                {
+                    Acr.UserDialogs.UserDialogs.Instance.Toast("Error, check your internet connection");
+
+                }
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+        }
     }
 }
