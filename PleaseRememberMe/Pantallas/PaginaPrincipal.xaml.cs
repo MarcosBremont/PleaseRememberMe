@@ -145,7 +145,7 @@ namespace PleaseRememberMe.Pantallas
         {
             if (App.Torneo == "S")
             {
-                StackTorneo.IsVisible = false;
+                StackTorneo.IsVisible = true;
                 App.SumaTotalDePuntos = 0;
                 listverbos = await metodos.GetListadoVerbos();
                 BtnLetsGo_Clicked(new object(), new EventArgs());
@@ -213,17 +213,22 @@ namespace PleaseRememberMe.Pantallas
                         LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
                         LblNumerosDeVerbosRestantes.IsVisible = true;
                         txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
+                        audioVerboFormaBase = datos.VerboFormaBase.ToString();
+
                     }
                     else
                     {
                         var random = new Random().Next(1, listverbos.Count);
                         var datos = listverbos[random];
+                        //listverbos.Remove(datos);
                         txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
                         VerbInSimplePast = datos.verboSimplePast.ToUpper();
                         VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
                         LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
                         LblNumerosDeVerbosRestantes.IsVisible = true;
                         App.YaPasoPorAqui = "Yes";
+                        audioVerboFormaBase = datos.VerboFormaBase.ToString();
+
 
                     }
 
@@ -246,11 +251,12 @@ namespace PleaseRememberMe.Pantallas
 
                 if (App.YaPasastePorGetRandomVerb == "Yes")
                 {
+                    listverbos = await metodos.GetListadoVerbos();
 
                 }
                 else
                 {
-                    if (App.Torneo == "N")
+                    if (App.Torneo == "N" || string.IsNullOrEmpty(App.Torneo))
                     {
                         listverbos = await metodos.GetListadoVerbos();
                         App.YaPasastePorGetRandomVerb = "Yes";
@@ -258,6 +264,10 @@ namespace PleaseRememberMe.Pantallas
                     }
                     else
                     {
+                        StackTorneo.IsVisible = true;
+                        BtnVerbInPastAudio.IsVisible = true;
+                        BtnVerbInPastSAudio.IsVisible = false;
+                        BtnVerbInPastPartAudio.IsVisible = false;
 
                     }
                 }
@@ -274,7 +284,8 @@ namespace PleaseRememberMe.Pantallas
                 lblExamplePast.Text = datos.examplesInBaseForm;
                 lblExamplePastSimple.Text = datos.examplesInSimplePast;
                 lblExamplePastParticiple.Text = datos.examplesInPastParticiple;
-
+                listverbos.Remove(datos);
+                LblNumerosDeVerbosRestantes.Text = listverbos.Count().ToString();
 
             }
             catch (Exception ex)
@@ -288,10 +299,15 @@ namespace PleaseRememberMe.Pantallas
         private void BtnLetsGo_Clicked(object sender, EventArgs e)
         {
             //DependencyService.Get<IAppSettingsHelper>().OpenAppSettings();
+            StackTorneo.IsVisible = false;
+            Anuncio.IsVisible = true;
+
+            BtnGiveMeSomeExamples.IsVisible = true;
+            BtnAnotherOne.IsVisible = true;
+            BtnVerbInPastAudio.IsVisible = true;
             BtnTerminarTorneo.IsVisible = false;
-            BtnVerbInPastS.IsVisible = false;
-            BtnVerbInPastPart.IsVisible = false;
-            Anuncio.IsVisible = false;
+            BtnVerbInPastSAudio.IsVisible = false;
+            BtnVerbInPastPartAudio.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             StacklayoutPrincipal.IsVisible = false;
             StackExamples.IsVisible = false;
@@ -301,13 +317,18 @@ namespace PleaseRememberMe.Pantallas
             LblVerbInPastParticipleCheck.IsVisible = false;
             txtVerbInPastSimple.Text = "";
             txtVerbInPastParticiple.Text = "";
+            if (App.Torneo == "S")
+            {
+                StackTorneo.IsVisible = true;
+            }
+
             GetRandomVerb();
         }
 
         private void BtnAnotherOne_Clicked(object sender, EventArgs e)
         {
-            BtnVerbInPastS.IsVisible = false;
-            BtnVerbInPastPart.IsVisible = false;
+            BtnVerbInPastSAudio.IsVisible = false;
+            BtnVerbInPastPartAudio.IsVisible = false;
             if (App.Torneo == "S")
             {
                 GetRandomVerbForTheTournament();
@@ -344,7 +365,10 @@ namespace PleaseRememberMe.Pantallas
                     //LblTraduction.Text = Traduccion;
                     LblVerbInPastSimpleCheck.IsVisible = true;
                     LblVerbInPastParticipleCheck.IsVisible = true;
+
                 }
+
+
 
                 var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
                 if (string.IsNullOrEmpty(txtVerbInPastSimple.Text))
@@ -360,8 +384,14 @@ namespace PleaseRememberMe.Pantallas
 
                         LblVerbInPastSimpleCheck.Text = "Correct";
                         player.Load("CorrectSoundReady.mp3");
-                        BtnVerbInPastS.IsVisible = true;
+                        if (App.Torneo == "S")
+                        {
 
+                        }
+                        else
+                        {
+                            BtnVerbInPastSAudio.IsVisible = true;
+                        }
 
                     }
                     else
@@ -389,7 +419,14 @@ namespace PleaseRememberMe.Pantallas
                     {
                         LblVerbInPastParticipleCheck.Text = "Correct";
                         player.Load("CorrectSoundReady.mp3");
-                        BtnVerbInPastPart.IsVisible = true;
+                        if (App.Torneo == "S")
+                        {
+
+                        }
+                        else
+                        {
+                            BtnVerbInPastPartAudio.IsVisible = true;
+                        }
 
                     }
                     else
@@ -411,8 +448,8 @@ namespace PleaseRememberMe.Pantallas
                     LblPuntos.IsVisible = true;
                     App.SumaTotalDePuntos = App.SumaTotalDePuntos + 1;
                     LblPuntos.Text = App.SumaTotalDePuntos.ToString();
-                    BtnVerbInPast.IsVisible = true;
-                    BtnVerbInPastPart.IsVisible = true;
+                    BtnVerbInPastAudio.IsVisible = true;
+                    BtnVerbInPastPartAudio.IsVisible = true;
                     player.Load("CorrectSoundReady.mp3");
                 }
 
@@ -427,6 +464,9 @@ namespace PleaseRememberMe.Pantallas
                 {
                     GetRandomVerbForTheTournament();
                     LimpiarText();
+                    BtnVerbInPastAudio.IsVisible = true;
+                    BtnVerbInPastSAudio.IsVisible = false;
+                    BtnVerbInPastPartAudio.IsVisible = false;
 
                 }
 
@@ -527,14 +567,15 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                if (await DisplayAlert("Information", "¿Do you want to finish the tournament?", "Of course", "Noo"))
+                if (await DisplayAlert("Information", "¿Do you want to finish the tournament?", "Yes", "No"))
                 {
-                    UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
+                    UserDialogs.Instance.ShowLoading("I'm reading a book, give me a few seconds");
                     BtnAtras_Clicked(new object(), new EventArgs());
                     BtnTerminarTorneo.IsVisible = false;
                     App.Torneo = "N";
                     var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
                     App.SumaTotalDePuntos = 0;
+                    Acr.UserDialogs.UserDialogs.Instance.Toast("¡You finish!, your result will be send to the leaderboard");
                     UserDialogs.Instance.HideLoading();
                 }
             }
@@ -717,6 +758,8 @@ namespace PleaseRememberMe.Pantallas
 
                 }
             }
+
+
 
         }
 
@@ -1318,7 +1361,7 @@ namespace PleaseRememberMe.Pantallas
         private void BtnCategories_Clicked(object sender, EventArgs e)
         {
             //AnuncioParaCategories.IsVisible = true;
-            Anuncio.IsVisible = false;
+            Anuncio.IsVisible = true;
             StackLayoutCategory.IsVisible = true;
             //Lsv_Categories.ItemsSource = await metodos.GetCategories();
             StackLayoutVerbList.IsVisible = false;
@@ -1463,6 +1506,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasVocabularyClothesWords_Clicked(object sender, EventArgs e)
         {
+            Anuncio.IsVisible = true;
             StacklayoutVocabularyClothes.IsVisible = false;
             StackLayoutClothesPage.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
@@ -1505,6 +1549,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasVocabularyFamilyWords_Clicked(object sender, EventArgs e)
         {
+            Anuncio.IsVisible = true;
             StacklayoutVocabularyFamily.IsVisible = false;
             StackLayoutFamilyPage.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
@@ -1551,6 +1596,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasVocabularyWords_Clicked(object sender, EventArgs e)
         {
+            Anuncio.IsVisible = true;
             StacklayoutVocabularyWords.IsVisible = false;
             StackLayoutProfessionsPage.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
