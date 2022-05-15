@@ -37,5 +37,11 @@ namespace PleaseRememberMe.Pantallas
                 await DisplayAlert("Error", ex.Message, "Ok");
             }
         }
+
+        void BtnInstagram2_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Device.OpenUri(new Uri("instagram://user?username=app.rememberme"));
+
+        }
     }
 }

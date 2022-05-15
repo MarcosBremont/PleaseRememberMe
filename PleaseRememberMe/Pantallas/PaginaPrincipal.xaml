@@ -30,10 +30,10 @@
                     <Button x:Name="BtnCategories" Clicked="BtnCategories_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Categories" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                     <StackLayout x:Name="StackTournament" IsVisible="true">
                         <ImageButton x:Name="BtnTournament" Clicked="BtnTournament_Clicked" Source="winning.png" BackgroundColor="Transparent" WidthRequest="50" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3"/>
-                        <Label x:Name="lbltouchhere" FontSize="12"  HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Touch here for enter to a tournament" TextColor="#333"></Label>
+                        <Label x:Name="lbltouchhere" FontSize="12"  HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Touch here to enter to a tournament" TextColor="#333"></Label>
                     </StackLayout>
 
-                    <Label x:Name="lblVersion" Margin="0,10,0,0" VerticalOptions="EndAndExpand"  Text="Versión 3.3" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
+                    <Label x:Name="lblVersion" Margin="0,10,0,0" VerticalOptions="EndAndExpand"  Text="Versión 3.6" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
 
                 </StackLayout>
 
@@ -1070,6 +1070,7 @@
                 <Entry IsVisible="true" Keyboard="Default" Placeholder="Report a problem" PlaceholderColor="#333" FontSize="12"  TextTransform="Uppercase" x:Name="txtReport" TextColor="#333" Grid.Column="0" IsReadOnly="False" BackgroundColor="WhiteSmoke" ></Entry>
                 <Button x:Name="BtnReport" Clicked="BtnReport_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Report" IsVisible="true" TextColor="White" FontAttributes="Bold" BackgroundColor="#3185FF"/>
             </StackLayout>
+            <Label VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#333" Text="Remember to put your phone in English to hear the pronunciations as it should" Margin="20,10,20,0"></Label>
 
             <StackLayout x:Name="StackLayoutAboutMe" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Margin="30,0,30,100">
                 <Frame HasShadow="False" BackgroundColor="#3185FF" CornerRadius="4" WidthRequest="200">

@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Plugin.TextToSpeech.Abstractions;
 using System.Globalization;
+using System.Threading;
 
 namespace PleaseRememberMe.Pantallas
 {
@@ -243,7 +244,7 @@ namespace PleaseRememberMe.Pantallas
 
         }
 
-        public async void GetRandomVerb()
+        public async Task GetRandomVerb()
         {
             try
             {
@@ -310,7 +311,6 @@ namespace PleaseRememberMe.Pantallas
                     lblExamplePastParticiple.Text = ExamplePastParticiple;
 
                 }
-
             }
             catch (Exception ex)
             {
@@ -320,37 +320,46 @@ namespace PleaseRememberMe.Pantallas
 
         }
 
-        private void BtnLetsGo_Clicked(object sender, EventArgs e)
+        private async void BtnLetsGo_Clicked(object sender, EventArgs e)
         {
-            //DependencyService.Get<IAppSettingsHelper>().OpenAppSettings();
-            StackTorneo.IsVisible = false;
-            Anuncio.IsVisible = true;
-
-            BtnGiveMeSomeExamples.IsVisible = true;
-            BtnAnotherOne.IsVisible = true;
-            BtnVerbInPastAudio.IsVisible = true;
-            BtnTerminarTorneo.IsVisible = false;
-            BtnVerbInPastSAudio.IsVisible = false;
-            BtnVerbInPastPartAudio.IsVisible = false;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            StacklayoutPrincipal.IsVisible = false;
-            StackExamples.IsVisible = false;
-            //StackTraducciones.IsVisible = false;
-            StacklayoutLetsGo.IsVisible = true;
-            LblVerbInPastSimpleCheck.IsVisible = false;
-            LblVerbInPastParticipleCheck.IsVisible = false;
-            txtVerbInPastSimple.Text = "";
-            txtVerbInPastParticiple.Text = "";
-            if (App.Torneo == "S")
+            BtnLetsGo.IsEnabled = false;
+            using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
             {
-                StackTorneo.IsVisible = true;
-            }
+               await GetRandomVerb();
+                //UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking coffee");
+                //DependencyService.Get<IAppSettingsHelper>().OpenAppSettings();
+                StackTorneo.IsVisible = false;
+                Anuncio.IsVisible = true;
+                BtnGiveMeSomeExamples.IsVisible = true;
+                BtnAnotherOne.IsVisible = true;
+                BtnVerbInPastAudio.IsVisible = true;
+                BtnTerminarTorneo.IsVisible = false;
+                BtnVerbInPastSAudio.IsVisible = false;
+                BtnVerbInPastPartAudio.IsVisible = false;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                StacklayoutPrincipal.IsVisible = false;
+                StackExamples.IsVisible = false;
+                //StackTraducciones.IsVisible = false;
+                StacklayoutLetsGo.IsVisible = true;
+                LblVerbInPastSimpleCheck.IsVisible = false;
+                LblVerbInPastParticipleCheck.IsVisible = false;
+                txtVerbInPastSimple.Text = "";
+                txtVerbInPastParticiple.Text = "";
+                if (App.Torneo == "S")
+                {
+                    StackTorneo.IsVisible = true;
+                }
 
-            GetRandomVerb();
+            }
+            BtnLetsGo.IsEnabled = true;
         }
 
-        private void BtnAnotherOne_Clicked(object sender, EventArgs e)
+
+
+
+        private async void BtnAnotherOne_Clicked(object sender, EventArgs e)
         {
+            UserDialogs.Instance.ShowLoading("Looking for verbs...");
             BtnVerbInPastSAudio.IsVisible = false;
             BtnVerbInPastPartAudio.IsVisible = false;
             if (App.Torneo == "S")
@@ -359,11 +368,13 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
-                GetRandomVerb();
+               await GetRandomVerb();
 
             }
             LimpiarText();
             StackExamples.HorizontalOptions = LayoutOptions.CenterAndExpand;
+            UserDialogs.Instance.HideLoading();
+
         }
 
         public void LimpiarText()
@@ -554,63 +565,67 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtras_Clicked(object sender, EventArgs e)
         {
-            Anuncio.IsVisible = true;
+            BtnAtras.IsEnabled = false;
+            using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
+            {
+                ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+                StacklayoutLetsGo.IsVisible = false;
+                StackLayoutSettings.IsVisible = false;
+                StacklayoutPrincipal.IsVisible = true;
 
-            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            StacklayoutLetsGo.IsVisible = false;
-            StacklayoutPrincipal.IsVisible = true;
-            LblPuntos.Text = "0";
-            App.Torneo = "N";
+                Anuncio.IsVisible = true;
+
+                LblPuntos.Text = "0";
+                App.Torneo = "N";
+            }
+            BtnAtras.IsEnabled = true;
+
+
         }
 
         private async void BtnTablaDePosiciones_Clicked(object sender, EventArgs e)
         {
+            BtnTablaDePosiciones.IsEnabled = false;
             try
             {
-                Anuncio.IsVisible = false;
+                using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
+                {
+                    Anuncio.IsVisible = true;
+                    ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                    //UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
+                    StacklayoutPrincipal.IsVisible = false;
+                    StackLayoutTablaPosiciones.IsVisible = true;
 
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
-                StacklayoutPrincipal.IsVisible = false;
-                StackLayoutTablaPosiciones.IsVisible = true;
-                GridVolverAtrasPosiciones.IsVisible = true;
-
-                var datos = await metodos.GetListadoDePosiciones();
-                lsv_TablaPuntuacion.ItemsSource = datos;
-                UserDialogs.Instance.HideLoading();
+                    var datos = await metodos.GetListadoDePosiciones();
+                    lsv_TablaPuntuacion.ItemsSource = datos;
+                }
+                //UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
             {
+                BtnTablaDePosiciones.IsEnabled = true;
+
                 Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
 
             }
+
+            BtnTablaDePosiciones.IsEnabled = true;
+
 
 
         }
 
         private void BtnAtrasPosiciones_Clicked(object sender, EventArgs e)
         {
-            Anuncio.IsVisible = true;
-
-            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            GridVolverAtrasPosiciones.IsVisible = false;
-            StackLayoutTablaPosiciones.IsVisible = false;
-            StacklayoutPrincipal.IsVisible = true;
-
-            GridVerbos.IsVisible = false;
-            BtnLetsGo.IsVisible = true;
-
-
-
-            LblPuntos.IsVisible = false;
-            LblTorneo.IsVisible = false;
-            LblTorneoEnCurso.IsVisible = false;
-            BtnTerminarTorneo.IsVisible = false;
-
-            StackLayoutVerbList.IsVisible = false;
-
-
-
+            BtnAtrasPosiciones.IsEnabled = false;
+            using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
+            {
+                ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+                StackLayoutTablaPosiciones.IsVisible = false;
+                StacklayoutPrincipal.IsVisible = true;
+                Anuncio.IsVisible = true;
+            }
+            BtnAtrasPosiciones.IsEnabled = true;
         }
 
         private async void BtnTournament_Clicked(object sender, EventArgs e)
@@ -658,16 +673,22 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                Anuncio.IsVisible = false;
+                BtnListOfTheVerbs.IsEnabled = false;
+                using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
+                {
+                    Anuncio.IsVisible = true;
+                    StackLayoutVerbList.IsVisible = true;
+                    ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                    StacklayoutPrincipal.IsVisible = false;
+                    var datos = await metodos.GetListadoVerbos();
+                    lsv_ListaDeVerbos.ItemsSource = datos;
+                    await Task.Delay(200);
+                }
+                BtnListOfTheVerbs.IsEnabled = true;
 
-                GridVolverAtrasVerbList.IsVisible = true;
-                StackLayoutVerbList.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
-                StacklayoutPrincipal.IsVisible = false;
-                var datos = await metodos.GetListadoVerbos();
-                lsv_ListaDeVerbos.ItemsSource = datos;
-                UserDialogs.Instance.HideLoading();
+                //UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
+
+                //UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
             {
@@ -681,44 +702,40 @@ namespace PleaseRememberMe.Pantallas
 
         public void BtnAtrasVerbList_Clicked(System.Object sender, System.EventArgs e)
         {
-            Anuncio.IsVisible = true;
-
-            GridVolverAtrasVerbList.IsVisible = false;
-            StacklayoutPrincipal.IsVisible = true;
-            StackLayoutVerbList.IsVisible = false;
-            BtnLetsGo.IsVisible = true;
-
-
-            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-
-
-
+            BtnAtrasVerbList.IsEnabled = false;
+            using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
+            {
+                Anuncio.IsVisible = true;
+                StackLayoutVerbList.IsVisible = false;
+                StacklayoutPrincipal.IsVisible = true;
+                BtnLetsGo.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            }
+            BtnAtrasVerbList.IsEnabled = true;
         }
 
         public void btnAjustes_Clicked(System.Object sender, System.EventArgs e)
         {
-            Anuncio.IsVisible = false;
+            using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
+            {
+                Anuncio.IsVisible = false;
+                StackLayoutSettings.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                StacklayoutPrincipal.IsVisible = false;
 
-            GridVolverAtrasSettings.IsVisible = true;
-            StackLayoutSettings.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            StacklayoutPrincipal.IsVisible = false;
+            }
 
         }
 
         void BtnAtrasSettings_Clicked(System.Object sender, System.EventArgs e)
         {
-            Anuncio.IsVisible = true;
-
-            GridVolverAtrasSettings.IsVisible = false;
-            StacklayoutPrincipal.IsVisible = true;
-            StackLayoutSettings.IsVisible = false;
-            BtnLetsGo.IsVisible = true;
-
-
-            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-
-
+            using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
+            {
+                Anuncio.IsVisible = true;
+                StacklayoutPrincipal.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+                StackLayoutSettings.IsVisible = false;
+            }
         }
 
         async void BtnSaveChanges_Clicked(System.Object sender, System.EventArgs e)
@@ -752,17 +769,9 @@ namespace PleaseRememberMe.Pantallas
         {
             //AnuncioParaCategories.IsVisible = false;
             Anuncio.IsVisible = true;
-
-
-            GridVolverAtrasVerbList.IsVisible = false;
             StacklayoutPrincipal.IsVisible = true;
-            StackLayoutVerbList.IsVisible = false;
             BtnLetsGo.IsVisible = true;
-
-
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-
-
         }
 
         private async void btnWasWereDid_Clicked(object sender, EventArgs e)
@@ -796,11 +805,10 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasWasWereDid_Clicked(object sender, EventArgs e)
         {
             StackLayoutWasWereDid.IsVisible = false;
-
-            GridVolverAtrasVerbList.IsVisible = false;
             StackLayoutsimplePastCategory.IsVisible = true;
-            StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+
+
         }
 
         private void BtnCheckMyAnswer_Clicked(object sender, EventArgs e)
@@ -847,7 +855,7 @@ namespace PleaseRememberMe.Pantallas
             }
         }
 
-        private async void BtnMatch_Clicked(object sender, EventArgs e)
+        private void BtnMatch_Clicked(object sender, EventArgs e)
         {
             StackLayoutVocabularyCategory.IsVisible = false;
             StackLayoutProfessionsPage.IsVisible = true;
@@ -859,6 +867,8 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutMatch.IsVisible = false;
             StackLayoutProfessionsActivities.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+
+
         }
 
         private void Btncorrects_Clicked(object sender, EventArgs e)
@@ -916,6 +926,8 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutComplete.IsVisible = false;
             StackLayoutGramarCategory.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+
+
         }
 
         private void Btncorrectadjective_Clicked(object sender, EventArgs e)
@@ -1088,9 +1100,7 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutSimplePresent.IsVisible = false;
             StackLayoutWasWereDid.IsVisible = false;
             StackLayoutComplete.IsVisible = false;
-            GridVolverAtrasVerbList.IsVisible = false;
             StackLayoutsimplePresentCategory.IsVisible = true;
-            StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1366,11 +1376,10 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasCategory_Clicked(object sender, EventArgs e)
         {
-            Anuncio.IsVisible = true;
-
-            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             StackLayoutCategory.IsVisible = false;
             StacklayoutPrincipal.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+            Anuncio.IsVisible = true;
         }
 
         private void BtnVolverAtrasGrammarCategory_Clicked(object sender, EventArgs e)
@@ -1430,7 +1439,6 @@ namespace PleaseRememberMe.Pantallas
             Anuncio.IsVisible = true;
             StackLayoutCategory.IsVisible = true;
             //Lsv_Categories.ItemsSource = await metodos.GetCategories();
-            StackLayoutVerbList.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait, Do you want coffee?");
             StacklayoutPrincipal.IsVisible = false;
