@@ -5,6 +5,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Plugin.FirebasePushNotification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,15 @@ namespace PleaseRememberMe.Droid
         {
             base.OnCreate(savedInstanceState);
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
+            CrossFirebasePushNotification.Current.OnTokenRefresh += Current_OnTokenRefresh; ;
+
             // Create your application here
+        }
+
+        private void Current_OnTokenRefresh(object source, FirebasePushNotificationTokenEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine($"Token: {e.Token}");
+            
         }
     }
 }

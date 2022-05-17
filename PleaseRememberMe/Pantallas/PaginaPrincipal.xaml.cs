@@ -61,7 +61,6 @@ namespace PleaseRememberMe.Pantallas
             LblPuntos.IsVisible = false;
             BtnTerminarTorneo.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-
             StackTournament.GestureRecognizers.Add(
              new TapGestureRecognizer()
              {
