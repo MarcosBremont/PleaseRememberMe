@@ -4,7 +4,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.FirebasePushNotification;
 using System.Diagnostics;
-using Microsoft.AppCenter.Push;
 
 namespace PleaseRememberMe
 {
@@ -22,16 +21,9 @@ namespace PleaseRememberMe
         {
             InitializeComponent();
             MainPage = new Pantallas.PaginaPrincipal();
-            CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
-            {
-                Debug.WriteLine($"REC TOKEN : {p.Token}");
-            };
         }
 
-        private void Current_OnTokenRefresh(object source, FirebasePushNotificationTokenEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine($"Token: {e.Token}");
-        }
+   
 
         protected override void OnStart()
         {
