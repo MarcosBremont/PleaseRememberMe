@@ -35,6 +35,7 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.EQuestionsWithHow> listQuestionsWithHow = new List<Entidad.EQuestionsWithHow>();
         List<Entidad.EMatchSentences> listMatch = new List<Entidad.EMatchSentences>();
         List<Entidad.ECompleteSentences> listComplete = new List<Entidad.ECompleteSentences>();
+        List<Entidad.ESuperlativesSentence> listSuperlatives = new List<Entidad.ESuperlativesSentence>();
         List<Entidad.EClothes> listclothes = new List<Entidad.EClothes>();
         List<Entidad.EPronouns> listpronouns = new List<Entidad.EPronouns>();
         List<Entidad.ESimplePresent> listsimplepresent = new List<Entidad.ESimplePresent>();
@@ -896,12 +897,11 @@ namespace PleaseRememberMe.Pantallas
             lsv_Math.ItemsSource = listMatch;
 
         }
-
         private async void btnComplete_Clicked(object sender, EventArgs e)
         {
             try
             {
-                StackLayoutGramarCategory.IsVisible = false;
+                StackLayoutComparisonsActivities.IsVisible = false;
                 StackLayoutComplete.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, Do you want some cookies?");
@@ -923,7 +923,7 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasComplete_Clicked(object sender, EventArgs e)
         {
             StackLayoutComplete.IsVisible = false;
-            StackLayoutGramarCategory.IsVisible = true;
+            StackLayoutComparisonsActivities.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
 
 
@@ -1071,21 +1071,10 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
+                StackLayoutsimplePresentExample.IsVisible = true;
                 StackLayoutsimplePresentCategory.IsVisible = false;
-                StackLayoutSimplePresent.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Remember to drink water");
-                var datos = await metodos.GetSimplePresent();
-                listsimplepresent = datos;
-                var random = new Random().Next(1, listsimplepresent.Count);
-                var elegido = listsimplepresent[random];
-                lblSimplePresent.Text = listsimplepresent[0].SimplePresentExercises;
-                CorrectAnswerVerb = listsimplepresent[0].CorrectAnswer;
-                //listsimplepresent.Remove(elegido);
-                TxtVerbInCorrecForm.Text = "";
-                LblCorrectAnswerVerb.IsVisible = false;
 
-                UserDialogs.Instance.HideLoading();
+
             }
             catch (Exception ex)
             {
@@ -1097,9 +1086,7 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasSimplePresent_Clicked(object sender, EventArgs e)
         {
             StackLayoutSimplePresent.IsVisible = false;
-            StackLayoutWasWereDid.IsVisible = false;
-            StackLayoutComplete.IsVisible = false;
-            StackLayoutsimplePresentCategory.IsVisible = true;
+            StackLayoutsimplePresentExample.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1665,6 +1652,147 @@ namespace PleaseRememberMe.Pantallas
         {
             StackLayoutsimplePastExample.IsVisible = false;
             StackLayoutGramarCategory.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private async void btnsimplepresentexerci_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutsimplePresentExercises.IsVisible = false;
+            StackLayoutSimplePresent.IsVisible = true;
+
+
+            StackLayoutSimplePresent.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.ShowLoading("Remember to drink water");
+            var datos = await metodos.GetSimplePresent();
+            listsimplepresent = datos;
+            var random = new Random().Next(1, listsimplepresent.Count);
+            var elegido = listsimplepresent[random];
+            lblSimplePresent.Text = listsimplepresent[0].SimplePresentExercises;
+            CorrectAnswerVerb = listsimplepresent[0].CorrectAnswer;
+            //listsimplepresent.Remove(elegido);
+            TxtVerbInCorrecForm.Text = "";
+            LblCorrectAnswerVerb.IsVisible = false;
+
+            UserDialogs.Instance.HideLoading();
+
+
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnAtrasSimplePresentExample_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutsimplePresentExample.IsVisible = false;
+            StackLayoutsimplePresentCategory.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void btnsimplepresentexerciGo_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutsimplePresentExample.IsVisible = false;
+            StackLayoutsimplePresentExercises.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnAtrasSimplePresentExercises_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutsimplePresentExercises.IsVisible = false;
+            StackLayoutsimplePresentExample.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void btncomparatives_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutComparisons.IsVisible = false;
+            StackLayoutComparisonsActivities.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private async void btnSuperlatives_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutComparisons.IsVisible = false;
+            StackLayoutSuperlativesActivities.IsVisible = true;
+            
+        }
+
+        private void BtnAtrasComparisons_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutComparisons.IsVisible = false;
+            StackLayoutGramarCategory.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnAtrasComparisonsActivities_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutComparisonsActivities.IsVisible = false;
+            StackLayoutComparisons.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void btnComparisons_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutGramarCategory.IsVisible = false;
+            StackLayoutComparisons.IsVisible = true;
+        }
+
+        private void BtnAtrasSuperlativessActivities_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutSuperlativesActivities.IsVisible = false;
+            StackLayoutComparisons.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+        private async void btnSuperlatives1_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                StackLayoutSuperlativesActivities.IsVisible = false;
+                StackLayoutSuperlativesExercises.IsVisible = true;
+                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+                UserDialogs.Instance.ShowLoading("Wait a minute, Do you want some cookies?");
+                var datos = await metodos.GetSuperlativesSentences();
+                var response = await metodos.GetSuperlativesAdjectives();
+                lsv_superlatives.ItemsSource = datos;
+                CollectionViewSuperlaive.ItemsSource = response;
+                listSuperlatives = datos;
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+
+            }
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtncorrectSuperlative_Clicked(object sender, EventArgs e)
+        {
+            foreach (var item in listSuperlatives)
+            {
+                if (string.IsNullOrEmpty(item.txtcomplete))
+                {
+                    item.imagen = "remove.png";
+                }
+                else
+                {
+                    if (item.txtcomplete.ToUpper() == item.CorrectAnswer)
+                    {
+                        item.imagen = "correct.png";
+                    }
+                    else
+                    {
+                        item.imagen = "remove.png";
+                    }
+                }
+
+            }
+            lsv_superlatives.ItemsSource = null;
+            lsv_superlatives.ItemsSource = listSuperlatives;
+        }
+
+        private void BtnAtrasSuperlativesExercises_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutSuperlativesExercises.IsVisible = false;
+            StackLayoutSuperlativesActivities.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 

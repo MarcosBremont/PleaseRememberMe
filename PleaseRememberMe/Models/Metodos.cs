@@ -195,5 +195,22 @@ namespace PleaseRememberMe.Models
             return response;
         }
 
+        public async Task<List<ESuperlativesSentence>> GetSuperlativesSentences()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/SuperlativesPRM");
+            var listado_SuperlativesSentences = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ESuperlativesSentence>>(result);
+
+            return listado_SuperlativesSentences;
+        } // Fin del método ObtenerVerbos
+
+        public async Task<List<ESuperlativesAdjectives>> GetSuperlativesAdjectives()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/SuperlativesAdjectivesPRM");
+            var listado_superlatives_adjectives = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ESuperlativesAdjectives>>(result);
+
+            return listado_superlatives_adjectives;
+        } // Fin del método ObtenerVerbos
+
+
     }
 }
