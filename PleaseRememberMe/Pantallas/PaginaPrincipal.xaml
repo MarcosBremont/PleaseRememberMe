@@ -980,7 +980,7 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             x:Name="btncomparatives"
-                            Text="Comparatives"
+                            Text="Comparative"
                             TextColor="White"
                             HeightRequest="60"
                             BackgroundColor="#F58134"
@@ -992,7 +992,7 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             x:Name="btnSuperlatives"
-                            Text="Superlatives"
+                            Text="Superlative"
                             TextColor="White"
                             HeightRequest="60"
                             BackgroundColor="#225DD5"
@@ -1040,7 +1040,7 @@
             <ScrollView  Margin="10,0,10,90" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand">
 
-                    <Label HorizontalOptions="Center" Text="Comparisons Activities" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                    <Label HorizontalOptions="Center" Text="Comparison Activities" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
                     <Grid RowSpacing="0">
 
@@ -1063,7 +1063,7 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             x:Name="btnComplete"
-                            Text="Comparisons"
+                            Text="Comparative"
                             TextColor="White"
                             HeightRequest="60"
                             BackgroundColor="#5E8138"
@@ -1154,7 +1154,7 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             x:Name="btnSuperlatives1"
-                            Text="Superlatives Activities"
+                            Text="Superlative Activities"
                             TextColor="White"
                             HeightRequest="60"
                             BackgroundColor="#5E8138"
@@ -1165,7 +1165,7 @@
                         <StackLayout Grid.Row="1"  Margin="5">
                             <Label HorizontalOptions="Center" Text="Use" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
-                            <Label FontAttributes="Bold" Text="Comparatives"></Label>
+                            <Label FontAttributes="Bold" Text="Superlative"></Label>
                             <Label Text="Use superlative adjectives to compare more than two people, animals, places, objects, etc."></Label>
                             <Label FontAttributes="Bold" Text="Rules"></Label>
                             <Label Text="*Adjectives with one syllable, add (the) + (-est) or (-st)"></Label>
