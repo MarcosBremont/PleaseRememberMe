@@ -211,6 +211,14 @@ namespace PleaseRememberMe.Models
             return listado_superlatives_adjectives;
         } // Fin del método ObtenerVerbos
 
+        public async Task<List<EVideos>> GetVideos()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/VideosPRM");
+            var List_videos = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EVideos>>(result);
+
+            return List_videos;
+        } // Fin del método ObtenerVerbos
+
 
     }
 }

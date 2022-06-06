@@ -10,6 +10,8 @@ using AndroidX.AppCompat.App;
 using Android.Speech.Tts;
 using Plugin.FirebasePushNotification;
 using Firebase;
+using MediaManager.Forms.Platforms.Android;
+using MediaManager;
 
 namespace PleaseRememberMe.Droid
 {
@@ -23,13 +25,11 @@ namespace PleaseRememberMe.Droid
             Rg.Plugins.Popup.Popup.Init(this);
             AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo; ///1st LINE DUDE TO WORK !
             base.OnCreate(savedInstanceState);
-            MobileAds.Initialize(this);
             UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             //If debug you should reset the token each time.
             MobileAds.Initialize(ApplicationContext);
-
 
             LoadApplication(new App());
         }

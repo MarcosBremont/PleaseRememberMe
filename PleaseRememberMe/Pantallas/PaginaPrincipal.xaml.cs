@@ -16,6 +16,7 @@ using Xamarin.Forms;
 using Plugin.TextToSpeech.Abstractions;
 using System.Globalization;
 using System.Threading;
+using PleaseRememberMe.Entidad;
 
 namespace PleaseRememberMe.Pantallas
 {
@@ -1794,6 +1795,52 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutSuperlativesExercises.IsVisible = false;
             StackLayoutSuperlativesActivities.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void BtnAtrasVideos_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutVideos.IsVisible = false;
+            StacklayoutPrincipal.IsVisible = true;
+            Anuncio.IsVisible = true;
+        }
+
+        private async void BtnVideos_Clicked(object sender, EventArgs e)
+        {
+            StacklayoutPrincipal.IsVisible = false;
+            StackLayoutVideos.IsVisible = true;
+            var datos = await metodos.GetVideos();
+            lsv_Videos.ItemsSource = datos;
+        }
+
+        private void BtnVideoClick_Clicked(object sender, EventArgs e)
+        {
+
+            StackLayoutVideos.IsVisible = false;
+
+            var b = (Button)sender;
+
+            var ob = b.CommandParameter as EVideos;
+
+            if (ob != null)
+
+            {
+                
+                // retrieve the value from the ‘ob’ and continue your work.
+
+            }
+
+            App.LinkVideo = ob.link;
+            App.TituloVideo = ob.title;
+            StackLayoutVideoPage.IsVisible = true;
+            LblTitle.Text = App.TituloVideo;
+            VideoWebView.Source = App.LinkVideo;
+
+        }
+
+        private void BtnAtrasVideoPage_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutVideoPage.IsVisible = false;
+            StackLayoutVideos.IsVisible = true;
         }
 
         private void BtnAtrasFamilysActivities_Clicked(object sender, EventArgs e)
