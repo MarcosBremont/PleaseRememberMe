@@ -26,7 +26,6 @@
                     <!--LayoutPrincipal-->
                     <Button x:Name="BtnListOfTheVerbs" Clicked="BtnListOfTheVerbs_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verb List" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
                     <Button x:Name="BtnTablaDePosiciones" IsVisible="true" Clicked="BtnTablaDePosiciones_Clicked"  WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Leaderboard" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
-                    <Button x:Name="BtnVideos" IsVisible="true" Clicked="BtnVideos_Clicked"  WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="English Videos" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                     <!--LayoutPrincipal-->
                     <Button x:Name="BtnCategories" Clicked="BtnCategories_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Categories" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
                     <StackLayout x:Name="StackTournament" IsVisible="true">
@@ -395,6 +394,34 @@
                             CornerRadius="8"
                             x:Name="BtnVocabularyCategory"
                             Clicked="BtnVocabularyCategory_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="English Videos"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#225DD5"
+                            CornerRadius="8"
+                            x:Name="BtnVideos"
+                            Clicked="BtnVideos_Clicked"/>
+
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="English Listening Lessons"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#5E8138"
+                            CornerRadius="8"
+                            x:Name="BtnAudios"
+                            Clicked="BtnAudios_Clicked"/>
+
+
+
 
                         <!--<Button 
                             Margin="5,5,5,5"
@@ -3274,6 +3301,131 @@
                         <StackLayout Orientation="Vertical">
                             <Label x:Name="LblTitle" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#333" FontSize="12" HorizontalOptions="Center"/>
                             <WebView x:Name="VideoWebView" HeightRequest="230" WidthRequest="300" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+                            <!--<Label TextColor="#333" Grid.Column="2" FontSize="12" HorizontalOptions="Start" Text="{Binding videodescription}"/>-->
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+
+
+        <!--Stacklayout Audios - Page 25-->
+        <StackLayout IsVisible="false" x:Name="StackLayoutAudios">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png" x:Name="BtnAtrasAudios" Clicked="BtnAtrasAudios_Clicked"  BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="GO BACK"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <ScrollView Grid.Row="1"  Margin="10,0,10,90" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
+
+                    <Label HorizontalOptions="Center" Text="English audios - Listen and practice" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+                    <ListView Margin="0,0,0,80"  x:Name="lsv_audios"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate >
+                                <ViewCell >
+                                    <Grid Margin="0,10,0,10" BackgroundColor="Transparent">
+                                        <Button CornerRadius="4" Clicked="BtnAudioClick_Clicked" CommandParameter="{Binding .}" TextColor="White" x:Name="BtnAudioClick" BackgroundColor="#F58134" Text="{Binding title}"></Button>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+
+        <!--Stacklayout VideoPage - Page 25-->
+        <StackLayout IsVisible="false" x:Name="StackLayoutAudioPage">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png" x:Name="BtnAtrasAudioPage" Clicked="BtnAtrasAudioPage_Clicked"  BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="GO BACK"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <ScrollView Grid.Row="1"  Margin="10,0,10,90" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
+
+                    <Label HorizontalOptions="Center" Text="English Audios - Listen and practice" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                    <Label HorizontalOptions="Center" x:Name="LabelPositionStatus" FontSize="18" FontAttributes="Bold" Margin="0,10,0,0" TextColor="#333"></Label>
+                    <Slider
+                        x:Name="SliderSongPlayDisplay"
+                        HorizontalOptions="FillAndExpand"
+                        Minimum="0"
+                        MinimumTrackColor="#F58134"
+                        ThumbColor="#F58134"
+                        Value="0" />
+
+                    <Grid Margin="0,10,0,10" BackgroundColor="Transparent">
+                        <StackLayout Orientation="Vertical">
+                            <Label x:Name="LblTitleAudio" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#333" FontSize="12" HorizontalOptions="Center"/>
+                            <Button Margin="20,3,20,0" BackgroundColor="#F58134" CornerRadius="4"  TextColor="White" Text="Play" Clicked="BtnReproducirAudio_Clicked" x:Name="BtnReproducirAudio"/>
+
+                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+
+                                <Button 
+                                x:Name="ForwardButton"
+                                BackgroundColor="#225DD5"
+                                Clicked="ForwardButton_Clicked"
+                                Text="+10 Seg"
+                                TextColor="White" />
+
+                                <Button
+                                x:Name="RewindButton"
+                                BackgroundColor="#225DD5"
+                                Clicked="RewindButton_Clicked"
+                                Text="-10 Seg"
+                                TextColor="White" />
+
+                            </StackLayout>
+                            <Button Margin="20,3,20,0" CornerRadius="4" BackgroundColor="#F58134" TextColor="White" Text="Pause" x:Name="BtnPausarAudio" Clicked="BtnPausarAudio_Clicked"/>
+                            <Button Margin="20,3,20,0" CornerRadius="4" BackgroundColor="#F58134" TextColor="White" Text="Restart" x:Name="BtnReiniciarAudio" Clicked="BtnReiniciarAudio_Clicked"/>
+
+
                             <!--<Label TextColor="#333" Grid.Column="2" FontSize="12" HorizontalOptions="Start" Text="{Binding videodescription}"/>-->
                         </StackLayout>
                     </Grid>

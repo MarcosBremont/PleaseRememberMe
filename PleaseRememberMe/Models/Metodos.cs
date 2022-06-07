@@ -219,6 +219,14 @@ namespace PleaseRememberMe.Models
             return List_videos;
         } // Fin del método ObtenerVerbos
 
+        public async Task<List<EAudios>> GetAudios()
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/AudiosPRM");
+            var List_audios = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EAudios>>(result);
+
+            return List_audios;
+        } // Fin del método ObtenerVerbos
+
 
     }
 }

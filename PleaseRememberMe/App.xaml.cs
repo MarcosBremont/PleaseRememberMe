@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.FirebasePushNotification;
 using System.Diagnostics;
+using MediaManager;
 
 namespace PleaseRememberMe
 {
@@ -22,6 +23,8 @@ namespace PleaseRememberMe
         public App()
         {
             InitializeComponent();
+            CrossMediaManager.Current.Init();
+
             MainPage = new Pantallas.PaginaPrincipal();
         }
 

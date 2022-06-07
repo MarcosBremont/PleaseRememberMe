@@ -17,6 +17,12 @@ using Plugin.TextToSpeech.Abstractions;
 using System.Globalization;
 using System.Threading;
 using PleaseRememberMe.Entidad;
+using MediaManager;
+using PositionChangedEventArgs = MediaManager.Playback.PositionChangedEventArgs;
+using MediaManager.Player;
+using MediaManager.Library;
+using MediaManager.Playback;
+using MediaManager.Media;
 
 namespace PleaseRememberMe.Pantallas
 {
@@ -27,7 +33,8 @@ namespace PleaseRememberMe.Pantallas
             CorrectAnswerPronoun = "", CorrectAnswerVerb = "", CorrectAnswerQuestionWithHow = "", CorrectAnswerPrepositionsOfTime = "",
             CorrectAnswerFamily = "", CorrectAnswerAnySome = "", CorrectAnswerVerbToBe1 = "",
             CorrectAnswerVerbToBe2 = "", CorrectAnswerQuantifiers = "", AnswerRadioButton1 = "",
-            AnswerRadioButton2 = "", audioVerboFormaBase = "", audioverboSimplePast = "", audioverboPasParticiple = "", ExamplePastSimple = "", ExamplePastParticiple = "";
+            AnswerRadioButton2 = "", audioVerboFormaBase = "", audioverboSimplePast = "", audioverboPasParticiple = "", 
+            ExamplePastSimple = "", ExamplePastParticiple = "", audiolink = "";
         #endregion
         #region Listas
         List<Entidad.EVerbos> listadodelosverbos = new List<Entidad.EVerbos>();
@@ -62,6 +69,12 @@ namespace PleaseRememberMe.Pantallas
             LblTorneo.IsVisible = false;
             LblPuntos.IsVisible = false;
             BtnTerminarTorneo.IsVisible = false;
+            CrossMediaManager.Current.PositionChanged += Current_PositionChanged;
+            CrossMediaManager.Current.MediaItemChanged += Current_MediaItemChanged;
+
+            CrossMediaManager.Current.StateChanged += Current_OnStateChanged;
+
+
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
             StackTournament.GestureRecognizers.Add(
              new TapGestureRecognizer()
@@ -1800,13 +1813,13 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasVideos_Clicked(object sender, EventArgs e)
         {
             StackLayoutVideos.IsVisible = false;
-            StacklayoutPrincipal.IsVisible = true;
+            StackLayoutCategory.IsVisible = true;
             Anuncio.IsVisible = true;
         }
 
         private async void BtnVideos_Clicked(object sender, EventArgs e)
         {
-            StacklayoutPrincipal.IsVisible = false;
+            StackLayoutCategory.IsVisible = false;
             StackLayoutVideos.IsVisible = true;
             var datos = await metodos.GetVideos();
             lsv_Videos.ItemsSource = datos;
@@ -1841,6 +1854,141 @@ namespace PleaseRememberMe.Pantallas
         {
             StackLayoutVideoPage.IsVisible = false;
             StackLayoutVideos.IsVisible = true;
+        }
+
+        private async void BtnAudios_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutCategory.IsVisible = false;
+            StackLayoutAudios.IsVisible = true;
+            var datos = await metodos.GetAudios();
+            lsv_audios.ItemsSource = datos;
+        }
+
+        private void BtnAtrasAudios_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutCategory.IsVisible = true;
+            StackLayoutAudios.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+
+        }
+
+        private void BtnAtrasAudioPage_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutAudioPage.IsVisible = false;
+            StackLayoutAudios.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private async void BtnReproducirAudio_Clicked(object sender, EventArgs e)
+        {
+            SetupCurrentMediaPositionData(CrossMediaManager.Current.Position);
+            var currentMediaItem = await CrossMediaManager.Current.Play(audiolink);
+            SetupCurrentMediaDetails(currentMediaItem);
+        }
+
+        private void SetupCurrentMediaDetails(IMediaItem currentMediaItem)
+        {
+            // Set up Media item details in UI
+            var displayDetails = string.Empty;
+            if (!string.IsNullOrEmpty(currentMediaItem.DisplayTitle))
+                displayDetails = currentMediaItem.DisplayTitle;
+
+            if (!string.IsNullOrEmpty(currentMediaItem.Artist))
+                displayDetails = $"{displayDetails} - {currentMediaItem.Artist}";
+
+            //LabelMediaDetails.Text = displayDetails.ToUpper();
+        }
+
+        private async void BtnPausarAudio_Clicked(object sender, EventArgs e)
+        {
+            await CrossMediaManager.Current.PlayPause();
+        }
+
+        private async void BtnReiniciarAudio_Clicked(object sender, EventArgs e)
+        {
+            await CrossMediaManager.Current.Stop();
+        }
+
+        private void Current_OnStateChanged(object sender, StateChangedEventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                SetupCurrentMediaPlayerState(e.State);
+            });
+        }
+
+        private async void ForwardButton_Clicked(object sender, EventArgs e)
+        {
+            await CrossMediaManager.Current.StepForward();
+        }
+
+        private async void RewindButton_Clicked(object sender, EventArgs e)
+        {
+            await CrossMediaManager.Current.StepBackward();
+        }
+
+
+        private void Current_MediaItemChanged(object sender, MediaItemEventArgs e)
+        {
+            SetupCurrentMediaDetails(e.MediaItem);
+        }
+
+        private void Current_PositionChanged(object sender, PositionChangedEventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                SetupCurrentMediaPositionData(e.Position);
+            });
+        }
+
+        private void SetupCurrentMediaPositionData(TimeSpan currentPlaybackPosition)
+        {
+            var formattingPattern = @"hh\:mm\:ss";
+            if (CrossMediaManager.Current.Duration.Hours <= 0)
+                formattingPattern = @"mm\:ss";
+
+            var fullLengthString = CrossMediaManager.Current.Duration.ToString(formattingPattern);
+            LabelPositionStatus.Text = $"{currentPlaybackPosition.ToString(formattingPattern)}/{fullLengthString}";
+
+            SliderSongPlayDisplay.Value = currentPlaybackPosition.Ticks;
+        }
+
+        private void SetupCurrentMediaPlayerState(MediaPlayerState currentPlayerState)
+        {
+            //LabelPlayerStatus.Text = $"{currentPlayerState.ToString().ToUpper()}";
+
+            if (currentPlayerState == MediaManager.Player.MediaPlayerState.Loading)
+            {
+                SliderSongPlayDisplay.Value = 0;
+            }
+            else if (currentPlayerState == MediaManager.Player.MediaPlayerState.Playing
+                    && CrossMediaManager.Current.Duration.Ticks > 0)
+            {
+                SliderSongPlayDisplay.Maximum = CrossMediaManager.Current.Duration.Ticks;
+            }
+        }
+
+        private async void BtnAudioClick_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutAudios.IsVisible = false;
+
+            var b = (Button)sender;
+
+            var ob = b.CommandParameter as EAudios;
+
+            if (ob != null)
+
+            {
+
+                // retrieve the value from the ‘ob’ and continue your work.
+
+            }
+
+            LblTitleAudio.Text = ob.title;
+            audiolink = ob.link;
+            StackLayoutAudioPage.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+
         }
 
         private void BtnAtrasFamilysActivities_Clicked(object sender, EventArgs e)
