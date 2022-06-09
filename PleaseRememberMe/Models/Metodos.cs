@@ -227,6 +227,13 @@ namespace PleaseRememberMe.Models
             return List_audios;
         } // Fin del método ObtenerVerbos
 
+        public async Task<List<EExercises>> GetExercisesByCategory(string category)
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/ExercisesPRM/{category}");
+            var listado_exercises = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EExercises>>(result);
+
+            return listado_exercises;
+        } // Fin del método ObtenerTablaDePosiciones
 
     }
 }

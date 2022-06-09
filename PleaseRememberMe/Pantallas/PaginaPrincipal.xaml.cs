@@ -33,7 +33,7 @@ namespace PleaseRememberMe.Pantallas
             CorrectAnswerPronoun = "", CorrectAnswerVerb = "", CorrectAnswerQuestionWithHow = "", CorrectAnswerPrepositionsOfTime = "",
             CorrectAnswerFamily = "", CorrectAnswerAnySome = "", CorrectAnswerVerbToBe1 = "",
             CorrectAnswerVerbToBe2 = "", CorrectAnswerQuantifiers = "", AnswerRadioButton1 = "",
-            AnswerRadioButton2 = "", audioVerboFormaBase = "", audioverboSimplePast = "", audioverboPasParticiple = "", 
+            AnswerRadioButton2 = "", audioVerboFormaBase = "", audioverboSimplePast = "", audioverboPasParticiple = "",
             ExamplePastSimple = "", ExamplePastParticiple = "", audiolink = "";
         #endregion
         #region Listas
@@ -72,7 +72,7 @@ namespace PleaseRememberMe.Pantallas
             BtnTerminarTorneo.IsVisible = false;
             CrossMediaManager.Current.PositionChanged += Current_PositionChanged;
             CrossMediaManager.Current.MediaItemChanged += Current_MediaItemChanged;
-
+            CargarInformacionTitlePage();
             CrossMediaManager.Current.StateChanged += Current_OnStateChanged;
 
 
@@ -340,7 +340,7 @@ namespace PleaseRememberMe.Pantallas
             BtnLetsGo.IsEnabled = false;
             using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
             {
-               await GetRandomVerb();
+                await GetRandomVerb();
                 //UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking coffee");
                 //DependencyService.Get<IAppSettingsHelper>().OpenAppSettings();
                 StackTorneo.IsVisible = false;
@@ -383,7 +383,7 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
-               await GetRandomVerb();
+                await GetRandomVerb();
 
             }
             LimpiarText();
@@ -1727,7 +1727,7 @@ namespace PleaseRememberMe.Pantallas
         {
             StackLayoutComparisons.IsVisible = false;
             StackLayoutSuperlativesActivities.IsVisible = true;
-            
+
         }
 
         private void BtnAtrasComparisons_Clicked(object sender, EventArgs e)
@@ -1836,7 +1836,7 @@ namespace PleaseRememberMe.Pantallas
 
             if (ob != null)
             {
-                
+
                 // retrieve the value from the ‘ob’ and continue your work.
 
             }
@@ -1990,6 +1990,16 @@ namespace PleaseRememberMe.Pantallas
             audiolink = ob.link;
             StackLayoutAudioPage.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+
+        }
+
+        private void BtnCheckMyAnswerPageBase_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnOneMorePageBase_Clicked(object sender, EventArgs e)
+        {
 
         }
 
@@ -2244,6 +2254,20 @@ namespace PleaseRememberMe.Pantallas
 
             StackLayoutGramarCategory.IsVisible = false;
             StackLayoutsimplePastExample.IsVisible = true;
+        }
+
+
+        public async void CargarInformacionTitlePage()
+        {
+
+            var datos = await metodos.GetExercisesByCategory("Present Perfect");
+            LbltitlePageBase.Text = datos[0].Title;
+            LblSubtitlePageBase.Text = datos[0].Subtitle;
+            LblDescriptionPageBase.Text = datos[0].Description;
+            LblSentencesPageBase.Text = datos[0].Sentences;
+            string YourAnswer = TxtAnswer.Text;
+            string correctAnswer = datos[0].CorrectAnswer;
+
         }
 
 

@@ -3477,24 +3477,24 @@
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Row="0">
-                        <Label Grid.Row="0" HorizontalOptions="Center" Text="Make the positive present perfect" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-                        <Label Grid.Row="0" HorizontalOptions="Center" Text="For example: (I / study / French)" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-                        <Label Grid.Row="0" HorizontalOptions="Center" Text="I Have Studied French" Margin="0,0,0,0" TextColor="#333"></Label>
+                        <Label Grid.Row="0" HorizontalOptions="Center" x:Name="LbltitlePageBase" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                        <Label Grid.Row="0" HorizontalOptions="Center" x:Name="LblSubtitlePageBase" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                        <Label Grid.Row="0" HorizontalOptions="Center" x:Name="LblDescriptionPageBase" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
                     </StackLayout>
 
 
                     <Label Grid.Row="1" HorizontalOptions="Center"  TextColor="#333"></Label>
 
                     <StackLayout Grid.Row="2" Margin="0,0,0,0">
-                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer?" TextColor="#333"></Label>
-                        <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
-                        <Label HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
+                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" x:Name="LblSentencesPageBase" TextColor="#333"></Label>
+                        <Entry  HorizontalOptions="FillAndExpand" x:Name="TxtAnswer" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
+                        <Label HorizontalOptions="Center" x:Name="LblCorrectIncorectPageBase" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
                     </StackLayout>
 
                     <StackLayout Grid.Row="3" Margin="0,20,0,0">
-                        <Button Text="Check my Answer" Clicked="BtnCheckMyAnswerAnySome_Clicked" BackgroundColor="#F58134" TextColor="White"/>
-                        <Button Text="One More" Margin="0,0,0,0" Clicked="BtnOneMoreAnySome_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
+                        <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerPageBase" Clicked="BtnCheckMyAnswerPageBase_Clicked" BackgroundColor="#F58134" TextColor="White"/>
+                        <Button Text="One More" x:Name="BtnOneMorePageBase"  Margin="0,0,0,0" Clicked="BtnOneMorePageBase_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
                     </StackLayout>
                 </Grid>
 
