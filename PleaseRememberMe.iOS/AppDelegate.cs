@@ -4,6 +4,8 @@ using System.Linq;
 
 using Foundation;
 using Google.MobileAds;
+using MediaManager;
+using MediaManager.Forms.Platforms.iOS;
 //using Google.MobileAds;
 using UIKit;
 
@@ -26,9 +28,9 @@ namespace PleaseRememberMe.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            CrossMediaManager.Current.Init();
             Rg.Plugins.Popup.Popup.Init();
             MobileAds.SharedInstance.Start(CompletionHandler);
-
             return base.FinishedLaunching(app, options);
         }
 

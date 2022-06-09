@@ -65,6 +65,7 @@ namespace PleaseRememberMe.Pantallas
         public PaginaPrincipal()
         {
             InitializeComponent();
+
             LblTorneoEnCurso.IsVisible = false;
             LblTorneo.IsVisible = false;
             LblPuntos.IsVisible = false;
@@ -1827,7 +1828,6 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnVideoClick_Clicked(object sender, EventArgs e)
         {
-
             StackLayoutVideos.IsVisible = false;
 
             var b = (Button)sender;
@@ -1835,7 +1835,6 @@ namespace PleaseRememberMe.Pantallas
             var ob = b.CommandParameter as EVideos;
 
             if (ob != null)
-
             {
                 
                 // retrieve the value from the ‘ob’ and continue your work.
@@ -1846,13 +1845,16 @@ namespace PleaseRememberMe.Pantallas
             App.TituloVideo = ob.title;
             StackLayoutVideoPage.IsVisible = true;
             LblTitle.Text = App.TituloVideo;
-            VideoWebView.Source = App.LinkVideo;
+            LblDescriptionVideo.Text = ob.videodescription;
 
+            mediaElement.Source = App.LinkVideo;
+            //CrossMediaManager.Current.Play(App.LinkVideo, MediaFileType.Video);
         }
 
         private void BtnAtrasVideoPage_Clicked(object sender, EventArgs e)
         {
             StackLayoutVideoPage.IsVisible = false;
+            mediaElement.Pause();
             StackLayoutVideos.IsVisible = true;
         }
 

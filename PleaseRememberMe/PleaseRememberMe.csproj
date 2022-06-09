@@ -17,12 +17,14 @@
     <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
     <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.5.0" />
     <PackageReference Include="Xam.Plugins.TextToSpeech" Version="4.1.0.1-beta" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="Acr.UserDialogs" Version="7.2.0.562" />
     <PackageReference Include="Xamarin.Forms.OpenWhatsApp" Version="1.0.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="MarcTron.Admob" Version="1.6.9" />
+    <PackageReference Include="YoutubeExplode" Version="6.1.2" />
   </ItemGroup>
 
   <ItemGroup>

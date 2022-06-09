@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PleaseRememberMe.Pantallas.PaginaPrincipal"
              Title="Contactanos"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob" xmlns:forms="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
              ios:Page.UseSafeArea="True"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#2196F3" x:Name="ContenPage">
@@ -321,7 +322,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Category - Page 6-->
+        <!--Stacklayout Category - Page 5-->
         <StackLayout IsVisible="false" x:Name="StackLayoutCategory">
 
             <Grid>
@@ -443,7 +444,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout SimplePastCategory - Page 5-->
+        <!--Stacklayout SimplePastCategory - Page 6-->
         <StackLayout IsVisible="false" x:Name="StackLayoutsimplePastExample">
 
             <Grid>
@@ -541,7 +542,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout SimplePast - Page 5.5-->
+        <!--Stacklayout SimplePast - Page 7-->
         <StackLayout IsVisible="false" x:Name="StackLayoutsimplePastCategory">
 
             <Grid>
@@ -611,7 +612,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout SimplePastCategory - Page 5-->
+        <!--Stacklayout SimplePresentCategory - Page 8-->
         <StackLayout IsVisible="false" x:Name="StackLayoutsimplePresentCategory">
 
             <Grid>
@@ -694,7 +695,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout GrammarCategory - Page 5-->
+        <!--Stacklayout GrammarCategory - Page 9-->
         <StackLayout IsVisible="false" x:Name="StackLayoutGramarCategory">
 
             <Grid>
@@ -859,7 +860,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout VocabularyCategory - Page 5-->
+        <!--Stacklayout VocabularyCategory - Page 10-->
         <StackLayout IsVisible="false" x:Name="StackLayoutVocabularyCategory">
 
             <Grid>
@@ -954,7 +955,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout VocabularyCategory - Page 5-->
+        <!--Stacklayout VocabularyCategory - Page 11-->
         <StackLayout IsVisible="false" x:Name="StackLayoutComparisons">
 
             <Grid>
@@ -1129,7 +1130,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout VocabularyCategory - Page 5-->
+        <!--Stacklayout VocabularyCategory - Page 12-->
         <StackLayout IsVisible="false" x:Name="StackLayoutSuperlativesActivities">
 
             <Grid>
@@ -1220,7 +1221,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout SimplePast - Page 5-->
+        <!--Stacklayout SimplePast - Page 13-->
         <StackLayout IsVisible="false" x:Name="StackLayoutSimplePast">
 
             <Grid>
@@ -1280,7 +1281,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout WasWereDid - Page 6-->
+        <!--Stacklayout WasWereDid - Page 14-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutWasWereDid">
 
             <Grid >
@@ -1346,7 +1347,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Match - Page 7-->
+        <!--Stacklayout Match - Page 15-->
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Center" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutMatch">
 
             <Grid >
@@ -1420,7 +1421,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout Settings - Page 8-->
+        <!--Stacklayout Settings - Page 16-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutSettings">
 
             <Grid x:Name="GridVolverAtrasSettings">
@@ -1468,7 +1469,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Acerca de - Page 10-->
+        <!--Stacklayout Acerca de - Page 17-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackAboutMe">
 
             <Grid x:Name="GridVolverAboutMe">
@@ -1502,7 +1503,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Complete - Page 11-->
+        <!--Stacklayout Complete - Page 18-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutComplete">
 
             <Grid >
@@ -1613,7 +1614,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Complete - Page 11-->
+        <!--Stacklayout Complete - Page 19-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutSuperlativesExercises">
 
             <Grid >
@@ -1724,7 +1725,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Clothes - Page 12-->
+        <!--Stacklayout Clothes - Page 20-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,10"  x:Name="StackLayoutClothes">
 
             <Grid >
@@ -1802,7 +1803,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout Pronouns - Page 13-->
+        <!--Stacklayout Pronouns - Page 21-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutPronouns">
 
             <Grid >
@@ -1872,7 +1873,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout SimplePresent - Page 14.5-->
+        <!--Stacklayout SimplePresent - Page 22-->
         <StackLayout IsVisible="false" x:Name="StackLayoutsimplePresentExample">
 
             <Grid>
@@ -1971,7 +1972,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout SimplePresent - Page 14.5-->
+        <!--Stacklayout SimplePresent - Page 23-->
         <StackLayout IsVisible="false" x:Name="StackLayoutsimplePresentExercises">
 
             <Grid>
@@ -2041,7 +2042,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout SimplePresent - Page 14-->
+        <!--Stacklayout SimplePresent - Page 24-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutSimplePresent">
 
             <Grid >
@@ -2109,7 +2110,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout Prepositions of time - Page 15-->
+        <!--Stacklayout Prepositions of time - Page 25-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutPreposisionsOfTime">
 
             <Grid >
@@ -2178,7 +2179,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Family - Page 16-->
+        <!--Stacklayout Family - Page 26-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutFamily">
 
             <Grid >
@@ -2246,7 +2247,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Any Some - Page 17-->
+        <!--Stacklayout Any Some - Page 27-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutAnySome">
 
             <Grid >
@@ -2315,7 +2316,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Verb To Be - Page 18-->
+        <!--Stacklayout Verb To Be - Page 28-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutVerbToBe">
 
             <Grid >
@@ -2385,7 +2386,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Quantifiers - Page 19-->
+        <!--Stacklayout Quantifiers - Page 29-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutQuantifiers">
 
             <Grid >
@@ -2461,7 +2462,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout QuestionsWithHow - Page 20-->
+        <!--Stacklayout QuestionsWithHow - Page 30-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutQuestionsWithHow">
 
             <Grid >
@@ -2528,7 +2529,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Vocabulary - Page 21-->
+        <!--Stacklayout Vocabulary - Page 31-->
         <StackLayout x:Name="StacklayoutVocabularyWords" IsVisible="false" >
 
             <Grid>
@@ -2604,7 +2605,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout ProfessionsPage - Page 22-->
+        <!--Stacklayout ProfessionsPage - Page 32-->
         <StackLayout IsVisible="false" x:Name="StackLayoutProfessionsPage">
 
             <Grid>
@@ -2688,7 +2689,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout ClothesPage - Page 23-->
+        <!--Stacklayout ClothesPage - Page 33-->
         <StackLayout IsVisible="false" x:Name="StackLayoutClothesPage">
 
             <Grid>
@@ -2769,7 +2770,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout ProfessionsActivities - Page 24-->
+        <!--Stacklayout ProfessionsActivities - Page 34-->
         <StackLayout IsVisible="false" x:Name="StackLayoutProfessionsActivities">
 
             <Grid>
@@ -2839,7 +2840,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout ClothesActivities - Page 25-->
+        <!--Stacklayout ClothesActivities - Page 35-->
         <StackLayout IsVisible="false" x:Name="StackLayoutClothesActivities">
 
             <Grid>
@@ -2909,7 +2910,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout Vocabulary Clohes - Page 26-->
+        <!--Stacklayout Vocabulary Clohes - Page 36-->
         <StackLayout x:Name="StacklayoutVocabularyClothes" IsVisible="false" >
 
             <Grid>
@@ -2985,7 +2986,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout FamilyPage - Page 23-->
+        <!--Stacklayout FamilyPage - Page 37-->
         <StackLayout IsVisible="false" x:Name="StackLayoutFamilyPage">
 
             <Grid>
@@ -3066,7 +3067,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout Vocabulary Family - Page 26-->
+        <!--Stacklayout Vocabulary Family - Page 38-->
         <StackLayout x:Name="StacklayoutVocabularyFamily" IsVisible="false" >
 
             <Grid>
@@ -3143,7 +3144,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout FamilyActivities - Page 25-->
+        <!--Stacklayout FamilyActivities - Page 39-->
         <StackLayout IsVisible="false" x:Name="StackLayoutFamilyActivities">
 
             <Grid>
@@ -3213,8 +3214,7 @@
 
         </StackLayout>
 
-
-        <!--Stacklayout Videos - Page 25-->
+        <!--Stacklayout Videos - Page 40-->
         <StackLayout IsVisible="false" x:Name="StackLayoutVideos">
 
             <Grid>
@@ -3263,8 +3263,7 @@
 
         </StackLayout>
 
-
-        <!--Stacklayout VideoPage - Page 25-->
+        <!--Stacklayout VideoPage - Page 41-->
         <StackLayout IsVisible="false" x:Name="StackLayoutVideoPage">
 
             <Grid>
@@ -3296,12 +3295,12 @@
                 <StackLayout VerticalOptions="FillAndExpand">
 
                     <Label HorizontalOptions="Center" Text="English Videos - Listen and practice" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-
                     <Grid Margin="0,10,0,10" BackgroundColor="Transparent">
                         <StackLayout Orientation="Vertical">
                             <Label x:Name="LblTitle" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#333" FontSize="12" HorizontalOptions="Center"/>
-                            <WebView x:Name="VideoWebView" HeightRequest="230" WidthRequest="300" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
-                            <!--<Label TextColor="#333" Grid.Column="2" FontSize="12" HorizontalOptions="Start" Text="{Binding videodescription}"/>-->
+                            <xct:MediaElement x:Name="mediaElement" AutoPlay="True" HeightRequest="200" WidthRequest="400" HorizontalOptions="Center" />
+                            <Label x:Name="LblDescriptionVideo" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#333" FontSize="12" HorizontalOptions="Center"/>
+
                         </StackLayout>
                     </Grid>
                 </StackLayout>
@@ -3309,8 +3308,7 @@
 
         </StackLayout>
 
-
-        <!--Stacklayout Audios - Page 25-->
+        <!--Stacklayout Audios - Page 42-->
         <StackLayout IsVisible="false" x:Name="StackLayoutAudios">
 
             <Grid>
@@ -3359,7 +3357,7 @@
 
         </StackLayout>
 
-        <!--Stacklayout VideoPage - Page 25-->
+        <!--Stacklayout AudioPage - Page 43-->
         <StackLayout IsVisible="false" x:Name="StackLayoutAudioPage">
 
             <Grid>
@@ -3432,6 +3430,76 @@
                 </StackLayout>
             </ScrollView>
 
+        </StackLayout>
+
+        <!--Stacklayout Page Base - Page 27-->
+        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutBase">
+
+            <Grid >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png"  x:Name="BtnAtrasPageBase" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="GO BACK"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout Margin="10,0,10,40">
+
+                <Grid RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="100"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Row="0">
+                        <Label Grid.Row="0" HorizontalOptions="Center" Text="Make the positive present perfect" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                        <Label Grid.Row="0" HorizontalOptions="Center" Text="For example: (I / study / French)" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                        <Label Grid.Row="0" HorizontalOptions="Center" Text="I Have Studied French" Margin="0,0,0,0" TextColor="#333"></Label>
+                    </StackLayout>
+
+
+                    <Label Grid.Row="1" HorizontalOptions="Center"  TextColor="#333"></Label>
+
+                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
+                        <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" Text="What is the correct answer?" TextColor="#333"></Label>
+                        <Entry  HorizontalOptions="FillAndExpand" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
+                        <Label HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3" Margin="0,20,0,0">
+                        <Button Text="Check my Answer" Clicked="BtnCheckMyAnswerAnySome_Clicked" BackgroundColor="#F58134" TextColor="White"/>
+                        <Button Text="One More" Margin="0,0,0,0" Clicked="BtnOneMoreAnySome_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
+                    </StackLayout>
+                </Grid>
+
+
+            </StackLayout>
         </StackLayout>
 
         <!--Stacklayout Anuncio-->

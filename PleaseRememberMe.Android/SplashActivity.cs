@@ -5,6 +5,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MediaManager.Forms.Platforms.Android;
 using Plugin.FirebasePushNotification;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace PleaseRememberMe.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
 
             // Create your application here

@@ -12,6 +12,7 @@ using Plugin.FirebasePushNotification;
 using Firebase;
 using MediaManager.Forms.Platforms.Android;
 using MediaManager;
+using Xamarin.Forms;
 
 namespace PleaseRememberMe.Droid
 {
@@ -26,6 +27,7 @@ namespace PleaseRememberMe.Droid
             AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo; ///1st LINE DUDE TO WORK !
             base.OnCreate(savedInstanceState);
             UserDialogs.Init(this);
+            CrossMediaManager.Current.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             //If debug you should reset the token each time.
