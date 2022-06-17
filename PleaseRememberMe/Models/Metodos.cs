@@ -235,5 +235,13 @@ namespace PleaseRememberMe.Models
             return listado_exercises;
         } // Fin del método ObtenerTablaDePosiciones
 
+        public async Task<List<EHowToUse>> GetExamplesByCategory(string howtouse_category)
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/HowToUsePRM/{howtouse_category}");
+            var listado_examples = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EHowToUse>>(result);
+
+            return listado_examples;
+        } // Fin del método ObtenerTablaDePosiciones
+
     }
 }

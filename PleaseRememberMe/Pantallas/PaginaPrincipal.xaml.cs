@@ -34,7 +34,7 @@ namespace PleaseRememberMe.Pantallas
             CorrectAnswerFamily = "", CorrectAnswerAnySome = "", CorrectAnswerVerbToBe1 = "",
             CorrectAnswerVerbToBe2 = "", CorrectAnswerQuantifiers = "", AnswerRadioButton1 = "",
             AnswerRadioButton2 = "", audioVerboFormaBase = "", audioverboSimplePast = "", audioverboPasParticiple = "",
-            ExamplePastSimple = "", ExamplePastParticiple = "", audiolink = "";
+            ExamplePastSimple = "", ExamplePastParticiple = "", audiolink = "", DefinitiveAnswer = "", DefinitiveAnswer2 = "";
         #endregion
         #region Listas
         List<Entidad.EVerbos> listadodelosverbos = new List<Entidad.EVerbos>();
@@ -52,6 +52,7 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.EAnySome> listAnySome = new List<Entidad.EAnySome>();
         List<Entidad.EVerbToBe> listVerbToBe = new List<Entidad.EVerbToBe>();
         List<Entidad.EQuantifiers> listQuantifiers = new List<Entidad.EQuantifiers>();
+        List<Entidad.EExercises> listexercises = new List<Entidad.EExercises>();
         #endregion
         #region Declaraciones
         ModalTournament modalTournament = new ModalTournament();
@@ -72,7 +73,6 @@ namespace PleaseRememberMe.Pantallas
             BtnTerminarTorneo.IsVisible = false;
             CrossMediaManager.Current.PositionChanged += Current_PositionChanged;
             CrossMediaManager.Current.MediaItemChanged += Current_MediaItemChanged;
-            CargarInformacionTitlePage();
             CrossMediaManager.Current.StateChanged += Current_OnStateChanged;
 
 
@@ -128,8 +128,6 @@ namespace PleaseRememberMe.Pantallas
             CargarIdioma();
 
         }
-
-
         public async void CargarIdioma()
         {
             var lenguaje = await CrossTextToSpeech.Current.GetInstalledLanguages();
@@ -368,9 +366,6 @@ namespace PleaseRememberMe.Pantallas
             }
             BtnLetsGo.IsEnabled = true;
         }
-
-
-
 
         private async void BtnAnotherOne_Clicked(object sender, EventArgs e)
         {
@@ -1993,13 +1988,91 @@ namespace PleaseRememberMe.Pantallas
 
         }
 
+
+        public async void CargarInformacionTitlePage(string category)
+        {
+            UserDialogs.Instance.ShowLoading("Did you drink water today?");
+            var datos = await metodos.GetExercisesByCategory(category);
+            LbltitlePageBase.Text = datos[0].Title;
+            LblSubtitlePageBase.Text = datos[0].Subtitle;
+            LblDescriptionPageBase.Text = datos[0].Description;
+            LblSentencesPageBase.Text = datos[0].Sentences;
+            string YourAnswer = TxtAnswer.Text;
+            DefinitiveAnswer = datos[0].CorrectAnswer;
+            DefinitiveAnswer2 = datos[0].CorrectAnswer2;
+            UserDialogs.Instance.HideLoading();
+
+        }
+
+        public async void CargarInformacionHowToUse(string howtouse_category)
+        {
+            var datos = await metodos.GetExamplesByCategory(howtouse_category);
+            LblDescriptionHowToUseBase.Text = datos[0].Howtouse;
+            btnGoToTheExercises.Text = datos[0].howtouse_category;
+        }
+
         private void BtnCheckMyAnswerPageBase_Clicked(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(TxtAnswer.Text))
+            {
+                LblCorrectIncorectPageBase.IsVisible = true;
+                LblCorrectIncorectPageBase.Text = "Incorrect";
+            }
+            else
+            {
+                if (DefinitiveAnswer == TxtAnswer.Text.ToUpper().Trim().Replace(".", "") || DefinitiveAnswer2 == TxtAnswer.Text.ToUpper().Trim().Replace(".", ""))
+                {
+                    LblCorrectIncorectPageBase.IsVisible = true;
+                    LblCorrectIncorectPageBase.Text = "Correct";
+                }
+                else
+                {
+                    LblCorrectIncorectPageBase.IsVisible = true;
+                    LblCorrectIncorectPageBase.Text = "Incorrect";
 
+                }
+            }
         }
 
         private void BtnOneMorePageBase_Clicked(object sender, EventArgs e)
         {
+            CargarInformacionTitlePage("Present Perfect");
+        }
+
+        private void BtnAtrasPageBase_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutHowToUse.IsVisible = true;
+            CargarInformacionHowToUse("Present Perfect");
+            StackLayoutBase.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void btnGoToTheExercises_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutHowToUse.IsVisible = false;
+            CargarInformacionTitlePage("Present Perfect");
+            StackLayoutBase.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            LblCorrectIncorectPageBase.IsVisible = false;
+            LblCorrectIncorectPageBase.Text = "";
+            TxtAnswer.Text = "";
+
+        }
+
+        private void BtnAtrasHowToUse_Clicked(object sender, EventArgs e)
+        {
+            StackLayoutGramarCategory.IsVisible = true;
+            StackLayoutHowToUse.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void btnPresentPerfect_Clicked(object sender, EventArgs e)
+        {
+
+            StackLayoutGramarCategory.IsVisible = false;
+            CargarInformacionHowToUse("Present Perfect");
+            StackLayoutHowToUse.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
 
         }
 
@@ -2098,23 +2171,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnOneMoreChoose_Clicked(object sender, EventArgs e)
         {
-            if (listQuantifiers.Count == 1)
-            {
-                UserDialogs.Instance.Toast("There aren’t any more sentences");
-            }
-            else
-            {
-                var random = new Random().Next(1, listQuantifiers.Count);
-                var elegido = listQuantifiers[random];
-                LblQuantifiers.Text = elegido.QuantifiersSentence;
-                LblFirstOption.Text = elegido.FirstOption;
-                LblSecondOption.Text = elegido.SecondOption;
-                CorrectAnswerQuantifiers = elegido.CorrectAnswer;
-                listQuantifiers.Remove(elegido);
-                RadioButtonOption1.IsChecked = false;
-                RadioButtonOption2.IsChecked = false;
-                LblCorrectAnswerQuantifiers.IsVisible = false;
-            }
+            CargarInformacionTitlePage("Present Perfect");
         }
 
         private async void btnQuantifiers_Clicked(object sender, EventArgs e)
@@ -2256,19 +2313,6 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutsimplePastExample.IsVisible = true;
         }
 
-
-        public async void CargarInformacionTitlePage()
-        {
-
-            var datos = await metodos.GetExercisesByCategory("Present Perfect");
-            LbltitlePageBase.Text = datos[0].Title;
-            LblSubtitlePageBase.Text = datos[0].Subtitle;
-            LblDescriptionPageBase.Text = datos[0].Description;
-            LblSentencesPageBase.Text = datos[0].Sentences;
-            string YourAnswer = TxtAnswer.Text;
-            string correctAnswer = datos[0].CorrectAnswer;
-
-        }
 
 
         private async void BtnReport_Clicked(object sender, EventArgs e)
