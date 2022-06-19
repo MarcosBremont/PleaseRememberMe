@@ -3424,7 +3424,7 @@
                                 BackgroundColor="#225DD5"
                                 Clicked="RewindButton_Clicked"
                                 Text="-10 Seg"
-                                WidthRequest="50"
+                                HeightRequest="50"
                                 TextColor="White" />
 
                                 
@@ -3432,7 +3432,7 @@
                                 x:Name="ForwardButton"
                                 BackgroundColor="#225DD5"
                                 Clicked="ForwardButton_Clicked"
-                                WidthRequest="50"
+                                HeightRequest="50"
                                 Text="+10 Seg"
                                 TextColor="White" />
 
