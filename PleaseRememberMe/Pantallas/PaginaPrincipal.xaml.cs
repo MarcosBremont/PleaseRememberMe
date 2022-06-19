@@ -1873,6 +1873,7 @@ namespace PleaseRememberMe.Pantallas
         {
             StackLayoutAudioPage.IsVisible = false;
             StackLayoutAudios.IsVisible = true;
+            BtnReiniciarAudio_Clicked(new object(), new EventArgs());
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
