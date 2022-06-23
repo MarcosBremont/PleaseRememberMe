@@ -34,7 +34,8 @@ namespace PleaseRememberMe.Pantallas
             CorrectAnswerFamily = "", CorrectAnswerAnySome = "", CorrectAnswerVerbToBe1 = "",
             CorrectAnswerVerbToBe2 = "", CorrectAnswerQuantifiers = "", AnswerRadioButton1 = "",
             AnswerRadioButton2 = "", audioVerboFormaBase = "", audioverboSimplePast = "", audioverboPasParticiple = "",
-            ExamplePastSimple = "", ExamplePastParticiple = "", audiolink = "", DefinitiveAnswer = "", DefinitiveAnswer2 = "";
+            ExamplePastSimple = "", ExamplePastParticiple = "", audiolink = "", DefinitiveAnswer = "", DefinitiveAnswer2 = "",
+            TextoCategoria = "";
         #endregion
         #region Listas
         List<Entidad.EVerbos> listadodelosverbos = new List<Entidad.EVerbos>();
@@ -2037,21 +2038,35 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnOneMorePageBase_Clicked(object sender, EventArgs e)
         {
-            CargarInformacionTitlePage("Present Perfect");
+            CargarInformacionTitlePage(TextoCategoria);
+            TxtAnswer.Text = "";
+            LblCorrectIncorectPageBase.IsVisible = false;
         }
 
         private void BtnAtrasPageBase_Clicked(object sender, EventArgs e)
         {
             StackLayoutHowToUse.IsVisible = true;
-            CargarInformacionHowToUse("Present Perfect");
+            CargarInformacionHowToUse(TextoCategoria);
             StackLayoutBase.IsVisible = false;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+        }
+
+        private void btnEvaluationsAndComparions_Clicked(object sender, EventArgs e)
+        {
+            TextoCategoria = "Evaluations And Comparions";
+
+            StackLayoutHowToUse.IsVisible = true;
+            //CargarInformacionTitlePage("EvaluationsAndComparions");
+
+            CargarInformacionHowToUse(TextoCategoria);
+            StackLayoutGramarCategory.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void btnGoToTheExercises_Clicked(object sender, EventArgs e)
         {
             StackLayoutHowToUse.IsVisible = false;
-            CargarInformacionTitlePage("Present Perfect");
+            CargarInformacionTitlePage(TextoCategoria);
             StackLayoutBase.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             LblCorrectIncorectPageBase.IsVisible = false;
@@ -2071,7 +2086,8 @@ namespace PleaseRememberMe.Pantallas
         {
 
             StackLayoutGramarCategory.IsVisible = false;
-            CargarInformacionHowToUse("Present Perfect");
+            TextoCategoria = "Present Perfect";
+            CargarInformacionHowToUse(TextoCategoria);
             StackLayoutHowToUse.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
 
@@ -2172,7 +2188,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnOneMoreChoose_Clicked(object sender, EventArgs e)
         {
-            CargarInformacionTitlePage("Present Perfect");
+            CargarInformacionTitlePage(TextoCategoria);
         }
 
         private async void btnQuantifiers_Clicked(object sender, EventArgs e)
