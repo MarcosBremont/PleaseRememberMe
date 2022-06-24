@@ -1996,6 +1996,7 @@ namespace PleaseRememberMe.Pantallas
             UserDialogs.Instance.ShowLoading("Did you drink water today?");
             var datos = await metodos.GetExercisesByCategory(category);
             LbltitlePageBase.Text = datos[0].Title;
+            LblAnotherTitle.Text = datos[0].AnotherTitle;
             LblSubtitlePageBase.Text = datos[0].Subtitle;
             LblDescriptionPageBase.Text = datos[0].Description;
             LblSentencesPageBase.Text = datos[0].Sentences;
@@ -2008,9 +2009,12 @@ namespace PleaseRememberMe.Pantallas
 
         public async void CargarInformacionHowToUse(string howtouse_category)
         {
+            UserDialogs.Instance.ShowLoading("What's the weather like?");
             var datos = await metodos.GetExamplesByCategory(howtouse_category);
             LblDescriptionHowToUseBase.Text = datos[0].Howtouse;
+            LblTitleHowToUse.Text = datos[0].howtouse_category;
             btnGoToTheExercises.Text = datos[0].howtouse_category;
+            UserDialogs.Instance.HideLoading();
         }
 
         private void BtnCheckMyAnswerPageBase_Clicked(object sender, EventArgs e)
@@ -2022,7 +2026,8 @@ namespace PleaseRememberMe.Pantallas
             }
             else
             {
-                if (DefinitiveAnswer == TxtAnswer.Text.ToUpper().Trim().Replace(".", "") || DefinitiveAnswer2 == TxtAnswer.Text.ToUpper().Trim().Replace(".", ""))
+
+                if (DefinitiveAnswer == TxtAnswer.Text.ToUpper().Trim().Replace(".", "").Replace("‘", "'").Replace("’", "'").Replace("`", "'") || DefinitiveAnswer2 == TxtAnswer.Text.ToUpper().Trim().Replace(".", "").Replace("‘", "'").Replace("’", "'").Replace("`", "'"))
                 {
                     LblCorrectIncorectPageBase.IsVisible = true;
                     LblCorrectIncorectPageBase.Text = "Correct";
@@ -2038,33 +2043,39 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnOneMorePageBase_Clicked(object sender, EventArgs e)
         {
+            UserDialogs.Instance.ShowLoading("What time is it?");
             CargarInformacionTitlePage(TextoCategoria);
             TxtAnswer.Text = "";
             LblCorrectIncorectPageBase.IsVisible = false;
+            UserDialogs.Instance.HideLoading();
         }
 
         private void BtnAtrasPageBase_Clicked(object sender, EventArgs e)
         {
+            UserDialogs.Instance.ShowLoading("Hey, how's going?");
             StackLayoutHowToUse.IsVisible = true;
             CargarInformacionHowToUse(TextoCategoria);
             StackLayoutBase.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.HideLoading();
+
         }
 
         private void btnEvaluationsAndComparions_Clicked(object sender, EventArgs e)
         {
-            TextoCategoria = "Evaluations And Comparions";
-
+            UserDialogs.Instance.ShowLoading("How was your day?");
+            TextoCategoria = "Evaluations And Comparisons";
             StackLayoutHowToUse.IsVisible = true;
             //CargarInformacionTitlePage("EvaluationsAndComparions");
-
             CargarInformacionHowToUse(TextoCategoria);
             StackLayoutGramarCategory.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.HideLoading();
         }
 
         private void btnGoToTheExercises_Clicked(object sender, EventArgs e)
         {
+            UserDialogs.Instance.ShowLoading("Can you give me a hand?");
             StackLayoutHowToUse.IsVisible = false;
             CargarInformacionTitlePage(TextoCategoria);
             StackLayoutBase.IsVisible = true;
@@ -2072,25 +2083,29 @@ namespace PleaseRememberMe.Pantallas
             LblCorrectIncorectPageBase.IsVisible = false;
             LblCorrectIncorectPageBase.Text = "";
             TxtAnswer.Text = "";
+            UserDialogs.Instance.HideLoading();
+
 
         }
 
         private void BtnAtrasHowToUse_Clicked(object sender, EventArgs e)
         {
+            UserDialogs.Instance.ShowLoading("Is everything ok?");
             StackLayoutGramarCategory.IsVisible = true;
             StackLayoutHowToUse.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.HideLoading();
         }
 
         private void btnPresentPerfect_Clicked(object sender, EventArgs e)
         {
-
+            UserDialogs.Instance.ShowLoading("Why are you studying english?");
             StackLayoutGramarCategory.IsVisible = false;
             TextoCategoria = "Present Perfect";
             CargarInformacionHowToUse(TextoCategoria);
             StackLayoutHowToUse.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-
+            UserDialogs.Instance.HideLoading();
         }
 
         private void BtnAtrasFamilysActivities_Clicked(object sender, EventArgs e)
