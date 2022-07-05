@@ -243,5 +243,13 @@ namespace PleaseRememberMe.Models
             return listado_examples;
         } // Fin del método ObtenerTablaDePosiciones
 
+
+        public async Task<List<EVocabularyGlobal>> GetVocabularyGlobal(string Vocabulary_category)
+        {
+            var result = await herramientas.EjecutarSentenciaEnApiLibre($"Verbs/VocabularyGlobal/{Vocabulary_category}");
+            var listado_vocabulary_global = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EVocabularyGlobal>>(result);
+
+            return listado_vocabulary_global;
+        } // Fin del método Obtener Vocabularios
     }
 }

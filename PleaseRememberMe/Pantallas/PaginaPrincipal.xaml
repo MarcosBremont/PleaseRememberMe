@@ -972,6 +972,19 @@
                             Clicked="btnFamilyVocabulary_Clicked"/>
 
 
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            x:Name="btnVocabularyPhrasalVerbs"
+                            Text="Phrasal Verbs"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#F58134"
+                            CornerRadius="8"
+                            Clicked="btnVocabularyPhrasalVerbs_Clicked"/>
+
+
                     </Grid>
 
 
@@ -3618,6 +3631,89 @@
             </ScrollView>
 
         </StackLayout>
+
+
+
+
+        <!--Stacklayout ClothesPage - Page 33-->
+        <StackLayout x:Name="StacklayoutVocabularyGlobal" IsVisible="false" >
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasVocabularyGlobal_Clicked" x:Name="BtnAtrasVocabularyGlobal" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="GO BACK"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout Margin="10,0,10,40">
+                <Label HorizontalOptions="Center" x:Name="LblTitleVocabularyGlobal" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+                <Grid Grid.Row="1" Margin="0" HeightRequest="25" BackgroundColor="#333" Padding="6">
+
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label FontAttributes="Bold" FontSize="12"  TextColor="White" Text="Word" Grid.Column="0"></Label>
+                    <Label FontAttributes="Bold" FontSize="12"  TextColor="White" Text="Example" Grid.Column="1"></Label>
+
+                </Grid>
+
+                <Grid >
+                    <ListView Margin="0,0,0,80"  x:Name="lsv_VocabularyGlobal"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate >
+
+                                <ViewCell >
+
+
+                                    <Grid  BackgroundColor="White">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <Label TextColor="#333" Margin="10,0,0,0"  Grid.Column="0" FontSize="12" HorizontalOptions="Start" Text="{Binding word}"/>
+                                        <Label TextColor="#333" Margin="10,0,0,0"  Grid.Column="1" FontSize="12" HorizontalOptions="Start" Text="{Binding example}"/>
+                                    </Grid>
+
+
+                                    <!--ITEM-->
+                                </ViewCell>
+                            </DataTemplate>
+
+
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+
+
+            </StackLayout>
+        </StackLayout>
+
 
         <!--Stacklayout Anuncio-->
         <StackLayout x:Name="Anuncio" VerticalOptions="EndAndExpand" Margin="0,0,0,90">

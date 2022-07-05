@@ -1990,7 +1990,6 @@ namespace PleaseRememberMe.Pantallas
 
         }
 
-
         public async void CargarInformacionTitlePage(string category)
         {
             UserDialogs.Instance.ShowLoading("Did you drink water today?");
@@ -2005,6 +2004,16 @@ namespace PleaseRememberMe.Pantallas
             DefinitiveAnswer2 = datos[0].CorrectAnswer2;
             UserDialogs.Instance.HideLoading();
 
+        }
+
+
+        public async void CargarInformacionVocabularyGlobalPage(string category)
+        {
+            UserDialogs.Instance.ShowLoading("Did you drink water today?");
+            var datos = await metodos.GetVocabularyGlobal(category);
+            lsv_VocabularyGlobal.ItemsSource = datos;
+            LblTitleVocabularyGlobal.Text = datos[0].Vocabulary_category;
+            UserDialogs.Instance.HideLoading();
         }
 
         public async void CargarInformacionHowToUse(string howtouse_category)
@@ -2054,11 +2063,44 @@ namespace PleaseRememberMe.Pantallas
         {
             UserDialogs.Instance.ShowLoading("Hey, how's going?");
             StackLayoutHowToUse.IsVisible = true;
+            LimpiarPageBase();
             CargarInformacionHowToUse(TextoCategoria);
             StackLayoutBase.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.HideLoading();
 
+        }
+
+        public void LimpiarPageBase()
+        {
+            LbltitlePageBase.Text = "";
+            LblSubtitlePageBase.Text = "";
+            LblAnotherTitle.Text = "";
+            LblDescriptionPageBase.Text = "";
+            LblSentencesPageBase.Text = "";
+            TxtAnswer.Text = "";
+            LblSentencesPageBase.Text = "";
+
+        }
+
+        private void btnVocabularyPhrasalVerbs_Clicked(object sender, EventArgs e)
+        {
+            UserDialogs.Instance.ShowLoading("Can you give me a hand?");
+            StackLayoutVocabularyCategory.IsVisible = false;
+            TextoCategoria = "Phrasal Verbs";
+            CargarInformacionVocabularyGlobalPage(TextoCategoria);
+            StacklayoutVocabularyGlobal.IsVisible = true;
+            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            UserDialogs.Instance.HideLoading();
+
+        }
+
+        private void BtnAtrasVocabularyGlobal_Clicked(object sender, EventArgs e)
+        {
+            UserDialogs.Instance.ShowLoading("Let's see phrasal verbs");
+            StackLayoutVocabularyCategory.IsVisible = true;
+            StacklayoutVocabularyGlobal.IsVisible = false;
+            UserDialogs.Instance.HideLoading();
         }
 
         private void btnEvaluationsAndComparions_Clicked(object sender, EventArgs e)
@@ -2093,8 +2135,15 @@ namespace PleaseRememberMe.Pantallas
             UserDialogs.Instance.ShowLoading("Is everything ok?");
             StackLayoutGramarCategory.IsVisible = true;
             StackLayoutHowToUse.IsVisible = false;
+            LimpiarCamposHowToUse();
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.HideLoading();
+        }
+
+        public void LimpiarCamposHowToUse()
+        {
+            LblTitleHowToUse.Text = "";
+            LblDescriptionHowToUseBase.Text = "";
         }
 
         private void btnPresentPerfect_Clicked(object sender, EventArgs e)
