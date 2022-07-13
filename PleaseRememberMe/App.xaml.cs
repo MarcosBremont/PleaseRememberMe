@@ -27,7 +27,7 @@ namespace PleaseRememberMe
             InitializeComponent();
             CrossMediaManager.Current.Init();
 
-            MainPage = new Pantallas.PaginaPrincipal();
+            MainPage = new Pantallas.PrincipalPage();
         }
 
    

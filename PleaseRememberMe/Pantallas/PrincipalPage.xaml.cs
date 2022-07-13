@@ -26,7 +26,7 @@ using MediaManager.Media;
 
 namespace PleaseRememberMe.Pantallas
 {
-    public partial class PaginaPrincipal : ContentPage
+    public partial class PrincipalPage : ContentPage
     {
         #region Variables String
         string VerbInSimplePast = "", VerbInPastParticiple = "", Traduccion = "", CorrectAnswer = "",
@@ -39,7 +39,7 @@ namespace PleaseRememberMe.Pantallas
         #endregion
         #region Listas
         List<Entidad.EVerbos> listadodelosverbos = new List<Entidad.EVerbos>();
-        List<Entidad.EVerbos> listverbos = new List<Entidad.EVerbos>();
+
         List<Entidad.EWasWereDid> listSentences = new List<Entidad.EWasWereDid>();
         List<Entidad.EQuestionsWithHow> listQuestionsWithHow = new List<Entidad.EQuestionsWithHow>();
         List<Entidad.EMatchSentences> listMatch = new List<Entidad.EMatchSentences>();
@@ -57,27 +57,26 @@ namespace PleaseRememberMe.Pantallas
         #endregion
         #region Declaraciones
         ModalTournament modalTournament = new ModalTournament();
-        ModalAboutMe modalAboutMe = new ModalAboutMe();
         Metodos metodos = new Metodos();
         IEnumerable<Locale> locales;
         static CrossLocale? localeee = null;
         #endregion
         private bool _userTapped;
 
-        public PaginaPrincipal()
+        public PrincipalPage()
         {
             InitializeComponent();
 
-            LblTorneoEnCurso.IsVisible = false;
-            LblTorneo.IsVisible = false;
-            LblPuntos.IsVisible = false;
-            BtnTerminarTorneo.IsVisible = false;
+            //LblTorneoEnCurso.IsVisible = false;
+            //LblTorneo.IsVisible = false;
+            //LblPuntos.IsVisible = false;
+            //BtnTerminarTorneo.IsVisible = false;
             CrossMediaManager.Current.PositionChanged += Current_PositionChanged;
             CrossMediaManager.Current.MediaItemChanged += Current_MediaItemChanged;
             CrossMediaManager.Current.StateChanged += Current_OnStateChanged;
 
-
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
+
             StackTournament.GestureRecognizers.Add(
              new TapGestureRecognizer()
              {
@@ -89,7 +88,6 @@ namespace PleaseRememberMe.Pantallas
                      _userTapped = true;
                      modalTournament = new ModalTournament();
                      modalTournament.OnLLamarOtraPantalla += ModalTournament_OnLLamarOtraPantalla;
-                     modalTournament.Disappearing += ModalTournament_Disappearing;
 
                      await PopupNavigation.PushAsync(modalTournament);
                      await Task.Delay(1000);
@@ -101,497 +99,24 @@ namespace PleaseRememberMe.Pantallas
              }
            );
 
-
-
-            StackLayoutAboutMe.GestureRecognizers.Add(
-             new TapGestureRecognizer()
-             {
-                 Command = new Command(async () =>
-                 {
-                     if (_userTapped)
-                         return;
-
-                     _userTapped = true;
-                     modalAboutMe = new ModalAboutMe();
-                     modalAboutMe.OnLLamarOtraPantalla += ModalAboutMe_OnLLamarOtraPantalla;
-                     modalAboutMe.Disappearing += ModalAboutMe_Disappearing;
-
-                     await PopupNavigation.PushAsync(modalAboutMe);
-                     await Task.Delay(1000);
-                     _userTapped = false;
-                     Opacity = 1;
-                 }),
-                 NumberOfTapsRequired = 1
-
-             }
-           );
-
-            CargarIdioma();
-
-        }
-        public async void CargarIdioma()
-        {
-            var lenguaje = await CrossTextToSpeech.Current.GetInstalledLanguages();
-            var items = lenguaje.Select(a => a.ToString()).ToArray();
-
-            if (Device.RuntimePlatform == Device.Android)
-            {
-
-                localeee = lenguaje.FirstOrDefault(l => l.ToString() == "en-US");
-            }
-            else
-            {
-                localeee = new CrossLocale { Language = "en-US" };
-            }
-        }
-        private void ModalAboutMe_OnLLamarOtraPantalla(object sender, EventArgs e)
-        {
         }
 
-        private void ModalAboutMe_Disappearing(object sender, EventArgs e)
+        async private void ModalTournament_OnLLamarOtraPantalla(object sender, EventArgs e)
         {
-        }
-
-        private void ModalTournament_OnLLamarOtraPantalla(object sender, EventArgs e)
-        {
-        }
-
-        private async void ModalTournament_Disappearing(object sender, EventArgs e)
-        {
-            if (App.Torneo == "S")
-            {
-                StackTorneo.IsVisible = true;
-                App.SumaTotalDePuntos = 0;
-                listverbos = await metodos.GetListadoVerbos();
-                BtnLetsGo_Clicked(new object(), new EventArgs());
-                BtnGiveMeSomeExamples.IsVisible = false;
-                BtnAnotherOne.IsVisible = false;
-                LblTorneo.IsVisible = true;
-                LblTorneoEnCurso.IsVisible = true;
-                BtnTerminarTorneo.IsVisible = true;
-                txtVerbInPastSimple.Text = "";
-                txtVerbInPastParticiple.Text = "";
-                LblPuntos.Text = "0";
-                LblPuntos.IsVisible = true;
-
-
-            }
+            await Navigation.PushModalAsync(new TournamentPage());
+            App.SumaTotalDePuntos = 0;
         }
 
         protected async override void OnAppearing()
         {
 
             base.OnAppearing();
-
-            try
-            {
-                var lista = listverbos;
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking water");
-                listverbos = await metodos.GetListadoVerbos();
-
-                locales = await TextToSpeech.GetLocalesAsync();
-
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-            }
-
-
-        }
-
-        public async void GetRandomVerbForTheTournament()
-        {
-            try
-            {
-                if (listverbos.Count == 1 && App.YaPasoPorAqui == "Yes")
-                {
-                    Acr.UserDialogs.UserDialogs.Instance.Toast("¡You finish!, your result will be send to the leaderboard");
-                    LblNumerosDeVerbosRestantes.Text = "0";
-                    App.SumaTotalDePuntos = 0;
-                    UserDialogs.Instance.ShowLoading("I'm eating a cookie, give me a few seconds");
-                    var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
-                    UserDialogs.Instance.HideLoading();
-                }
-                else
-                {
-
-
-                    if (App.YaPasoPorAqui == "Yes")
-                    {
-                        var random = new Random().Next(1, listverbos.Count);
-                        var datos = listverbos[random];
-                        listverbos.Remove(datos);
-                        VerbInSimplePast = datos.verboSimplePast.ToUpper();
-                        VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
-                        LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
-                        LblNumerosDeVerbosRestantes.IsVisible = true;
-                        txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
-                        audioVerboFormaBase = datos.VerboFormaBase.ToString();
-
-                    }
-                    else
-                    {
-                        var random = new Random().Next(1, listverbos.Count);
-                        var datos = listverbos[random];
-                        //listverbos.Remove(datos);
-                        txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
-                        VerbInSimplePast = datos.verboSimplePast.ToUpper();
-                        VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
-                        LblNumerosDeVerbosRestantes.Text = listverbos.Count.ToString();
-                        LblNumerosDeVerbosRestantes.IsVisible = true;
-                        App.YaPasoPorAqui = "Yes";
-                        audioVerboFormaBase = datos.VerboFormaBase.ToString();
-
-
-                    }
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-
-        }
-
-        public async Task GetRandomVerb()
-        {
-            try
-            {
-                LblVerbInPastSimpleCheck.Text = "";
-                LblVerbInPastParticipleCheck.Text = "";
-                var lista = listverbos;
-
-                if (App.YaPasastePorGetRandomVerb == "Yes")
-                {
-                    listverbos = await metodos.GetListadoVerbos();
-
-                }
-                else
-                {
-                    if (App.Torneo == "N" || string.IsNullOrEmpty(App.Torneo))
-                    {
-                        listverbos = await metodos.GetListadoVerbos();
-                        App.YaPasastePorGetRandomVerb = "Yes";
-
-                    }
-                    else
-                    {
-                        StackTorneo.IsVisible = true;
-                        BtnVerbInPastAudio.IsVisible = true;
-                        BtnVerbInPastSAudio.IsVisible = false;
-                        BtnVerbInPastPartAudio.IsVisible = false;
-
-                    }
-                }
-
-                var random = new Random().Next(1, listverbos.Count);
-                var datos = listverbos[random];
-                txtVerbInPast.Text = datos.VerboFormaBase.ToUpper();
-                VerbInSimplePast = datos.verboSimplePast.ToUpper();
-                VerbInPastParticiple = datos.verboPasParticiple.ToUpper();
-                Traduccion = datos.traduccion.ToUpper();
-                audioVerboFormaBase = datos.VerboFormaBase.ToString();
-                audioverboSimplePast = datos.verboSimplePast.ToString();
-                audioverboPasParticiple = datos.verboPasParticiple.ToString();
-                lblExamplePast.Text = datos.examplesInBaseForm;
-                lblExamplePastSimple.Text = datos.examplesInSimplePast;
-                ExamplePastSimple = datos.examplesInSimplePast;
-                ExamplePastParticiple = datos.examplesInPastParticiple;
-                lblExamplePastParticiple.Text = datos.examplesInPastParticiple;
-                listverbos.Remove(datos);
-                LblNumerosDeVerbosRestantes.Text = listverbos.Count().ToString();
-
-                if (LblVerbInPastSimpleCheck.Text != "Correct")
-                {
-                    lblExamplePastSimple.Text = "...";
-                }
-                else
-                {
-                    lblExamplePastSimple.Text = ExamplePastSimple;
-
-                }
-
-                if (LblVerbInPastParticipleCheck.Text != "Correct")
-                {
-                    lblExamplePastParticiple.Text = "...";
-                }
-                else
-                {
-                    lblExamplePastParticiple.Text = ExamplePastParticiple;
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-
+            Anuncio.IsVisible = true;
         }
 
         private async void BtnLetsGo_Clicked(object sender, EventArgs e)
         {
-            BtnLetsGo.IsEnabled = false;
-            using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
-            {
-                await GetRandomVerb();
-                //UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking coffee");
-                //DependencyService.Get<IAppSettingsHelper>().OpenAppSettings();
-                StackTorneo.IsVisible = false;
-                Anuncio.IsVisible = true;
-                BtnGiveMeSomeExamples.IsVisible = true;
-                BtnAnotherOne.IsVisible = true;
-                BtnVerbInPastAudio.IsVisible = true;
-                BtnTerminarTorneo.IsVisible = false;
-                BtnVerbInPastSAudio.IsVisible = false;
-                BtnVerbInPastPartAudio.IsVisible = false;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                StacklayoutPrincipal.IsVisible = false;
-                StackExamples.IsVisible = false;
-                //StackTraducciones.IsVisible = false;
-                StacklayoutLetsGo.IsVisible = true;
-                LblVerbInPastSimpleCheck.IsVisible = false;
-                LblVerbInPastParticipleCheck.IsVisible = false;
-                txtVerbInPastSimple.Text = "";
-                txtVerbInPastParticiple.Text = "";
-                if (App.Torneo == "S")
-                {
-                    StackTorneo.IsVisible = true;
-                }
-
-            }
-            BtnLetsGo.IsEnabled = true;
-        }
-
-        private async void BtnAnotherOne_Clicked(object sender, EventArgs e)
-        {
-            UserDialogs.Instance.ShowLoading("Looking for verbs...");
-            BtnVerbInPastSAudio.IsVisible = false;
-            BtnVerbInPastPartAudio.IsVisible = false;
-            if (App.Torneo == "S")
-            {
-                GetRandomVerbForTheTournament();
-            }
-            else
-            {
-                await GetRandomVerb();
-
-            }
-            LimpiarText();
-            StackExamples.HorizontalOptions = LayoutOptions.CenterAndExpand;
-            UserDialogs.Instance.HideLoading();
-
-        }
-
-        public void LimpiarText()
-        {
-            txtVerbInPastSimple.Text = "";
-            txtVerbInPastParticiple.Text = "";
-            LblVerbInPastSimpleCheck.IsVisible = false;
-            LblVerbInPastParticipleCheck.IsVisible = false;
-            //StackTraducciones.IsVisible = false;
-
-
-            StackExamples.IsVisible = false;
-        }
-
-        private void BtnCheck_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                //StackTraducciones.IsVisible = false;
-
-                if (App.Torneo != "S")
-                {
-                    // StackTraducciones.IsVisible = true;
-                    //LblTraduction.Text = Traduccion;
-                    LblVerbInPastSimpleCheck.IsVisible = true;
-                    LblVerbInPastParticipleCheck.IsVisible = true;
-
-                }
-
-
-
-                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-                if (string.IsNullOrEmpty(txtVerbInPastSimple.Text))
-                {
-                    LblVerbInPastSimpleCheck.Text = "Incorrect";
-                    player.Load("WrongSound.mp3");
-
-                }
-                else
-                {
-                    if (txtVerbInPastSimple.Text.ToUpper().Trim().Replace(".", "") == VerbInSimplePast)
-                    {
-
-                        LblVerbInPastSimpleCheck.Text = "Correct";
-                        player.Load("CorrectSoundReady.mp3");
-                        if (App.Torneo == "S")
-                        {
-
-                        }
-                        else
-                        {
-                            BtnVerbInPastSAudio.IsVisible = true;
-                        }
-
-                    }
-                    else
-                    {
-
-                        LblVerbInPastSimpleCheck.Text = "Incorrect";
-                        player.Load("WrongSound.mp3");
-
-                    }
-
-
-
-
-                }
-
-                if (string.IsNullOrEmpty(txtVerbInPastParticiple.Text))
-                {
-                    LblVerbInPastParticipleCheck.Text = "Incorrect";
-                    player.Load("WrongSound.mp3");
-
-                }
-                else
-                {
-                    if (txtVerbInPastParticiple.Text.ToUpper().Trim().Replace(".", "") == VerbInPastParticiple)
-                    {
-                        LblVerbInPastParticipleCheck.Text = "Correct";
-                        player.Load("CorrectSoundReady.mp3");
-                        if (App.Torneo == "S")
-                        {
-
-                        }
-                        else
-                        {
-                            BtnVerbInPastPartAudio.IsVisible = true;
-                        }
-
-                    }
-                    else
-                    {
-                        if (player.CanSeek == false)
-                        {
-                            player.Load("WrongSound.xmp3");
-                        }
-
-                        LblVerbInPastParticipleCheck.Text = "Incorrect";
-
-                    }
-
-
-                }
-
-                if (LblVerbInPastSimpleCheck.Text == "Correct" && LblVerbInPastParticipleCheck.Text == "Correct" && App.Torneo == "S")
-                {
-                    LblPuntos.IsVisible = true;
-                    App.SumaTotalDePuntos = App.SumaTotalDePuntos + 1;
-                    LblPuntos.Text = App.SumaTotalDePuntos.ToString();
-                    BtnVerbInPastAudio.IsVisible = true;
-                    BtnVerbInPastPartAudio.IsVisible = true;
-                    player.Load("CorrectSoundReady.mp3");
-                }
-
-
-
-                if (LblVerbInPastSimpleCheck.Text == "Incorrect" || LblVerbInPastParticipleCheck.Text == "Incorrect")
-                {
-                    player.Load("WrongSound.mp3");
-                }
-
-                if (App.Torneo == "S")
-                {
-                    GetRandomVerbForTheTournament();
-                    LimpiarText();
-                    BtnVerbInPastAudio.IsVisible = true;
-                    BtnVerbInPastSAudio.IsVisible = false;
-                    BtnVerbInPastPartAudio.IsVisible = false;
-
-                }
-
-                if (LblVerbInPastSimpleCheck.Text != "Correct")
-                {
-                    lblExamplePastSimple.Text = "...";
-                }
-                else
-                {
-                    lblExamplePastSimple.Text = ExamplePastSimple;
-
-                }
-
-
-                if (LblVerbInPastParticipleCheck.Text != "Correct")
-                {
-                    lblExamplePastParticiple.Text = "...";
-                }
-                else
-                {
-                    lblExamplePastParticiple.Text = ExamplePastParticiple;
-
-                }
-
-                player.Play();
-
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-
-        }
-
-        private void BtnGiveMeSomeExamples_Clicked(object sender, EventArgs e)
-        {
-            StackExamples.IsVisible = true;
-            if (LblVerbInPastSimpleCheck.Text != "Correct")
-            {
-                lblExamplePastSimple.Text = "...";
-            }
-            else
-            {
-                lblExamplePastSimple.Text = ExamplePastSimple;
-
-            }
-
-            if (LblVerbInPastParticipleCheck.Text != "Correct")
-            {
-                lblExamplePastParticiple.Text = "...";
-            }
-            else
-            {
-                lblExamplePastParticiple.Text = ExamplePastParticiple;
-
-            }
-            StackExamples.HorizontalOptions = LayoutOptions.Fill;
-        }
-
-        private void BtnAtras_Clicked(object sender, EventArgs e)
-        {
-            BtnAtras.IsEnabled = false;
-            using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
-            {
-                ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-                StacklayoutLetsGo.IsVisible = false;
-                StackLayoutSettings.IsVisible = false;
-                StacklayoutPrincipal.IsVisible = true;
-
-                Anuncio.IsVisible = true;
-
-                LblPuntos.Text = "0";
-                App.Torneo = "N";
-            }
-            BtnAtras.IsEnabled = true;
-
-
+            await Navigation.PushModalAsync(new Verbs());
         }
 
         private async void BtnTablaDePosiciones_Clicked(object sender, EventArgs e)
@@ -602,13 +127,8 @@ namespace PleaseRememberMe.Pantallas
                 using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
                 {
                     Anuncio.IsVisible = true;
-                    ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                    //UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a coffee");
-                    StacklayoutPrincipal.IsVisible = false;
-                    StackLayoutTablaPosiciones.IsVisible = true;
-
-                    var datos = await metodos.GetListadoDePosiciones();
-                    lsv_TablaPuntuacion.ItemsSource = datos;
+                    await Navigation.PushModalAsync(new Leaderboard());
+                   
                 }
                 //UserDialogs.Instance.HideLoading();
             }
@@ -621,23 +141,9 @@ namespace PleaseRememberMe.Pantallas
             }
 
             BtnTablaDePosiciones.IsEnabled = true;
-
-
-
         }
 
-        private void BtnAtrasPosiciones_Clicked(object sender, EventArgs e)
-        {
-            BtnAtrasPosiciones.IsEnabled = false;
-            using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
-            {
-                ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-                StackLayoutTablaPosiciones.IsVisible = false;
-                StacklayoutPrincipal.IsVisible = true;
-                Anuncio.IsVisible = true;
-            }
-            BtnAtrasPosiciones.IsEnabled = true;
-        }
+        
 
         private async void BtnTournament_Clicked(object sender, EventArgs e)
         {
@@ -647,7 +153,7 @@ namespace PleaseRememberMe.Pantallas
             _userTapped = true;
             modalTournament = new ModalTournament();
             modalTournament.OnLLamarOtraPantalla += ModalTournament_OnLLamarOtraPantalla;
-            modalTournament.Disappearing += ModalTournament_Disappearing;
+            //modalTournament.Disappearing += ModalTournament_Disappearing;
 
             await PopupNavigation.PushAsync(modalTournament);
             await Task.Delay(1000);
@@ -655,30 +161,7 @@ namespace PleaseRememberMe.Pantallas
             Opacity = 1;
         }
 
-        private async void BtnTerminarTorneo_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                if (await DisplayAlert("Information", "¿Do you want to finish the tournament?", "Yes", "No"))
-                {
-                    UserDialogs.Instance.ShowLoading("I'm reading a book, give me a few seconds");
-                    BtnAtras_Clicked(new object(), new EventArgs());
-                    BtnTerminarTorneo.IsVisible = false;
-                    App.Torneo = "N";
-                    var apiResult = await metodos.EnterToTheTournament(App.nombrePersona, App.SumaTotalDePuntos, App.direccion);
-                    App.SumaTotalDePuntos = 0;
-                    Acr.UserDialogs.UserDialogs.Instance.Toast("¡You finish!, your result will be send to the leaderboard");
-                    UserDialogs.Instance.HideLoading();
-                }
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
 
-            }
-
-
-        }
 
         public async void BtnListOfTheVerbs_Clicked(System.Object sender, System.EventArgs e)
         {
@@ -688,52 +171,23 @@ namespace PleaseRememberMe.Pantallas
                 using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
                 {
                     Anuncio.IsVisible = true;
-                    StackLayoutVerbList.IsVisible = true;
-                    ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                    StacklayoutPrincipal.IsVisible = false;
-                    var datos = await metodos.GetListadoVerbos();
-                    lsv_ListaDeVerbos.ItemsSource = datos;
-                    await Task.Delay(200);
+                    await Navigation.PushModalAsync(new VerbList());
                 }
                 BtnListOfTheVerbs.IsEnabled = true;
-
-                //UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
-
-                //UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
             {
                 Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
 
             }
-
-
-
         }
-
-        public void BtnAtrasVerbList_Clicked(System.Object sender, System.EventArgs e)
-        {
-            BtnAtrasVerbList.IsEnabled = false;
-            using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
-            {
-                Anuncio.IsVisible = true;
-                StackLayoutVerbList.IsVisible = false;
-                StacklayoutPrincipal.IsVisible = true;
-                BtnLetsGo.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            }
-            BtnAtrasVerbList.IsEnabled = true;
-        }
-
-        public void btnAjustes_Clicked(System.Object sender, System.EventArgs e)
+        public async void btnAjustes_Clicked(System.Object sender, System.EventArgs e)
         {
             using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
             {
+                SettingsPage settingsPage = new SettingsPage();
                 Anuncio.IsVisible = false;
-                StackLayoutSettings.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                StacklayoutPrincipal.IsVisible = false;
-
+                await Navigation.PushModalAsync(new SettingsPage());
             }
 
         }
@@ -745,37 +199,10 @@ namespace PleaseRememberMe.Pantallas
                 Anuncio.IsVisible = true;
                 StacklayoutPrincipal.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-                StackLayoutSettings.IsVisible = false;
             }
         }
 
-        async void BtnSaveChanges_Clicked(System.Object sender, System.EventArgs e)
-        {
-            try
-            {
-                UserDialogs.Instance.ShowLoading("Saving Email, give me a few seconds");
-                var apiResult = await metodos.SendEmails(txtEmail.Text);
-                if (apiResult.Respuesta == "OK")
-                {
-                    Acr.UserDialogs.UserDialogs.Instance.Toast("Email Saved, you are going to receive all the news in your email");
-                    txtEmail.Text = "";
-                }
-                else
-                {
-                    Acr.UserDialogs.UserDialogs.Instance.Toast("Error, check your internet connection");
 
-                }
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-
-
-
-        }
         private void BtnAtrasOtherTopics_Clicked(object sender, EventArgs e)
         {
             //AnuncioParaCategories.IsVisible = false;
@@ -1443,16 +870,7 @@ namespace PleaseRememberMe.Pantallas
         }
 
 
-        private async void BtnVerbInPastS_Clicked(object sender, EventArgs e)
-        {
-            await CrossTextToSpeech.Current.Speak(audioverboSimplePast, crossLocale: localeee);
-        }
 
-        private async void BtnVerbInPastPart_Clicked(object sender, EventArgs e)
-        {
-            await CrossTextToSpeech.Current.Speak(audioverboPasParticiple, crossLocale: localeee);
-
-        }
 
         private void BtnActivitiesProfessions_Clicked(object sender, EventArgs e)
         {
@@ -2178,10 +1596,6 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
-        private async void BtnVerbInPast_Clicked(object sender, EventArgs e)
-        {
-            await CrossTextToSpeech.Current.Speak(audioVerboFormaBase, crossLocale: localeee);
-        }
 
         private void BtnCheckMyAnswerVerbToBe_Clicked(object sender, EventArgs e)
         {
@@ -2396,29 +1810,6 @@ namespace PleaseRememberMe.Pantallas
 
 
 
-        private async void BtnReport_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                UserDialogs.Instance.ShowLoading("Sending report, give me a few seconds");
-                var apiResult = await metodos.SendReport(txtReport.Text);
-                if (apiResult.Respuesta == "OK")
-                {
-                    Acr.UserDialogs.UserDialogs.Instance.Toast("Report Sent, thanks for report a problem");
-                    txtReport.Text = "";
-                }
-                else
-                {
-                    Acr.UserDialogs.UserDialogs.Instance.Toast("Error, check your internet connection");
 
-                }
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-        }
     }
 }

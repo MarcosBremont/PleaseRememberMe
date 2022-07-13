@@ -22,6 +22,7 @@ namespace PleaseRememberMe.Pantallas
         public ModalTournament()
         {
             InitializeComponent();
+            OnLLamarOtraPantalla?.Invoke(this, EventArgs.Empty);
         }
 
 
@@ -33,9 +34,10 @@ namespace PleaseRememberMe.Pantallas
             //var apiResult = await metodos.EnterToTheTournament(txtnickname.Text, App.SumaTotalDePuntos, txtcity.Text);
             UserDialogs.Instance.HideLoading();
             App.Torneo = "S";
-            await PopupNavigation.PopAsync();
             txtcity.Text = "";
             txtnickname.Text = "";
+            OnLLamarOtraPantalla(sender, e);
+            await PopupNavigation.PopAsync();
 
 
         }

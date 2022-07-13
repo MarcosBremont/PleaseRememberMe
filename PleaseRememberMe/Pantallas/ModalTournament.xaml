@@ -12,8 +12,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <BoxView HeightRequest="40" Color="#80FFB6" HorizontalOptions="FillAndExpand"/>
-                    <Label Text="VERB TOURNAMENT" Grid.Row="0" HorizontalTextAlignment="Center" TextColor="#333" FontAttributes="Bold" Padding="5"  FontSize="Medium"/>
+                    <BoxView HeightRequest="40" Color="#231F20" HorizontalOptions="FillAndExpand"/>
+                    <Label Text="VERB TOURNAMENT" Grid.Row="0" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" Padding="5"  FontSize="Medium"/>
                 </Grid>
             </StackLayout>
 
@@ -26,8 +26,8 @@
 
                 </StackLayout>
             </ScrollView>
-            <Button Text="ENTER" x:Name="BtnEnter" VerticalOptions="EndAndExpand" Clicked="BtnEnter_Clicked" FontSize="14" FontAttributes="Bold" CornerRadius="4"  BackgroundColor="#225DD5" TextColor="white" Margin="10,0,10,10 "></Button>
-            <Button Text="CANCEL" x:Name="BtnCancell" Clicked="BtnCancell_Clicked" FontSize="14" CornerRadius="4" FontAttributes="Bold" BackgroundColor="#F58134" TextColor="white" Margin="10,0,10,10 "></Button>
+            <Button Text="ENTER" x:Name="BtnEnter" VerticalOptions="EndAndExpand" Clicked="BtnEnter_Clicked" FontSize="14" FontAttributes="Bold" CornerRadius="4"  BackgroundColor="#215CD4" TextColor="white" Margin="10,0,10,10 "></Button>
+            <Button Text="CANCEL" x:Name="BtnCancell" Clicked="BtnCancell_Clicked" FontSize="14" CornerRadius="4" FontAttributes="Bold" BackgroundColor="#231F20" TextColor="white" Margin="10,0,10,10 "></Button>
         </StackLayout>
     </ContentPage.Content>
 </popup:PopupPage>

@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PleaseRememberMe.Pantallas.PaginaPrincipal"
-             Title="Contactanos"
+             x:Class="PleaseRememberMe.Pantallas.PrincipalPage"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob" xmlns:forms="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
              ios:Page.UseSafeArea="True"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#2196F3" x:Name="ContenPage">
 
-    <StackLayout BackgroundColor="#80FFB6" Margin="0,0,0,-90">
+    <StackLayout BackgroundColor="#ffff" Margin="0,0,0,-90">
 
         <!--Stacklayout Principal - Page 1-->
         <StackLayout x:Name="StacklayoutPrincipal" >
@@ -17,24 +16,27 @@
             <ScrollView VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
                 <StackLayout Margin="0,10,0,0" VerticalOptions="FillAndExpand">
 
-                    <ImageButton Clicked="btnAjustes_Clicked" x:Name="btnAjustes" BackgroundColor="Transparent" WidthRequest="25" HorizontalOptions="End" Margin="0,10,20,0" Source="settingOrange"></ImageButton>
+                    <ImageButton xct:IconTintColorEffect.TintColor="#231F20" Clicked="btnAjustes_Clicked" x:Name="btnAjustes" BackgroundColor="Transparent" WidthRequest="25" HorizontalOptions="End" Margin="0,10,20,0" Source="settingOrange"></ImageButton>
 
-                    <Label Margin="0,5,0,10"  Grid.Row="0" Text="Remember Me" FontSize="25" TextColor="#333" FontAttributes="Bold" HorizontalOptions="Center"/>
-                    <Image Source="NuevoLogoRememberMe.png" WidthRequest="150"></Image>
+                    <!--<Label Margin="0,5,0,10"  Grid.Row="0" Text="Remember Me" FontSize="25" TextColor="#333" FontAttributes="Bold" HorizontalOptions="Center"/>-->
+                    <Image Source="NuevoLogoRememberMe.png" WidthRequest="120"></Image>
                     <Label HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="1" Text="Are you ready to learn?" TextColor="#333" FontSize="16" Margin="0,10,0,0" Padding="25,0,25,0"/>
 
-                    <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verbs" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
+                    <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verbs" TextColor="White" FontAttributes="Bold" BackgroundColor="#215CD4"/>
                     <!--LayoutPrincipal-->
-                    <Button x:Name="BtnListOfTheVerbs" Clicked="BtnListOfTheVerbs_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verb List" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
-                    <Button x:Name="BtnTablaDePosiciones" IsVisible="true" Clicked="BtnTablaDePosiciones_Clicked"  WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Leaderboard" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
+                    <Button x:Name="BtnListOfTheVerbs" Clicked="BtnListOfTheVerbs_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verb List" TextColor="White" FontAttributes="Bold" BackgroundColor="#215CD4"/>
+                    <Button x:Name="BtnTablaDePosiciones" IsVisible="true" Clicked="BtnTablaDePosiciones_Clicked"  WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Leaderboard" TextColor="White" FontAttributes="Bold" BackgroundColor="#215CD4"/>
                     <!--LayoutPrincipal-->
-                    <Button x:Name="BtnCategories" Clicked="BtnCategories_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Categories" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
-                    <StackLayout x:Name="StackTournament" IsVisible="true">
-                        <ImageButton x:Name="BtnTournament" Clicked="BtnTournament_Clicked" Source="winning.png" BackgroundColor="Transparent" WidthRequest="50" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3"/>
-                        <Label x:Name="lbltouchhere" FontSize="12"  HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Touch here to enter to a tournament" TextColor="#333"></Label>
-                    </StackLayout>
+                    <Button x:Name="BtnCategories" Clicked="BtnCategories_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Categories" TextColor="White" FontAttributes="Bold" BackgroundColor="#231F20"/>
+                    
+                    <Frame BackgroundColor="#231F20" CornerRadius="8" Margin="70,0,70,0">
+                        <StackLayout x:Name="StackTournament" IsVisible="true">
+                            <ImageButton x:Name="BtnTournament" Clicked="BtnTournament_Clicked" Source="winning.png" BackgroundColor="Transparent" WidthRequest="50" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3"/>
+                            <Label x:Name="lbltouchhere" FontSize="12"  HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Touch here to enter to a tournament" TextColor="#ffff"></Label>
+                        </StackLayout>
+                    </Frame>
 
-                    <Label x:Name="lblVersion" Margin="0,10,0,0" VerticalOptions="EndAndExpand"  Text="Version 4.1" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
+                    <Label x:Name="lblVersion" Margin="0,5,0,0" VerticalOptions="EndAndExpand" FontAttributes="Bold" Text="Version 4.1" FontSize="12" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
 
                 </StackLayout>
 
@@ -43,285 +45,7 @@
             </ScrollView>
 
         </StackLayout>
-
-        <!--Stacklayout Let's Go - Page 2-->
-        <StackLayout x:Name="StacklayoutLetsGo" IsVisible="false" >
-
-            <Grid x:Name="GridVolverAtras">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition ></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNav">
-                            <ImageButton Source="leftarrow.png" Clicked="BtnAtras_Clicked" x:Name="BtnAtras" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
-                            <Label TextColor="White"
-                               Text="GO BACK"
-                               FontSize="18"
-                               x:Name="lblvolveratras"
-                               FontAttributes="Bold"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand"
-                               Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-
-            </Grid>
-
-            <StackLayout HorizontalOptions="CenterAndExpand" x:Name="StackTorneo" IsVisible="false">
-                <Label HorizontalOptions="CenterAndExpand" x:Name="LblTorneoEnCurso" IsVisible="true"  HorizontalTextAlignment="Center" Grid.Row="1" Text="Tournament in progress" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" />
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label HorizontalOptions="CenterAndExpand" x:Name="LblPuntosObtenidos" IsVisible="true"  HorizontalTextAlignment="Center" Grid.Row="1" Text="Points Earned:" TextColor="#333" FontAttributes="Bold" FontSize="16" />
-                    <Label HorizontalOptions="CenterAndExpand" x:Name="LblPuntos" IsVisible="true"  HorizontalTextAlignment="Center" Grid.Row="1" Text="0" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label HorizontalOptions="CenterAndExpand" x:Name="LblVerbosRestantes" IsVisible="true" Text="Remaining verbs:"  HorizontalTextAlignment="Center" Grid.Row="1" TextColor="#333" FontAttributes="Bold" FontSize="16" />
-                    <Label HorizontalOptions="CenterAndExpand" x:Name="LblNumerosDeVerbosRestantes" IsVisible="true" Text="0"  HorizontalTextAlignment="Center" Grid.Row="1" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16" />
-                </StackLayout>
-                <Label HorizontalOptions="CenterAndExpand" x:Name="LblTorneo" IsVisible="true" HorizontalTextAlignment="Center" Grid.Row="1" Text="Try to put all the verbs in the correct form and get points for that." TextColor="#333" Margin="10,0,10,0" FontSize="16" />
-            </StackLayout>
-
-            <Grid x:Name="GridVerbos" HorizontalOptions="Center" Padding="30,10,30,0" Grid.Row="1">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                </Grid>
-
-                <ImageButton x:Name="BtnVerbInPastAudio" Clicked="BtnVerbInPast_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Source="volume" HeightRequest="25"></ImageButton>
-                <Label FontSize="11" x:Name="LblVerbInPast"  Grid.Row="1" Grid.Column="0" Margin="0,5,0,0"  FontAttributes="Bold" Text="Verb" TextColor="#333"></Label>
-                <ImageButton BackgroundColor="Transparent" IsVisible="false" Clicked="BtnVerbInPastS_Clicked" x:Name="BtnVerbInPastSAudio" Grid.Row="0" Grid.Column="1" Source="volume" HeightRequest="25"></ImageButton>
-                <Label FontSize="11" x:Name="LblVerbInPastSimple"  Grid.Row="1" Grid.Column="1" Margin="0,5,0,0"  FontAttributes="Bold" TextColor="#333" Text="Past Simple"></Label>
-                <ImageButton BackgroundColor="Transparent" IsVisible="false" Clicked="BtnVerbInPastPart_Clicked" x:Name="BtnVerbInPastPartAudio" Grid.Row="0" Grid.Column="2" Source="volume" HeightRequest="25"></ImageButton>
-                <Label FontSize="11" x:Name="LblVerbInPastParticiple"  Grid.Row="1" Grid.Column="2" Margin="0,5,0,0" FontAttributes="Bold" TextColor="#333" Text="Past Participle"></Label>
-
-                <Entry  FontSize="12"  TextTransform="Uppercase" x:Name="txtVerbInPast" Grid.Row="2" TextColor="#333" PlaceholderColor="#333" Grid.Column="0" IsReadOnly="True" BackgroundColor="Transparent" ></Entry>
-                <Entry  FontSize="12"  Keyboard="Text" TextTransform="Uppercase" x:Name="txtVerbInPastSimple" Grid.Row="2" TextColor="#333" PlaceholderColor="#333"  Grid.Column="1"  Placeholder="?"  BackgroundColor="Transparent" ></Entry>
-                <Entry  FontSize="12"  Keyboard="Text" TextTransform="Uppercase" x:Name="txtVerbInPastParticiple" Grid.Row="2" TextColor="#333" PlaceholderColor="#333"  Grid.Column="2"  Placeholder="?" BackgroundColor="Transparent" ></Entry>
-
-                <Label x:Name="LblVerbInPastCheck"  FontSize="12" Grid.Row="3" Grid.Column="0" TextColor="DarkRed" FontAttributes="Bold"></Label>
-                <Label x:Name="LblVerbInPastSimpleCheck"  FontSize="12" Grid.Row="3" Grid.Column="1" TextColor="DarkRed" FontAttributes="Bold"></Label>
-                <Label x:Name="LblVerbInPastParticipleCheck"  FontSize="12" Grid.Row="3" Grid.Column="2" TextColor="DarkRed" FontAttributes="Bold"></Label>
-
-            </Grid>
-            <ScrollView VerticalOptions="FillAndExpand"  HorizontalOptions="CenterAndExpand">
-                <StackLayout x:Name="StackBtns" Margin="0,10,0,0" VerticalOptions="FillAndExpand">
-
-                    <!--LayoutPrincipal-->
-                    <!--<StackLayout IsVisible="false" x:Name="StackTraducciones">
-                        <Label x:Name="LblTrad"  FontSize="12" Grid.Row="3" Text="Traduccion:" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333" FontAttributes="Bold"></Label>
-                        <Label x:Name="LblTraduction"  FontSize="12" Grid.Row="3" Padding="30,0,30,0" HorizontalOptions="Center" TextColor="#333"></Label>
-                    </StackLayout>-->
-
-                    <Button x:Name="BtnCheck" Clicked="BtnCheck_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Check" TextColor="White" FontAttributes="Bold" BackgroundColor="#225DD5"/>
-                    <Button x:Name="BtnTerminarTorneo" Clicked="BtnTerminarTorneo_Clicked" WidthRequest="250" Margin="0,50,0,0" HorizontalOptions="Center" Grid.Row="3" Text="FINISH TOURNAMENT" TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
-
-                    <!--LayoutPrincipal-->
-                    <Button x:Name="BtnAnotherOne" Clicked="BtnAnotherOne_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Another One"  TextColor="White" FontAttributes="Bold" BackgroundColor="#F58134"/>
-
-                    <!--LayoutLetsGo-->
-                    <StackLayout x:Name="StackExamples" Margin="0,0,0,0" Padding="0" HorizontalOptions="Fill" IsVisible="false">
-                        <Label x:Name="lblexample1" FontSize="12"  HorizontalTextAlignment="Center" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Example in Base Form" TextColor="#333"></Label>
-                        <Label x:Name="lblExamplePast" FontSize="12"  HorizontalTextAlignment="Center" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="0"   TextColor="#333"></Label>
-                        <Label x:Name="lblexample2" FontSize="12" HorizontalTextAlignment="Center" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Example in Past Simple" TextColor="#333"></Label>
-                        <Label x:Name="lblExamplePastSimple" FontSize="12" HorizontalTextAlignment="Center"  HorizontalOptions="Fill" Grid.Row="4" Grid.Column="0"   TextColor="#333"></Label>
-                        <Label x:Name="lblexample3" FontSize="12"  HorizontalTextAlignment="Center" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Example in Past Participle" TextColor="#333"></Label>
-                        <Label x:Name="lblExamplePastParticiple" HorizontalTextAlignment="Center" FontSize="12"  HorizontalOptions="Fill" Grid.Row="4" Grid.Column="0" TextColor="#333"></Label>
-                    </StackLayout>
-
-                    <!--LayoutPrincipal-->
-                    <Button x:Name="BtnGiveMeSomeExamples" Clicked="BtnGiveMeSomeExamples_Clicked" WidthRequest="250" Margin="0,30,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Give Me Some Examples"  TextColor="White" FontAttributes="Bold" BackgroundColor="#3185FF"/>
-
-                </StackLayout>
-            </ScrollView>
-        </StackLayout>
-
-        <!--Stacklayout Tabla Posiciones - Page 3-->
-        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutTablaPosiciones">
-
-            <Grid x:Name="GridVolverAtrasPosiciones">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNavPosiciones">
-                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasPosiciones_Clicked" x:Name="BtnAtrasPosiciones" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
-                            <Label TextColor="White"
-                               Text="GO BACK"
-                               FontSize="18"
-                               x:Name="lblvolveratrasPosiciones"
-                               FontAttributes="Bold"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand"
-                               Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-
-            </Grid>
-
-            <StackLayout Margin="10,0,10,40" x:Name="LayoutGanancias">
-                <Label HorizontalOptions="Center" Text="Leaderboard" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-
-                <Grid Grid.Row="1" HeightRequest="25" BackgroundColor="#333" Padding="6">
-
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition  Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label FontAttributes="Bold" FontSize="12"  TextColor="White" Text="Nickname" Grid.Column="0"></Label>
-                    <Label FontAttributes="Bold" FontSize="12" TextColor="White" Text="Points" Grid.Column="1"></Label>
-                    <Label FontAttributes="Bold" FontSize="12" TextColor="White" Text="Address" Grid.Column="2"></Label>
-
-                </Grid>
-
-                <Grid >
-                    <ListView Margin="0,0,0,80" x:Name="lsv_TablaPuntuacion" VerticalOptions="FillAndExpand" SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
-                        <ListView.ItemTemplate>
-
-                            <DataTemplate >
-
-                                <ViewCell>
-
-
-                                    <Grid  BackgroundColor="White">
-
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="100"></ColumnDefinition>
-                                            <ColumnDefinition Width="100"></ColumnDefinition>
-                                            <ColumnDefinition Width="100"></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-
-
-                                        <Label LineBreakMode="TailTruncation" TextColor="#333" Margin="10,0,0,0"  Grid.Column="0" FontSize="12" HorizontalOptions="Start" Text="{Binding nombrePersona}"/>
-                                        <Label TextColor="#333" Grid.Column="1" FontSize="12" HorizontalOptions="Start" Text="{Binding numeroVerbosCorrectos}"/>
-                                        <Label TextColor="#333" LineBreakMode='TailTruncation' Grid.Column="2" FontSize="12" HorizontalOptions="Start" Text="{Binding direccion}"/>
-                                    </Grid>
-
-
-                                    <!--ITEM-->
-                                </ViewCell>
-                            </DataTemplate>
-
-
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-
-
-            </StackLayout>
-        </StackLayout>
-
-        <!--Stacklayout Verb List - Page 4-->
-        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutVerbList">
-
-            <Grid x:Name="GridVolverAtrasVerbList">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNavVerbList">
-                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasVerbList_Clicked" x:Name="BtnAtrasVerbList" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
-                            <Label TextColor="White"
-                               Text="GO BACK"
-                               FontSize="18"
-                               x:Name="lblvolveratrasVerbList"
-                               FontAttributes="Bold"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand"
-                               Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-
-            </Grid>
-
-            <StackLayout Margin="10,0,10,40" x:Name="LayoutVerbList">
-                <Label HorizontalOptions="Center" Text="Verb List" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-
-                <Grid Grid.Row="1" Margin="0" HeightRequest="25" BackgroundColor="#333" Padding="6">
-
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label FontAttributes="Bold" FontSize="12"  TextColor="White" Text="Verb." Grid.Column="0"></Label>
-                    <Label FontAttributes="Bold" FontSize="12" TextColor="White" Text="Simple Past" Grid.Column="1"></Label>
-                    <Label FontAttributes="Bold" FontSize="12" TextColor="White" Text="Past Participle" Grid.Column="2"></Label>
-                    <!--<ImageButton Source="calculator.png"></ImageButton>-->
-
-                </Grid>
-
-                <Grid >
-                    <ListView Margin="0,0,0,80"  x:Name="lsv_ListaDeVerbos"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
-                        <ListView.ItemTemplate>
-
-                            <DataTemplate >
-
-                                <ViewCell >
-
-
-                                    <Grid  BackgroundColor="White">
-
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="100"></ColumnDefinition>
-                                            <ColumnDefinition Width="100"></ColumnDefinition>
-                                            <ColumnDefinition Width="100"></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-
-
-                                        <Label TextColor="#333" Margin="10,0,0,0"  Grid.Column="0" FontSize="12" HorizontalOptions="Start" Text="{Binding VerboFormaBase}"/>
-                                        <Label TextColor="#333" Grid.Column="1" FontSize="12" HorizontalOptions="Start" Text="{Binding verboSimplePast}"/>
-                                        <Label TextColor="#333" Grid.Column="2" FontSize="12" HorizontalOptions="Start" Text="{Binding verboPasParticiple}"/>
-                                    </Grid>
-
-
-                                    <!--ITEM-->
-                                </ViewCell>
-                            </DataTemplate>
-
-
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-
-
-            </StackLayout>
-        </StackLayout>
-
+     
         <!--Stacklayout Category - Page 5-->
         <StackLayout IsVisible="false" x:Name="StackLayoutCategory">
 
@@ -1457,54 +1181,6 @@
             </ListView>
 
 
-        </StackLayout>
-
-        <!--Stacklayout Settings - Page 16-->
-        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutSettings">
-
-            <Grid x:Name="GridVolverAtrasSettings">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNavSettings">
-                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasSettings_Clicked" x:Name="BtnAtrasSettings" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
-                            <Label TextColor="White"
-                               Text="GO BACK"
-                               FontSize="18"
-                               x:Name="lblvolveratrasSettings"
-                               FontAttributes="Bold"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand"
-                               Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-
-            </Grid>
-
-            <StackLayout Margin="10,0,10,0" Grid.Row="1" x:Name="LayoutSettings">
-                <Label HorizontalOptions="Center" FontSize="18" Text="Settings" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-                <Label VerticalOptions="Center" TextColor="#333" Text="Stay updated with the latest news" Margin="0,10,0,0"></Label>
-                <Entry IsVisible="true" Keyboard="Email" Placeholder="Email" PlaceholderColor="#333" FontSize="12"  TextTransform="Uppercase" x:Name="txtEmail" TextColor="#333" Grid.Column="0" IsReadOnly="False" BackgroundColor="WhiteSmoke" ></Entry>
-                <Button x:Name="BtnSaveChanges" Clicked="BtnSaveChanges_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Save" IsVisible="true" TextColor="White" FontAttributes="Bold" BackgroundColor="#3185FF"/>
-                <Label VerticalOptions="Center" TextColor="#333" Text="Report a problem in the application" Margin="0,10,0,0"></Label>
-                <Entry IsVisible="true" Keyboard="Default" Placeholder="Report a problem" PlaceholderColor="#333" FontSize="12"  TextTransform="Uppercase" x:Name="txtReport" TextColor="#333" Grid.Column="0" IsReadOnly="False" BackgroundColor="WhiteSmoke" ></Entry>
-                <Button x:Name="BtnReport" Clicked="BtnReport_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Report" IsVisible="true" TextColor="White" FontAttributes="Bold" BackgroundColor="#3185FF"/>
-            </StackLayout>
-            <Label VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#333" Text="Remember to put your phone in English to hear the pronunciations as it should" Margin="20,10,20,0"></Label>
-
-            <StackLayout x:Name="StackLayoutAboutMe" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Margin="30,0,30,100">
-                <Frame HasShadow="False" BackgroundColor="#3185FF" CornerRadius="4" WidthRequest="200">
-                    <Label HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" Text="About Me"></Label>
-                </Frame>
-            </StackLayout>
         </StackLayout>
 
         <!--Stacklayout Acerca de - Page 17-->
@@ -3523,10 +3199,10 @@
                     </StackLayout>
 
 
-                    <StackLayout Grid.Row="1" HorizontalOptions="Center"> 
+                    <StackLayout Grid.Row="1" HorizontalOptions="Center">
                         <Label Grid.Row="1" HorizontalOptions="Center" HorizontalTextAlignment="Center" x:Name="LblSubtitlePageBase" Margin="0,0,0,0" TextColor="#333"></Label>
                     </StackLayout>
-                    
+
 
                     <StackLayout Grid.Row="2">
                         <Label Grid.Row="2" HorizontalOptions="Center" HorizontalTextAlignment="Center" x:Name="LblAnotherTitle" Margin="0,0,0,0" TextColor="#333"></Label>
@@ -3632,9 +3308,6 @@
 
         </StackLayout>
 
-
-
-
         <!--Stacklayout ClothesPage - Page 33-->
         <StackLayout x:Name="StacklayoutVocabularyGlobal" IsVisible="false" >
 
@@ -3713,7 +3386,6 @@
 
             </StackLayout>
         </StackLayout>
-
 
         <!--Stacklayout Anuncio-->
         <StackLayout x:Name="Anuncio" VerticalOptions="EndAndExpand" Margin="0,0,0,90">
