@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PleaseRememberMe.Pantallas.CategoriesPage">
+    <ContentPage.Content>
+        <!--Stacklayout Category - Page 5-->
+        <StackLayout  x:Name="StackLayoutCategory">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png" x:Name="BtnAtrasCategory" Clicked="BtnAtrasCategory_Clicked" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="GO BACK"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+            <ScrollView  Margin="10,0,10,90" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand" >
+
+                    <Label HorizontalOptions="Center" Text="Categories" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+                    <Grid RowSpacing="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Grammar"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#225DD5"
+                            CornerRadius="8" 
+                            x:Name="BtnGrammarCategory"
+                            Clicked="BtnGrammarCategory_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="Vocabulary"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#5E8138"
+                            CornerRadius="8"
+                            x:Name="BtnVocabularyCategory"
+                            Clicked="BtnVocabularyCategory_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="English Videos"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#225DD5"
+                            CornerRadius="8"
+                            x:Name="BtnVideos"
+                            Clicked="BtnVideos_Clicked"/>
+
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="English Listening Lessons"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#5E8138"
+                            CornerRadius="8"
+                            x:Name="BtnAudios"
+                            Clicked="BtnAudios_Clicked"/>
+
+
+
+
+                        <!--<Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="Other Topics"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#5E8138"
+                            CornerRadius="8"
+                            x:Name="BtnOtherTopicsCategory"
+                            Clicked="BtnOtherTopics_Clicked"/>-->
+
+                    </Grid>
+
+
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

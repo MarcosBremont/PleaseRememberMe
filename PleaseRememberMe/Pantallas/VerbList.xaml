@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
              x:Class="PleaseRememberMe.Pantallas.VerbList">
     <ContentPage.Content>
         <!--Stacklayout Verb List - Page 4-->
@@ -87,7 +87,13 @@
 
 
             </StackLayout>
+            <!--Stacklayout Anuncio-->
+            <StackLayout x:Name="Anuncio" VerticalOptions="EndAndExpand" Margin="0,0,0,90">
+                <controls:MTAdView BackgroundColor="Transparent" HeightRequest="60"  x:Name="myAds" AdsId="{OnPlatform Android='ca-app-pub-5203771291617755/7518751960', 
+                                   iOS='ca-app-pub-5203771291617755/8870280516'}"/>
+            </StackLayout>
         </StackLayout>
+       
 
     </ContentPage.Content>
 </ContentPage>

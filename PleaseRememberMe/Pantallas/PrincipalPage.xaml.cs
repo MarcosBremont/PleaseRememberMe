@@ -779,17 +779,8 @@ namespace PleaseRememberMe.Pantallas
 
         }
 
-        private void BtnGrammarCategory_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutCategory.IsVisible = false;
-            StackLayoutGramarCategory.IsVisible = true;
-        }
-
-        private void BtnVocabularyCategory_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutCategory.IsVisible = false;
-            StackLayoutVocabularyCategory.IsVisible = true;
-        }
+     
+      
 
         private void BtnAtrasSimplePastCategory_Clicked(object sender, EventArgs e)
         {
@@ -798,19 +789,12 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutsimplePastExample.IsVisible = true;
         }
 
-        private void BtnAtrasCategory_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutCategory.IsVisible = false;
-            StacklayoutPrincipal.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-            Anuncio.IsVisible = true;
-        }
 
-        private void BtnVolverAtrasGrammarCategory_Clicked(object sender, EventArgs e)
+        private async void BtnVolverAtrasGrammarCategory_Clicked(object sender, EventArgs e)
         {
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             StackLayoutGramarCategory.IsVisible = false;
-            StackLayoutCategory.IsVisible = true;
+            await Navigation.PushModalAsync(new CategoriesPage());
         }
 
         private async void btnVerbToBe_Clicked(object sender, EventArgs e)
@@ -849,23 +833,20 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutGramarCategory.IsVisible = true;
         }
 
-        private void BtnAtrasVocabulary_Clicked(object sender, EventArgs e)
+        private async void BtnAtrasVocabulary_Clicked(object sender, EventArgs e)
         {
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
 
-            StackLayoutCategory.IsVisible = true;
+            await Navigation.PushModalAsync(new CategoriesPage());
             StackLayoutVocabularyCategory.IsVisible = false;
         }
 
-        private void BtnCategories_Clicked(object sender, EventArgs e)
+        private async void BtnCategories_Clicked(object sender, EventArgs e)
         {
             //AnuncioParaCategories.IsVisible = true;
             Anuncio.IsVisible = true;
-            StackLayoutCategory.IsVisible = true;
-            //Lsv_Categories.ItemsSource = await metodos.GetCategories();
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
             UserDialogs.Instance.ShowLoading("Wait, Do you want coffee?");
-            StacklayoutPrincipal.IsVisible = false;
+            await Navigation.PushModalAsync(new CategoriesPage());
             UserDialogs.Instance.HideLoading();
         }
 
@@ -1225,16 +1206,16 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
-        private void BtnAtrasVideos_Clicked(object sender, EventArgs e)
+        private async void BtnAtrasVideos_Clicked(object sender, EventArgs e)
         {
             StackLayoutVideos.IsVisible = false;
-            StackLayoutCategory.IsVisible = true;
+            await Navigation.PushModalAsync(new CategoriesPage());
             Anuncio.IsVisible = true;
         }
 
         private async void BtnVideos_Clicked(object sender, EventArgs e)
         {
-            StackLayoutCategory.IsVisible = false;
+            await Navigation.PushModalAsync(new CategoriesPage());
             StackLayoutVideos.IsVisible = true;
             var datos = await metodos.GetVideos();
             lsv_Videos.ItemsSource = datos;
@@ -1274,15 +1255,15 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnAudios_Clicked(object sender, EventArgs e)
         {
-            StackLayoutCategory.IsVisible = false;
+            await Navigation.PushModalAsync(new CategoriesPage());
             StackLayoutAudios.IsVisible = true;
             var datos = await metodos.GetAudios();
             lsv_audios.ItemsSource = datos;
         }
 
-        private void BtnAtrasAudios_Clicked(object sender, EventArgs e)
+        private async void BtnAtrasAudios_Clicked(object sender, EventArgs e)
         {
-            StackLayoutCategory.IsVisible = true;
+            await Navigation.PushModalAsync(new CategoriesPage());
             StackLayoutAudios.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
 
@@ -1408,22 +1389,7 @@ namespace PleaseRememberMe.Pantallas
 
         }
 
-        public async void CargarInformacionTitlePage(string category)
-        {
-            UserDialogs.Instance.ShowLoading("Did you drink water today?");
-            var datos = await metodos.GetExercisesByCategory(category);
-            LbltitlePageBase.Text = datos[0].Title;
-            LblAnotherTitle.Text = datos[0].AnotherTitle;
-            LblSubtitlePageBase.Text = datos[0].Subtitle;
-            LblDescriptionPageBase.Text = datos[0].Description;
-            LblSentencesPageBase.Text = datos[0].Sentences;
-            string YourAnswer = TxtAnswer.Text;
-            DefinitiveAnswer = datos[0].CorrectAnswer;
-            DefinitiveAnswer2 = datos[0].CorrectAnswer2;
-            UserDialogs.Instance.HideLoading();
-
-        }
-
+       
 
         public async void CargarInformacionVocabularyGlobalPage(string category)
         {
@@ -1444,62 +1410,9 @@ namespace PleaseRememberMe.Pantallas
             UserDialogs.Instance.HideLoading();
         }
 
-        private void BtnCheckMyAnswerPageBase_Clicked(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(TxtAnswer.Text))
-            {
-                LblCorrectIncorectPageBase.IsVisible = true;
-                LblCorrectIncorectPageBase.Text = "Incorrect";
-            }
-            else
-            {
+       
 
-                if (DefinitiveAnswer == TxtAnswer.Text.ToUpper().Trim().Replace(".", "").Replace("‘", "'").Replace("’", "'").Replace("`", "'") || DefinitiveAnswer2 == TxtAnswer.Text.ToUpper().Trim().Replace(".", "").Replace("‘", "'").Replace("’", "'").Replace("`", "'"))
-                {
-                    LblCorrectIncorectPageBase.IsVisible = true;
-                    LblCorrectIncorectPageBase.Text = "Correct";
-                }
-                else
-                {
-                    LblCorrectIncorectPageBase.IsVisible = true;
-                    LblCorrectIncorectPageBase.Text = "Incorrect";
-
-                }
-            }
-        }
-
-        private void BtnOneMorePageBase_Clicked(object sender, EventArgs e)
-        {
-            UserDialogs.Instance.ShowLoading("What time is it?");
-            CargarInformacionTitlePage(TextoCategoria);
-            TxtAnswer.Text = "";
-            LblCorrectIncorectPageBase.IsVisible = false;
-            UserDialogs.Instance.HideLoading();
-        }
-
-        private void BtnAtrasPageBase_Clicked(object sender, EventArgs e)
-        {
-            UserDialogs.Instance.ShowLoading("Hey, how's going?");
-            StackLayoutHowToUse.IsVisible = true;
-            LimpiarPageBase();
-            CargarInformacionHowToUse(TextoCategoria);
-            StackLayoutBase.IsVisible = false;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.HideLoading();
-
-        }
-
-        public void LimpiarPageBase()
-        {
-            LbltitlePageBase.Text = "";
-            LblSubtitlePageBase.Text = "";
-            LblAnotherTitle.Text = "";
-            LblDescriptionPageBase.Text = "";
-            LblSentencesPageBase.Text = "";
-            TxtAnswer.Text = "";
-            LblSentencesPageBase.Text = "";
-
-        }
+       
 
         private void btnVocabularyPhrasalVerbs_Clicked(object sender, EventArgs e)
         {
@@ -1533,16 +1446,13 @@ namespace PleaseRememberMe.Pantallas
             UserDialogs.Instance.HideLoading();
         }
 
-        private void btnGoToTheExercises_Clicked(object sender, EventArgs e)
+        private async void btnGoToTheExercises_Clicked(object sender, EventArgs e)
         {
+            ECategories eCategories = new ECategories();
             UserDialogs.Instance.ShowLoading("Can you give me a hand?");
-            StackLayoutHowToUse.IsVisible = false;
-            CargarInformacionTitlePage(TextoCategoria);
-            StackLayoutBase.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            LblCorrectIncorectPageBase.IsVisible = false;
-            LblCorrectIncorectPageBase.Text = "";
-            TxtAnswer.Text = "";
+            eCategories.nombrecategoria = TextoCategoria;
+            await Navigation.PushModalAsync(new ExercisePage(eCategories));
+
             UserDialogs.Instance.HideLoading();
 
 

@@ -25,7 +25,7 @@ namespace PleaseRememberMe.Pantallas
         {
 
             base.OnAppearing();
-            //Anuncio.IsVisible = true;
+            Anuncio.IsVisible = true;
 
             try
             {
