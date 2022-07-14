@@ -216,7 +216,6 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutsimplePastCategory.IsVisible = false;
                 StackLayoutWasWereDid.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Decide, black coffee or coffee with milk");
@@ -243,7 +242,6 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasWasWereDid_Clicked(object sender, EventArgs e)
         {
             StackLayoutWasWereDid.IsVisible = false;
-            StackLayoutsimplePastCategory.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
 
 
@@ -431,36 +429,12 @@ namespace PleaseRememberMe.Pantallas
             lsv_clothes.ItemsSource = listclothes;
         }
 
-        private async void btnPronouns_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                StackLayoutGramarCategory.IsVisible = false;
-                StackLayoutPronouns.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Did you drink water today?");
-                var datos = await metodos.GetPronouns();
-                listpronouns = datos;
-                var random = new Random().Next(1, listpronouns.Count);
-                var elegido = listpronouns[random];
-                lblPronouns.Text = listpronouns[0].PronounsSentences;
-                CorrectAnswerPronoun = listpronouns[0].CorrectAnswer;
-                TxtCorrectAnswerPronouns.Text = "";
-                LblCorrectAnswerPronouns.IsVisible = false;
-                //listpronouns.Remove(elegido);
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-        }
+       
 
         private void BtnAtrasPronouns_Clicked(object sender, EventArgs e)
         {
             StackLayoutPronouns.IsVisible = false;
-            StackLayoutGramarCategory.IsVisible = true;
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -569,33 +543,7 @@ namespace PleaseRememberMe.Pantallas
             }
         }
 
-        private async void btnPrepositionsoftime_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                StackLayoutGramarCategory.IsVisible = false;
-                StackLayoutPreposisionsOfTime.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
-                var datos = await metodos.GetPrepositionsOfTimeSentences();
-                listprepositionsOfTime = datos;
-                var random = new Random().Next(1, listprepositionsOfTime.Count);
-                var elegido = listprepositionsOfTime[random];
-                lblPrepositionsOfTime.Text = listprepositionsOfTime[0].PrepositionsOfTimeSentence;
-                CorrectAnswerPrepositionsOfTime = listprepositionsOfTime[0].CorrectAnswer;
-                //listprepositionsOfTime.Remove(elegido);
-                TxtPrepositionsOfTime.Text = "";
-                LblCorrectAnswerPrepositionsOfTime.IsVisible = false;
-
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-        }
-
+        
         private void BtnCheckMyAnswerPrepositionsOfTime_Clicked(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(TxtPrepositionsOfTime.Text))
@@ -639,7 +587,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasPreposisionsOfTime_Clicked(object sender, EventArgs e)
         {
-            StackLayoutGramarCategory.IsVisible = true;
+            
             StackLayoutPreposisionsOfTime.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -698,35 +646,11 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
-        private async void btnAnySome_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                StackLayoutGramarCategory.IsVisible = false;
-                StackLayoutAnySome.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating pizza");
-                var datos = await metodos.GetAnySome();
-                listAnySome = datos;
-                var random = new Random().Next(1, listAnySome.Count);
-                var elegido = listAnySome[random];
-                LblAnySome.Text = listAnySome[0].AnySomeSentences;
-                CorrectAnswerAnySome = listAnySome[0].CorrectAnswer;
-                //listAnySome.Remove(elegido);
-                TxtAnySome.Text = "";
-                LblCorrectAnswerAnySome.IsVisible = false;
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-        }
+      
 
         private void BtnAtrasAnySome_Clicked(object sender, EventArgs e)
         {
-            StackLayoutGramarCategory.IsVisible = true;
+            
             StackLayoutAnySome.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -772,31 +696,17 @@ namespace PleaseRememberMe.Pantallas
             }
         }
 
-        private void BtnSimplePresentCategory_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutGramarCategory.IsVisible = false;
-            StackLayoutsimplePresentCategory.IsVisible = true;
-
-        }
-
+        
      
       
 
         private void BtnAtrasSimplePastCategory_Clicked(object sender, EventArgs e)
         {
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            StackLayoutsimplePastCategory.IsVisible = false;
-            StackLayoutsimplePastExample.IsVisible = true;
         }
 
 
-        private async void BtnVolverAtrasGrammarCategory_Clicked(object sender, EventArgs e)
-        {
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            StackLayoutGramarCategory.IsVisible = false;
-            await Navigation.PushModalAsync(new CategoriesPage());
-        }
-
+     
         private async void btnVerbToBe_Clicked(object sender, EventArgs e)
         {
             try
@@ -830,7 +740,7 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
 
             StackLayoutsimplePresentCategory.IsVisible = false;
-            StackLayoutGramarCategory.IsVisible = true;
+            
         }
 
         private async void BtnAtrasVocabulary_Clicked(object sender, EventArgs e)
@@ -1053,15 +963,11 @@ namespace PleaseRememberMe.Pantallas
 
         private void btnsimplepastexerci_Clicked(object sender, EventArgs e)
         {
-            StackLayoutsimplePastExample.IsVisible = false;
-            StackLayoutsimplePastCategory.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnAtrasSimplePastExample_Clicked(object sender, EventArgs e)
         {
-            StackLayoutsimplePastExample.IsVisible = false;
-            StackLayoutGramarCategory.IsVisible = true;
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1128,7 +1034,7 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasComparisons_Clicked(object sender, EventArgs e)
         {
             StackLayoutComparisons.IsVisible = false;
-            StackLayoutGramarCategory.IsVisible = true;
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1137,12 +1043,6 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutComparisonsActivities.IsVisible = false;
             StackLayoutComparisons.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
-
-        private void btnComparisons_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutGramarCategory.IsVisible = false;
-            StackLayoutComparisons.IsVisible = true;
         }
 
         private void BtnAtrasSuperlativessActivities_Clicked(object sender, EventArgs e)
@@ -1400,18 +1300,7 @@ namespace PleaseRememberMe.Pantallas
             UserDialogs.Instance.HideLoading();
         }
 
-        public async void CargarInformacionHowToUse(string howtouse_category)
-        {
-            UserDialogs.Instance.ShowLoading("What's the weather like?");
-            var datos = await metodos.GetExamplesByCategory(howtouse_category);
-            LblDescriptionHowToUseBase.Text = datos[0].Howtouse;
-            LblTitleHowToUse.Text = datos[0].howtouse_category;
-            btnGoToTheExercises.Text = datos[0].howtouse_category;
-            UserDialogs.Instance.HideLoading();
-        }
-
        
-
        
 
         private void btnVocabularyPhrasalVerbs_Clicked(object sender, EventArgs e)
@@ -1434,57 +1323,11 @@ namespace PleaseRememberMe.Pantallas
             UserDialogs.Instance.HideLoading();
         }
 
-        private void btnEvaluationsAndComparions_Clicked(object sender, EventArgs e)
-        {
-            UserDialogs.Instance.ShowLoading("How was your day?");
-            TextoCategoria = "Evaluations And Comparisons";
-            StackLayoutHowToUse.IsVisible = true;
-            //CargarInformacionTitlePage("EvaluationsAndComparions");
-            CargarInformacionHowToUse(TextoCategoria);
-            StackLayoutGramarCategory.IsVisible = false;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.HideLoading();
-        }
+       
 
-        private async void btnGoToTheExercises_Clicked(object sender, EventArgs e)
-        {
-            ECategories eCategories = new ECategories();
-            UserDialogs.Instance.ShowLoading("Can you give me a hand?");
-            eCategories.nombrecategoria = TextoCategoria;
-            await Navigation.PushModalAsync(new ExercisePage(eCategories));
+    
 
-            UserDialogs.Instance.HideLoading();
-
-
-        }
-
-        private void BtnAtrasHowToUse_Clicked(object sender, EventArgs e)
-        {
-            UserDialogs.Instance.ShowLoading("Is everything ok?");
-            StackLayoutGramarCategory.IsVisible = true;
-            StackLayoutHowToUse.IsVisible = false;
-            LimpiarCamposHowToUse();
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.HideLoading();
-        }
-
-        public void LimpiarCamposHowToUse()
-        {
-            LblTitleHowToUse.Text = "";
-            LblDescriptionHowToUseBase.Text = "";
-        }
-
-        private void btnPresentPerfect_Clicked(object sender, EventArgs e)
-        {
-            UserDialogs.Instance.ShowLoading("Why are you studying english?");
-            StackLayoutGramarCategory.IsVisible = false;
-            TextoCategoria = "Present Perfect";
-            CargarInformacionHowToUse(TextoCategoria);
-            StackLayoutHowToUse.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.HideLoading();
-        }
-
+        
         private void BtnAtrasFamilysActivities_Clicked(object sender, EventArgs e)
         {
             StackLayoutFamilyActivities.IsVisible = false;
@@ -1579,39 +1422,26 @@ namespace PleaseRememberMe.Pantallas
             CargarInformacionTitlePage(TextoCategoria);
         }
 
-        private async void btnQuantifiers_Clicked(object sender, EventArgs e)
+        public async void CargarInformacionTitlePage(string category)
         {
-            try
-            {
-                StackLayoutGramarCategory.IsVisible = false;
-                StackLayoutQuantifiers.IsVisible = true;
-                LblCorrectAnswerQuantifiers.IsVisible = false;
-                RadioButtonOption1.IsChecked = false;
-                RadioButtonOption2.IsChecked = false;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking a tea");
-                var datos = await metodos.GetQuantifiers();
-                listQuantifiers = datos;
-                var random = new Random().Next(1, listQuantifiers.Count);
-                var elegido = listQuantifiers[random];
-                LblQuantifiers.Text = listQuantifiers[0].QuantifiersSentence;
-                LblFirstOption.Text = listQuantifiers[0].FirstOption;
-                LblSecondOption.Text = listQuantifiers[0].SecondOption;
-                CorrectAnswerQuantifiers = listQuantifiers[0].CorrectAnswer;
-                listQuantifiers.Remove(elegido);
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+            UserDialogs.Instance.ShowLoading("Did you drink water today?");
+            var datos = await metodos.GetExercisesByCategory(category);
+            //LbltitlePageBase.Text = datos[0].Title;
+            //LblAnotherTitle.Text = datos[0].AnotherTitle;
+            //LblSubtitlePageBase.Text = datos[0].Subtitle;
+            //LblDescriptionPageBase.Text = datos[0].Description;
+            //LblSentencesPageBase.Text = datos[0].Sentences;
+            //string YourAnswer = TxtAnswer.Text;
+            DefinitiveAnswer = datos[0].CorrectAnswer;
+            DefinitiveAnswer2 = datos[0].CorrectAnswer2;
+            UserDialogs.Instance.HideLoading();
 
-            }
         }
-
+      
         private void BtnAtrasQuantifiers_Clicked(object sender, EventArgs e)
         {
             StackLayoutQuantifiers.IsVisible = false;
-            StackLayoutGramarCategory.IsVisible = true;
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1631,7 +1461,7 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasQuestionsWithHow_Clicked(object sender, EventArgs e)
         {
             StackLayoutQuestionsWithHow.IsVisible = false;
-            StackLayoutGramarCategory.IsVisible = true;
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1684,42 +1514,8 @@ namespace PleaseRememberMe.Pantallas
             }
         }
 
-        private async void btnQuestionsHow_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                StackLayoutGramarCategory.IsVisible = false;
-                StackLayoutQuestionsWithHow.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Hey, do you like tomatoes?");
-                var datos = await metodos.GetQuestionsWithHow();
-                listQuestionsWithHow = datos;
-                var random = new Random().Next(1, listQuestionsWithHow.Count);
-                var elegido = listQuestionsWithHow[random];
-                lblQuestionWithHow.Text = listQuestionsWithHow[0].Questionswithhow_sentences;
-                CorrectAnswerQuestionWithHow = listQuestionsWithHow[0].CorrectAnswer;
-                //listQuestionsWithHow.Remove(elegido);
-                TxtxCorrectAnswerQuestionWithHow.Text = "";
-                LblCorrectAnswerQuestionWithHow.IsVisible = false;
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-        }
-
-        void BtnSimplePast_Clicked(System.Object sender, System.EventArgs e)
-        {
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-
-            StackLayoutGramarCategory.IsVisible = false;
-            StackLayoutsimplePastExample.IsVisible = true;
-        }
-
-
-
+        
+       
 
     }
 }

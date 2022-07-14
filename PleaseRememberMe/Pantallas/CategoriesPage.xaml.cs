@@ -25,7 +25,7 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnGrammarCategory_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new CategoriesPage());
+            await Navigation.PushModalAsync(new GrammarCategory());
         }
 
         private async void BtnVocabularyCategory_Clicked(object sender, EventArgs e)

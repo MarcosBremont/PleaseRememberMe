@@ -4,7 +4,7 @@
              x:Class="PleaseRememberMe.Pantallas.ExercisePage">
     <ContentPage.Content>
         <!--Stacklayout Page Base - Page 27-->
-        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutBase">
+        <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,0"  x:Name="StackLayoutBase">
 
             <Grid >
 

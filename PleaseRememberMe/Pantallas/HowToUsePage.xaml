@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PleaseRememberMe.Pantallas.HowToUsePage">
+    <ContentPage.Content>
+        <!--Stacklayout HowToUse - Page 27-->
+        <StackLayout x:Name="StackLayoutHowToUse">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasHowToUse_Clicked"  BackgroundColor="Transparent" x:Name="BtnAtrasHowToUse" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <Label TextColor="White"
+                               Text="GO BACK"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+            <ScrollView  Margin="10,0,10,0" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
+
+                    <Label HorizontalOptions="Center" Text="Activities" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+                    <Grid RowSpacing="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Button 
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            x:Name="btnGoToTheExercises"
+                            TextColor="White"
+                            HeightRequest="20"
+                            BackgroundColor="#F58134"
+                            Margin="5,5,5,5"
+                            CornerRadius="8"
+                            Padding="20"
+                            Clicked="btnGoToTheExercises_Clicked"/>
+
+                        <StackLayout Grid.Row="1" Margin="0">
+                            <Label HorizontalOptions="Center" x:Name="LblTitleHowToUse" Text="Title" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+
+                            <Label x:Name="LblDescriptionHowToUseBase"></Label>
+
+                        </StackLayout>
+
+                    </Grid>
+
+
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -18,6 +18,7 @@ namespace PleaseRememberMe
         public static string YaPasastePorGetRandomVerb { get; set; }
         public static string LinkVideo { get; set; }
         public static string TituloVideo { get; set; }
+        public static string Categoria { get; set; }
 
 
         public App()
