@@ -58,7 +58,7 @@
                             x:Name="btnGoToTheExercises"
                             TextColor="White"
                             HeightRequest="20"
-                            BackgroundColor="#F58134"
+                            BackgroundColor="#231F20"
                             Margin="5,5,5,5"
                             CornerRadius="8"
                             Padding="20"

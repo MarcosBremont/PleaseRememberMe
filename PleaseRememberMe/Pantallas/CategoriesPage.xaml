@@ -60,7 +60,7 @@
                             Text="Grammar"
                             TextColor="White"
                             HeightRequest="60"
-                            BackgroundColor="#225DD5"
+                            BackgroundColor="#215CD4"
                             CornerRadius="8" 
                             x:Name="BtnGrammarCategory"
                             Clicked="BtnGrammarCategory_Clicked"/>
@@ -72,7 +72,7 @@
                             Text="Vocabulary"
                             TextColor="White"
                             HeightRequest="60"
-                            BackgroundColor="#5E8138"
+                            BackgroundColor="#215CD4"
                             CornerRadius="8"
                             x:Name="BtnVocabularyCategory"
                             Clicked="BtnVocabularyCategory_Clicked"/>
@@ -84,7 +84,7 @@
                             Text="English Videos"
                             TextColor="White"
                             HeightRequest="60"
-                            BackgroundColor="#225DD5"
+                            BackgroundColor="#231F20"
                             CornerRadius="8"
                             x:Name="BtnVideos"
                             Clicked="BtnVideos_Clicked"/>
@@ -97,7 +97,7 @@
                             Text="English Listening Lessons"
                             TextColor="White"
                             HeightRequest="60"
-                            BackgroundColor="#5E8138"
+                            BackgroundColor="#231F20"
                             CornerRadius="8"
                             x:Name="BtnAudios"
                             Clicked="BtnAudios_Clicked"/>

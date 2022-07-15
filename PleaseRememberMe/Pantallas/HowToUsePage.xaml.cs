@@ -46,9 +46,10 @@ namespace PleaseRememberMe.Pantallas
         }
 
 
-        private void BtnAtrasHowToUse_Clicked(object sender, EventArgs e)
+        private async void BtnAtrasHowToUse_Clicked(object sender, EventArgs e)
         {
             UserDialogs.Instance.ShowLoading("Is everything ok?");
+            await Navigation.PopModalAsync();
 
             LimpiarCamposHowToUse();
             UserDialogs.Instance.HideLoading();

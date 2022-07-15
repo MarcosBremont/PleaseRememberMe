@@ -337,7 +337,6 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutComparisonsActivities.IsVisible = false;
                 StackLayoutComplete.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, Do you want some cookies?");
@@ -359,7 +358,6 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasComplete_Clicked(object sender, EventArgs e)
         {
             StackLayoutComplete.IsVisible = false;
-            StackLayoutComparisonsActivities.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
 
 
@@ -483,9 +481,7 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutsimplePresentExample.IsVisible = true;
-                StackLayoutsimplePresentCategory.IsVisible = false;
-
+            
 
             }
             catch (Exception ex)
@@ -498,7 +494,7 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasSimplePresent_Clicked(object sender, EventArgs e)
         {
             StackLayoutSimplePresent.IsVisible = false;
-            StackLayoutsimplePresentExample.IsVisible = true;
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -711,7 +707,6 @@ namespace PleaseRememberMe.Pantallas
         {
             try
             {
-                StackLayoutsimplePresentCategory.IsVisible = false;
                 StackLayoutVerbToBe.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a burrito");
@@ -739,7 +734,6 @@ namespace PleaseRememberMe.Pantallas
         {
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
 
-            StackLayoutsimplePresentCategory.IsVisible = false;
             
         }
 
@@ -998,14 +992,13 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasSimplePresentExample_Clicked(object sender, EventArgs e)
         {
-            StackLayoutsimplePresentExample.IsVisible = false;
-            StackLayoutsimplePresentCategory.IsVisible = true;
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void btnsimplepresentexerciGo_Clicked(object sender, EventArgs e)
         {
-            StackLayoutsimplePresentExample.IsVisible = false;
+            
             StackLayoutsimplePresentExercises.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -1013,42 +1006,40 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasSimplePresentExercises_Clicked(object sender, EventArgs e)
         {
             StackLayoutsimplePresentExercises.IsVisible = false;
-            StackLayoutsimplePresentExample.IsVisible = true;
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void btncomparatives_Clicked(object sender, EventArgs e)
         {
-            StackLayoutComparisons.IsVisible = false;
-            StackLayoutComparisonsActivities.IsVisible = true;
+
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private async void btnSuperlatives_Clicked(object sender, EventArgs e)
         {
-            StackLayoutComparisons.IsVisible = false;
+
             StackLayoutSuperlativesActivities.IsVisible = true;
 
         }
 
         private void BtnAtrasComparisons_Clicked(object sender, EventArgs e)
         {
-            StackLayoutComparisons.IsVisible = false;
+
             
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnAtrasComparisonsActivities_Clicked(object sender, EventArgs e)
         {
-            StackLayoutComparisonsActivities.IsVisible = false;
-            StackLayoutComparisons.IsVisible = true;
+
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnAtrasSuperlativessActivities_Clicked(object sender, EventArgs e)
         {
             StackLayoutSuperlativesActivities.IsVisible = false;
-            StackLayoutComparisons.IsVisible = true;
+
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
         private async void btnSuperlatives1_Clicked(object sender, EventArgs e)

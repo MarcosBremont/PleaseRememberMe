@@ -73,7 +73,7 @@ namespace PleaseRememberMe.Pantallas
         private async void BtnAtrasPageBase_Clicked(object sender, EventArgs e)
         {
             UserDialogs.Instance.ShowLoading("Hey, how's going?");
-            await Navigation.PushModalAsync(new HowToUsePage());
+            await Navigation.PopModalAsync();
 
             LimpiarPageBase();
 
@@ -107,6 +107,9 @@ namespace PleaseRememberMe.Pantallas
                 listExercises.Remove(elegido);
                 TxtAnswer.Text = "";
                 LblCorrectIncorectPageBase.IsVisible = false;
+                LblSentencesPageBase.Text = elegido.Sentences;
+                DefinitiveAnswer = elegido.CorrectAnswer;
+                DefinitiveAnswer2 = elegido.CorrectAnswer2;
             }
            
         }

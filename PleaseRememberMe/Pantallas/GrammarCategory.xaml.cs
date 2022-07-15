@@ -28,18 +28,24 @@ namespace PleaseRememberMe.Pantallas
             await Navigation.PushModalAsync(new HowToUsePage());
         }
 
-        private void BtnSimplePresentCategory_Clicked(object sender, EventArgs e)
+        private async void BtnSimplePresentCategory_Clicked(object sender, EventArgs e)
         {
-
-            //StackLayoutsimplePresentCategory.IsVisible = true;
-
+            App.Categoria = "SIMPLE PRESENT";
+            await Navigation.PushModalAsync(new HowToUsePage());
         }
 
 
-        private void btnComparisons_Clicked(object sender, EventArgs e)
+        private async void btnVerbToBe_Clicked(object sender, EventArgs e)
         {
+            App.Categoria = "VERB TO BE";
+            await Navigation.PushModalAsync(new HowToUsePage());
+        }
 
-            //StackLayoutComparisons.IsVisible = true;
+
+        private async void btnComparisons_Clicked(object sender, EventArgs e)
+        {
+            App.Categoria = "COMPARISONS";
+            await Navigation.PushModalAsync(new HowToUsePage());
         }
 
         private async void btnPronouns_Clicked(object sender, EventArgs e)

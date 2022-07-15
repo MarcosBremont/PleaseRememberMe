@@ -77,12 +77,47 @@
                             CornerRadius="8"
                             Clicked="BtnSimplePresentCategory_Clicked"/>
 
+                        <Button 
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            x:Name="btnVerbToBe"
+                            Text="Verb To Be"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#215CD4"
+                            Margin="5,5,5,5"
+                            CornerRadius="8"
+                            Clicked="btnVerbToBe_Clicked"/>
+
+                        <Button 
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            x:Name="btncomparatives"
+                            Text="Comparative"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#215CD4"
+                            Margin="5,5,5,5"
+                            CornerRadius="8"
+                            Clicked="btncomparatives_Clicked"/>
+
+                        <Button 
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            x:Name="btnSuperlatives"
+                            Text="Superlative"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#215CD4"
+                            Margin="5,5,5,5"
+                            CornerRadius="8"
+                            Clicked="btnSuperlatives_Clicked"/>
 
 
                         <Button 
                             Margin="5,5,5,5"
                             Grid.Row="1"
-                            Grid.Column="0"
+                            Grid.Column="1"
                             x:Name="btnComparisons"
                             Text="Comparisons"
                             TextColor="White"
@@ -93,8 +128,8 @@
 
 
                         <Button 
-                            Grid.Row="1"
-                            Grid.Column="1"
+                            Grid.Row="2"
+                            Grid.Column="0"
                             x:Name="btnPronouns"
                             Text="Demonstrative Pronouns"
                             TextColor="White"
@@ -110,7 +145,7 @@
                         <Button 
                             Margin="5,5,5,5"
                             Grid.Row="2"
-                            Grid.Column="0"
+                            Grid.Column="1"
                             x:Name="btnAnySome"
                             Text="Any - Some"
                             TextColor="White"
@@ -123,8 +158,8 @@
 
                         <Button 
                             Margin="5,5,5,5"
-                            Grid.Row="2"
-                            Grid.Column="1"
+                            Grid.Row="3"
+                            Grid.Column="0"
                             x:Name="btnQuantifiers"
                             Text="Quantifiers"
                             TextColor="White"
@@ -136,7 +171,7 @@
                         <Button 
                             Margin="5,5,5,5"
                             Grid.Row="3"
-                            Grid.Column="0"
+                            Grid.Column="1"
                             x:Name="btnQuestionsHow"
                             Text="Questions With How"
                             TextColor="White"
@@ -148,8 +183,8 @@
 
                         <Button 
                             Margin="5,5,5,5"
-                            Grid.Row="3"
-                            Grid.Column="1"
+                            Grid.Row="4"
+                            Grid.Column="0"
                             x:Name="btnPrepositionsoftime"
                             Text="Prepositions of time"
                             TextColor="White"
@@ -163,7 +198,7 @@
                         <Button 
                             Margin="5,5,5,5"
                             Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Column="1"
                             x:Name="btnPresentPerfect"
                             Text="Present Perfect"
                             TextColor="White"
@@ -175,8 +210,8 @@
 
                         <Button 
                             Margin="5,5,5,5"
-                            Grid.Row="4"
-                            Grid.Column="1"
+                            Grid.Row="5"
+                            Grid.Column="0"
                             x:Name="btnEvaluationsAndComparions"
                             Text="Evaluations and Comparions"
                             TextColor="White"
