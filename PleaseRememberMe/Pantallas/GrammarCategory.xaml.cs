@@ -41,6 +41,18 @@ namespace PleaseRememberMe.Pantallas
             await Navigation.PushModalAsync(new HowToUsePage());
         }
 
+        private async void btncomparatives_Clicked(object sender, EventArgs e)
+        {
+            App.Categoria = "COMPARATIVE";
+            await Navigation.PushModalAsync(new HowToUsePage());
+        }
+
+        private async void btnSuperlatives_Clicked(object sender, EventArgs e)
+        {
+
+            App.Categoria = "SUPERLATIVE";
+            await Navigation.PushModalAsync(new HowToUsePage());
+        }
 
         private async void btnComparisons_Clicked(object sender, EventArgs e)
         {
@@ -50,28 +62,8 @@ namespace PleaseRememberMe.Pantallas
 
         private async void btnPronouns_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-
-                //StackLayoutPronouns.IsVisible = true;
-                //ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                //UserDialogs.Instance.ShowLoading("Did you drink water today?");
-                //var datos = await metodos.GetPronouns();
-                //listpronouns = datos;
-                //var random = new Random().Next(1, listpronouns.Count);
-                //var elegido = listpronouns[random];
-                //lblPronouns.Text = listpronouns[0].PronounsSentences;
-                //CorrectAnswerPronoun = listpronouns[0].CorrectAnswer;
-                //TxtCorrectAnswerPronouns.Text = "";
-                //LblCorrectAnswerPronouns.IsVisible = false;
-                ////listpronouns.Remove(elegido);
-                //UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
+            App.Categoria = "DEMONSTRATIVE PRONOUNS";
+            await Navigation.PushModalAsync(new HowToUsePage());
         }
 
         private async void btnQuantifiers_Clicked(object sender, EventArgs e)
@@ -106,28 +98,8 @@ namespace PleaseRememberMe.Pantallas
 
         private async void btnQuestionsHow_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-
-                //StackLayoutQuestionsWithHow.IsVisible = true;
-                //ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                //UserDialogs.Instance.ShowLoading("Hey, do you like tomatoes?");
-                //var datos = await metodos.GetQuestionsWithHow();
-                //listQuestionsWithHow = datos;
-                //var random = new Random().Next(1, listQuestionsWithHow.Count);
-                //var elegido = listQuestionsWithHow[random];
-                //lblQuestionWithHow.Text = listQuestionsWithHow[0].Questionswithhow_sentences;
-                //CorrectAnswerQuestionWithHow = listQuestionsWithHow[0].CorrectAnswer;
-                ////listQuestionsWithHow.Remove(elegido);
-                //TxtxCorrectAnswerQuestionWithHow.Text = "";
-                //LblCorrectAnswerQuestionWithHow.IsVisible = false;
-                //UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
+            App.Categoria = "QUESTIONS WITH HOW";
+            await Navigation.PushModalAsync(new HowToUsePage());
         }
 
 
@@ -185,28 +157,8 @@ namespace PleaseRememberMe.Pantallas
 
         private async void btnAnySome_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-
-                //StackLayoutAnySome.IsVisible = true;
-                //ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                //UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating pizza");
-                //var datos = await metodos.GetAnySome();
-                //listAnySome = datos;
-                //var random = new Random().Next(1, listAnySome.Count);
-                //var elegido = listAnySome[random];
-                //LblAnySome.Text = listAnySome[0].AnySomeSentences;
-                //CorrectAnswerAnySome = listAnySome[0].CorrectAnswer;
-                ////listAnySome.Remove(elegido);
-                //TxtAnySome.Text = "";
-                //LblCorrectAnswerAnySome.IsVisible = false;
-                //UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
+            App.Categoria = "ANY AND SOME";
+            await Navigation.PushModalAsync(new HowToUsePage());
         }
 
 

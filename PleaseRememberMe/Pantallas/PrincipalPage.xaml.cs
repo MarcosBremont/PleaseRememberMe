@@ -212,85 +212,6 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
         }
 
-        private async void btnWasWereDid_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                StackLayoutWasWereDid.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Decide, black coffee or coffee with milk");
-                var datos = await metodos.GetWasWereSentences();
-                listSentences = datos;
-                var random = new Random().Next(1, listSentences.Count);
-                var elegido = listSentences[random];
-                lblWasWereDid.Text = listSentences[0].WasWereSentence;
-                CorrectAnswer = listSentences[0].correctanswer;
-                //listSentences.Remove(elegido);
-                TxtxCorrectAnswer.Text = "";
-                LblCorrectAnswer.IsVisible = false;
-
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-
-        }
-
-        private void BtnAtrasWasWereDid_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutWasWereDid.IsVisible = false;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-
-
-        }
-
-        private void BtnCheckMyAnswer_Clicked(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(TxtxCorrectAnswer.Text))
-            {
-                LblCorrectAnswer.IsVisible = true;
-                LblCorrectAnswer.Text = "Incorrect";
-            }
-            else
-            {
-                if (CorrectAnswer == TxtxCorrectAnswer.Text.ToUpper().Trim().Replace(".", ""))
-                {
-                    LblCorrectAnswer.IsVisible = true;
-                    LblCorrectAnswer.Text = "Correct";
-                }
-                else
-                {
-                    LblCorrectAnswer.IsVisible = true;
-                    LblCorrectAnswer.Text = "Incorrect";
-
-                }
-            }
-
-
-
-        }
-
-        private void BtnOneMore_Clicked(object sender, EventArgs e)
-        {
-            if (listSentences.Count == 1)
-            {
-                UserDialogs.Instance.Toast("There aren’t any more sentences");
-            }
-            else
-            {
-                var random = new Random().Next(1, listSentences.Count);
-                var elegido = listSentences[random];
-                lblWasWereDid.Text = elegido.WasWereSentence;
-                CorrectAnswer = elegido.correctanswer;
-                listSentences.Remove(elegido);
-                TxtxCorrectAnswer.Text = "";
-                LblCorrectAnswer.IsVisible = false;
-            }
-        }
-
         private void BtnMatch_Clicked(object sender, EventArgs e)
         {
             StackLayoutVocabularyCategory.IsVisible = false;
@@ -1010,19 +931,9 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
-        private void btncomparatives_Clicked(object sender, EventArgs e)
-        {
+       
 
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
-
-        private async void btnSuperlatives_Clicked(object sender, EventArgs e)
-        {
-
-            StackLayoutSuperlativesActivities.IsVisible = true;
-
-        }
-
+       
         private void BtnAtrasComparisons_Clicked(object sender, EventArgs e)
         {
 
@@ -1036,34 +947,7 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
-        private void BtnAtrasSuperlativessActivities_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutSuperlativesActivities.IsVisible = false;
-
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
-        private async void btnSuperlatives1_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                StackLayoutSuperlativesActivities.IsVisible = false;
-                StackLayoutSuperlativesExercises.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, Do you want some cookies?");
-                var datos = await metodos.GetSuperlativesSentences();
-                var response = await metodos.GetSuperlativesAdjectives();
-                lsv_superlatives.ItemsSource = datos;
-                CollectionViewSuperlaive.ItemsSource = response;
-                listSuperlatives = datos;
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
+      
 
         private void BtncorrectSuperlative_Clicked(object sender, EventArgs e)
         {
@@ -1093,7 +977,6 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasSuperlativesExercises_Clicked(object sender, EventArgs e)
         {
             StackLayoutSuperlativesExercises.IsVisible = false;
-            StackLayoutSuperlativesActivities.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
@@ -1387,8 +1270,6 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasVerbToBe_Clicked(object sender, EventArgs e)
         {
             StackLayoutVerbToBe.IsVisible = false;
-            StackLayoutsimplePresentCategory.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnCheckMyAnswerChoose_Clicked(object sender, EventArgs e)
