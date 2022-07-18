@@ -6,7 +6,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob" xmlns:forms="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
              ios:Page.UseSafeArea="True"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#2196F3" x:Name="ContenPage">
+            x:Name="ContenPage">
 
     <StackLayout BackgroundColor="#ffff" Margin="0,0,0,-90">
 
@@ -22,17 +22,17 @@
                     <Image Source="NuevoLogoRememberMe.png" WidthRequest="120"></Image>
                     <Label HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="1" Text="Are you ready to learn?" TextColor="#333" FontSize="16" Margin="0,10,0,0" Padding="25,0,25,0"/>
 
-                    <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verbs" TextColor="White" FontAttributes="Bold" BackgroundColor="#215CD4"/>
+                    <Button x:Name="BtnLetsGo" Clicked="BtnLetsGo_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="VERBS" TextColor="White" FontAttributes="Bold" BackgroundColor="#215CD4"/>
                     <!--LayoutPrincipal-->
-                    <Button x:Name="BtnListOfTheVerbs" Clicked="BtnListOfTheVerbs_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Verb List" TextColor="White" FontAttributes="Bold" BackgroundColor="#215CD4"/>
-                    <Button x:Name="BtnTablaDePosiciones" IsVisible="true" Clicked="BtnTablaDePosiciones_Clicked"  WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Leaderboard" TextColor="White" FontAttributes="Bold" BackgroundColor="#215CD4"/>
+                    <Button x:Name="BtnListOfTheVerbs" Clicked="BtnListOfTheVerbs_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="VERB LIST" TextColor="White" FontAttributes="Bold" BackgroundColor="#215CD4"/>
+                    <Button x:Name="BtnTablaDePosiciones" IsVisible="true" Clicked="BtnTablaDePosiciones_Clicked"  WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="LEADERBOARD" TextColor="White" FontAttributes="Bold" BackgroundColor="#215CD4"/>
                     <!--LayoutPrincipal-->
-                    <Button x:Name="BtnCategories" Clicked="BtnCategories_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="Categories" TextColor="White" FontAttributes="Bold" BackgroundColor="#231F20"/>
+                    <Button x:Name="BtnCategories" Clicked="BtnCategories_Clicked" WidthRequest="250" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3" Text="CATEGORIES" TextColor="White" FontAttributes="Bold" BackgroundColor="#231F20"/>
                     
-                    <Frame BackgroundColor="#231F20" CornerRadius="8" Margin="70,0,70,0">
-                        <StackLayout x:Name="StackTournament" IsVisible="true">
+                    <Frame BackgroundColor="#231F20" HorizontalOptions="Center"  HasShadow="False" CornerRadius="8" Margin="70,0,70,0">
+                        <StackLayout x:Name="StackTournament" HorizontalOptions="Center" IsVisible="true">
                             <ImageButton x:Name="BtnTournament" Clicked="BtnTournament_Clicked" Source="winning.png" BackgroundColor="Transparent" WidthRequest="50" Margin="0,10,0,0" HorizontalOptions="Center" Grid.Row="3"/>
-                            <Label x:Name="lbltouchhere" FontSize="12"  HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Touch here to enter to a tournament" TextColor="#ffff"></Label>
+                            <Label x:Name="lbltouchhere" FontSize="12" HorizontalTextAlignment="Center"  HorizontalOptions="Center" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" Text="Touch here to enter to a tournament" TextColor="#ffff"></Label>
                         </StackLayout>
                     </Frame>
 
@@ -47,112 +47,6 @@
         </StackLayout>
 
         <!--Stacklayout VocabularyCategory - Page 10-->
-        <StackLayout IsVisible="false" x:Name="StackLayoutVocabularyCategory">
-
-            <Grid>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
-                            <ImageButton Source="leftarrow.png" x:Name="BtnAtrasVocabulary" Clicked="BtnAtrasVocabulary_Clicked" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
-                            <Label TextColor="White"
-                               Text="GO BACK"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand"
-                               Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-
-            </Grid>
-            <ScrollView  Margin="10,0,10,90" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
-                <StackLayout VerticalOptions="FillAndExpand">
-
-                    <Label HorizontalOptions="Center" Text="Vocabulary Category" FontSize="18" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-
-                    <Grid RowSpacing="0">
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="80"/>
-                            <RowDefinition Height="80"/>
-                            <RowDefinition Height="80"/>
-                            <RowDefinition Height="80"/>
-                            <RowDefinition Height="80"/>
-                            <RowDefinition Height="80"/>
-
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <Button 
-                            Margin="5,5,5,5"
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            x:Name="btnSClothes"
-                            Text="Clothes"
-                            TextColor="White"
-                            HeightRequest="60"
-                            BackgroundColor="#F58134"
-                            CornerRadius="8"
-                            Clicked="btnSClothes_Clicked"/>
-
-                        <Button 
-                            Margin="5,5,5,5"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            x:Name="BtnMatch"
-                            Text="Professions"
-                            TextColor="White"
-                            HeightRequest="60"
-                            BackgroundColor="#225DD5"
-                            CornerRadius="8"
-                            Clicked="BtnMatch_Clicked"/>
-
-
-                        <Button 
-                            Margin="5,5,5,5"
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            x:Name="btnFamilyVocabulary"
-                            Text="Family - vocabulary"
-                            TextColor="White"
-                            HeightRequest="60"
-                            BackgroundColor="#225DD5"
-                            CornerRadius="8"
-                            Clicked="btnFamilyVocabulary_Clicked"/>
-
-
-                        <Button 
-                            Margin="5,5,5,5"
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            x:Name="btnVocabularyPhrasalVerbs"
-                            Text="Phrasal Verbs"
-                            TextColor="White"
-                            HeightRequest="60"
-                            BackgroundColor="#F58134"
-                            CornerRadius="8"
-                            Clicked="btnVocabularyPhrasalVerbs_Clicked"/>
-
-
-                    </Grid>
-
-
-                </StackLayout>
-            </ScrollView>
-
-        </StackLayout>
 
         <!--Stacklayout Match - Page 15-->
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Center" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutMatch">
@@ -1795,81 +1689,6 @@
         </StackLayout>
 
         <!--Stacklayout Vocabulary Family - Page 38-->
-        <StackLayout x:Name="StacklayoutVocabularyFamily" IsVisible="false" >
-
-            <Grid>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand">
-                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasVocabularyFamilyWords_Clicked" x:Name="BtnAtrasVocabularyFamilyWords" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
-                            <Label TextColor="White"
-                               Text="GO BACK"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand"
-                               Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-
-            </Grid>
-
-            <StackLayout Margin="10,0,10,40">
-
-                <Label HorizontalOptions="Center" Text="Family Vocabulary" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-
-                <Grid Grid.Row="1" Margin="0" HeightRequest="25" BackgroundColor="#333" Padding="6">
-
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label FontAttributes="Bold" FontSize="12"  TextColor="White" Text="Family" Grid.Column="0"></Label>
-                    <!--<ImageButton Source="calculator.png"></ImageButton>-->
-
-                </Grid>
-
-                <Grid>
-                    <ListView Margin="0,0,0,80"  x:Name="lsv_VocabularyFamilyWords"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
-                        <ListView.ItemTemplate>
-
-                            <DataTemplate >
-
-                                <ViewCell >
-
-
-                                    <Grid  BackgroundColor="White">
-
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-
-
-                                        <Label TextColor="#333" Margin="10,0,0,0"  Grid.Column="0" FontSize="12" HorizontalOptions="Start" Text="{Binding word}"/>
-                                    </Grid>
-
-
-                                    <!--ITEM-->
-                                </ViewCell>
-                            </DataTemplate>
-
-
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-
-
-            </StackLayout>
-        </StackLayout>
 
         <!--Stacklayout FamilyActivities - Page 39-->
         <StackLayout IsVisible="false" x:Name="StackLayoutFamilyActivities">

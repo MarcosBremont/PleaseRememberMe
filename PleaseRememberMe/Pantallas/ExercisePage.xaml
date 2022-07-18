@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+             xmlns:forms="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="#231F20"
+             NavigationPage.HasNavigationBar="False"
              x:Class="PleaseRememberMe.Pantallas.ExercisePage">
     <ContentPage.Content>
         <!--Stacklayout Page Base - Page 27-->
-        <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,0"  x:Name="StackLayoutBase">
+        <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand" Margin="0,0,0,-90"  x:Name="StackLayoutBase">
 
             <Grid >
 
@@ -16,7 +22,7 @@
                 <StackLayout Grid.Row="0">
                     <Grid VerticalOptions="FillAndExpand">
 
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#231F20" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
                             <ImageButton Source="leftarrow.png"  x:Name="BtnAtrasPageBase" Clicked="BtnAtrasPageBase_Clicked" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
                             <Label TextColor="White"
                                Text="GO BACK"
@@ -77,8 +83,8 @@
                     <StackLayout Grid.Row="5" Margin="0,0,0,0">
                         <Label Margin="0,0,0,0" HorizontalOptions="Center" x:Name="LblCorrectIncorectPageBase" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
-                        <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerPageBase" Margin="0,0,0,0" Clicked="BtnCheckMyAnswerPageBase_Clicked" BackgroundColor="#F58134" TextColor="White"/>
-                        <Button Text="One More" x:Name="BtnOneMorePageBase"  Margin="0,0,0,0" Clicked="BtnOneMorePageBase_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
+                        <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerPageBase" Margin="0,0,0,0" Clicked="BtnCheckMyAnswerPageBase_Clicked" BackgroundColor="#215CD4" TextColor="White"/>
+                        <Button Text="One More" x:Name="BtnOneMorePageBase"  Margin="0,0,0,0" Clicked="BtnOneMorePageBase_Clicked" BackgroundColor="#231F20" TextColor="White"/>
                     </StackLayout>
                 </Grid>
 

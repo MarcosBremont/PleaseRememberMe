@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob" xmlns:forms="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="#231F20"
+             NavigationPage.HasNavigationBar="False"
              x:Class="PleaseRememberMe.Pantallas.GrammarCategory">
     <ContentPage.Content>
         <!--Stacklayout GrammarCategory - Page 9-->
-        <StackLayout x:Name="StackLayoutGramarCategory">
+        <StackLayout x:Name="StackLayoutGramarCategory" Margin="0,0,0,-90" BackgroundColor="White">
 
             <Grid>
 
@@ -16,7 +20,7 @@
                 <StackLayout Grid.Row="0">
                     <Grid VerticalOptions="FillAndExpand">
 
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#231F20" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
                             <ImageButton Source="leftarrow.png" Clicked="BtnVolverAtrasGrammarCategory_Clicked" x:Name="BtnVolverAtrasGrammarCategory" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
                             <Label TextColor="White"
                                Text="GO BACK"
@@ -38,12 +42,12 @@
                     <Grid RowSpacing="0">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="60"/>
 
                         </Grid.RowDefinitions>
 
@@ -115,21 +119,8 @@
 
 
                         <Button 
-                            Margin="5,5,5,5"
                             Grid.Row="2"
                             Grid.Column="1"
-                            x:Name="btnComparisons"
-                            Text="Comparisons"
-                            TextColor="White"
-                            HeightRequest="60"
-                            BackgroundColor="#215CD4"
-                            CornerRadius="8"
-                            Clicked="btnComparisons_Clicked"/>
-
-
-                        <Button 
-                            Grid.Row="3"
-                            Grid.Column="0"
                             x:Name="btnPronouns"
                             Text="Demonstrative Pronouns"
                             TextColor="White"
@@ -145,7 +136,7 @@
                         <Button 
                             Margin="5,5,5,5"
                             Grid.Row="3"
-                            Grid.Column="1"
+                            Grid.Column="0"
                             x:Name="btnAnySome"
                             Text="Any - Some"
                             TextColor="White"
@@ -158,8 +149,8 @@
 
                         <Button 
                             Margin="5,5,5,5"
-                            Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Row="3"
+                            Grid.Column="1"
                             x:Name="btnQuantifiers"
                             Text="Quantifiers"
                             TextColor="White"
@@ -171,7 +162,7 @@
                         <Button 
                             Margin="5,5,5,5"
                             Grid.Row="4"
-                            Grid.Column="1"
+                            Grid.Column="0"
                             x:Name="btnQuestionsHow"
                             Text="Questions With How"
                             TextColor="White"
@@ -183,8 +174,8 @@
 
                         <Button 
                             Margin="5,5,5,5"
-                            Grid.Row="5"
-                            Grid.Column="0"
+                            Grid.Row="4"
+                            Grid.Column="1"
                             x:Name="btnPrepositionsoftime"
                             Text="Prepositions of time"
                             TextColor="White"
@@ -198,7 +189,7 @@
                         <Button 
                             Margin="5,5,5,5"
                             Grid.Row="5"
-                            Grid.Column="1"
+                            Grid.Column="0"
                             x:Name="btnPresentPerfect"
                             Text="Present Perfect"
                             TextColor="White"
@@ -210,8 +201,8 @@
 
                         <Button 
                             Margin="5,5,5,5"
-                            Grid.Row="6"
-                            Grid.Column="0"
+                            Grid.Row="5"
+                            Grid.Column="1"
                             x:Name="btnEvaluationsAndComparions"
                             Text="Evaluations and Comparions"
                             TextColor="White"
@@ -219,6 +210,30 @@
                             BackgroundColor="#215CD4"
                             CornerRadius="8"
                             Clicked="btnEvaluationsAndComparions_Clicked"/>
+
+                                              <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            x:Name="btnSClothes"
+                            Text="Clothes"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#215CD4"
+                            CornerRadius="8"
+                            Clicked="btnSClothes_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            x:Name="BtnMatch"
+                            Text="Professions"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#215CD4"
+                            CornerRadius="8"
+                            Clicked="BtnMatch_Clicked"/>
 
                     </Grid>
 

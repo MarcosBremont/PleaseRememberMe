@@ -2,12 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PleaseRememberMe.Pantallas.SettingsPage"
+                          xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob" xmlns:forms="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="#231F20"
+             NavigationPage.HasNavigationBar="False"
              >
     <ContentPage.Content>
         <!--Stacklayout Settings - Page 16-->
-        <StackLayout VerticalOptions="FillAndExpand" IsVisible="true" Margin="0,0,0,0"  x:Name="StackLayoutSettings">
+        <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="White" IsVisible="true" Margin="0,0,0,-90"  x:Name="StackLayoutSettings">
 
-            <Grid x:Name="GridVolverAtrasSettings">
+            <Grid x:Name="GridVolverAtrasSettings" >
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60" ></RowDefinition>
@@ -18,7 +22,7 @@
                 <StackLayout Grid.Row="0">
                     <Grid VerticalOptions="FillAndExpand">
 
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNavSettings">
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#231F20" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNavSettings">
                             <ImageButton Source="leftarrow.png" Clicked="BtnAtrasSettings_Clicked" x:Name="BtnAtrasSettings" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
                             <Label TextColor="White"
                                Text="GO BACK"

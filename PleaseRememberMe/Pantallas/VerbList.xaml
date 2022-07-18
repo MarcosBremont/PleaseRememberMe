@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob" xmlns:forms="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="#231F20"
+             NavigationPage.HasNavigationBar="False"
              x:Class="PleaseRememberMe.Pantallas.VerbList">
     <ContentPage.Content>
         <!--Stacklayout Verb List - Page 4-->
-        <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,0"  x:Name="StackLayoutVerbList">
+        <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,-90" BackgroundColor="White"  x:Name="StackLayoutVerbList">
 
             <Grid x:Name="GridVolverAtrasVerbList">
 
@@ -16,7 +20,7 @@
                 <StackLayout Grid.Row="0">
                     <Grid VerticalOptions="FillAndExpand">
 
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNavVerbList">
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#231F20" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNavVerbList">
                             <ImageButton Source="leftarrow.png" Clicked="BtnAtrasVerbList_Clicked" x:Name="BtnAtrasVerbList" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
                             <Label TextColor="White"
                                Text="GO BACK"
@@ -32,7 +36,7 @@
 
             </Grid>
 
-            <StackLayout Margin="10,0,10,40" x:Name="LayoutVerbList">
+            <StackLayout Margin="10,0,10,0" x:Name="LayoutVerbList">
                 <Label HorizontalOptions="Center" Text="Verb List" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
 
                 <Grid Grid.Row="1" Margin="0" HeightRequest="25" BackgroundColor="#333" Padding="6">
@@ -52,7 +56,7 @@
                 </Grid>
 
                 <Grid >
-                    <ListView Margin="0,0,0,80"  x:Name="lsv_ListaDeVerbos"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
+                    <ListView Margin="0,0,0,0"  x:Name="lsv_ListaDeVerbos" VerticalOptions="Fill" HeightRequest="900"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
                         <ListView.ItemTemplate>
 
                             <DataTemplate >

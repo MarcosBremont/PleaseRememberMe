@@ -22,6 +22,16 @@ namespace PleaseRememberMe.Pantallas
             await Navigation.PushModalAsync(new CategoriesPage());
         }
 
+        private async void BtnMatch_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new GrammarCategory());
+        }
+
+        async void btnSClothes_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushModalAsync(new GrammarCategory());
+        }
+
         async void BtnSimplePast_Clicked(System.Object sender, System.EventArgs e)
         {
             App.Categoria = "SIMPLE PAST";
@@ -105,53 +115,21 @@ namespace PleaseRememberMe.Pantallas
 
         private async void btnPrepositionsoftime_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-
-                //StackLayoutPreposisionsOfTime.IsVisible = true;
-                //ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                //UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
-                //var datos = await metodos.GetPrepositionsOfTimeSentences();
-                //listprepositionsOfTime = datos;
-                //var random = new Random().Next(1, listprepositionsOfTime.Count);
-                //var elegido = listprepositionsOfTime[random];
-                //lblPrepositionsOfTime.Text = listprepositionsOfTime[0].PrepositionsOfTimeSentence;
-                //CorrectAnswerPrepositionsOfTime = listprepositionsOfTime[0].CorrectAnswer;
-                ////listprepositionsOfTime.Remove(elegido);
-                //TxtPrepositionsOfTime.Text = "";
-                //LblCorrectAnswerPrepositionsOfTime.IsVisible = false;
-
-                //UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
+            App.Categoria = "PREPOSITIONS OF TIME";
+            await Navigation.PushModalAsync(new HowToUsePage());
         }
 
-        private void btnPresentPerfect_Clicked(object sender, EventArgs e)
+        private async void btnPresentPerfect_Clicked(object sender, EventArgs e)
         {
-            //UserDialogs.Instance.ShowLoading("Why are you studying english?");
-
-            //TextoCategoria = "Present Perfect";
-            //CargarInformacionHowToUse(TextoCategoria);
-            //StackLayoutHowToUse.IsVisible = true;
-            //ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            //UserDialogs.Instance.HideLoading();
+            App.Categoria = "PRESENT PERFECT";
+            await Navigation.PushModalAsync(new HowToUsePage());
         }
 
 
-        private void btnEvaluationsAndComparions_Clicked(object sender, EventArgs e)
+        private async void btnEvaluationsAndComparions_Clicked(object sender, EventArgs e)
         {
-            //UserDialogs.Instance.ShowLoading("How was your day?");
-            //TextoCategoria = "Evaluations And Comparisons";
-            //StackLayoutHowToUse.IsVisible = true;
-            ////CargarInformacionTitlePage("EvaluationsAndComparions");
-            //CargarInformacionHowToUse(TextoCategoria);
-
-            //ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            //UserDialogs.Instance.HideLoading();
+            App.Categoria = "EVALUATIONS AND COMPARISONS";
+            await Navigation.PushModalAsync(new HowToUsePage());
         }
 
 

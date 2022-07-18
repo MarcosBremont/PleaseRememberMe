@@ -75,8 +75,6 @@ namespace PleaseRememberMe.Pantallas
             CrossMediaManager.Current.MediaItemChanged += Current_MediaItemChanged;
             CrossMediaManager.Current.StateChanged += Current_OnStateChanged;
 
-            ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
-
             StackTournament.GestureRecognizers.Add(
              new TapGestureRecognizer()
              {
@@ -212,12 +210,6 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#80FFB6");
         }
 
-        private void BtnMatch_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutVocabularyCategory.IsVisible = false;
-            StackLayoutProfessionsPage.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
 
         private void BtnAtrasMatch_Clicked(object sender, EventArgs e)
         {
@@ -309,12 +301,7 @@ namespace PleaseRememberMe.Pantallas
             lsv_complete.ItemsSource = listComplete;
         }
 
-        async void btnSClothes_Clicked(System.Object sender, System.EventArgs e)
-        {
-            StackLayoutVocabularyCategory.IsVisible = false;
-            StackLayoutClothesPage.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
+        
 
         void BtnAtrasClothes_Clicked(System.Object sender, System.EventArgs e)
         {
@@ -508,12 +495,7 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutPreposisionsOfTime.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
-        private async void btnFamilyVocabulary_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutVocabularyCategory.IsVisible = false;
-            StackLayoutFamilyPage.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
+
 
         private void BtnCheckMyAnswerFamily_Clicked(object sender, EventArgs e)
         {
@@ -658,13 +640,7 @@ namespace PleaseRememberMe.Pantallas
             
         }
 
-        private async void BtnAtrasVocabulary_Clicked(object sender, EventArgs e)
-        {
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
 
-            await Navigation.PushModalAsync(new CategoriesPage());
-            StackLayoutVocabularyCategory.IsVisible = false;
-        }
 
         private async void BtnCategories_Clicked(object sender, EventArgs e)
         {
@@ -714,8 +690,6 @@ namespace PleaseRememberMe.Pantallas
             try
             {
                 Anuncio.IsVisible = false;
-
-                StackLayoutVocabularyCategory.IsVisible = false;
                 StacklayoutVocabularyWords.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
@@ -740,13 +714,13 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasProfessionsPage_Clicked(object sender, EventArgs e)
         {
             StackLayoutProfessionsPage.IsVisible = false;
-            StackLayoutVocabularyCategory.IsVisible = true;
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnAtrasClothesPage_Clicked(object sender, EventArgs e)
         {
-            StackLayoutVocabularyCategory.IsVisible = true;
+            
             StackLayoutClothesPage.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -809,7 +783,7 @@ namespace PleaseRememberMe.Pantallas
 
         private void BtnAtrasFamilyPage_Clicked(object sender, EventArgs e)
         {
-            StackLayoutVocabularyCategory.IsVisible = true;
+            
             StackLayoutFamilyPage.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -821,11 +795,11 @@ namespace PleaseRememberMe.Pantallas
                 Anuncio.IsVisible = false;
 
                 StackLayoutFamilyPage.IsVisible = false;
-                StacklayoutVocabularyFamily.IsVisible = true;
+                //StacklayoutVocabularyFamily.IsVisible = true;
                 ContenPage.BackgroundColor = Color.FromHex("#2196F3");
                 UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a cookie");
                 var datos = await metodos.GetVocabularyFamily();
-                lsv_VocabularyFamilyWords.ItemsSource = datos;
+                //lsv_VocabularyFamilyWords.ItemsSource = datos;
                 UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
@@ -845,7 +819,7 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasVocabularyFamilyWords_Clicked(object sender, EventArgs e)
         {
             Anuncio.IsVisible = true;
-            StacklayoutVocabularyFamily.IsVisible = false;
+            //StacklayoutVocabularyFamily.IsVisible = false;
             StackLayoutFamilyPage.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -1177,22 +1151,11 @@ namespace PleaseRememberMe.Pantallas
        
        
 
-        private void btnVocabularyPhrasalVerbs_Clicked(object sender, EventArgs e)
-        {
-            UserDialogs.Instance.ShowLoading("Can you give me a hand?");
-            StackLayoutVocabularyCategory.IsVisible = false;
-            TextoCategoria = "Phrasal Verbs";
-            CargarInformacionVocabularyGlobalPage(TextoCategoria);
-            StacklayoutVocabularyGlobal.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.HideLoading();
-
-        }
 
         private void BtnAtrasVocabularyGlobal_Clicked(object sender, EventArgs e)
         {
             UserDialogs.Instance.ShowLoading("Let's see phrasal verbs");
-            StackLayoutVocabularyCategory.IsVisible = true;
+            
             StacklayoutVocabularyGlobal.IsVisible = false;
             UserDialogs.Instance.HideLoading();
         }
