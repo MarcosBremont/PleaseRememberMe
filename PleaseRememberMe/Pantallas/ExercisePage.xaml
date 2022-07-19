@@ -72,15 +72,29 @@
                         <Label Grid.Row="3" HorizontalOptions="Center" x:Name="LblDescriptionPageBase"  Margin="0,0,0,0" TextColor="#333"></Label>
                     </StackLayout>
 
-
-
                     <StackLayout Grid.Row="4" Margin="0,10,0,0">
                         <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" x:Name="LblSentencesPageBase" TextColor="#333"></Label>
                         <Entry  HorizontalOptions="FillAndExpand" x:Name="TxtAnswer" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
 
+                        <StackLayout IsVisible="false" x:Name="StackRadioButtons" Grid.Row="4" Margin="0,0,0,0">
+
+                            <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                <RadioButton BackgroundColor="Transparent" GroupName="RadiosQuantifiers" x:Name="RadioButtonOption1" CheckedChanged="RadioButtonOption1_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
+                                <Label TextColor="#333" VerticalOptions="Center" x:Name="LblFirstOption"/>
+
+                            </StackLayout>
+
+                            <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                <RadioButton BackgroundColor="Transparent" GroupName="RadiosQuantifiers" x:Name="RadioButtonOption2" CheckedChanged="RadioButtonOption2_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
+                                <Label TextColor="#333" VerticalOptions="Center" x:Name="LblSecondOption" />
+
+                            </StackLayout>
+
+                        </StackLayout>
+
                     </StackLayout>
 
-                    <StackLayout Grid.Row="5" Margin="0,0,0,0">
+                    <StackLayout Grid.Row="5" Margin="0,20,0,0">
                         <Label Margin="0,0,0,0" HorizontalOptions="Center" x:Name="LblCorrectIncorectPageBase" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerPageBase" Margin="0,0,0,0" Clicked="BtnCheckMyAnswerPageBase_Clicked" BackgroundColor="#215CD4" TextColor="White"/>

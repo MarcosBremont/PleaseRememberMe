@@ -28,6 +28,7 @@ namespace PleaseRememberMe.Pantallas
             LblDescriptionHowToUseBase.Text = datos[0].Howtouse;
             LblTitleHowToUse.Text = datos[0].howtouse_category;
             btnGoToTheExercises.Text = datos[0].howtouse_category;
+
             UserDialogs.Instance.HideLoading();
         }
 

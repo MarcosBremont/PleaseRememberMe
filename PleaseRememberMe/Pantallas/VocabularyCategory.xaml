@@ -64,10 +64,10 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             x:Name="btnFamilyVocabulary"
-                            Text="Family - vocabulary"
+                            Text="Family vocabulary"
                             TextColor="White"
                             HeightRequest="60"
-                            BackgroundColor="#225DD5"
+                            BackgroundColor="#215CD4"
                             CornerRadius="8"
                             Clicked="btnFamilyVocabulary_Clicked"/>
 
@@ -77,12 +77,36 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             x:Name="btnVocabularyPhrasalVerbs"
-                            Text="Phrasal Verbs"
+                            Text="Phrasal Verbs Vocabulary"
                             TextColor="White"
                             HeightRequest="60"
-                            BackgroundColor="#F58134"
+                            BackgroundColor="#215CD4"
                             CornerRadius="8"
                             Clicked="btnVocabularyPhrasalVerbs_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            x:Name="btnProfessionsVocabulary"
+                            Text="Professions Vocabulary"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#215CD4"
+                            CornerRadius="8"
+                            Clicked="btnProfessionsVocabulary_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            x:Name="btnClothesVocabulary"
+                            Text="Clothes Vocabulary"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#215CD4"
+                            CornerRadius="8"
+                            Clicked="btnClothesVocabulary_Clicked"/>
 
 
                     </Grid>

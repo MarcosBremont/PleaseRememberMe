@@ -46,8 +46,6 @@
 
         </StackLayout>
 
-        <!--Stacklayout VocabularyCategory - Page 10-->
-
         <!--Stacklayout Match - Page 15-->
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Center" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutMatch">
 
@@ -1007,82 +1005,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Quantifiers - Page 29-->
-        <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutQuantifiers">
-
-            <Grid >
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
-                            <ImageButton Source="leftarrow.png"  x:Name="BtnAtrasQuantifiers" Clicked="BtnAtrasQuantifiers_Clicked" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
-                            <Label TextColor="White"
-                               Text="GO BACK"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand"
-                               Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-
-            </Grid>
-
-            <StackLayout Margin="10,0,10,40">
-
-                <Grid RowSpacing="0">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="100"/>
-
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-
-                    <Label Grid.Row="0" HorizontalOptions="Center" Text="Quantifiers - Choose the correct answer." FontSize="14" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-                    <Label Grid.Row="1" Margin="0,0,0,0" HorizontalOptions="Center" x:Name="LblQuantifiers" TextColor="#333"></Label>
-
-
-
-                    <StackLayout Grid.Row="2" Margin="0,0,0,0">
-
-                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
-                            <RadioButton BackgroundColor="Transparent" GroupName="RadiosQuantifiers" x:Name="RadioButtonOption1" CheckedChanged="RadioButtonOption1_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
-                            <Label TextColor="#333" VerticalOptions="Center" x:Name="LblFirstOption"/>
-
-                        </StackLayout>
-
-                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
-                            <RadioButton BackgroundColor="Transparent" GroupName="RadiosQuantifiers" x:Name="RadioButtonOption2" CheckedChanged="RadioButtonOption2_CheckedChanged" VerticalOptions="Center" TextColor="#333"/>
-                            <Label TextColor="#333" VerticalOptions="Center" x:Name="LblSecondOption" />
-
-                        </StackLayout>
-
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="3" Margin="0,0,0,0">
-                        <Label x:Name="LblCorrectAnswerQuantifiers" HorizontalOptions="Center" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
-                        <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerChoose" Clicked="BtnCheckMyAnswerChoose_Clicked" BackgroundColor="#F58134" TextColor="White"/>
-                        <Button Text="One More" Margin="0,0,0,0" x:Name="BtnOneMoreChoose" Clicked="BtnOneMoreChoose_Clicked" BackgroundColor="#3185FF" TextColor="White"/>
-                    </StackLayout>
-                </Grid>
-
-
-            </StackLayout>
-        </StackLayout>
-
+    
         <!--Stacklayout QuestionsWithHow - Page 30-->
         <StackLayout VerticalOptions="FillAndExpand" IsVisible="false" Margin="0,0,0,0"  x:Name="StackLayoutQuestionsWithHow">
 
@@ -1150,81 +1073,7 @@
             </StackLayout>
         </StackLayout>
 
-        <!--Stacklayout Vocabulary - Page 31-->
-        <StackLayout x:Name="StacklayoutVocabularyWords" IsVisible="false" >
-
-            <Grid>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand">
-                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasVocabularyWords_Clicked" x:Name="BtnAtrasVocabularyWords" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
-                            <Label TextColor="White"
-                               Text="GO BACK"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand"
-                               Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-
-            </Grid>
-
-            <StackLayout Margin="10,0,10,40">
-                <Label HorizontalOptions="Center" Text="Professions Vocabulary" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-
-                <Grid Grid.Row="1" Margin="0" HeightRequest="25" BackgroundColor="#333" Padding="6">
-
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label FontAttributes="Bold" FontSize="12"  TextColor="White" Text="Professions" Grid.Column="0"></Label>
-                    <!--<ImageButton Source="calculator.png"></ImageButton>-->
-
-                </Grid>
-
-                <Grid >
-                    <ListView Margin="0,0,0,80"  x:Name="lsv_VocabularyWords"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
-                        <ListView.ItemTemplate>
-
-                            <DataTemplate >
-
-                                <ViewCell >
-
-
-                                    <Grid  BackgroundColor="White">
-
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-
-
-                                        <Label TextColor="#333" Margin="10,0,0,0"  Grid.Column="0" FontSize="12" HorizontalOptions="Start" Text="{Binding word}"/>
-                                    </Grid>
-
-
-                                    <!--ITEM-->
-                                </ViewCell>
-                            </DataTemplate>
-
-
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-
-
-            </StackLayout>
-        </StackLayout>
+      
 
         <!--Stacklayout ProfessionsPage - Page 32-->
         <StackLayout IsVisible="false" x:Name="StackLayoutProfessionsPage">
@@ -1286,18 +1135,6 @@
                             BackgroundColor="#F58134"
                             CornerRadius="8"
                             Clicked="BtnActivitiesProfessions_Clicked"/>
-
-                        <Button 
-                            Margin="5,5,5,5"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            x:Name="BtnVocabularyProfessions"
-                            Text="Vocabulary"
-                            TextColor="White"
-                            HeightRequest="60"
-                            BackgroundColor="#225DD5"
-                            CornerRadius="8"
-                            Clicked="BtnVocabularyProfessions_Clicked"/>
 
 
 
@@ -1371,17 +1208,6 @@
                             CornerRadius="8"
                             Clicked="BtnActivitiesClothes_Clicked"/>
 
-                        <Button 
-                            Margin="5,5,5,5"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            x:Name="BtnVocabularyClothes"
-                            Text="Vocabulary"
-                            TextColor="White"
-                            HeightRequest="60"
-                            BackgroundColor="#225DD5"
-                            CornerRadius="8"
-                            Clicked="BtnVocabularyClothes_Clicked"/>
 
                     </Grid>
 
@@ -1531,81 +1357,6 @@
 
         </StackLayout>
 
-        <!--Stacklayout Vocabulary Clohes - Page 36-->
-        <StackLayout x:Name="StacklayoutVocabularyClothes" IsVisible="false" >
-
-            <Grid>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand">
-                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasVocabularyClothesWords_Clicked" x:Name="BtnAtrasVocabularyClothesWords" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
-                            <Label TextColor="White"
-                               Text="GO BACK"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand"
-                               Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-
-            </Grid>
-
-            <StackLayout Margin="10,0,10,40">
-                <Label HorizontalOptions="Center" Text="Clothes Vocabulary" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-
-                <Grid Grid.Row="1" Margin="0" HeightRequest="25" BackgroundColor="#333" Padding="6">
-
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label FontAttributes="Bold" FontSize="12"  TextColor="White" Text="Clothes" Grid.Column="0"></Label>
-                    <!--<ImageButton Source="calculator.png"></ImageButton>-->
-
-                </Grid>
-
-                <Grid >
-                    <ListView Margin="0,0,0,80"  x:Name="lsv_VocabularyClothesWords"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
-                        <ListView.ItemTemplate>
-
-                            <DataTemplate >
-
-                                <ViewCell >
-
-
-                                    <Grid  BackgroundColor="White">
-
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-
-
-                                        <Label TextColor="#333" Margin="10,0,0,0"  Grid.Column="0" FontSize="12" HorizontalOptions="Start" Text="{Binding word}"/>
-                                    </Grid>
-
-
-                                    <!--ITEM-->
-                                </ViewCell>
-                            </DataTemplate>
-
-
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-
-
-            </StackLayout>
-        </StackLayout>
 
         <!--Stacklayout FamilyPage - Page 37-->
         <StackLayout IsVisible="false" x:Name="StackLayoutFamilyPage">
@@ -1668,18 +1419,6 @@
                             CornerRadius="8"
                             Clicked="BtnActivitiesFamily_Clicked"/>
 
-                        <Button 
-                            Margin="5,5,5,5"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            x:Name="BtnVocabularyFamily"
-                            Text="Vocabulary"
-                            TextColor="White"
-                            HeightRequest="60"
-                            BackgroundColor="#225DD5"
-                            CornerRadius="8"
-                            Clicked="BtnVocabularyFamily_Clicked"/>
-
                     </Grid>
 
 
@@ -1687,8 +1426,6 @@
             </ScrollView>
 
         </StackLayout>
-
-        <!--Stacklayout Vocabulary Family - Page 38-->
 
         <!--Stacklayout FamilyActivities - Page 39-->
         <StackLayout IsVisible="false" x:Name="StackLayoutFamilyActivities">
@@ -1981,86 +1718,6 @@
             </ScrollView>
 
         </StackLayout>
-
-        <!--Stacklayout ClothesPage - Page 33-->
-        <StackLayout x:Name="StacklayoutVocabularyGlobal" IsVisible="false" >
-
-            <Grid>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" ></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand">
-                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasVocabularyGlobal_Clicked" x:Name="BtnAtrasVocabularyGlobal" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
-                            <Label TextColor="White"
-                               Text="GO BACK"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand"
-                               Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-
-            </Grid>
-
-            <StackLayout Margin="10,0,10,40">
-                <Label HorizontalOptions="Center" x:Name="LblTitleVocabularyGlobal" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
-
-                <Grid Grid.Row="1" Margin="0" HeightRequest="25" BackgroundColor="#333" Padding="6">
-
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label FontAttributes="Bold" FontSize="12"  TextColor="White" Text="Word" Grid.Column="0"></Label>
-                    <Label FontAttributes="Bold" FontSize="12"  TextColor="White" Text="Example" Grid.Column="1"></Label>
-
-                </Grid>
-
-                <Grid >
-                    <ListView Margin="0,0,0,80"  x:Name="lsv_VocabularyGlobal"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
-                        <ListView.ItemTemplate>
-
-                            <DataTemplate >
-
-                                <ViewCell >
-
-
-                                    <Grid  BackgroundColor="White">
-
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-
-
-                                        <Label TextColor="#333" Margin="10,0,0,0"  Grid.Column="0" FontSize="12" HorizontalOptions="Start" Text="{Binding word}"/>
-                                        <Label TextColor="#333" Margin="10,0,0,0"  Grid.Column="1" FontSize="12" HorizontalOptions="Start" Text="{Binding example}"/>
-                                    </Grid>
-
-
-                                    <!--ITEM-->
-                                </ViewCell>
-                            </DataTemplate>
-
-
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-
-
-            </StackLayout>
-        </StackLayout>
-
         <!--Stacklayout Anuncio-->
         <StackLayout x:Name="Anuncio" VerticalOptions="EndAndExpand" Margin="0,0,0,90">
             <controls:MTAdView BackgroundColor="Transparent" HeightRequest="60"  x:Name="myAds" AdsId="{OnPlatform Android='ca-app-pub-5203771291617755/7518751960', 

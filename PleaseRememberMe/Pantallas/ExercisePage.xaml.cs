@@ -18,7 +18,8 @@ namespace PleaseRememberMe.Pantallas
         List<Entidad.EExercises> listExercises = new List<Entidad.EExercises>();
 
         string DefinitiveAnswer = "", DefinitiveAnswer2 = "",
-          TextoCategoria = "";
+          TextoCategoria = "", AnswerRadioButton1 = "",
+            AnswerRadioButton2 = "", CorrectAnswerQuantifiers = "";
         Metodos metodos = new Metodos();
         public ExercisePage()
         {
@@ -33,30 +34,48 @@ namespace PleaseRememberMe.Pantallas
             var datos = await metodos.GetExercisesByCategory(App.Categoria);
             listExercises = datos;
 
+            if (App.Categoria == "QUANTIFIERS")
+            {
+                StackRadioButtons.IsVisible = true;
+                LblFirstOption.Text = listExercises[0].FirstOption;
+                LblSecondOption.Text = listExercises[0].SecondOption;
+                RadioButtonOption1.IsChecked = false;
+                RadioButtonOption2.IsChecked = false;
+                TxtAnswer.IsVisible = false;
+                CorrectAnswerQuantifiers = listExercises[0].CorrectAnswer;
+            }
+
             LbltitlePageBase.Text = listExercises[0].Title;
             LblAnotherTitle.Text = listExercises[0].AnotherTitle;
             LblSubtitlePageBase.Text = listExercises[0].Subtitle;
             LblDescriptionPageBase.Text = listExercises[0].Description;
             LblSentencesPageBase.Text = listExercises[0].Sentences;
+
             string YourAnswer = TxtAnswer.Text;
             DefinitiveAnswer = datos[0].CorrectAnswer;
             DefinitiveAnswer2 = datos[0].CorrectAnswer2;
             UserDialogs.Instance.HideLoading();
+        }
 
+        private void RadioButtonOption1_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            AnswerRadioButton1 = LblFirstOption.Text;
+            AnswerRadioButton2 = "";
+        }
+
+        private void RadioButtonOption2_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            AnswerRadioButton2 = LblSecondOption.Text;
+            AnswerRadioButton1 = "";
 
         }
 
         private void BtnCheckMyAnswerPageBase_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(TxtAnswer.Text))
-            {
-                LblCorrectIncorectPageBase.IsVisible = true;
-                LblCorrectIncorectPageBase.Text = "Incorrect";
-            }
-            else
+            if (App.Categoria == "QUANTIFIERS")
             {
 
-                if (DefinitiveAnswer == TxtAnswer.Text.ToUpper().Trim().Replace(".", "").Replace("‘", "'").Replace("’", "'").Replace("`", "'") || DefinitiveAnswer2 == TxtAnswer.Text.ToUpper().Trim().Replace(".", "").Replace("‘", "'").Replace("’", "'").Replace("`", "'"))
+                if (AnswerRadioButton1 == CorrectAnswerQuantifiers || AnswerRadioButton2 == CorrectAnswerQuantifiers)
                 {
                     LblCorrectIncorectPageBase.IsVisible = true;
                     LblCorrectIncorectPageBase.Text = "Correct";
@@ -68,6 +87,32 @@ namespace PleaseRememberMe.Pantallas
 
                 }
             }
+            else
+            {
+                if (string.IsNullOrEmpty(TxtAnswer.Text))
+                {
+                    LblCorrectIncorectPageBase.IsVisible = true;
+                    LblCorrectIncorectPageBase.Text = "Incorrect";
+                }
+                else
+                {
+
+                    if (DefinitiveAnswer == TxtAnswer.Text.ToUpper().Trim().Replace(".", "").Replace("‘", "'").Replace("’", "'").Replace("`", "'") || DefinitiveAnswer2 == TxtAnswer.Text.ToUpper().Trim().Replace(".", "").Replace("‘", "'").Replace("’", "'").Replace("`", "'"))
+                    {
+                        LblCorrectIncorectPageBase.IsVisible = true;
+                        LblCorrectIncorectPageBase.Text = "Correct";
+                    }
+                    else
+                    {
+                        LblCorrectIncorectPageBase.IsVisible = true;
+                        LblCorrectIncorectPageBase.Text = "Incorrect";
+
+                    }
+                }
+            }
+
+
+          
         }
 
         private async void BtnAtrasPageBase_Clicked(object sender, EventArgs e)
@@ -110,6 +155,11 @@ namespace PleaseRememberMe.Pantallas
                 LblSentencesPageBase.Text = elegido.Sentences;
                 DefinitiveAnswer = elegido.CorrectAnswer;
                 DefinitiveAnswer2 = elegido.CorrectAnswer2;
+                LblFirstOption.Text = elegido.FirstOption;
+                LblSecondOption.Text = elegido.SecondOption;
+                CorrectAnswerQuantifiers = elegido.CorrectAnswer;
+                RadioButtonOption1.IsChecked = false;
+                RadioButtonOption2.IsChecked = false;
             }
            
         }

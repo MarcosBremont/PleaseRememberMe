@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PleaseRememberMe.Models;
+using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -7,19 +8,25 @@ namespace PleaseRememberMe.Pantallas
 {
     public partial class VocabularyPage : ContentPage
     {
+        Metodos metodos = new Metodos();
         public VocabularyPage()
         {
             InitializeComponent();
+            llenarVocabulary();
         }
 
-        private void BtnAtrasVocabularyFamilyWords_Clicked(object sender, EventArgs e)
+        public async void llenarVocabulary()
         {
-           // Anuncio.IsVisible = true;
-            //StacklayoutVocabularyFamily.IsVisible = false;
-            //StackLayoutFamilyPage.IsVisible = true;
-           // ContenPage.BackgroundColor = Color.FromHex("#2196F3");
+            var datos = await metodos.GetVocabularyGlobal(App.Vocabulary);
+            lsv_vocabulary.ItemsSource = datos;
+            LblVocabulary.Text = datos[0].Vocabulary_category + " Vocabulary";
+            LblCategoryTitle.Text = datos[0].Vocabulary_category;
         }
 
+        private async void BtnAtrasVocabulary_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new VocabularyCategory());
+        }
     }
 
 }

@@ -251,5 +251,7 @@ namespace PleaseRememberMe.Models
 
             return listado_vocabulary_global;
         } // Fin del método Obtener Vocabularios
+
+
     }
 }

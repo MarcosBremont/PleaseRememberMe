@@ -8,7 +8,7 @@
      NavigationPage.HasNavigationBar="False"
     x:Class="PleaseRememberMe.Pantallas.VocabularyPage">
     <ContentPage.Content>
-        <StackLayout x:Name="StacklayoutVocabularyFamily" IsVisible="true" BackgroundColor="White" Margin="0,0,0,-90" >
+        <StackLayout x:Name="StacklayoutVocabulary" IsVisible="true" BackgroundColor="White" Margin="0,0,0,-90" >
 
             <Grid>
 
@@ -21,7 +21,7 @@
                     <Grid VerticalOptions="FillAndExpand">
 
                         <StackLayout Orientation="Horizontal" BackgroundColor="#231F20" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand">
-                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasVocabularyFamilyWords_Clicked" x:Name="BtnAtrasVocabularyFamilyWords" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
+                            <ImageButton Source="leftarrow.png" Clicked="BtnAtrasVocabulary_Clicked" x:Name="BtnAtrasVocabulary" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
                             <Label TextColor="White"
                                Text="GO BACK"
                                FontSize="18"
@@ -37,7 +37,8 @@
 
             <StackLayout Margin="10,0,10,40">
 
-                <Label HorizontalOptions="Center" Text="Family Vocabulary" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                <Label HorizontalOptions="Center"  x:Name="LblVocabulary" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>
+                <!--<Label HorizontalOptions="Center"  Text="Vocabulary" FontAttributes="Bold" Margin="0,0,0,0" TextColor="#333"></Label>-->
 
                 <Grid Grid.Row="1" Margin="0" HeightRequest="25" BackgroundColor="#333" Padding="6">
 
@@ -46,13 +47,13 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Label FontAttributes="Bold" FontSize="12"  TextColor="White" Text="Family" Grid.Column="0"></Label>
+                    <Label FontAttributes="Bold" FontSize="12"  TextColor="White" x:Name="LblCategoryTitle" Grid.Column="0"></Label>
                     <!--<ImageButton Source="calculator.png"></ImageButton>-->
 
                 </Grid>
 
                 <Grid>
-                    <ListView Margin="0,0,0,80"  x:Name="lsv_VocabularyFamilyWords"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
+                    <ListView Margin="0,0,0,80"  x:Name="lsv_vocabulary"  SeparatorVisibility="Default" SeparatorColor="#3E5569" HasUnevenRows="True" >
                         <ListView.ItemTemplate>
 
                             <DataTemplate >

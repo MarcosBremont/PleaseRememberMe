@@ -19,20 +19,28 @@ namespace PleaseRememberMe.Pantallas
         }
 
 
-        private void btnVocabularyPhrasalVerbs_Clicked(object sender, EventArgs e)
+        private async void btnVocabularyPhrasalVerbs_Clicked(object sender, EventArgs e)
         {
-            //UserDialogs.Instance.ShowLoading("Can you give me a hand?");
-
-            //TextoCategoria = "Phrasal Verbs";
-            //CargarInformacionVocabularyGlobalPage(TextoCategoria);
-            //StacklayoutVocabularyGlobal.IsVisible = true;
-            //ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            // UserDialogs.Instance.HideLoading();
+            App.Vocabulary = "Phrasal Verbs";
+            await Navigation.PushModalAsync(new VocabularyPage());
 
         }
 
         private async void btnFamilyVocabulary_Clicked(object sender, EventArgs e)
         {
+            App.Vocabulary = "Family";
+            await Navigation.PushModalAsync(new VocabularyPage());
+        }
+
+        private async void btnProfessionsVocabulary_Clicked(object sender, EventArgs e)
+        {
+            App.Vocabulary = "Professions";
+            await Navigation.PushModalAsync(new VocabularyPage());
+        }
+
+        private async void btnClothesVocabulary_Clicked(object sender, EventArgs e)
+        {
+            App.Vocabulary = "Clothes";
             await Navigation.PushModalAsync(new VocabularyPage());
         }
     }
