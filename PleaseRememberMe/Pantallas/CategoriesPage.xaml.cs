@@ -36,16 +36,13 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnVideos_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new CategoriesPage());
-            //StackLayoutVideos.IsVisible = true;
-            //var datos = await metodos.GetVideos();
-            //lsv_Videos.ItemsSource = datos;
+            await Navigation.PushModalAsync(new VideosList());
         }
 
 
         private async void BtnAudios_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new CategoriesPage());
+            await Navigation.PushModalAsync(new AudioList());
             //StackLayoutAudios.IsVisible = true;
             //var datos = await metodos.GetAudios();
             //lsv_audios.ItemsSource = datos;

@@ -41,7 +41,6 @@ namespace PleaseRememberMe.Pantallas
 
         List<Entidad.EWasWereDid> listSentences = new List<Entidad.EWasWereDid>();
         List<Entidad.EQuestionsWithHow> listQuestionsWithHow = new List<Entidad.EQuestionsWithHow>();
-        List<Entidad.EMatchSentences> listMatch = new List<Entidad.EMatchSentences>();
         List<Entidad.ECompleteSentences> listComplete = new List<Entidad.ECompleteSentences>();
         List<Entidad.ESuperlativesSentence> listSuperlatives = new List<Entidad.ESuperlativesSentence>();
         List<Entidad.EClothes> listclothes = new List<Entidad.EClothes>();
@@ -70,9 +69,7 @@ namespace PleaseRememberMe.Pantallas
             //LblTorneo.IsVisible = false;
             //LblPuntos.IsVisible = false;
             //BtnTerminarTorneo.IsVisible = false;
-            CrossMediaManager.Current.PositionChanged += Current_PositionChanged;
-            CrossMediaManager.Current.MediaItemChanged += Current_MediaItemChanged;
-            CrossMediaManager.Current.StateChanged += Current_OnStateChanged;
+
 
             StackTournament.GestureRecognizers.Add(
              new TapGestureRecognizer()
@@ -210,41 +207,7 @@ namespace PleaseRememberMe.Pantallas
         }
 
 
-        private void BtnAtrasMatch_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutMatch.IsVisible = false;
-            StackLayoutProfessionsActivities.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
 
-
-        }
-
-        private void Btncorrects_Clicked(object sender, EventArgs e)
-        {
-
-            foreach (var item in listMatch)
-            {
-                if (string.IsNullOrEmpty(item.textbox))
-                {
-                    item.Imagenes = "remove.png";
-                }
-                else
-                {
-                    if (item.textbox.ToUpper().Trim().Replace(".", "") == item.CorrectAnswer)
-                    {
-                        item.Imagenes = "correct.png";
-                    }
-                    else
-                    {
-                        item.Imagenes = "remove.png";
-                    }
-                }
-
-            }
-            lsv_Math.ItemsSource = null;
-            lsv_Math.ItemsSource = listMatch;
-
-        }
         private async void btnComplete_Clicked(object sender, EventArgs e)
         {
             try
@@ -304,37 +267,10 @@ namespace PleaseRememberMe.Pantallas
 
         void BtnAtrasClothes_Clicked(System.Object sender, System.EventArgs e)
         {
-            StackLayoutClothes.IsVisible = false;
-            StackLayoutClothesActivities.IsVisible = true;
+            
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
-
-        void Btncorrectclothes_Clicked(System.Object sender, System.EventArgs e)
-        {
-            foreach (var item in listclothes)
-            {
-                if (string.IsNullOrEmpty(item.txtclothes))
-                {
-                    item.imagen = "remove.png";
-                }
-                else
-                {
-                    if (item.txtclothes.ToUpper().Trim().Replace(".", "") == item.CorrectAnswer)
-                    {
-                        item.imagen = "correct.png";
-                    }
-                    else
-                    {
-                        item.imagen = "remove.png";
-                    }
-                }
-
-            }
-            lsv_clothes.ItemsSource = null;
-            lsv_clothes.ItemsSource = listclothes;
-        }
-
-       
 
         private void BtnAtrasPronouns_Clicked(object sender, EventArgs e)
         {
@@ -536,65 +472,6 @@ namespace PleaseRememberMe.Pantallas
                 LblCorrectAnswerFamily.IsVisible = false;
             }
         }
-
-        private void BtnAtrasFamily_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutFamilyActivities.IsVisible = true;
-            StackLayoutFamily.IsVisible = false;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
-
-      
-
-        private void BtnAtrasAnySome_Clicked(object sender, EventArgs e)
-        {
-            
-            StackLayoutAnySome.IsVisible = false;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
-
-        private void BtnCheckMyAnswerAnySome_Clicked(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(TxtAnySome.Text))
-            {
-                LblCorrectAnswerAnySome.IsVisible = true;
-                LblCorrectAnswerAnySome.Text = "Incorrect";
-            }
-            else
-            {
-                if (CorrectAnswerAnySome == TxtAnySome.Text.ToUpper().Trim().Replace(".", ""))
-                {
-                    LblCorrectAnswerAnySome.IsVisible = true;
-                    LblCorrectAnswerAnySome.Text = "Correct";
-                }
-                else
-                {
-                    LblCorrectAnswerAnySome.IsVisible = true;
-                    LblCorrectAnswerAnySome.Text = "Incorrect";
-
-                }
-            }
-        }
-
-        private void BtnOneMoreAnySome_Clicked(object sender, EventArgs e)
-        {
-            if (listAnySome.Count == 1)
-            {
-                UserDialogs.Instance.Toast("There aren’t any more sentences");
-            }
-            else
-            {
-                var random = new Random().Next(1, listAnySome.Count);
-                var elegido = listAnySome[random];
-                LblAnySome.Text = elegido.AnySomeSentences;
-                CorrectAnswerAnySome = elegido.CorrectAnswer;
-                listAnySome.Remove(elegido);
-                TxtAnySome.Text = "";
-                LblCorrectAnswerAnySome.IsVisible = false;
-            }
-        }
-
-        
      
       
 
@@ -602,44 +479,6 @@ namespace PleaseRememberMe.Pantallas
         {
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
-
-
-     
-        private async void btnVerbToBe_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                StackLayoutVerbToBe.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm eating a burrito");
-                var datos = await metodos.GetVerbToBe();
-                listVerbToBe = datos;
-                var random = new Random().Next(1, listVerbToBe.Count);
-                var elegido = listVerbToBe[random];
-                LblVerbToBeExercise.Text = listVerbToBe[0].verbtobeSentence;
-                CorrectAnswerVerbToBe1 = listVerbToBe[0].CorrectAnswer1;
-                CorrectAnswerVerbToBe2 = listVerbToBe[0].CorrectAnswer2;
-                //listVerbToBe.Remove(elegido);
-                TxtVerbToBe.Text = "";
-                TxtVerbToBe2.Text = "";
-                LblCorrectAnswerVerbToBe.IsVisible = false;
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-        }
-
-        private void BtnAtrasSimplePresentCategory_Clicked(object sender, EventArgs e)
-        {
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-
-            
-        }
-
-
 
         private async void BtnCategories_Clicked(object sender, EventArgs e)
         {
@@ -652,45 +491,16 @@ namespace PleaseRememberMe.Pantallas
 
 
 
-
-        private void BtnActivitiesProfessions_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutProfessionsPage.IsVisible = false;
-            StackLayoutProfessionsActivities.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
-
-        private async void BtnProfessionsMatch_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                StackLayoutProfessionsActivities.IsVisible = false;
-                StackLayoutMatch.IsVisible = true;
-                ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-                UserDialogs.Instance.ShowLoading("Wait a minute, I'm looking the blue sky");
-                var datos = await metodos.GetMatchSentences();
-                listMatch = datos;
-                lsv_Math.ItemsSource = datos;
-                UserDialogs.Instance.HideLoading();
-            }
-            catch (Exception ex)
-            {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
-
-            }
-        }
-
-
         private void BtnAtrasProfessionsActivities_Clicked(object sender, EventArgs e)
         {
-            StackLayoutProfessionsActivities.IsVisible = false;
-            StackLayoutProfessionsPage.IsVisible = true;
+            
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnAtrasProfessionsPage_Clicked(object sender, EventArgs e)
         {
-            StackLayoutProfessionsPage.IsVisible = false;
+            
             
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -698,37 +508,23 @@ namespace PleaseRememberMe.Pantallas
         private void BtnAtrasClothesPage_Clicked(object sender, EventArgs e)
         {
             
-            StackLayoutClothesPage.IsVisible = false;
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnActivitiesClothes_Clicked(object sender, EventArgs e)
         {
-            StackLayoutClothesPage.IsVisible = false;
-            StackLayoutClothesActivities.IsVisible = true;
+            
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnAtrasClothessActivities_Clicked(object sender, EventArgs e)
         {
-            StackLayoutClothesActivities.IsVisible = false;
-            StackLayoutClothesPage.IsVisible = true;
+            
+            
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
-
-        private async void BtnClothesExercises_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutClothesActivities.IsVisible = false;
-            StackLayoutClothes.IsVisible = true;
-
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-            UserDialogs.Instance.ShowLoading("Are you happy? I hope so");
-            var datos = await metodos.GetClothes();
-            listclothes = datos;
-            lsv_clothes.ItemsSource = datos;
-            UserDialogs.Instance.HideLoading();
-        }
-
         private void BtnAtrasFamilyPage_Clicked(object sender, EventArgs e)
         {
             
@@ -803,7 +599,6 @@ namespace PleaseRememberMe.Pantallas
 
         private async void btnsimplepresentexerci_Clicked(object sender, EventArgs e)
         {
-            StackLayoutsimplePresentExercises.IsVisible = false;
             StackLayoutSimplePresent.IsVisible = true;
 
 
@@ -835,13 +630,11 @@ namespace PleaseRememberMe.Pantallas
         private void btnsimplepresentexerciGo_Clicked(object sender, EventArgs e)
         {
             
-            StackLayoutsimplePresentExercises.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
         private void BtnAtrasSimplePresentExercises_Clicked(object sender, EventArgs e)
         {
-            StackLayoutsimplePresentExercises.IsVisible = false;
             
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
@@ -894,249 +687,12 @@ namespace PleaseRememberMe.Pantallas
             StackLayoutSuperlativesExercises.IsVisible = false;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
-
-        private async void BtnAtrasVideos_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutVideos.IsVisible = false;
-            await Navigation.PushModalAsync(new CategoriesPage());
-            Anuncio.IsVisible = true;
-        }
-
-        private async void BtnVideos_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new CategoriesPage());
-            StackLayoutVideos.IsVisible = true;
-            var datos = await metodos.GetVideos();
-            lsv_Videos.ItemsSource = datos;
-        }
-
-        private void BtnVideoClick_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutVideos.IsVisible = false;
-
-            var b = (Button)sender;
-
-            var ob = b.CommandParameter as EVideos;
-
-            if (ob != null)
-            {
-
-                // retrieve the value from the ‘ob’ and continue your work.
-
-            }
-
-            App.LinkVideo = ob.link;
-            App.TituloVideo = ob.title;
-            StackLayoutVideoPage.IsVisible = true;
-            LblTitle.Text = App.TituloVideo;
-            LblDescriptionVideo.Text = ob.videodescription;
-
-            mediaElement.Source = App.LinkVideo;
-            //CrossMediaManager.Current.Play(App.LinkVideo, MediaFileType.Video);
-        }
-
-        private void BtnAtrasVideoPage_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutVideoPage.IsVisible = false;
-            mediaElement.Pause();
-            StackLayoutVideos.IsVisible = true;
-        }
-
-        private async void BtnAudios_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new CategoriesPage());
-            StackLayoutAudios.IsVisible = true;
-            var datos = await metodos.GetAudios();
-            lsv_audios.ItemsSource = datos;
-        }
-
-        private async void BtnAtrasAudios_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new CategoriesPage());
-            StackLayoutAudios.IsVisible = false;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-
-        }
-
-        private void BtnAtrasAudioPage_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutAudioPage.IsVisible = false;
-            StackLayoutAudios.IsVisible = true;
-            BtnReiniciarAudio_Clicked(new object(), new EventArgs());
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
-
-        private async void BtnReproducirAudio_Clicked(object sender, EventArgs e)
-        {
-            SetupCurrentMediaPositionData(CrossMediaManager.Current.Position);
-            var currentMediaItem = await CrossMediaManager.Current.Play(audiolink);
-            SetupCurrentMediaDetails(currentMediaItem);
-        }
-
-        private void SetupCurrentMediaDetails(IMediaItem currentMediaItem)
-        {
-            // Set up Media item details in UI
-            var displayDetails = string.Empty;
-            if (!string.IsNullOrEmpty(currentMediaItem.DisplayTitle))
-                displayDetails = currentMediaItem.DisplayTitle;
-
-            if (!string.IsNullOrEmpty(currentMediaItem.Artist))
-                displayDetails = $"{displayDetails} - {currentMediaItem.Artist}";
-
-            //LabelMediaDetails.Text = displayDetails.ToUpper();
-        }
-
-        private async void BtnPausarAudio_Clicked(object sender, EventArgs e)
-        {
-            await CrossMediaManager.Current.PlayPause();
-        }
-
-        private async void BtnReiniciarAudio_Clicked(object sender, EventArgs e)
-        {
-            await CrossMediaManager.Current.Stop();
-        }
-
-        private void Current_OnStateChanged(object sender, StateChangedEventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                SetupCurrentMediaPlayerState(e.State);
-            });
-        }
-
-        private async void ForwardButton_Clicked(object sender, EventArgs e)
-        {
-            await CrossMediaManager.Current.StepForward();
-        }
-
-        private async void RewindButton_Clicked(object sender, EventArgs e)
-        {
-            await CrossMediaManager.Current.StepBackward();
-        }
-
-
-        private void Current_MediaItemChanged(object sender, MediaItemEventArgs e)
-        {
-            SetupCurrentMediaDetails(e.MediaItem);
-        }
-
-        private void Current_PositionChanged(object sender, PositionChangedEventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                SetupCurrentMediaPositionData(e.Position);
-            });
-        }
-
-        private void SetupCurrentMediaPositionData(TimeSpan currentPlaybackPosition)
-        {
-            var formattingPattern = @"hh\:mm\:ss";
-            if (CrossMediaManager.Current.Duration.Hours <= 0)
-                formattingPattern = @"mm\:ss";
-
-            var fullLengthString = CrossMediaManager.Current.Duration.ToString(formattingPattern);
-            LabelPositionStatus.Text = $"{currentPlaybackPosition.ToString(formattingPattern)}/{fullLengthString}";
-
-            SliderSongPlayDisplay.Value = currentPlaybackPosition.Ticks;
-        }
-
-        private void SetupCurrentMediaPlayerState(MediaPlayerState currentPlayerState)
-        {
-            //LabelPlayerStatus.Text = $"{currentPlayerState.ToString().ToUpper()}";
-
-            if (currentPlayerState == MediaManager.Player.MediaPlayerState.Loading)
-            {
-                SliderSongPlayDisplay.Value = 0;
-            }
-            else if (currentPlayerState == MediaManager.Player.MediaPlayerState.Playing
-                    && CrossMediaManager.Current.Duration.Ticks > 0)
-            {
-                SliderSongPlayDisplay.Maximum = CrossMediaManager.Current.Duration.Ticks;
-            }
-        }
-
-        private async void BtnAudioClick_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutAudios.IsVisible = false;
-
-            var b = (Button)sender;
-
-            var ob = b.CommandParameter as EAudios;
-
-            if (ob != null)
-
-            {
-
-                // retrieve the value from the ‘ob’ and continue your work.
-
-            }
-
-            LblTitleAudio.Text = ob.title;
-            audiolink = ob.link;
-            StackLayoutAudioPage.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-
-        }
-
+       
         private void BtnAtrasFamilysActivities_Clicked(object sender, EventArgs e)
         {
             StackLayoutFamilyActivities.IsVisible = false;
             StackLayoutFamilyPage.IsVisible = true;
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
-
-        private void BtnCheckMyAnswerVerbToBe_Clicked(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(TxtVerbToBe.Text) || string.IsNullOrEmpty(TxtVerbToBe2.Text))
-            {
-                LblCorrectAnswerVerbToBe.IsVisible = true;
-                LblCorrectAnswerVerbToBe.Text = "Incorrect";
-            }
-            else
-            {
-                if (CorrectAnswerVerbToBe1 == TxtVerbToBe.Text.ToUpper().Trim().Replace(".", "") && CorrectAnswerVerbToBe2 == TxtVerbToBe2.Text.ToUpper().Trim().Replace(".", ""))
-                {
-                    LblCorrectAnswerVerbToBe.IsVisible = true;
-                    LblCorrectAnswerVerbToBe.Text = "Correct";
-                }
-                else
-                {
-                    LblCorrectAnswerVerbToBe.IsVisible = true;
-                    LblCorrectAnswerVerbToBe.Text = "Incorrect";
-
-                }
-            }
-        }
-
-        private void BtnOneMoreVerbToBe_Clicked(object sender, EventArgs e)
-        {
-            if (listVerbToBe.Count == 1)
-            {
-                UserDialogs.Instance.Toast("There aren’t any more sentences");
-            }
-            else
-            {
-                var random = new Random().Next(1, listVerbToBe.Count);
-                var elegido = listVerbToBe[random];
-                LblVerbToBeExercise.Text = elegido.verbtobeSentence;
-                CorrectAnswerVerbToBe1 = elegido.CorrectAnswer1;
-                CorrectAnswerVerbToBe2 = elegido.CorrectAnswer2;
-                listVerbToBe.Remove(elegido);
-                TxtVerbToBe.Text = "";
-                TxtVerbToBe2.Text = "";
-                LblCorrectAnswerVerbToBe.IsVisible = false;
-            }
-        }
-
-        private void BtnAtrasVerbToBe_Clicked(object sender, EventArgs e)
-        {
-            StackLayoutVerbToBe.IsVisible = false;
-        }
-
-        private void BtnCheckMyAnswerChoose_Clicked(object sender, EventArgs e)
-        {
-
-
         }
 
         private void BtnOneMoreChoose_Clicked(object sender, EventArgs e)

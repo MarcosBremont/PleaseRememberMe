@@ -20,6 +20,8 @@ namespace PleaseRememberMe.Entidad
         public string FirstOption { get; set; }
         public string SecondOption { get; set; }
         public string Adjectives { get; set; }
+        public string Imagenes { get; set; }
+        public string textbox { get; set; }
     }
 
 }

@@ -50,6 +50,15 @@ namespace PleaseRememberMe.Pantallas
             LblSubtitlePageBase.Text = listExercises[0].Subtitle;
             LblDescriptionPageBase.Text = listExercises[0].Description;
             LblSentencesPageBase.Text = listExercises[0].Sentences;
+            imgclothe.Source = listExercises[0].Image;
+            if (string.IsNullOrEmpty(listExercises[0].Image))
+            {
+                LayoutImage.IsVisible = false;
+            }
+            else
+            {
+                LayoutImage.IsVisible = true;
+            }
 
             string YourAnswer = TxtAnswer.Text;
             DefinitiveAnswer = datos[0].CorrectAnswer;
@@ -160,6 +169,7 @@ namespace PleaseRememberMe.Pantallas
                 CorrectAnswerQuantifiers = elegido.CorrectAnswer;
                 RadioButtonOption1.IsChecked = false;
                 RadioButtonOption2.IsChecked = false;
+                imgclothe.Source = elegido.Image;
             }
            
         }

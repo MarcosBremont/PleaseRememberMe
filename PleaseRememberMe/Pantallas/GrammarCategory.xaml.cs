@@ -24,12 +24,14 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnMatch_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new GrammarCategory());
+            App.Categoria = "PROFESSIONS";
+            await Navigation.PushModalAsync(new HowToUsePage());
         }
 
         async void btnSClothes_Clicked(System.Object sender, System.EventArgs e)
         {
-            await Navigation.PushModalAsync(new GrammarCategory());
+            App.Categoria = "CLOTHES";
+            await Navigation.PushModalAsync(new HowToUsePage());
         }
 
         async void BtnSimplePast_Clicked(System.Object sender, System.EventArgs e)

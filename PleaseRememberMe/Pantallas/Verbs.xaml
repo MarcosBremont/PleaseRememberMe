@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                           xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob" xmlns:forms="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
              ios:Page.UseSafeArea="True"
-             BackgroundColor="Aquamarine"
+             BackgroundColor="#231F20"
              NavigationPage.HasNavigationBar="False"
              x:Class="PleaseRememberMe.Pantallas.Verbs">
     <ContentPage.Content>
         <!--Stacklayout Let's Go - Page 2-->
-        <StackLayout x:Name="StacklayoutLetsGo" IsVisible="true" >
+        <StackLayout x:Name="StacklayoutLetsGo" IsVisible="true" BackgroundColor="White">
 
             <Grid x:Name="GridVolverAtras">
 
@@ -20,7 +20,7 @@
                 <StackLayout Grid.Row="0">
                     <Grid VerticalOptions="FillAndExpand">
 
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNav">
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#231F20" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNav">
                             <ImageButton Source="leftarrow.png" Clicked="BtnAtras_Clicked" x:Name="BtnAtras" BackgroundColor="Transparent" HeightRequest="25" Margin="16,0,0,0" ></ImageButton>
                             <Label TextColor="White"
                                Text="GO BACK"

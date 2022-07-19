@@ -44,7 +44,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
-                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
@@ -67,15 +67,23 @@
                         <Label Grid.Row="2" HorizontalOptions="Center" HorizontalTextAlignment="Center" x:Name="LblAnotherTitle" Margin="0,0,0,0" TextColor="#333"></Label>
                     </StackLayout>
 
-
+                    
                     <StackLayout Grid.Row="3">
                         <Label Grid.Row="3" HorizontalOptions="Center" x:Name="LblDescriptionPageBase"  Margin="0,0,0,0" TextColor="#333"></Label>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="4" Margin="0,10,0,0">
+
+                    <StackLayout Grid.Row="4" Margin="0,0,0,0" x:Name="LayoutImage" IsVisible="false" Orientation="Vertical">
+                        <Image WidthRequest="100" x:Name="imgclothe"></Image>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" Margin="0,0,0,0">
+
+                        
                         <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" x:Name="LblSentencesPageBase" TextColor="#333"></Label>
                         <Entry  HorizontalOptions="FillAndExpand" x:Name="TxtAnswer" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
 
+                        
                         <StackLayout IsVisible="false" x:Name="StackRadioButtons" Grid.Row="4" Margin="0,0,0,0">
 
                             <StackLayout VerticalOptions="Center" Orientation="Horizontal">
@@ -93,8 +101,10 @@
                         </StackLayout>
 
                     </StackLayout>
+                    
+                    
 
-                    <StackLayout Grid.Row="5" Margin="0,20,0,0">
+                    <StackLayout Grid.Row="6" Margin="0,20,0,0">
                         <Label Margin="0,0,0,0" HorizontalOptions="Center" x:Name="LblCorrectIncorectPageBase" IsVisible="false" FontSize="12" TextColor="DarkRed" FontAttributes="Bold"></Label>
 
                         <Button Text="Check my Answer" x:Name="BtnCheckMyAnswerPageBase" Margin="0,0,0,0" Clicked="BtnCheckMyAnswerPageBase_Clicked" BackgroundColor="#215CD4" TextColor="White"/>
