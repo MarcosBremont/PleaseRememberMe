@@ -816,13 +816,6 @@ namespace PleaseRememberMe.Pantallas
             ContenPage.BackgroundColor = Color.FromHex("#2196F3");
         }
 
-        private void BtnAtrasVocabularyFamilyWords_Clicked(object sender, EventArgs e)
-        {
-            Anuncio.IsVisible = true;
-            //StacklayoutVocabularyFamily.IsVisible = false;
-            StackLayoutFamilyPage.IsVisible = true;
-            ContenPage.BackgroundColor = Color.FromHex("#2196F3");
-        }
 
         private async void BtnFamilyExercises_Clicked(object sender, EventArgs e)
         {
