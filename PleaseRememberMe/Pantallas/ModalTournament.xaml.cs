@@ -44,7 +44,7 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnCancell_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.PopAsync();
+            await Navigation.PopModalAsync();
             txtcity.Text = "";
             txtnickname.Text = "";
 

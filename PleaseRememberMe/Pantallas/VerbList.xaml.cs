@@ -34,7 +34,7 @@ namespace PleaseRememberMe.Pantallas
             }
             catch (Exception ex)
             {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Please check your internet connection");
             }
 
         }
@@ -43,7 +43,7 @@ namespace PleaseRememberMe.Pantallas
             BtnAtrasVerbList.IsEnabled = false;
             using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
             {
-                await Navigation.PushModalAsync(new PrincipalPage());
+                await Navigation.PopModalAsync();
             }
             BtnAtrasVerbList.IsEnabled = true;
         }

@@ -42,12 +42,12 @@
                     <Grid RowSpacing="0">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
 
                         </Grid.RowDefinitions>
 
@@ -211,7 +211,7 @@
                             CornerRadius="8"
                             Clicked="btnEvaluationsAndComparions_Clicked"/>
 
-                                              <Button 
+                        <Button 
                             Margin="5,5,5,5"
                             Grid.Row="6"
                             Grid.Column="0"
@@ -234,6 +234,18 @@
                             BackgroundColor="#215CD4"
                             CornerRadius="8"
                             Clicked="BtnMatch_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            x:Name="BtnFamily"
+                            Text="Family"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#215CD4"
+                            CornerRadius="8"
+                            Clicked="BtnFamily_Clicked"/>
 
                     </Grid>
 

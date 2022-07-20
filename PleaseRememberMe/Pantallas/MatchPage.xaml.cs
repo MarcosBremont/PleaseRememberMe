@@ -63,7 +63,7 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnAtrasMatch_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new HowToUsePage());
+            await Navigation.PopModalAsync();
         }
 
 

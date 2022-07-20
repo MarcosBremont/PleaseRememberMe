@@ -43,6 +43,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Pantallas\ModalRememberMeAWord.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ModalRememberMeAWord.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Pantallas\PrincipalPage.xaml.cs">
       <DependentUpon>PrincipalPage.xaml</DependentUpon>
     </Compile>
@@ -73,6 +77,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pantallas\MatchPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pantallas\ModalRememberMeAWord.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pantallas\ModalTournament.xaml">

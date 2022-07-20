@@ -19,7 +19,7 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnVolverAtrasGrammarCategory_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new CategoriesPage());
+            await Navigation.PopModalAsync();
         }
 
         private async void BtnMatch_Clicked(object sender, EventArgs e)
@@ -118,6 +118,10 @@ namespace PleaseRememberMe.Pantallas
             await Navigation.PushModalAsync(new HowToUsePage());
         }
 
-
+        private async void BtnFamily_Clicked(object sender, EventArgs e)
+        {
+            App.Categoria = "FAMILY";
+            await Navigation.PushModalAsync(new HowToUsePage());
+        }
     }
 }

@@ -23,8 +23,17 @@ namespace PleaseRememberMe.Pantallas
 
         public async void ObtenerAudios()
         {
-            var datos = await metodos.GetAudios();
-            lsv_audios.ItemsSource = datos;
+            try
+            {
+                var datos = await metodos.GetAudios();
+                lsv_audios.ItemsSource = datos;
+            }
+            catch (Exception)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Please check your internet connection");
+
+            }
+
         }
 
         async private void BtnAudioClick_Clicked(object sender, EventArgs e)

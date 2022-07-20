@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace PleaseRememberMe.Pantallas
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CategoriesPage : ContentPage
     {
+        private bool _userTapped;
+        ModalRememberMeAWord modalRememberMeAWord = new ModalRememberMeAWord();
         public CategoriesPage()
         {
             InitializeComponent();
@@ -20,7 +23,7 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnAtrasCategory_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new PrincipalPage());
+            await Navigation.PopModalAsync();
         }
 
         private async void BtnGrammarCategory_Clicked(object sender, EventArgs e)
@@ -48,7 +51,25 @@ namespace PleaseRememberMe.Pantallas
             //lsv_audios.ItemsSource = datos;
         }
 
+        private async void BtnRememberMeAWord_Clicked(object sender, EventArgs e)
+        {
+            if (_userTapped)
+                return;
 
+            _userTapped = true;
+            modalRememberMeAWord = new ModalRememberMeAWord();
+            modalRememberMeAWord.OnLLamarOtraPantalla += ModalRememberMeAWord_OnLLamarOtraPantalla; ;
+            //modalTournament.Disappearing += ModalTournament_Disappearing;
 
+            await PopupNavigation.PushAsync(modalRememberMeAWord);
+            await Task.Delay(1000);
+            _userTapped = false;
+            Opacity = 1;
+        }
+
+        private void ModalRememberMeAWord_OnLLamarOtraPantalla(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

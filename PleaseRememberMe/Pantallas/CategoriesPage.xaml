@@ -42,12 +42,12 @@
                     <Grid RowSpacing="0">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
 
                         </Grid.RowDefinitions>
 
@@ -106,6 +106,18 @@
                             x:Name="BtnAudios"
                             Clicked="BtnAudios_Clicked"/>
 
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Text="Remember Me a Word"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#231F20"
+                            CornerRadius="8"
+                            x:Name="BtnRememberMeAWord"
+                            Clicked="BtnRememberMeAWord_Clicked"/>
+
 
 
 
@@ -125,6 +137,7 @@
 
 
                 </StackLayout>
+
             </ScrollView>
 
         </StackLayout>

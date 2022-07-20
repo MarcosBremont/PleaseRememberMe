@@ -1,4 +1,5 @@
-﻿using PleaseRememberMe.Models;
+﻿using Acr.UserDialogs;
+using PleaseRememberMe.Models;
 using System;
 using System.Collections.Generic;
 
@@ -17,15 +18,18 @@ namespace PleaseRememberMe.Pantallas
 
         public async void llenarVocabulary()
         {
-            var datos = await metodos.GetVocabularyGlobal(App.Vocabulary);
-            lsv_vocabulary.ItemsSource = datos;
-            LblVocabulary.Text = datos[0].Vocabulary_category + " Vocabulary";
-            LblCategoryTitle.Text = datos[0].Vocabulary_category;
+            using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
+            {
+                var datos = await metodos.GetVocabularyGlobal(App.Vocabulary);
+                lsv_vocabulary.ItemsSource = datos;
+                LblVocabulary.Text = datos[0].Vocabulary_category + " Vocabulary";
+                LblCategoryTitle.Text = datos[0].Vocabulary_category;
+            }
         }
 
         private async void BtnAtrasVocabulary_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new VocabularyCategory());
+            await Navigation.PopModalAsync();
         }
     }
 

@@ -81,7 +81,7 @@
 
                         
                         <Label  Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" x:Name="LblSentencesPageBase" TextColor="#333"></Label>
-                        <Entry  HorizontalOptions="FillAndExpand" x:Name="TxtAnswer" Placeholder="First Answer" FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
+                        <Entry  HorizontalOptions="FillAndExpand" x:Name="TxtAnswer" Placeholder="Your Answer" FontSize="12" TextTransform="Uppercase" TextColor="#333" PlaceholderColor="#333" BackgroundColor="Transparent" ></Entry>
 
                         
                         <StackLayout IsVisible="false" x:Name="StackRadioButtons" Grid.Row="4" Margin="0,0,0,0">

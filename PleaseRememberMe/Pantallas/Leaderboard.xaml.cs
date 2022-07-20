@@ -28,12 +28,15 @@ namespace PleaseRememberMe.Pantallas
 
             try
             {
-                var datos = await metodos.GetListadoDePosiciones();
-                lsv_TablaPuntuacion.ItemsSource = datos;
+                using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
+                {
+                    var datos = await metodos.GetListadoDePosiciones();
+                    lsv_TablaPuntuacion.ItemsSource = datos;
+                }
             }
             catch (Exception ex)
             {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Please check your internet connection");
             }
 
         }
@@ -43,7 +46,7 @@ namespace PleaseRememberMe.Pantallas
             BtnAtrasPosiciones.IsEnabled = false;
             using (UserDialogs.Instance.Loading("loading", null, null, true, MaskType.Black))
             {
-                await Navigation.PushModalAsync(new PrincipalPage());
+                await Navigation.PopModalAsync();
             }
             BtnAtrasPosiciones.IsEnabled = true;
         }

@@ -8,7 +8,7 @@
              x:Class="PleaseRememberMe.Pantallas.Verbs">
     <ContentPage.Content>
         <!--Stacklayout Let's Go - Page 2-->
-        <StackLayout x:Name="StacklayoutLetsGo" IsVisible="true" BackgroundColor="White">
+        <StackLayout x:Name="StacklayoutLetsGo" IsVisible="true" Margin="0,0,0,-90" BackgroundColor="White">
 
             <Grid x:Name="GridVolverAtras">
 

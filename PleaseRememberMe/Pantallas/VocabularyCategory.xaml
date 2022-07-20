@@ -45,12 +45,12 @@
                     <Grid RowSpacing="0">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="65"/>
 
                         </Grid.RowDefinitions>
 
@@ -99,7 +99,7 @@
                         <Button 
                             Margin="5,5,5,5"
                             Grid.Row="1"
-                            Grid.Column="0"
+                            Grid.Column="1"
                             x:Name="btnClothesVocabulary"
                             Text="Clothes Vocabulary"
                             TextColor="White"
@@ -108,6 +108,42 @@
                             CornerRadius="8"
                             Clicked="btnClothesVocabulary_Clicked"/>
 
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            x:Name="btnNatureVocabulary"
+                            Text="Nature Vocabulary"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#215CD4"
+                            CornerRadius="8"
+                            Clicked="btnNatureVocabulary_Clicked"/>
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            x:Name="btnCommonWordsVocabulary"
+                            Text="1000 Common Words Vocabulary"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#215CD4"
+                            CornerRadius="8"
+                            Clicked="btnCommonWordsVocabulary_Clicked"/>
+
+
+                        <Button 
+                            Margin="5,5,5,5"
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            x:Name="btnClassroomVocabulary"
+                            Text="Classroom Objetcs Vocabulary"
+                            TextColor="White"
+                            HeightRequest="60"
+                            BackgroundColor="#215CD4"
+                            CornerRadius="8"
+                            Clicked="btnClassroomVocabulary_Clicked"/>
 
                     </Grid>
 

@@ -54,7 +54,7 @@ namespace PleaseRememberMe.Pantallas
             }
             catch (Exception ex)
             {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Please check your internet connection");
             }
 
         }
@@ -80,7 +80,7 @@ namespace PleaseRememberMe.Pantallas
         {
             BtnAtras.IsEnabled = false;
             UserDialogs.Instance.ShowLoading("Wait a minute, I'm drinking water");
-            await Navigation.PushModalAsync(new PrincipalPage());
+            await Navigation.PopModalAsync();
             UserDialogs.Instance.HideLoading();
             App.Torneo = "N";
         }
@@ -179,7 +179,7 @@ namespace PleaseRememberMe.Pantallas
             }
             catch (Exception ex)
             {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Please check your internet connection");
 
             }
 
@@ -354,7 +354,7 @@ namespace PleaseRememberMe.Pantallas
             }
             catch (Exception ex)
             {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Conexión no establecida, verifica tu conexión a internet");
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Please check your internet connection");
 
             }
 
