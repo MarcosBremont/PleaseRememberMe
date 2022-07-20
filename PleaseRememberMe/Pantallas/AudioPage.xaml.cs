@@ -28,6 +28,7 @@ namespace PleaseRememberMe.Pantallas
         private async void BtnAtrasAudioPage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
+            await CrossMediaManager.Current.Stop();
 
         }
 
