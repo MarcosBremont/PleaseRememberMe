@@ -55,7 +55,8 @@ namespace PleaseRememberMe.Pantallas
 
         private async void BtnCancell_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            await PopupNavigation.Instance.PopAsync();
+
             txtWord.Text = "";
         }
     }

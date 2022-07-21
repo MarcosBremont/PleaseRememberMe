@@ -17,7 +17,7 @@ namespace PleaseRememberMe.Pantallas
 
         async void BtnGoBack_Clicked(System.Object sender, System.EventArgs e)
         {
-            await PopupNavigation.PopAsync();
+            await PopupNavigation.Instance.PopAsync();
         }
 
         void BtnInstagram_Clicked(System.Object sender, System.EventArgs e)

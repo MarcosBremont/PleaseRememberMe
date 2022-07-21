@@ -30,11 +30,13 @@ namespace PleaseRememberMe.Pantallas
     public partial class PrincipalPage : ContentPage
     {
         ModalTournament modalTournament = new ModalTournament();
+        public string previousPageValue; //Declare here
+
         private bool _userTapped;
         public PrincipalPage()
         {
             InitializeComponent();
-
+            App.PrincipalPage = this;
             lblWord.Text = App.Wordsss;
             StackTournament.GestureRecognizers.Add(
              new TapGestureRecognizer()
@@ -60,6 +62,7 @@ namespace PleaseRememberMe.Pantallas
 
         }
 
+
         async private void ModalTournament_OnLLamarOtraPantalla(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new TournamentPage());
@@ -68,9 +71,22 @@ namespace PleaseRememberMe.Pantallas
 
         protected async override void OnAppearing()
         {
-
             base.OnAppearing();
             Anuncio.IsVisible = true;
+            lblWord.Text = previousPageValue;
+            
+
+        }
+
+        public void ObtenerValorLabel()
+        {
+
+            lblWord.IsVisible = false;
+            lblWord.Text = "";
+            lblWord.Text = App.Wordsss;
+            lblWord.IsVisible = true;
+            App.PrincipalPage = this;
+
         }
 
         private async void BtnLetsGo_Clicked(object sender, EventArgs e)

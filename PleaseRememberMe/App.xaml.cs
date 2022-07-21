@@ -31,6 +31,7 @@ namespace PleaseRememberMe
         public static string AudioTitle { get; set; }
         public static string AudioLink { get; set; }
         public static string Wordsss { get; set; }
+        public static PrincipalPage PrincipalPage;
 
 
         public App()
@@ -45,8 +46,9 @@ namespace PleaseRememberMe
 
    
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
+            
             string ruta_archivo_configuracion = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Configuracion.nombre_archivo_configuracion);
             List<String> palabras = new List<string>();
             Random random = new Random();
@@ -54,7 +56,7 @@ namespace PleaseRememberMe
             string[] lines = File.ReadAllLines(ruta_archivo_configuracion);
             string TextoBien = "";
 
-            Task.Run(() =>
+            _ = Task.Run(async () =>
             {
                 // some long running task
 
@@ -67,10 +69,10 @@ namespace PleaseRememberMe
                         palabras = TextoBien.Split(',').ToList();
 
                         App.Wordsss = palabras[(random.Next(0, palabras.Count - 1))];
-                        PrincipalPage principalPage = new PrincipalPage();
-                        principalPage.PropertyChanged()
+                        PrincipalPage.ObtenerValorLabel();
+
                     }
-                    Thread.Sleep(1000);
+                    Thread.Sleep(10000);
                 }
             });
             // Formatting numbers, dates, etc.
